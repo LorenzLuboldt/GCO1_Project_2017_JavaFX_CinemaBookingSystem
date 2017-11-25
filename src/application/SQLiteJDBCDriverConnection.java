@@ -1,8 +1,8 @@
+package application;
 
 	import java.sql.Connection;
 	import java.sql.DriverManager;
 	import java.sql.SQLException;
-	 
 	/**
 	 *
 	 * @author sqlitetutorial.net
@@ -15,7 +15,7 @@
 	        Connection conn = null;
 	        try {
 	            // db parameters
-	            String url = "jdbc:sqlite:C:/Users/Lorenz/Desktop/repos/GCO1_Project_2017_JavaFX_CinemaBookingSystem/GCO1_Project_2017_JavaFX_CinemaBookingSystemcinemabooking.db";
+	            String url = "jdbc:sqlite:C:\\Users\\Lorenz\\Desktop\\repos\\GCO1_Project_2017_JavaFX_CinemaBookingSystem\\cinemabooking.db";
 	            // create a connection to the database
 	            conn = DriverManager.getConnection(url);
 	            
