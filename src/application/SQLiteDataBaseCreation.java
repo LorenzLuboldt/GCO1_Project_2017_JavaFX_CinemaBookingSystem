@@ -12,7 +12,7 @@ public class SQLiteDataBaseCreation {
 	
 	public static void createNewDatabase(String fileName) {
 		 
-        String url = "jdbc:sqlite:C:/Users/Lorenz/Desktop/repos/GCO1_Project_2017_JavaFX_CinemaBookingSystem" + fileName;
+        String url = "jdbc:sqlite:C:/Users/Lorenz/Desktop/repos/GCO1_Project_2017_JavaFX_CinemaBookingSystem/" + fileName;
  
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
