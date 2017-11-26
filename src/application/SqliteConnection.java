@@ -1,7 +1,7 @@
 package application;
 import java.sql.*;
 	
-	public class SQLiteConnection {
+	public class SqliteConnection {
 		
 		public static Connection Connector() {
 			
@@ -12,6 +12,7 @@ import java.sql.*;
 			}
 			
 			catch (Exception e) {
+				System.out.println(e);
 				return null;
 			}
 		}
