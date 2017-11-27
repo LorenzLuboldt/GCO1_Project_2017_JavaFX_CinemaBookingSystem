@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,9 +57,9 @@ public class LoginController implements Initializable{
 				
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
-				Pane root = loader.load(getClass().getResource("/view/CustRootView.fxml").openStream());
-				CustRootViewController custRootViewController = (CustRootViewController)loader.getController();
-				custRootViewController.GetCustomer(txtUsername.getText());
+				Pane root = loader.load(getClass().getResource("/view/CustomerRoot.fxml").openStream());
+				CustomerRootController customerRootController = (CustomerRootController)loader.getController();
+				customerRootController.GetCustomer(txtUsername.getText());
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);

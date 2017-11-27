@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,21 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class CustRootViewController implements Initializable {
-
+public class CustomerRootController implements Initializable {
 	@FXML
-	private Label userLabel;
-	
-	
-	
+	private Label userLbl;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
-	
 	public void GetCustomer(String user) {
-		userLabel.setText(user);
-	}	
-	
+		// TODO Auto-generated method stub
+		userLbl.setText(user);
+	}
+
 }
