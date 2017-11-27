@@ -1,4 +1,4 @@
-package application;
+package controller;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.LoginModel;
 
 
 public class LoginController implements Initializable{

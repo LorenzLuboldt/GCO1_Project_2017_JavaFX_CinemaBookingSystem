@@ -1,5 +1,7 @@
-package application;
+package model;
 import java.sql.*;
+
+import application.SqliteConnection;
 public class LoginModel {
 
 	Connection connection;
