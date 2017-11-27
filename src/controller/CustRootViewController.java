@@ -3,13 +3,16 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class EmployeeRootController implements Initializable {
+public class CustRootViewController implements Initializable {
 
 	@FXML
 	private Label userLabel;
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -17,13 +20,8 @@ public class EmployeeRootController implements Initializable {
 		
 	}
 	
-	
-	public void initialize(String User) {
-
-		userLabel.setText(User);
-	}
-	
-	
-	
+	public void GetCustomer(String user) {
+		userLabel.setText(user);
+	}	
 	
 }
