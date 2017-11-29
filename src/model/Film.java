@@ -17,14 +17,14 @@ import javafx.beans.property.*; // "contains the interfaces that define the most
  */
 
 
-public class film {
+public class Film {
 	
 	// variables (correspond to table columns)
 	private StringProperty film_title;
 	private StringProperty film_description;
 	
 	// constructor
-	public film()	{
+	public Film()	{
 		this.film_title = new SimpleStringProperty();
 		this.film_description = new SimpleStringProperty();
 	}

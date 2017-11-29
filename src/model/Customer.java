@@ -17,68 +17,87 @@ import javafx.beans.property.*; // "contains the interfaces that define the most
  */
 
 
-public class customer {
+public class Customer {
 	
 	// variables (correspond to table columns)
+	private StringProperty cust_ID;
 	private StringProperty sur_name;
 	private StringProperty first_name;
 	private StringProperty e_mail;
 	
 	// constructor
-	public customer()	{
+	public Customer()	{
+		this.cust_ID = new SimpleStringProperty();
 		this.sur_name = new SimpleStringProperty();
 		this.first_name = new SimpleStringProperty();
 		this.e_mail = new SimpleStringProperty();
 	}
 	
+	// *** CUST ID ***
+	
+		// getter
+	public String getCustID()	{
+		return cust_ID.get();
+	}
+	
+		// setter
+	public void setCustID(String custID)	{
+		this.cust_ID.set(custID);
+	}
+	
+		// property
+	public StringProperty custIdProperty()	{
+		return cust_ID;
+	}
+	
 	
 	// *** SURNAME ***
-	
-	// getter
+
+		// getter
 	public String getSurName()	{
 		return sur_name.get();
 	}
 	
-	// setter
+		// setter
 	public void setSurName(String surName)	{
 		this.sur_name.set(surName);
 	}
 	
-	// property
+		// property
 	public StringProperty surNameProperty()	{
 		return sur_name;
 	}
 	
 	// *** FIRSTNAME ***
 	
-	// getter
+		// getter
 	public String getFirstName()	{
 		return first_name.get();
 	}
 	
-	// setter
+		// setter
 	public void setFirstName(String firstName)	{
 		this.first_name.set(firstName);
 	}
 	
-	// property
+		// property
 	public StringProperty firstNameProperty()	{
 		return first_name;
 	}
 	
 	// *** EMAIL ***
 	
-	// getter
+		// getter
 	public String getEmail()	{
 		return e_mail.get();
 	}
 	
-	// setter
+		// setter
 	public void setEmail(String email)	{
 		this.e_mail.set(email);
 	}
 	
-	// property
+		// property
 	public StringProperty emailProperty()	{
 		return e_mail;
 	}
