@@ -62,10 +62,10 @@ public class LoginModel {
 		}
 	}
 	
-	public boolean isLogin(String user, String password) throws SQLException {
+	public boolean isLoginManager(String user, String password) throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		String query = "SELECT * FROM customerLogin WHERE user_name = ? AND password = ?";
+		String query = "SELECT * FROM managerLogin WHERE user_name = ? AND password = ?";
 		
 		try{
 			preparedStatement = connection.prepareStatement(query);

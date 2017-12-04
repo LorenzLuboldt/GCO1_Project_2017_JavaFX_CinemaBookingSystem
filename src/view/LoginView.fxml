@@ -23,12 +23,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="58.0" layoutY="204.0" mnemonicParsing="false" onAction="#LoginCheck" prefHeight="30.0" prefWidth="189.0" text="Customer Login">
+      <Button layoutX="58.0" layoutY="204.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="30.0" prefWidth="189.0" text="Customer Login">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="58.0" layoutY="243.0" mnemonicParsing="false" onAction="#LoginCheck" prefHeight="30.0" prefWidth="189.0" text="Staff Login">
+      <Button layoutX="58.0" layoutY="243.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="30.0" prefWidth="189.0" text="Staff Login">
          <font>
             <Font size="14.0" />
          </font>
