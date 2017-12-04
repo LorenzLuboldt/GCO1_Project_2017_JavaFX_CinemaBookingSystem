@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Film;
+import model.FilmDAO;
+import model.FilmDAOImpl;
 
 public class ManagerMoviesViewController implements Initializable {
 	@FXML
@@ -26,9 +29,11 @@ public class ManagerMoviesViewController implements Initializable {
 		userLbl.setText(user);
 	}
 	
-	public void ShowMovieSelection(String user) {
+	public void ShowMovieSelection(ActionEvent event) {
 		
-		
+		FilmDAO filmDAO = new FilmDAOImpl();
+        
+        Film film = new Film();
 		
 	}
 
