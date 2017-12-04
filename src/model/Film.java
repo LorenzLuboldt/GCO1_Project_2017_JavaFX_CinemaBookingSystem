@@ -1,19 +1,22 @@
 package model;
 
-import javafx.beans.property.*; // "contains the interfaces that define the most generic form of observability."
-// I don't really understand why we need them.
+import javafx.beans.property.*; 
 
 /** 
  * Explanation:
- * This file holds all columns of the CUSTOMER table. It contains private variables for each column,
+ * This file holds all columns of the 'film' table. It contains private variables for each column,
  * a constructor to initialize them, and getters and setters for each.
  * The variables are created as properties.
  * 
- * References: 
+ * "A Property notifies us when any variable such as name, last name, etc. is changed. 
+ * This helps us keep the view in sync with the data." (SW Test Academy)
+ * 
+ * References DAO Methodology: 
  * http://www.swtestacademy.com/database-operations-javafx/
+ * https://www.youtube.com/watch?v=H1mePFyqqiE&t=18s
  * 
  * @author Michael Aring
- * @version 24/11/2017
+ * @version 04/12/2017
  */
 
 

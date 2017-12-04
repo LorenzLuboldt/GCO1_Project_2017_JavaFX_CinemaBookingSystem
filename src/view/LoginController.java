@@ -16,12 +16,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.LoginModel;
 
-
+// Class implements imported FXML Initializable interface
 public class LoginController implements Initializable{
 	public LoginModel loginModel = new LoginModel();
 	
 	@FXML
-	private Label isConnected;
+	private Label isConnected; // label type is imported from Java FX scene control (import), label is passed as fxid to SceneBuilder
 	
 	@FXML
 	
