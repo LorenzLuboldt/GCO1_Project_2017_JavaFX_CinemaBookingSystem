@@ -100,12 +100,13 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 	    	
 			// SQL query, stored in String
-	    	String query = "SELECT * FROM film WHERE film_title=" + filmTitle;
+	    	String query = "SELECT * FROM film WHERE film_title = " + "'" + filmTitle + "'";
+	    	System.out.println(query);
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
 		    
-            if(results.next())	{
+            while(results.next())	{
             	film = new Film();
             	film.setFilmTitle(results.getString("film_title"));
             	film.setFilmDescription(results.getString("film_description"));
@@ -139,27 +140,26 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	
 	// *** 3. ADD FILM ***	
-	public void addFilm(Film film) 	{
+	public void addFilm(String filmTitle, String filmDescription) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
-	    Statement st = null;
-	    	    
+	    Statement st = null;   
+	  
 	    try
 	    {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "INSERT INTO film VALUES(" + film.getFilmTitle() + "," + film.getFilmDescription() + ")";
-				    
+	    	String query = "INSERT INTO film (film_title, film_description)" + "VALUES ('" + filmTitle + "', '" + filmDescription + "')";
+	     
 		    // Run query
-		    st.executeQuery(query);
-		    System.out.println("New record is inserted into film table for film title : " + film.getFilmTitle());
-
+		    st.executeUpdate(query);
+		    
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while adding new film: ");
+	    	System.err.println("Exception occured while adding new film " + filmTitle);
 	    	e.printStackTrace();
 	    }
 
@@ -180,7 +180,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	  
 	// *** 4. UPDATE FILM ***
-	public void updateFilm(Film film)	{
+	public void updateFilm(String filmTitle, String filmDescription)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -191,16 +191,17 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "UPDATE film SET film_title=" + "'" + film.getFilmTitle() + "'" + "where film_description=" + film.getFilmDescription();
-				    
+	    	String query = "UPDATE film SET film_description=" + "'" + filmDescription + "'" + "where film_title=" + "'" + filmTitle + "'";
+	    	System.out.println("Record WILL be updated for film title: " + filmTitle);
+	    	
 		    // Run query
-		    st.executeQuery(query);
-		    System.out.println("Record has been updated for film title: " + film.getFilmTitle());
+		    st.executeUpdate(query);
+		    System.out.println("Record has been updated for film title: " + filmTitle);
 
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while updating new film: " + film.getFilmTitle());
+	    	System.err.println("Exception occured while updating new film: " + filmTitle);
 	    	e.printStackTrace();
 	    }
 
@@ -221,7 +222,7 @@ public class FilmDAOImpl implements FilmDAO {
 	}
 	
 	// *** 5. DELETE FILM ***
-	public void deleteFilm(Film film)	{
+	public void deleteFilm(String filmTitle)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -232,16 +233,16 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "DELETE FROM film WHERE film_title="+ film.getFilmTitle();
+	    	String query = "DELETE FROM film WHERE film_title=" + "'" + filmTitle + "'";
 				    
 		    // Run query
-		    st.executeQuery(query);
-		    System.out.println("Record has been deleted for film title: " + film.getFilmTitle());
+		    st.executeUpdate(query);
+		    System.out.println("Record has been deleted for film title: " + filmTitle);
 
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while deleting film: " + film.getFilmTitle());
+	    	System.err.println("Exception occured while deleting film: " + filmTitle);
 	    	e.printStackTrace();
 	    }
 
@@ -261,3 +262,4 @@ public class FilmDAOImpl implements FilmDAO {
 	    }
 	}
 }
+
