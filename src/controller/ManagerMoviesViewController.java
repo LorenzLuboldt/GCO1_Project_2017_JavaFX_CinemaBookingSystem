@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,20 +12,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
-import model.FilmDAO;
-import model.FilmDAOImpl;
 
 public class ManagerMoviesViewController implements Initializable {
 	@FXML
 	private Label userLbl;
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	//Configure movie table
+	@FXML private TableView<Film> tableView;
+	@FXML private TableColumn<Film, String> film_title_column;
+	@FXML private TableColumn<Film, String> film_description_column;
+
 	public void GetCustomer(String user) {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
@@ -31,9 +35,18 @@ public class ManagerMoviesViewController implements Initializable {
 	
 	public void ShowMovieSelection(ActionEvent event) {
 		
-		FilmDAO filmDAO = new FilmDAOImpl();
-        
-        Film film = new Film();
+		//Set up the columns in the table
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("film_title"));
+		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("film_description"));
+
+		//load dummy data
+		tableView.setItems(getAllFilms());
+		
+	}
+	
+	public ObservableList<Film> getAllFilms() {
+		ObservableList<Film> films = FXCollections.observableArrayList();
+		return films;
 		
 	}
 
@@ -50,5 +63,11 @@ public class ManagerMoviesViewController implements Initializable {
 	} catch (Exception e) {
 		
 	}
+	}
+	
+	@Override
+public void initialize(URL location, ResourceBundle resources) {
+
+
 	}
 }
