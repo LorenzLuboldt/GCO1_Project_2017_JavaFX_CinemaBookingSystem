@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import controller.ManagerRootController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,8 +112,8 @@ public class LoginController implements Initializable {
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/view/ManagerRoot.fxml").openStream());
-				CustomerRootController customerRootController = (CustomerRootController) loader.getController();
-				customerRootController.GetCustomer(txtUsername.getText());
+				ManagerRootController managerRootController = (ManagerRootController) loader.getController();
+				managerRootController.GetCustomer(txtUsername.getText());
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);

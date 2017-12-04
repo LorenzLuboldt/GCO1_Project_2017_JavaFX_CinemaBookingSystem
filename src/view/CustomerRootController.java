@@ -25,7 +25,7 @@ public class CustomerRootController implements Initializable {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
 	}
-
+	
 	public void SignOut(ActionEvent event) {
 	try {	
 		((Node)event.getSource()).getScene().getWindow().hide();
