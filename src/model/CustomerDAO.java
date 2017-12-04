@@ -7,7 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /** 
- * 
+ * Purpose:
+ * The DAO interface lists methods to CRUD (create, get, update, delete) the data in the 
+ * corresponding table. DAO serves to separate to decouple persistence storage (DB) information
+ * from the rest of the application.
  * 
  * @author Michael Aring
  * @version 27/11/17
@@ -16,12 +19,14 @@ import javafx.collections.ObservableList;
 
 public class CustomerDAO {
 	
-	static Connection connection = SqliteConnection.Connector();
+
 	
 	// method retrieves customer information and stores it in ObservableList
 	public ObservableList<Customer> getCustInfo()	{
 		
 		try	{
+			
+			Connection connection = SqliteConnection.Connector();
 			
 			// SQL query, stored in String
 			String query = "SELECT * FROM users";
@@ -59,6 +64,9 @@ public class CustomerDAO {
 	public static void UpdateCust(String firstName, String surName, String email, String custID)	{
 		
 		try {
+			
+			Connection connection = SqliteConnection.Connector();
+			
 			// SQL query stored in string
 			String query = "UPDATE customers SET FIRST_NAME='" + firstName + "', SUR_NAME='" + surName + "', EMAIL='" + email 
 					+ "' where CUST_ID='" + custID + "'" ;

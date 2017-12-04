@@ -1,22 +1,25 @@
 package model;
 
-import javafx.beans.property.*; // "contains the interfaces that define the most generic form of observability."
-// I don't really understand why we need them.
+import javafx.beans.property.*;
 
 /** 
  * Explanation:
- * This file holds all columns of the SCREENINGS_SCHEDULE table. It contains private variables for each column,
+ * This file holds all columns of the 'screening_schedule' table. It contains private variables for each column,
  * a constructor to initialize them, and getters and setters for each.
  * The variables are created as properties.
+ * 
+ * "A Property notifies us when any variable such as name, last name, etc. is changed. 
+ * This helps us keep the view in sync with the data." (SW Test Academy)
  * 
  * The screening schedule is the same every day the cinema is open. For each screening time (one hour time slot),
  * the employee can allocate a film from the film list. 
  * 
  * References: 
- * http://www.swtestacademy.com/database-operations-javafx/
+ * http://www.swtestacademy.com/database-operatäions-javafx/
+ * https://www.youtube.com/watch?v=H1mePFyqqiE&t=18s
  * 
  * @author Michael Aring
- * @version 24/11/2017
+ * @version 04/12/2017
  */
 
 
@@ -24,7 +27,7 @@ public class ScreeningSchedule {
 	
 	// variables (correspond to table columns)
 	private StringProperty screening_time; // example value "3 pm"
-	private StringProperty film_scheduled; // example value "James Bond", taken from FILM table
+	private StringProperty film_scheduled; // example value "James Bond", taken from  table
 	
 	// constructor
 	public ScreeningSchedule()	{
