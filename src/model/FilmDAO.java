@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 public interface FilmDAO {
 	public ObservableList<Film> getAllFilms();
 	public Film getFilm(String filmTitle);
-	public void addFilm(Film film);
-	public void updateFilm(Film film);
-	public void deleteFilm(Film film);
+	public void addFilm(String filmTitle, String filmDescription);
+	public void updateFilm(String filmTitle, String filmDescription);
+	public void deleteFilm(String filmTitle);
 }
