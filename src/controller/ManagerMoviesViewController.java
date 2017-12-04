@@ -25,6 +25,12 @@ public class ManagerMoviesViewController implements Initializable {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
 	}
+	
+	public void ShowMovieSelection(String user) {
+		
+		
+		
+	}
 
 	public void SignOut(ActionEvent event) {
 	try {	
