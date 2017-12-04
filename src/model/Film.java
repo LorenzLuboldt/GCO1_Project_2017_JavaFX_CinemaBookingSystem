@@ -23,15 +23,33 @@ import javafx.beans.property.*;
 public class Film {
 	
 	// variables (correspond to table columns)
+	private IntegerProperty film_id;
 	private StringProperty film_title;
 	private StringProperty film_description;
 	
 	// constructor
 	public Film()	{
+		this.film_id = new SimpleIntegerProperty();
 		this.film_title = new SimpleStringProperty();
 		this.film_description = new SimpleStringProperty();
 	}
 	
+	// *** FILM ID ***
+
+	// getter
+	public int getFilmId() {
+		return film_id.get();
+	}
+
+	// setter
+	public void setFilmId(int filmId) {
+		this.film_id.set(filmId);
+	}
+	
+	// property
+	public IntegerProperty filmIdProperty()	{
+		return film_id;
+	}
 	
 	// *** FILMTITLE ***
 	
