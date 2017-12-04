@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <children>
-      <Label fx:id="isConnected" alignment="CENTER" layoutX="120.0" layoutY="21.0" text="Status" textAlignment="CENTER" textFill="#f80606">
+      <Label fx:id="isConnected" alignment="CENTER" layoutX="118.0" layoutY="30.0" text="Status" textAlignment="CENTER" textFill="#f80606">
          <font>
             <Font size="24.0" />
          </font>
@@ -23,9 +23,14 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="116.0" layoutY="232.0" mnemonicParsing="false" onAction="#LoginCheck" text="Login">
+      <Button layoutX="58.0" layoutY="204.0" mnemonicParsing="false" onAction="#LoginCheck" prefHeight="30.0" prefWidth="189.0" text="Customer Login">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="58.0" layoutY="243.0" mnemonicParsing="false" onAction="#LoginCheck" prefHeight="30.0" prefWidth="189.0" text="Staff Login">
+         <font>
+            <Font size="14.0" />
          </font>
       </Button>
    </children>
