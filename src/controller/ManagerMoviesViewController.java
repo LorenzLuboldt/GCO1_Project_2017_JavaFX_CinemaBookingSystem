@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class CustomerRootController implements Initializable {
+public class ManagerMoviesViewController implements Initializable {
 	@FXML
 	private Label userLbl;
 	@Override
@@ -25,7 +25,7 @@ public class CustomerRootController implements Initializable {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
 	}
-	
+
 	public void SignOut(ActionEvent event) {
 	try {	
 		((Node)event.getSource()).getScene().getWindow().hide();
