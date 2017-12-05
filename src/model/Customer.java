@@ -21,85 +21,90 @@ import javafx.beans.property.*; // "contains the interfaces that define the most
 public class Customer {
 	
 	// variables (correspond to table columns)
-	private StringProperty cust_ID;
-	private StringProperty sur_name;
-	private StringProperty first_name;
-	private StringProperty e_mail;
+	private IntegerProperty cust_ID;
+	private StringProperty cust_email;
+	private StringProperty cust_firstname;
+	private StringProperty cust_lastname;
 	
 	// constructor
 	public Customer()	{
-		this.cust_ID = new SimpleStringProperty();
-		this.sur_name = new SimpleStringProperty();
-		this.first_name = new SimpleStringProperty();
-		this.e_mail = new SimpleStringProperty();
+		this.cust_ID = new SimpleIntegerProperty();
+		this.cust_email = new SimpleStringProperty();
+		this.cust_firstname = new SimpleStringProperty();
+		this.cust_lastname = new SimpleStringProperty();
 	}
+	
 	
 	// *** CUST ID ***
 	
 		// getter
-	public String getCustID()	{
+	public int getCustID()	{
 		return cust_ID.get();
 	}
 	
 		// setter
-	public void setCustID(String custID)	{
+	public void setCustID(int custID)	{
 		this.cust_ID.set(custID);
 	}
 	
 		// property
-	public StringProperty custIdProperty()	{
+	public IntegerProperty custIdProperty()	{
 		return cust_ID;
 	}
 	
 	
-	// *** SURNAME ***
-
+	// *** EMAIL ***
+		
 		// getter
-	public String getSurName()	{
-		return sur_name.get();
+	public String getCustEmail()	{
+		return cust_email.get();
 	}
 	
 		// setter
-	public void setSurName(String surName)	{
-		this.sur_name.set(surName);
+	public void setCustEmail(String custEmail)	{
+		this.cust_email.set(custEmail);
 	}
 	
 		// property
-	public StringProperty surNameProperty()	{
-		return sur_name;
+	public StringProperty custEmailProperty()	{
+		return cust_email;
 	}
+	
 	
 	// *** FIRSTNAME ***
 	
 		// getter
 	public String getFirstName()	{
-		return first_name.get();
+		return cust_firstname.get();
 	}
 	
 		// setter
 	public void setFirstName(String firstName)	{
-		this.first_name.set(firstName);
+		this.cust_firstname.set(firstName);
 	}
 	
 		// property
 	public StringProperty firstNameProperty()	{
-		return first_name;
+		return cust_firstname;
 	}
+		
 	
-	// *** EMAIL ***
-	
+	// *** SURNAME ***
+
 		// getter
-	public String getEmail()	{
-		return e_mail.get();
+	public String getLastName()	{
+		return cust_lastname.get();
 	}
 	
 		// setter
-	public void setEmail(String email)	{
-		this.e_mail.set(email);
+	public void setLastName(String lastName)	{
+		this.cust_lastname.set(lastName);
 	}
 	
 		// property
-	public StringProperty emailProperty()	{
-		return e_mail;
+	public StringProperty lastNameProperty()	{
+		return cust_lastname;
 	}
 }
+	
+
