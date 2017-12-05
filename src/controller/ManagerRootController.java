@@ -15,15 +15,15 @@ import javafx.stage.Stage;
 
 public class ManagerRootController implements Initializable {
 	@FXML
-	private Label userLbl;
+	private Label userLbl2;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
-	public void GetCustomer(String user) {
+	public void GetManager(String user) {
 		// TODO Auto-generated method stub
-		userLbl.setText(user);
+		userLbl2.setText(user);
 	}
 	
 	public void GoToMovieSelection(ActionEvent event) {
