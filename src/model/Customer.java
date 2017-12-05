@@ -1,7 +1,6 @@
 package model;
 
-import javafx.beans.property.*; // "contains the interfaces that define the most generic form of observability."
-// I don't really understand why we need them.
+import javafx.beans.property.*; 
 
 /** 
  * Explanation:
