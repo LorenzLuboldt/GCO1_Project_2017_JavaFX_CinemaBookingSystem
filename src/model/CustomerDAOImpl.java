@@ -185,7 +185,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	  }
 	  
 	// *** 4. UPDATE CUSTOMER ***
-	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName)	{
+	public void updateCustomer(String custEmail, String custFirstName, String custLastName)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -196,17 +196,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "UPDATE customer SET cust_id=" + "'" + custID + "'" + "where cust_email=" + "'" + custEmail + "'" 
-			+ "where cust_firstname=" + "'" + custFirstName + "'" + "where cust_lastname=" + "'" + custLastName + "'";
+	    	String query = "UPDATE customer SET cust_email=" + "'" + custEmail + "'," 
+			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"WHERE cust_id=0;";
 	    	
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been updated for film title: " + custID);
+		    System.out.println("Record has been updated for customer: " + custFirstName + " " + custLastName);
 
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while updating new customer: " + custID);
+	    	System.err.println("Exception occured while updating new customer: " + custFirstName + " " + custLastName);
 	    	e.printStackTrace();
 	    }
 
@@ -267,4 +267,3 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    }
 	}
 }
-

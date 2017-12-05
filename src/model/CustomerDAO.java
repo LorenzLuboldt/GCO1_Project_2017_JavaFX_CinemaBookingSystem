@@ -21,6 +21,6 @@ public interface CustomerDAO {
 	public ObservableList<Customer> getAllCustomers();
 	public Customer getCustomer(int custID);
 	public void addCustomer(int custID, String cust_email, String cust_firstname, String cust_lastname);
-	public void updateCustomer(int custID, String cust_email, String cust_firstname, String cust_lastname);
+	public void updateCustomer(String cust_email, String cust_firstname, String cust_lastname);
 	public void deleteCustomer(int custID);
 }

@@ -12,40 +12,57 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Film;
-import model.FilmDAO;
-import model.FilmDAOImpl;
+import model.Customer;
+import model.CustomerDAO;
+import model.CustomerDAOImpl;
 
 public class CustomerEditInformationViewController implements Initializable {
 	
-	FilmDAO filmDAO = new FilmDAOImpl();
+	CustomerDAO customerDAO= new CustomerDAOImpl();
 	@FXML
 	private Label userLbl;
 	
-	//Configure movie table
-	@FXML private TableView<Film> tableView;
-	@FXML private TableColumn<Film, String> film_title_column;
-	@FXML private TableColumn<Film, String> film_description_column;
+	//Configure the customer table
+	@FXML private TableView<Customer> customer_data;
+	@FXML private TableColumn<Customer, String> firstname;
+	@FXML private TableColumn<Customer, String> surname;
+	@FXML private TableColumn<Customer, String> emailAddress;
+	@FXML private TableColumn<Customer, String> customerID;
 
+	/**
+	 * This method will allow the user to double click on a cell and update the first name of theperson
+	 * Sources: https://www.youtube.com/watch?v=z4LVoLg6ch0
+	 * @author Lorenz
+	 * @param user
+	 */
+	
+	public void changeFirstNameCellEvent(CellEditEvent edittedCell) {
+		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected.setFirstName(edittedCell.getNewValue().toString());
+	}
+
+	public void changeLastNameCellEvent(CellEditEvent edittedCell) {
+		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected.setLastName(edittedCell.getNewValue().toString());
+	}
+	
+	public void changeEmailAdressCellEvent(CellEditEvent edittedCell) {
+		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected.setCustEmail(edittedCell.getNewValue().toString());
+	}
+	
 	public void GetCustomer(String user) {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
 	}
 	
-	// Populates the table in this view 
-	public void ShowMovieSelectionEdit(ActionEvent event) {
-		//Set up the columns in the table
-		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
-		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
 
-		//load data from 
-		final ObservableList<Film> filmList = filmDAO.getAllFilms();
-		tableView.setItems(filmList);
-	}
 
 	// Manager is able to logout at this page
 	public void SignOut(ActionEvent event) {
@@ -77,13 +94,38 @@ public class CustomerEditInformationViewController implements Initializable {
 		
 	}
 	}
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 public void initialize(URL location, ResourceBundle resources) {
 		
+		//Connects table column to respective table column in database
+		firstname.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
+		surname.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
+		emailAddress.setCellValueFactory(new PropertyValueFactory<Customer, String>("custEmail"));
+		customerID.setCellValueFactory(new PropertyValueFactory<Customer, String>("custID"));
 
+
+		//load data from Customer Table
+		final ObservableList<Customer> customerData = customerDAO.getAllCustomers();
+		customer_data.setItems(customerData);
+		
+		//Update customer data table to allow for the the customer data fields to be editable
+		
+		customer_data.setEditable(true);
+		firstname.setCellFactory(TextFieldTableCell.forTableColumn());
+		surname.setCellFactory(TextFieldTableCell.forTableColumn());
+		emailAddress.setCellFactory(TextFieldTableCell.forTableColumn());
 
 	}
 
+	// Populates the table in this view 
+	public void EditCustomerData(ActionEvent event) {
+		//Set up the columns in the table
+
+		customerDAO.updateCustomer(emailAddress., firstname.getCellData(1), surname.getCellData(1));
 		
+	}
 	
 }
