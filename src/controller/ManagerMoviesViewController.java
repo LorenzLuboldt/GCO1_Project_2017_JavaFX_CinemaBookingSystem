@@ -18,6 +18,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
+import model.FilmDAO;
+import model.FilmDAOImpl;
 
 public class ManagerMoviesViewController implements Initializable {
 	@FXML
@@ -35,19 +37,7 @@ public class ManagerMoviesViewController implements Initializable {
 	
 	public void ShowMovieSelection(ActionEvent event) {
 		
-		//Set up the columns in the table
-		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("film_title"));
-		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("film_description"));
 
-		//load dummy data
-		tableView.setItems(getAllFilms());
-		
-	}
-	
-	public ObservableList<Film> getAllFilms() {
-		ObservableList<Film> films = FXCollections.observableArrayList();
-		return films;
-		
 	}
 
 	public void SignOut(ActionEvent event) {
@@ -67,7 +57,21 @@ public class ManagerMoviesViewController implements Initializable {
 	
 	@Override
 public void initialize(URL location, ResourceBundle resources) {
+		
+		//Set up the columns in the table
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
+		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
 
+		//load dummy data
+		tableView.setItems(getFilms());
 
+	}
+
+		public ObservableList<Film> getFilms() {
+		ObservableList<Film> films = FXCollections.observableArrayList();
+		films.add(new Film("Bond","nice movie"));
+		films.add(new Film("Das Wunder von Bern","auch nice movie"));
+		return films;
+		
 	}
 }
