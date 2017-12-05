@@ -118,13 +118,15 @@ public void initialize(URL location, ResourceBundle resources) {
 		surname.setCellFactory(TextFieldTableCell.forTableColumn());
 		emailAddress.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        String info = firstname.getCellData(0);
+        System.out.println(info);
 	}
 
 	// Populates the table in this view 
 	public void EditCustomerData(ActionEvent event) {
 		//Set up the columns in the table
 
-		customerDAO.updateCustomer(emailAddress., firstname.getCellData(1), surname.getCellData(1));
+		customerDAO.updateCustomer(emailAddress.getCellFactory(0), firstname.getCellFactory(0), surname.getCellFactory());
 		
 	}
 	
