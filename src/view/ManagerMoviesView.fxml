@@ -31,14 +31,17 @@
       </HBox>
    </top>
    <left>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="film_title" />
-          <TableColumn prefWidth="124.0" text="film_description" />
+          <TableColumn fx:id="film_title_column" prefWidth="75.0" text="film_title" />
+          <TableColumn fx:id="film_description_column" prefWidth="124.0" text="film_description" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
       </TableView>
    </left>
+   <center>
+      <Button mnemonicParsing="false" onAction="#ShowMovieSelection" text="Show Current Movie Selection" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
