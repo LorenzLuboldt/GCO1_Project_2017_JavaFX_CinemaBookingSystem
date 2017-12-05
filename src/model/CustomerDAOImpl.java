@@ -197,7 +197,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    
 			// SQL query, stored in String
 	    	String query = "UPDATE customer SET cust_email=" + "'" + custEmail + "'," 
-			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"WHERE cust_id=0;";
+			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"';";
 	    	
 		    // Run query
 		    st.executeUpdate(query);

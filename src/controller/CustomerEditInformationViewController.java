@@ -24,9 +24,12 @@ import model.CustomerDAOImpl;
 
 public class CustomerEditInformationViewController implements Initializable {
 	
+
+	Customer personSelected = new Customer();
 	CustomerDAO customerDAO= new CustomerDAOImpl();
 	@FXML
 	private Label userLbl;
+		
 	
 	//Configure the customer table
 	@FXML private TableView<Customer> customer_data;
@@ -34,6 +37,7 @@ public class CustomerEditInformationViewController implements Initializable {
 	@FXML private TableColumn<Customer, String> surname;
 	@FXML private TableColumn<Customer, String> emailAddress;
 	@FXML private TableColumn<Customer, String> customerID;
+
 
 	/**
 	 * This method will allow the user to double click on a cell and update the first name of theperson
@@ -43,17 +47,17 @@ public class CustomerEditInformationViewController implements Initializable {
 	 */
 	
 	public void changeFirstNameCellEvent(CellEditEvent edittedCell) {
-		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected = customer_data.getSelectionModel().getSelectedItem();
 		personSelected.setFirstName(edittedCell.getNewValue().toString());
 	}
 
 	public void changeLastNameCellEvent(CellEditEvent edittedCell) {
-		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected = customer_data.getSelectionModel().getSelectedItem();
 		personSelected.setLastName(edittedCell.getNewValue().toString());
 	}
 	
 	public void changeEmailAdressCellEvent(CellEditEvent edittedCell) {
-		Customer personSelected = customer_data.getSelectionModel().getSelectedItem();
+		personSelected = customer_data.getSelectionModel().getSelectedItem();
 		personSelected.setCustEmail(edittedCell.getNewValue().toString());
 	}
 	
@@ -122,10 +126,8 @@ public void initialize(URL location, ResourceBundle resources) {
 
 	// Populates the table in this view 
 	public void EditCustomerData(ActionEvent event) {
-		//Set up the columns in the table
-
-		customerDAO.updateCustomer(emailAddress., firstname.getCellData(1), surname.getCellData(1));
-		
+		//Set up the columns in the table		
+		customerDAO.updateCustomer(personSelected.getCustEmail(), personSelected.getFirstName(), personSelected.getLastName());
 	}
 	
 }

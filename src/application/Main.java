@@ -3,6 +3,9 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Customer;
+import model.CustomerDAO;
+import model.CustomerDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -24,5 +27,14 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+		
+		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
+		CustomerDAO customerDAO = new CustomerDAOImpl();
+			
+		customerDAO.addCustomer(3, "EMAIL", "NAME", "LASTN");
+		
+		Customer Lorenz = customerDAO.getCustomer(1);
+		String PersonalInfo = Lorenz.getFirstName() + Lorenz.getLastName() + Lorenz.getCustEmail();
+		System.out.println(PersonalInfo);
 	}
 }
