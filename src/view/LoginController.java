@@ -113,7 +113,7 @@ public class LoginController implements Initializable {
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/view/ManagerRoot.fxml").openStream());
 				ManagerRootController managerRootController = (ManagerRootController) loader.getController();
-				managerRootController.GetCustomer(txtUsername.getText());
+				managerRootController.GetManager(txtUsername.getText());
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
