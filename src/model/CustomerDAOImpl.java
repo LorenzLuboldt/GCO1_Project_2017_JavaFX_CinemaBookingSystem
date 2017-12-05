@@ -103,7 +103,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    	
 			// SQL query, stored in String
 	    	String query = "SELECT * FROM customer WHERE cust_id = " + "'" + custID + "'";
-	    	System.out.println(query);
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
@@ -113,8 +112,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    	customer.setCustEmail(results.getString("cust_email"));
 		    	customer.setFirstName(results.getString("cust_firstname"));
 		    	customer.setLastName(results.getString("cust_lastname"));
-
             }
+            
+            // PRINTING TO CONSOLE:
+            System.out.println(customer.getFirstName() + ", " + customer.getLastName() + ", " + customer.getCustEmail());
                         
         } catch (SQLException e) {
             System.err.println("While searching the customer " + custID  + " an error occurred: ");

@@ -31,10 +31,14 @@ public class Main extends Application {
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 		CustomerDAO customerDAO = new CustomerDAOImpl();
 			
-		customerDAO.addCustomer(3, "EMAIL", "NAME", "LASTN");
+		customerDAO.addCustomer(5, "Jason", "Gekton", "jk@a.com");
 		
 		Customer Lorenz = customerDAO.getCustomer(1);
 		String PersonalInfo = Lorenz.getFirstName() + Lorenz.getLastName() + Lorenz.getCustEmail();
 		System.out.println(PersonalInfo);
+		
+		customerDAO.deleteCustomer(4);
+		
+		// ________________________TESTING AREA OVER____________________________________
 	}
 }
