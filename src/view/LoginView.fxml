@@ -14,31 +14,32 @@
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;">
          <children>
-            <Label fx:id="isConnected" alignment="CENTER" layoutX="592.0" layoutY="284.0" text="Welcome to cinestar" textAlignment="CENTER" textFill="#f80606">
+            <Label fx:id="isConnected" alignment="CENTER" layoutX="573.0" layoutY="256.0" prefHeight="50.0" prefWidth="250.0" text="Welcome to Nero" textAlignment="CENTER" textFill="#f80606">
                <font>
-                  <Font name="BrowalliaUPC Bold" size="24.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="606.0" layoutY="335.0" prefHeight="39.0" prefWidth="189.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field">
+            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="573.0" layoutY="340.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field" stylesheets="@../application/application.css">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtPassword" alignment="CENTER" layoutX="606.0" layoutY="399.0" prefHeight="39.0" prefWidth="189.0" promptText="Password">
+            <TextField fx:id="txtPassword" alignment="CENTER" layoutX="573.0" layoutY="408.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field" stylesheets="@../application/application.css">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
             </TextField>
-            <Button layoutX="606.0" layoutY="453.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="30.0" prefWidth="189.0" text="Customer Login">
+            <Button layoutX="573.0" layoutY="486.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="50.0" prefWidth="250.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
                <font>
-                  <Font size="14.0" />
+                  <Font size="22.0" />
                </font>
             </Button>
-            <Button layoutX="606.0" layoutY="492.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="30.0" prefWidth="189.0" text="Staff Login">
+            <Button layoutX="573.0" layoutY="548.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="50.0" prefWidth="250.0" stylesheets="@../application/application.css" text="Staff Login">
                <font>
-                  <Font size="14.0" />
+                  <Font size="22.0" />
                </font>
             </Button>
+            <Button layoutX="562.0" layoutY="610.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="268.0" style="-fx-background-color: black;" />
          </children>
       </AnchorPane>
    </center>
