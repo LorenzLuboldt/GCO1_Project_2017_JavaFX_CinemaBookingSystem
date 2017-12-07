@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,13 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
@@ -44,10 +48,10 @@ public class ManagerMoviesViewController implements Initializable {
 	@FXML private TextField filmDescriptionTextField;
 	
 	// @Michael: Instance variables to edit Film objects
-//	@FXML private Button popUpEditFilmButton;
-//	@FXML private Button cancelFilmEditButton;
-//	@FXML private TextField editFilmTitleTextField;
-//	@FXML private TextField editFilmDescriptionTextField;
+	@FXML private Button popUpEditFilmButton;
+	@FXML private Button cancelFilmEditButton;
+	@FXML private TextField editFilmTitleTextField;
+	@FXML private TextField editFilmDescriptionTextField;
 	
 //	@FXML private DatePicker screeningDatePicker; not used as Film object doesn't contain a date variable
 	
@@ -85,42 +89,50 @@ public class ManagerMoviesViewController implements Initializable {
 	}
 	}
 	
-//	public void popUpEditFilmButtonPushed(ActionEvent event) throws IOException {
-//		 
-//		Stage stage = null;
-//		Parent root;
-//		
-//		if(event.getSource()==popUpEditFilmButton) {
-//			stage = new Stage();
-//			root = FXMLLoader.load(getClass().getResource("EditFilmDetailsPopUp.fxml"));
-//			stage.setScene(new Scene(root));
-//			stage.setTitle("Edit Film");
-//			stage.initModality(Modality.APPLICATION_MODAL);
-//			stage.initOwner(popUpEditFilmButton.getScene().getWindow());
-//			stage.showAndWait();
-//		 }
-//		 else {
-//		   stage = (Stage)cancelFilmEditButton.getScene().getWindow();
-//		   stage.close();
-//		  }
-//	 
-//	}
-	
-	public void goToFilmEdit(ActionEvent event) {
-		try {	
-	((Node) event.getSource()).getScene().getWindow().hide();
-	Stage primaryStage = new Stage();
-	FXMLLoader loader = new FXMLLoader();
-	Pane root = loader.load(getClass().getResource("/view/EditFilmDetailsPopUpfxml").openStream());
-	Scene scene = new Scene(root);
-	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-	primaryStage.setScene(scene);
-	primaryStage.show();
-		} catch (Exception e) {
-			
-		}
-
+	public void goToFilmEdit(ActionEvent event) throws IOException {
+		 
+		Stage stage = null;
+		Parent root;
+		
+		if(event.getSource()==popUpEditFilmButton) {
+			stage = new Stage();
+			root = FXMLLoader.load(getClass().getResource("EditFilmDetailsPopUp.fxml"));
+			stage.setScene(new Scene(root));
+			stage.setTitle("Edit Film");
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initOwner(popUpEditFilmButton.getScene().getWindow());
+			stage.showAndWait();
+		 }
+		 else {
+		   stage = (Stage)cancelFilmEditButton.getScene().getWindow();
+		   stage.close();
+		  }
+	 
 	}
+	
+//	public void goToFilmEdit(ActionEvent event) {
+//		try {	
+//			
+//			System.out.println("gotofilmedit: start of code"); // printed to console when button "Edit Film" is clicked
+//		((Node) event.getSource()).getScene().getWindow();
+//		Stage primaryStage = new Stage();
+//		FXMLLoader loader = new FXMLLoader(); // code stops executing after this line
+//		Pane root = loader.load(getClass().getResource("/view/EditFilmDetailsPopUpfxml").openStream());
+//		System.out.println("gotofilmedit: FXML loaded");
+//		Scene scene = new Scene(root);
+//		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+//		primaryStage.setScene(scene);
+//		primaryStage.setTitle("Edit Film");
+//		primaryStage.initModality(Modality.APPLICATION_MODAL);
+//		primaryStage.initOwner(popUpEditFilmButton.getScene().getWindow());
+//		primaryStage.showAndWait();
+//		
+//			System.out.println("gotofilmedit: end of code");
+//		} catch (Exception e) {
+//			
+//		}
+//
+//	}
 	
 	// Manager is able to go back to overview page to select another option
 	public void toDashboard(ActionEvent event) {
@@ -177,6 +189,15 @@ public void initialize(URL location, ResourceBundle resources) {
 		//load data from 
 		final ObservableList<Film> filmList = filmDAO.getAllFilms();
 		tableView.setItems(filmList);
+	}
+	
+	public void confirmEditFilmButtonPushed()	{
+		
+		Film editedFilm = tableView.getSelectionModel().getSelectedItem(); // returns film selected by user to be edited
+		int filmID = editedFilm.getFilmId(); // saves film ID in int 
+		
+		filmDAO.updateFilm(filmID, editFilmTitleTextField.getText(), editFilmDescriptionTextField.getText()); // method executes update in DB
+		
 	}
 	
 }
