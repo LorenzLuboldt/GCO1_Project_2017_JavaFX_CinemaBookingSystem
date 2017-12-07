@@ -21,9 +21,11 @@ public class LoginModel {
 	
 	public boolean isDBconnected(){
 		try {
+			System.out.println("LoginModel is checking whether SQLite Connection is not closed.");
 			return !connection.isClosed();
 		}
 		catch (SQLException e) {
+			System.out.println("LoginModel caught Exception " + e + "while running isDBconnected().");
 			e.printStackTrace();
 			return false;
 		}
@@ -52,13 +54,14 @@ public class LoginModel {
 		}
 		
 		catch (Exception e) {
+			System.out.println("Login model (CUSTOMER) caught exception: " + e);
 			return false;
 		}
 		
 		finally {
 			preparedStatement.close();
 			resultSet.close();
-			
+			System.out.println("Login model (CUSTOMER) closed preparedStatement and resultSet. ");
 		}
 	}
 	
@@ -83,12 +86,14 @@ public class LoginModel {
 		}
 		
 		catch (Exception e) {
+			System.out.println("Login model (MANAGER) caught exception: "  + e);
 			return false;
 		}
 		
 		finally {
 			preparedStatement.close();
 			resultSet.close();
+			System.out.println("Login model (MANAGER) closed preparedStatement and resultSet. ");
 			
 		}
 	}

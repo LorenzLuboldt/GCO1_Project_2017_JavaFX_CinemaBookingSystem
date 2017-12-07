@@ -14,11 +14,14 @@ import java.sql.*;
 		// Method returns Connection data type
 		public static Connection Connector() {
 			
+			Connection conn = null;
+			
 			try {
 			Class.forName("org.sqlite.JDBC"); // returns Class object associated with org.sqlite.JDBC
 			
 			// Create an instance of a Connection and instantiate it, passing the location of the DB
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:cinemabooking.db");
+			conn = DriverManager.getConnection("jdbc:sqlite:cinemabooking.db");
+			System.out.println("Connection to SQLite has been established.");
 					return conn;
 			}
 			
@@ -26,5 +29,16 @@ import java.sql.*;
 				System.out.println(e);
 				return null; // whenever an exception / error is caught
 			}
+			
+			// @Michael: added part below to close connection and prevent [SQLITE_BUSY] exception
+//			finally {
+//            try {
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//            	System.out.println("An SQL Excpetion was detected: ");
+//            	System.out.println(ex.getMessage());
+//            }
+        }
 		}
-	   	} 

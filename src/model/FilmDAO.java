@@ -21,6 +21,6 @@ public interface FilmDAO {
 	public ObservableList<Film> getAllFilms();
 	public Film getFilm(String filmTitle);
 	public void addFilm(String filmTitle, String filmDescription);
-	public void updateFilm(String filmTitle, String filmDescription);
-	public void deleteFilm(String filmTitle);
+	public void updateFilm(int filmID, String filmTitle, String filmDescription);
+	public void deleteFilm(Film film);
 }

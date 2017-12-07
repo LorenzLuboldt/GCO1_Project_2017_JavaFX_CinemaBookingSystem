@@ -3,9 +3,6 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import model.Customer;
-import model.CustomerDAO;
-import model.CustomerDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -28,16 +25,19 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
+		
+		// TO USE TESTING AREA; ALSO UPDATE IMPORTS ABOVE
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
-		CustomerDAO customerDAO = new CustomerDAOImpl();
+//		FilmDAO filmDAO = new FilmDAOImpl();
 			
-		customerDAO.addCustomer(5, "Jason", "Gekton", "jk@a.com");
-		
-		Customer Lorenz = customerDAO.getCustomer(1);
-		String PersonalInfo = Lorenz.getFirstName() + Lorenz.getLastName() + Lorenz.getCustEmail();
-		System.out.println(PersonalInfo);
-		
-		customerDAO.deleteCustomer(4);
+//		customerDAO.addCustomer(5, "Jason", "Gekton", "jk@a.com");
+//		
+//		Customer Lorenz = customerDAO.getCustomer(1);
+//		String PersonalInfo = Lorenz.getFirstName() + Lorenz.getLastName() + Lorenz.getCustEmail();
+//		System.out.println(PersonalInfo);
+//		
+//		Film f = filmDAO.getFilm("The Dark Knight");
+//		filmDAO.deleteFilm(f);
 		
 		// ________________________TESTING AREA OVER____________________________________
 	}
