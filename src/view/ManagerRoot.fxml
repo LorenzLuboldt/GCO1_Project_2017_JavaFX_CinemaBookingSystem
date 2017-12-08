@@ -41,9 +41,10 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" stylesheets="@../application/application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1080.0" layoutY="53.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
+            <Button layoutX="1076.0" layoutY="109.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
             <Button layoutX="1078.0" layoutY="402.0" mnemonicParsing="false" onAction="#GoToBookings" prefHeight="150.0" prefWidth="300.0" stylesheets="@../application/application.css" text="View Room Bookings" />
-            <ListView layoutX="14.0" layoutY="23.0" prefHeight="612.0" prefWidth="846.0" />
+            <ListView layoutX="14.0" layoutY="94.0" prefHeight="541.0" prefWidth="846.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="501.0" layoutY="22.0" styleClass="call_to_action" text="What would you like to do?" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </center>
