@@ -82,6 +82,7 @@ public class LoginController implements Initializable {
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
+				primaryStage.setResizable(false);
 				primaryStage.show();
 
 			} else {
@@ -117,6 +118,7 @@ public class LoginController implements Initializable {
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
+				primaryStage.setResizable(false);
 				primaryStage.show();
 
 			} else {
