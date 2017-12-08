@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="102.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/images/NEROldn%20-%20logo.png" />
+                  <Image url="@../res/images/NEROldn%20-%20logo.png" />
                </image>
             </ImageView>
             <Label fx:id="userLbl2" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="415.0" style="-fx-font-weight: 40px;" styleClass="call_to_action" text="Welcome Customer" textAlignment="CENTER" textFill="#d0cece">
@@ -50,7 +50,7 @@
    <bottom>
       <ImageView fitHeight="50.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../resources/images/NEROldn%20-%20slogan.png" />
+            <Image url="@../res/images/NEROldn%20-%20slogan.png" />
          </image>
       </ImageView>
    </bottom>
