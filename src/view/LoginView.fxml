@@ -50,9 +50,8 @@
          <children>
             <ImageView fitHeight="174.0" fitWidth="434.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/logo_slogan.png" />
-               </image>
-            </ImageView>
+                  <Image url="logo_slogan.png" />
+               </image></ImageView>
          </children>
       </HBox>
    </top>
