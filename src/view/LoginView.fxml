@@ -50,7 +50,7 @@
          <children>
             <ImageView fitHeight="174.0" fitWidth="434.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../res/images/NEROldn%20-%20logo%20&amp;%20slogan.png" />
+                  <Image url="/res/images/NEROldn%20-%20logo%20&amp;%20slogan.png" />
                </image>
             </ImageView>
          </children>
