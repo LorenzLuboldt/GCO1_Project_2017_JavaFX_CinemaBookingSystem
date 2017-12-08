@@ -3,44 +3,57 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <!-- LogIn View uses Login Controller (Controller is set in fx) -->
 
-
-<BorderPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<BorderPane styleClass="window" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <center>
-      <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;">
+      <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;" stylesheets="@../application/application.css">
          <children>
-            <Label fx:id="isConnected" alignment="CENTER" layoutX="573.0" layoutY="256.0" prefHeight="50.0" prefWidth="250.0" text="Welcome to Nero" textAlignment="CENTER" textFill="#f80606">
+            <Label fx:id="isConnected" alignment="CENTER" layoutX="468.0" layoutY="178.0" prefHeight="50.0" prefWidth="456.0" text="Welcome to Nero" textAlignment="CENTER" textFill="#d0cece">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="Lao UI Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="573.0" layoutY="340.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field" stylesheets="@../application/application.css">
+            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="573.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field" stylesheets="@../application/application.css">
                <font>
                   <Font size="22.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtPassword" alignment="CENTER" layoutX="573.0" layoutY="408.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field" stylesheets="@../application/application.css">
+            <TextField fx:id="txtPassword" alignment="CENTER" layoutX="573.0" layoutY="329.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field" stylesheets="@../application/application.css">
                <font>
                   <Font size="22.0" />
                </font>
             </TextField>
-            <Button layoutX="573.0" layoutY="486.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="50.0" prefWidth="250.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
+            <Button layoutX="566.0" layoutY="407.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="59.0" prefWidth="263.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
+               <font>
+                  <Font name="Lao UI" size="22.0" />
+               </font>
+            </Button>
+            <Button layoutX="566.0" layoutY="466.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="59.0" prefWidth="264.0" stylesheets="@../application/application.css" text="Staff Login">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button layoutX="573.0" layoutY="548.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="50.0" prefWidth="250.0" stylesheets="@../application/application.css" text="Staff Login">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
-            <Button layoutX="562.0" layoutY="610.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="268.0" style="-fx-background-color: black;" />
+            <Button layoutX="562.0" layoutY="522.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="268.0" style="-fx-background-color: black;" />
          </children>
       </AnchorPane>
    </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="210.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="174.0" fitWidth="434.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/NEROldn%20-%20logo%20&amp;%20slogan.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
