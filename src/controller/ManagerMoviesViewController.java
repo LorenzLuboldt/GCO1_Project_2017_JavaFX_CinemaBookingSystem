@@ -1,4 +1,4 @@
-package controller;
+	package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -37,6 +38,9 @@ public class ManagerMoviesViewController implements Initializable {
 	FilmDAO filmDAO = new FilmDAOImpl();
 	@FXML
 	private Label userLbl2;
+	
+	//Configure movie list
+	@FXML private ListView<Film> movieList;
 	
 	//Configure film table
 	@FXML private TableView<Film> tableView;
@@ -152,7 +156,6 @@ public class ManagerMoviesViewController implements Initializable {
 	@Override
 public void initialize(URL location, ResourceBundle resources) {
 		
-
 
 	}
 
