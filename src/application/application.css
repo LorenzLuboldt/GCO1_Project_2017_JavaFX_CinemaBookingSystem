@@ -1,1 +1,33 @@
+/**
+ * Purpose: This css sheet creates the fundamental designs for several elements used throughout the program.
+ * Source: https://www.youtube.com/results?search_query=javafx+grid
+ */
+
+
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.text_field_standard {
+	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: white; -fx-color: white;
+}
+
+.call_to_action {
+	-fx-color: #d0cece; -fx-font: 32.0px "Lao UI"; -fx-font-style: bold;
+}
+
+.button {
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"
+}
+
+.button:hover{
+	-fx-background-color: #d50000;
+}
+
+.root {
+	-fx-background-color: black; -fx-pref-height: 800px; -fx-pref-width: 1400px;
+	
+}
+
+.alert {
+    
+	-fx-background-color:black;    
+}
