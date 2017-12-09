@@ -53,6 +53,10 @@ public class FilmDAOImpl implements FilmDAO {
 		    	film.setFilmId(results.getInt("film_id"));
 		    	film.setFilmTitle(results.getString("film_title"));
 		    	film.setFilmDescription(results.getString("film_description")); 
+		    	film.setFilmGenre(results.getString("film_genre"));
+		    	film.setFilmCastMembers(results.getString("film_cast_members"));
+		    	film.setFilmDirector(results.getString("film_director"));
+		    	film.setFilmTrailer(results.getString("film_trailer"));
 		
 		    	filmList.add(film);
 		    }
@@ -115,8 +119,12 @@ public class FilmDAOImpl implements FilmDAO {
             	film = new Film();
             	
             	film.setFilmId(results.getInt("film_id"));
-            	film.setFilmTitle(results.getString("film_title"));
-            	film.setFilmDescription(results.getString("film_description"));
+		    	film.setFilmTitle(results.getString("film_title"));
+		    	film.setFilmDescription(results.getString("film_description")); 
+		    	film.setFilmGenre(results.getString("film_genre"));
+		    	film.setFilmCastMembers(results.getString("film_cast_members"));
+		    	film.setFilmDirector(results.getString("film_director"));
+		    	film.setFilmTrailer(results.getString("film_trailer"));
             }
                         
         } catch (SQLException e) {
@@ -129,19 +137,19 @@ public class FilmDAOImpl implements FilmDAO {
 	      {
 	        if( connection != null )
 	        {
-	        	System.out.println("addFilm() --> connection is closed");
+	        	System.out.println("getFilm() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("addFilm() --> results is closed");
+	        	System.out.println("getFilm() --> results is closed");
 	          results.close();
 	        }
 	      }
 	      catch( Exception exe )
 	      {
-	    	  System.out.println("addFilm() --> error has been caught");
+	    	  System.out.println("getFilm() --> error has been caught");
 	        exe.printStackTrace();
 	      }
 
@@ -150,7 +158,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	
 	// *** 3. ADD FILM ***	
-	public void addFilm(String filmTitle, String filmDescription) 	{
+	public void addFilm(String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -161,7 +169,9 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "INSERT INTO film (film_title, film_description)" + "VALUES ('" + filmTitle + "', '" + filmDescription + "')";
+	    	String query = "INSERT INTO film (film_title, film_description, film_genre, film_cast_members, film_director, film_trailer)" + 
+			"VALUES ('" + filmTitle + "', '" + filmDescription + "', '" + filmGenre + "', '" + filmCastMembers + "', '" + filmDirector
+			 + "', '" + filmTrailer + "')";
 	     
 		    // Run query
 		    st.executeUpdate(query);
@@ -190,7 +200,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	  
 	// *** 4. UPDATE FILM ***
-	public void updateFilm(int filmID, String filmTitle, String filmDescription)	{
+	public void updateFilm(int filmID, String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -201,7 +211,9 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "UPDATE film SET film_title='" + filmTitle + "', film_description=" + "'" + filmDescription + "'" + "where film_id=" + "'" + filmID + "'";
+	    	String query = "UPDATE film SET film_title='" + filmTitle + "', film_description=" + "'" + filmDescription + "', film_genre='" + filmGenre + "', film_cast_members='"
+			+ filmCastMembers + "', film_director='" + filmDirector + "', filmTrailer='" + filmTrailer + "WHERE film_id=" + "'" + filmID + "'";
+	    	
 	    	System.out.println("Record WILL be updated for film id: " + filmID);
 	    	
 		    // Run query

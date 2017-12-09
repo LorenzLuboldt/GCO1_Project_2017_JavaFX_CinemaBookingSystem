@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 public interface FilmDAO {
 	public ObservableList<Film> getAllFilms();
 	public Film getFilm(String filmTitle);
-	public void addFilm(String filmTitle, String filmDescription);
-	public void updateFilm(int filmID, String filmTitle, String filmDescription);
+	public void addFilm(String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer); // method throws error: can't find column film_genre in DB --> makes no sense
+	public void updateFilm(int filmID, String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer);
 	public void deleteFilm(Film film);
 }
