@@ -29,8 +29,8 @@ public class Screening {
 	private IntegerProperty year_id;
 	private IntegerProperty month_id;
 	private IntegerProperty day_id;
-	private IntegerProperty time_id;
-	private StringProperty date_time_id;
+	private IntegerProperty time_int; // time saved as 4 etc.
+	private StringProperty  time_string; // time saved as "4 pm" etc.
 	private StringProperty  film_title; // foreign key corresponds to 'Film' table
 	private IntegerProperty available_seats; // keeps count of the number of available seats for a particular screening
 
@@ -42,8 +42,8 @@ public class Screening {
 		this.year_id = new SimpleIntegerProperty();
 		this.month_id = new SimpleIntegerProperty();
 		this.day_id = new SimpleIntegerProperty();
-		this.time_id = new SimpleIntegerProperty();
-		this.date_time_id = new SimpleStringProperty(); 
+		this.time_int = new SimpleIntegerProperty();
+		this.time_string = new SimpleStringProperty();
 		this.film_title = new SimpleStringProperty();
 		this.available_seats = new SimpleIntegerProperty();
 	}
@@ -134,37 +134,22 @@ public class Screening {
 
 	
 	
-	// *** TIME ID ***
+	// *** TIME INT ***
 		// getter
-	public int getTimeID()	{
-		return time_id.get();
+	public int getTimeInt()	{
+		return time_int.get();
 	}
 	
 		// setter
-	public void setTimeID(int timeID)	{
-		this.time_id.set(timeID);
+	public void setTimeInt(int timeInt)	{
+		this.time_int.set(timeInt);
 	}
 	
 		// property
-	public IntegerProperty timeIDProperty()	{
-		return time_id;
+	public IntegerProperty timeIntProperty()	{
+		return time_int;
 	}
 	
-	// *** DATE TIME ID ***
-		// getter
-	public String getDateTimeID()	{
-		return date_time_id.get();
-	}
-	
-		// setter
-	public void setDateTimeID(String dateTimeID)	{
-		this.date_time_id.set(dateTimeID);
-	}
-	
-		// property
-	public StringProperty dateTimeIDProperty()	{
-		return date_time_id;
-	}
 	
 	// *** FILM ID ***
 			// getter
@@ -180,6 +165,23 @@ public class Screening {
 			// property
 		public StringProperty filmTitle()	{
 			return film_title;
+		}	
+		
+		
+	// *** TIME STRING ***
+			// getter
+		public String getTimeString()	{
+			return time_string.get();
+		}
+		
+			// setter
+		public void setTimeString(String timeString)	{
+			this.time_string.set(timeString);
+		}
+		
+			// property
+		public StringProperty timeString()	{
+			return time_string;
 		}	
 		
 		
