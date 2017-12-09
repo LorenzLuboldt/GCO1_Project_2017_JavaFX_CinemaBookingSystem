@@ -1,8 +1,12 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -26,7 +30,7 @@ public class Main extends Application {
 		launch(args);
 		
 		
-		// TO USE TESTING AREA; ALSO UPDATE IMPORTS ABOVE
+		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 //		FilmDAO filmDAO = new FilmDAOImpl();
 			
@@ -38,6 +42,28 @@ public class Main extends Application {
 //		
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);
+		
+		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+		
+//		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
+		
+//		Screening a = new Screening();
+//		a.setScreeningID(2);
+		ObservableList<Screening> ol = screeningDAO.getUpcomingScreenings();
+		Screening first = ol.get(0);
+		Screening second = ol.get(1);
+		Screening third = ol.get(2);
+		String firstdate = first.getDateID();
+		String seconddate = second.getDateID();
+		String thirddate = third.getDateID();
+		
+		System.out.println(firstdate + ", " +  seconddate + ", " + thirddate);
+		
+		
+		
+		
+		
+		
 		
 		// ________________________TESTING AREA OVER____________________________________
 	}

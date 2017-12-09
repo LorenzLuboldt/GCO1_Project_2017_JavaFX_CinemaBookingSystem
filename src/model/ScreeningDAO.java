@@ -22,15 +22,14 @@ public interface ScreeningDAO {
 	// INFORMATION RETRIEVAL AND SEARCH METHODS
 	public ObservableList<Screening> getAllScreenings();
 	public ObservableList<Screening> getUpcomingScreenings();
-	public ObservableList<Screening> searchScreeningsByDate();
-	public ObservableList<Screening> searchScreeningsByFilm();
-	public Screening getScreening(String screeningID);
+	public ObservableList<Screening> searchScreeningsByDate(String dateID); // Tested 
+	public ObservableList<Screening> searchScreeningsByFilm(int filmID); // Tested but gives incorrect return
+	public Screening getScreening(int screeningID);
 	
 	
-	// CREATION AND UPDATE METHODS
-	public void addScreening(String dateID, String timeID, String dateTimeID, int filmID, int availableSeats);
-	public void updateScreening(int screeningID, String dateID, String timeID, String dateTimeID, int filmID, int availableSeats);
-	public void deleteScreening(int screeningID);
-	public void editScreening(int screeningID, String dateID, String timeID, String dateTimeID, int filmID, int availableSeats);
-	public void updateAvailableSeats(int screeningID);
+	// CREATION, DELETION AND UPDATE METHODS
+	public void addScreening(String dateID, int yearID, int monthID,  int timeID, int dayID, int filmID); // Tested, still need add constraint!
+//	public void updateScreening(Screening screening);
+	public void deleteScreening(Screening screening); // tested
+//	public void updateAvailableSeats(int screeningID);
 }
