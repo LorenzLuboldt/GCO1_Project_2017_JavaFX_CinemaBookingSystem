@@ -55,8 +55,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setYearID(results.getInt("year_id"));
 		    	screening.setMonthID(results.getInt("month_id"));
 		    	screening.setDayID(results.getInt("day_id"));
-		    	screening.setTimeID(results.getInt("time_id")); 
-		    	screening.setDateTimeID(results.getString("date_time_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
 		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
 		
@@ -130,8 +130,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setYearID(results.getInt("year_id"));
 			    	screening.setMonthID(results.getInt("month_id"));
 			    	screening.setDayID(results.getInt("day_id"));
-			    	screening.setTimeID(results.getInt("time_id")); 
-			    	screening.setDateTimeID(results.getString("date_time_id"));
+			    	screening.setTimeInt(results.getInt("time_int")); 
+			    	screening.setTimeString(results.getString("time_string"));
 			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 			
@@ -200,8 +200,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setYearID(results.getInt("year_id"));
 		    	screening.setMonthID(results.getInt("month_id"));
 		    	screening.setDayID(results.getInt("day_id"));
-		    	screening.setTimeID(results.getInt("time_id")); 
-		    	screening.setDateTimeID(results.getString("date_time_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
 		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
             	
@@ -270,8 +270,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setYearID(results.getInt("year_id"));
 			    	screening.setMonthID(results.getInt("month_id"));
 			    	screening.setDayID(results.getInt("day_id"));
-			    	screening.setTimeID(results.getInt("time_id")); 
-			    	screening.setDateTimeID(results.getString("date_time_id"));
+			    	screening.setTimeInt(results.getInt("time_int")); 
+			    	screening.setTimeString(results.getString("time_string"));
 			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 			
@@ -345,8 +345,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    	screening.setYearID(results.getInt("year_id"));
 					    	screening.setMonthID(results.getInt("month_id"));
 					    	screening.setDayID(results.getInt("day_id"));
-					    	screening.setTimeID(results.getInt("time_id")); 
-					    	screening.setDateTimeID(results.getString("date_time_id"));
+					    	screening.setTimeInt(results.getInt("time_int")); 
+					    	screening.setTimeString(results.getString("time_string"));
+					    	screening.setTimeString(results.getString("time_string"));
 					    	screening.setFilmTitle(results.getString("film_title"));
 					    	screening.setAvailableSeats(results.getInt("available_seats"));
 					
@@ -389,19 +390,54 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			
 		
 	// *** 3. ADD SCREENING ***	
-	public void addScreening(String dateID, int yearID, int monthID, int dayID,  int timeID, String filmTitle) 	{
+	public void addScreening(String dateID, int yearID, int monthID, int dayID, String timeString, String filmTitle) 	{
+		
+		int timeInt, availableSeats;
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
 	    Statement st = null;   
 	  
-	    // Create the unique date time ID
-	    String dateTimeID = new StringBuilder(dateID).append(timeID).toString();
-	    System.out.println("dateTimeID is : " + dateTimeID);
-	  
 	    // Initialize available seats
-	    int availableSeats = 24;	    
+	    availableSeats = 24;	 
 	    
+	    // Initialize timeInt
+	    
+	    timeInt = 0; // if case no switch case fits
+	    
+	    switch(timeString)	{
+	    	case "2:00 PM" :
+	    		timeInt = 2;
+	    		break;
+	    	case "3:00 PM" :
+	    		timeInt = 3;
+	    		break;
+	    	case "4:00 PM" :
+	    		timeInt = 4;
+	    		break;
+	    	case "5:00 PM" :
+	    		timeInt = 5;
+	    		break;
+	    	case "6:00 PM" :
+	    		timeInt = 6;
+	    		break;
+	    	case "7:00 PM" :
+	    		timeInt = 7;
+	    		break;
+	    	case "8:00 PM" :
+	    		timeInt = 8;
+	    		break;
+	    	case "9:00 PM" :
+	    		timeInt = 9;
+	    		break;
+	    	case "10:00 PM" :
+	    		timeInt = 10;
+	    		break;
+	    	case "11:00 PM" :
+	    		timeInt = 11;
+	    		break;
+	    }
+	    	  
 	    try
 	    {
 		    st = connection.createStatement();
@@ -410,7 +446,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    ObservableList<Screening> sameScreeningList = FXCollections.observableArrayList();
 		    ResultSet results = null;
 
-		    String test = "SELECT * FROM screening WHERE date_id='" + dateID + "' AND time_id=" + timeID;
+		    String test = "SELECT * FROM screening WHERE date_id='" + dateID + "' AND time_int=" + timeInt;
 		    
 		    results = st.executeQuery(test);
 		    
@@ -424,8 +460,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setYearID(results.getInt("year_id"));
 		    	screening.setMonthID(results.getInt("month_id"));
 		    	screening.setDayID(results.getInt("day_id"));
-		    	screening.setTimeID(results.getInt("time_id")); 
-		    	screening.setDateTimeID(results.getString("date_time_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
 		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
 		
@@ -440,9 +476,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    
 		    
 				// SQL query, stored in String
-		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_id, date_time_id, "
+		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_int, "
 		    			+ "film_title, available_seats)" + "VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
-		    			dayID + "," + timeID + "," + dateTimeID + ",'" + filmTitle + "'," + availableSeats + ")";
+		    			dayID + "," + timeInt + ",'" + filmTitle + "'," + availableSeats + ")";
 		     
 			    // Run query
 			    st.executeUpdate(query);
@@ -457,7 +493,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while adding new screening " + dateTimeID);
+	    	System.err.println("Exception occured while adding new screening " + timeInt);
 	    	e.printStackTrace();
 	    }
 
@@ -595,8 +631,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setYearID(results.getInt("year_id"));
 			    	screening.setMonthID(results.getInt("month_id"));
 			    	screening.setDayID(results.getInt("day_id"));
-			    	screening.setTimeID(results.getInt("time_id")); 
-			    	screening.setDateTimeID(results.getString("date_time_id"));
+			    	screening.setTimeInt(results.getInt("time_int")); 
+			    	screening.setTimeString(results.getString("time_string"));
 			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 	            	
