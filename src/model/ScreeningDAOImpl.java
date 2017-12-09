@@ -389,7 +389,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			
 		
 	// *** 3. ADD SCREENING ***	
-	public void addScreening(String dateID, int yearID, int monthID, int dayID,  int timeID, int filmID) 	{
+	public void addScreening(String dateID, int yearID, int monthID, int dayID,  int timeID, String filmTitle) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -447,8 +447,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    
 				// SQL query, stored in String
 		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_id, date_time_id, "
-		    			+ "film_id, available_seats)" + "VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
-		    			dayID + "," + timeID + "," + dateTimeID + "," + filmID + "," + availableSeats + ")";
+		    			+ "film_title, available_seats)" + "VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
+		    			dayID + "," + timeID + "," + dateTimeID + ",'" + filmTitle + "'," + availableSeats + ")";
 		     
 			    // Run query
 			    st.executeUpdate(query);

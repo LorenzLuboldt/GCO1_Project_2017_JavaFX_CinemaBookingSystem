@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -59,14 +58,11 @@
             <TextField fx:id="filmTitleTextField" layoutX="95.0" layoutY="70.0" prefHeight="51.0" prefWidth="313.0" promptText="Film Title" styleClass="text_field_standard" />
             <TextField fx:id="filmActorsTextField" layoutX="99.0" layoutY="359.0" prefHeight="51.0" prefWidth="307.0" promptText="Actors" styleClass="text_field_standard" />
             <Button layoutX="95.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMovieOverview" prefHeight="59.0" prefWidth="309.0" text="Back to View/Edit Films" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="922.0" layoutY="-4.0" prefHeight="66.0" prefWidth="287.0" styleClass="call_to_action" text="Screening Details" />
-            <DatePicker layoutX="946.0" layoutY="197.0" prefHeight="47.0" prefWidth="189.0" />
-            <ComboBox layoutX="966.0" layoutY="149.0" prefWidth="150.0" />
             <TextArea fx:id="filmDescriptionTextArea" layoutX="96.0" layoutY="131.0" prefHeight="200.0" prefWidth="311.0" promptText="Film Description" styleClass="text_field_standard" />
             <TextField fx:id="filmDirectorTextField" layoutX="95.0" layoutY="446.0" prefHeight="51.0" prefWidth="310.0" promptText="Director" styleClass="text_field_standard" />
             <ComboBox fx:id="filmGenreComboBox" layoutX="500.0" layoutY="72.0" prefHeight="51.0" prefWidth="280.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
             <ListView fx:id="fileList" layoutX="502.0" layoutY="190.0" prefHeight="50.0" prefWidth="278.0" styleClass="text_field_standard" />
-            <Button fx:id="chooseFile" layoutX="500.0" layoutY="269.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose File" />
+            <Button fx:id="chooseFile" layoutX="500.0" layoutY="252.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose File" />
             <Label layoutX="507.0" layoutY="145.0" text="Add Film Poster" textFill="WHITE">
                <font>
                   <Font name="Lao UI Bold" size="20.0" />
@@ -78,6 +74,7 @@
                </font>
             </Label>
             <TextField fx:id="filmTrailerLinkTextField" layoutX="500.0" layoutY="447.0" prefHeight="51.0" prefWidth="277.0" promptText="Trailer Link" styleClass="text_field_standard" />
+            <Button layoutX="976.0" layoutY="583.0" mnemonicParsing="false" onAction="#linkToAddScreeningTimeView" prefHeight="59.0" prefWidth="234.0" text="Add Screening Time" />
          </children></AnchorPane>
    </center>
    <bottom>
