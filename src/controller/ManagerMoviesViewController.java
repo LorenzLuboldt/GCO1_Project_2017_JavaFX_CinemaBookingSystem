@@ -35,6 +35,7 @@ import model.FilmDAOImpl;
  */
 public class ManagerMoviesViewController implements Initializable {
 	
+	
 	FilmDAO filmDAO = new FilmDAOImpl();
 	@FXML
 	private Label userLbl2;
@@ -197,25 +198,25 @@ public void initialize(URL location, ResourceBundle resources) {
 	}
 
 	// @Michael: method to enable manager to add film to database and see updated film list
-	public void addFilmButtonPushed()	{
-		
-		// filmDAO method adds film to DB. 
-		// Parameters are the user inputs from the text fields on the screen
-		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextField.getText());
-		
-		// Empty text fields
-		filmTitleTextField.clear();
-		filmDescriptionTextField.clear();
-		
-		
-		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
-		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
-		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
-
-		//load data from 
-		final ObservableList<Film> filmList = filmDAO.getAllFilms();
-		tableView.setItems(filmList);
-	}
+//	public void addFilmButtonPushed()	{
+//		
+//		// filmDAO method adds film to DB. 
+//		// Parameters are the user inputs from the text fields on the screen
+//		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextField.getText());
+//		
+//		// Empty text fields
+//		filmTitleTextField.clear();
+//		filmDescriptionTextField.clear();
+//		
+//		
+//		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
+//		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
+//		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
+//
+//		//load data from 
+//		final ObservableList<Film> filmList = filmDAO.getAllFilms();
+//		tableView.setItems(filmList);
+//	}
 	
 	public void deleteFilmButtonPushed()	{
 		
@@ -231,14 +232,14 @@ public void initialize(URL location, ResourceBundle resources) {
 		tableView.setItems(filmList);
 	}
 	
-	public void confirmEditFilmButtonPushed()	{
-		
-		Film editedFilm = tableView.getSelectionModel().getSelectedItem(); // returns film selected by user to be edited
-		int filmID = editedFilm.getFilmId(); // saves film ID in int 
-		
-		filmDAO.updateFilm(filmID, editFilmTitleTextField.getText(), editFilmDescriptionTextField.getText()); // method executes update in DB
-		
-	}
+//	public void confirmEditFilmButtonPushed()	{
+//		
+//		Film editedFilm = tableView.getSelectionModel().getSelectedItem(); // returns film selected by user to be edited
+//		int filmID = editedFilm.getFilmId(); // saves film ID in int 
+//		
+//		filmDAO.updateFilm(filmID, editFilmTitleTextField.getText(), editFilmDescriptionTextField.getText()); // method executes update in DB
+//		
+//	}
 	
 }
 	
