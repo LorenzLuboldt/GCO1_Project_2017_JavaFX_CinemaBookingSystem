@@ -21,9 +21,9 @@ public interface ScreeningDAO {
 	
 	// INFORMATION RETRIEVAL AND SEARCH METHODS
 	public ObservableList<Screening> getAllScreenings();
-	public ObservableList<Screening> getUpcomingScreenings();
-	public ObservableList<Screening> searchScreeningsByDate(String dateID); // Tested 
-	public ObservableList<Screening> searchScreeningsByFilm(int filmID); // Tested but gives incorrect return
+	public ObservableList<Screening> getUpcomingScreenings(); // tested but gives incorrect return
+	public ObservableList<Screening> searchScreeningsByDate(String dateID); // tested 
+	public ObservableList<Screening> searchScreeningsByFilm(int filmID); 
 	public Screening getScreening(int screeningID);
 	
 	
