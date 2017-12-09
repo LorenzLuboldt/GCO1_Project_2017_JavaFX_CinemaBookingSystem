@@ -152,7 +152,6 @@ public class BookingDAOImpl implements BookingDAO {
 	    try
 	    {
 		    st = connection.createStatement();
-		    System.out.println("WE ARE IN THE TRY BLOCK.");
 		    
 			// SQL query, stored in String
 	    	String query = "INSERT INTO booking (cust_id, seat_id, screening_id)" 
@@ -160,7 +159,7 @@ public class BookingDAOImpl implements BookingDAO {
 	     
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("UPDATE EXECUTED.");
+		    System.out.println("New booking has been added to DB.");
 		    
 	    }
 	    catch( SQLException e )
