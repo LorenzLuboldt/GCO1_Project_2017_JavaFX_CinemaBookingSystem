@@ -106,7 +106,7 @@ public class ManagerAddScreeningViewController implements Initializable {
 		int month =datePicker.getValue().getMonthValue();
 		int year = datePicker.getValue().getYear();
 		
-		screeningDAO.addScreening(datePicker.getValue().toString(), year , month ,screeningTimeComboBox.getValue().toString(), day, filmID);
+		screeningDAO.addScreening(datePicker.getValue().toString(), year , month ,screeningTimeComboBox.getValue(), day, currentFilmsAvailableComboBox.getValue());
 		
 	}
 	@Override
@@ -116,16 +116,17 @@ public class ManagerAddScreeningViewController implements Initializable {
 		screeningTimeComboBox.setItems(screeningTimeList);
 		
 		ObservableList<Film> allFilms = filmDAO.getAllFilms();
+		ObservableList<String> currentFilmTitle = FXCollections.observableArrayList();
 		
 		for (int x = 0; x < allFilms.size(); ++x) {
 			
 		StringProperty f = allFilms.get(x).filmTitleProperty();
-			
+		String fString = f.toString();
+		currentFilmTitle.add(fString);
 			
 		}
 		
-		ObservableList<String> currentFilmTitles = filmDAO.getAllFilms();
-		currentFilmsAvailableComboBox.setItems(currentFilmTitles);
+		currentFilmsAvailableComboBox.setItems(currentFilmTitle);
 
 	}
 }
