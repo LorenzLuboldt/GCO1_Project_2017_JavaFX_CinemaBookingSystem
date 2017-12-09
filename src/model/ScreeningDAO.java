@@ -20,11 +20,11 @@ import javafx.collections.ObservableList;
 public interface ScreeningDAO {
 	
 	// INFORMATION RETRIEVAL AND SEARCH METHODS
-	public ObservableList<Screening> getAllScreenings();
-	public ObservableList<Screening> getUpcomingScreenings(); // tested but gives incorrect return
+	public ObservableList<Screening> getAllScreenings(); // tested
+	public ObservableList<Screening> getUpcomingScreenings(); // tested --> more extensive testing required
 	public ObservableList<Screening> searchScreeningsByDate(String dateID); // tested 
-	public ObservableList<Screening> searchScreeningsByFilm(int filmID); 
-	public Screening getScreening(int screeningID);
+	public ObservableList<Screening> searchScreeningsByFilm(int filmID);  // tested
+	public Screening getScreening(int screeningID); // tested
 	
 	
 	// CREATION, DELETION AND UPDATE METHODS
