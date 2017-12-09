@@ -41,7 +41,7 @@ public class ManagerAddMovieViewController implements Initializable {
 		@FXML private TextField filmActorsTextField;
 		@FXML private TextField filmDirectorTextField;
 		@FXML private ComboBox<String> filmGenreComboBox;
-		@FXML private ListView fileList;
+		@FXML private ListView<String> fileList;
 		@FXML private TextField filmTrailerLinkTextField;
 		
 		
