@@ -26,16 +26,26 @@ public class Film {
 	private IntegerProperty film_id;
 	private StringProperty film_title;
 	private StringProperty film_description;
+	private StringProperty film_genre;
+	private StringProperty film_cast_members;
+	private StringProperty film_director;
+	private StringProperty film_trailer;
+	
 	
 	// constructor
 	public Film()	{
 		this.film_id = new SimpleIntegerProperty();
 		this.film_title = new SimpleStringProperty();
 		this.film_description = new SimpleStringProperty();
+		this.film_genre = new SimpleStringProperty();
+		this.film_cast_members = new SimpleStringProperty();
+		this.film_director = new SimpleStringProperty();
+		this.film_trailer = new SimpleStringProperty();
 	}
 	
+	
 	// *** FILM ID ***
-
+	
 	// getter
 	public int getFilmId() {
 		return film_id.get();
@@ -50,6 +60,7 @@ public class Film {
 	public IntegerProperty filmIdProperty()	{
 		return film_id;
 	}
+	
 	
 	// *** FILMTITLE ***
 	
@@ -68,7 +79,8 @@ public class Film {
 		return film_title;
 	}
 	
-	// *** FILMDESCRIPTION ***
+	
+	// *** FILM DESCRIPTION ***
 	
 	// getter
 	public String getFilmDescription()	{
@@ -83,5 +95,76 @@ public class Film {
 	// property
 	public StringProperty filmDescriptionProperty()	{
 		return film_description;
+	}
+	
+	
+	// *** FILM GENRE ***
+	
+	// getter
+	public String getFilmGenre()	{
+		return film_genre.get();
+	}
+	
+	// setter
+	public void setFilmGenre(String filmGenre)	{
+		this.film_genre.set(filmGenre);
+	}
+	
+	// property
+	public StringProperty filmGenreProperty()	{
+		return film_genre;
+	}
+	
+	
+	// *** FILM CAST MEMBERS ***
+	
+	// getter
+	public String getFilmCastMembers()	{
+		return film_cast_members.get();
+	}
+	
+	// setter
+	public void setFilmCastMembers(String filmCastMembers)	{
+		this.film_cast_members.set(filmCastMembers);
+	}
+	
+	// property
+	public StringProperty filmCastMembers()	{
+		return film_cast_members;
+	}
+	
+	
+	// *** FILM DIRECTOR ***
+	
+	// getter
+	public String getFilmDirector()	{
+		return film_director.get();
+	}
+	
+	// setter
+	public void setFilmDirector(String filmDirector)	{
+		this.film_director.set(filmDirector);
+	}
+	
+	// property
+	public StringProperty filmDirector()	{
+		return film_director;
+	}
+	
+	// *** FILM TRAILER ***
+	
+	// getter
+	public String getFilmTrailer()	{
+		return film_trailer.get();
+	}
+	
+	// setter
+	public void setFilmTrailer(String filmTrailer)	{
+		this.film_trailer.set(filmTrailer);
+	}
+	
+	// property
+	public StringProperty filmTrailer()	{
+		return film_trailer;
 	}
 }
