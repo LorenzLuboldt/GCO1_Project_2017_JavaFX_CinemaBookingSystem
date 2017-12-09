@@ -19,9 +19,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Film;
 
 public class ManagerAddMovieViewController implements Initializable {
 	
@@ -31,7 +33,7 @@ public class ManagerAddMovieViewController implements Initializable {
 	
 	// @Lorenz: Instance variables to create new Film objects
 		@FXML private TextField filmTitleTextField;
-		@FXML private TextArea filmDescriptionTextField;
+		@FXML private TextArea filmDescriptionTextArea;
 		@FXML private TextField filmActorsTextField;
 		@FXML private TextField filmDirectorTextField;
 		@FXML private ComboBox<String> filmGenreComboBox;
@@ -57,6 +59,26 @@ public class ManagerAddMovieViewController implements Initializable {
 		}
 	}
 	
+	// @Lorenz: Method to enable manager to add film to database 
+	public void addFilmButtonPushed()	{
+		
+		// filmDAO method adds film to DB. 
+		// Parameters are the user inputs from the text fields on the screen
+		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText()), ;
+		
+		// Empty text fields
+		filmTitleTextField.clear();
+		filmDescriptionTextField.clear();
+		
+		
+		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
+		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
+
+		//load data from 
+		final ObservableList<Film> filmList = filmDAO.getAllFilms();
+		tableView.setItems(filmList);
+	}
 	
 	public void toDashboard(ActionEvent event) {
 		try {	
