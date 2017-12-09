@@ -31,7 +31,7 @@ public class Screening {
 	private IntegerProperty day_id;
 	private IntegerProperty time_id;
 	private StringProperty date_time_id;
-	private IntegerProperty film_id; // foreign key corresponds to 'Film' table
+	private StringProperty  film_title; // foreign key corresponds to 'Film' table
 	private IntegerProperty available_seats; // keeps count of the number of available seats for a particular screening
 
 	
@@ -44,7 +44,7 @@ public class Screening {
 		this.day_id = new SimpleIntegerProperty();
 		this.time_id = new SimpleIntegerProperty();
 		this.date_time_id = new SimpleStringProperty(); 
-		this.film_id = new SimpleIntegerProperty();
+		this.film_title = new SimpleStringProperty();
 		this.available_seats = new SimpleIntegerProperty();
 	}
 	
@@ -168,18 +168,18 @@ public class Screening {
 	
 	// *** FILM ID ***
 			// getter
-		public int getFilmID()	{
-			return film_id.get();
+		public String getFilmTitle()	{
+			return film_title.get();
 		}
 		
 			// setter
-		public void setFilmID(int filmID)	{
-			this.film_id.set(filmID);
+		public void setFilmTitle(String filmTitle)	{
+			this.film_title.set(filmTitle);
 		}
 		
 			// property
-		public IntegerProperty filmID()	{
-			return film_id;
+		public StringProperty filmTitle()	{
+			return film_title;
 		}	
 		
 		

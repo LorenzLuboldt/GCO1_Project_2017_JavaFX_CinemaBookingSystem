@@ -57,7 +57,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setDayID(results.getInt("day_id"));
 		    	screening.setTimeID(results.getInt("time_id")); 
 		    	screening.setDateTimeID(results.getString("date_time_id"));
-		    	screening.setFilmID(results.getInt("film_id"));
+		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
 		
 		    	screeningList.add(screening);
@@ -132,7 +132,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setDayID(results.getInt("day_id"));
 			    	screening.setTimeID(results.getInt("time_id")); 
 			    	screening.setDateTimeID(results.getString("date_time_id"));
-			    	screening.setFilmID(results.getInt("film_id"));
+			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 			
 			    	screeningList.add(screening);
@@ -202,7 +202,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setDayID(results.getInt("day_id"));
 		    	screening.setTimeID(results.getInt("time_id")); 
 		    	screening.setDateTimeID(results.getString("date_time_id"));
-		    	screening.setFilmID(results.getInt("film_id"));
+		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
             	
             }
@@ -272,7 +272,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setDayID(results.getInt("day_id"));
 			    	screening.setTimeID(results.getInt("time_id")); 
 			    	screening.setDateTimeID(results.getString("date_time_id"));
-			    	screening.setFilmID(results.getInt("film_id"));
+			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 			
 			    	screeningList.add(screening);
@@ -347,7 +347,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    	screening.setDayID(results.getInt("day_id"));
 					    	screening.setTimeID(results.getInt("time_id")); 
 					    	screening.setDateTimeID(results.getString("date_time_id"));
-					    	screening.setFilmID(results.getInt("film_id"));
+					    	screening.setFilmTitle(results.getString("film_title"));
 					    	screening.setAvailableSeats(results.getInt("available_seats"));
 					
 					    	screeningList.add(screening);
@@ -426,19 +426,13 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    	screening.setDayID(results.getInt("day_id"));
 		    	screening.setTimeID(results.getInt("time_id")); 
 		    	screening.setDateTimeID(results.getString("date_time_id"));
-		    	screening.setFilmID(results.getInt("film_id"));
+		    	screening.setFilmTitle(results.getString("film_title"));
 		    	screening.setAvailableSeats(results.getInt("available_seats"));
 		
 		    	sameScreeningList.add(screening);
 		    }
-		    
-		   Screening s = sameScreeningList.get(0);
-		   
-		   int i = s.getFilmID();
-		   
-		    
+		        
 		   boolean sameCheck = sameScreeningList.isEmpty();
-		   System.out.println("Film ID of first element:" + i + "__________" + sameCheck);
 		   
 		    
 		    // IF THE SCREENING HASN'T BEEN TAKEN, PURSUE THE ADD METHOD
@@ -603,7 +597,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setDayID(results.getInt("day_id"));
 			    	screening.setTimeID(results.getInt("time_id")); 
 			    	screening.setDateTimeID(results.getString("date_time_id"));
-			    	screening.setFilmID(results.getInt("film_id"));
+			    	screening.setFilmTitle(results.getString("film_title"));
 			    	screening.setAvailableSeats(results.getInt("available_seats"));
 	            	
 	            }

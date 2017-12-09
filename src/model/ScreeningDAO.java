@@ -28,7 +28,7 @@ public interface ScreeningDAO {
 	
 	
 	// Creation, delete and update methods
-	public void addScreening(String dateID, int yearID, int monthID,  int timeID, int dayID, String filmTitle); // Tested, still need add constraint!
+	public void addScreening(String dateID, int yearID, int monthID,  int timeID, int dayID, String filmTitle); // Tested
 //	public void updateScreening(Screening screening);
 	public void deleteScreening(Screening screening); // tested
 	public void updateAvailableSeats(int screeningID);
