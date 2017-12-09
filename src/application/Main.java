@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Booking;
+import model.BookingDAO;
+import model.BookingDAOImpl;
 import model.FilmDAO;
 import model.FilmDAOImpl;
 import model.Screening;
@@ -36,7 +39,18 @@ public class Main extends Application {
 		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 		
-		System.out.println("_____________START OF NEW TEST: ___________________");
+//		System.out.println("_____________START OF NEW TEST: ___________________");
+		
+//		BookingDAO bookingDAO = new BookingDAOImpl();
+//		bookingDAO.addBooking(1, 1, 1);
+//		bookingDAO.addBooking(2, 2, 2);
+//		bookingDAO.addBooking(3, 3, 3);
+//		ObservableList<Booking> ol = bookingDAO.getAllBookings();
+//		Booking spec = bookingDAO.getBooking(2);
+//		bookingDAO.deleteBooking(3);
+//		
+		
+		
 //		FilmDAO filmDAO = new FilmDAOImpl();
 //		filmDAO.addFilm("The Devil Wears Prada", "New York fashion movie", "Comedy / girly / romance / idk", "Actor 1 and actress 2", "name of the filmDirector", "link to filmTrailer");
 		
@@ -49,23 +63,25 @@ public class Main extends Application {
 //		
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);
-		
-		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-		
-		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
-		
+//		
+//		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+//		
+//		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
+//		
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
 //		ObservableList<Screening> ol = screeningDAO.getUpcomingScreenings();
-		
-//		Screening first = ol.get(0);
-//		Screening second = ol.get(1);
-//		Screening third = ol.get(2);
-//		String firstdate = first.getDateID();
-//		String seconddate = second.getDateID();
-//		String thirddate = third.getDateID();
 //		
-//		System.out.println(firstdate + ", " +  seconddate + ", " + thirddate);								
+//		Booking first = ol.get(0);
+//		Booking second = ol.get(1);
+//		Booking third = ol.get(2);
+//		int firstdate = first.getCustID();
+//		int seconddate = second.getSeatID();
+//		int thirddate = third.getScreeningID();
+//		
+//		System.out.println(firstdate + ", " +  seconddate + ", " + thirddate);	
+		
+		
 		
 		
 		
