@@ -400,22 +400,66 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    System.out.println("dateTimeID is : " + dateTimeID);
 	  
 	    // Initialize available seats
-	    int availableSeats = 24;
-	    
-	    // CHECK IF DATE DOESN'T EXIST IN DATABASE YET (IF ELSE STATEMENT)
+	    int availableSeats = 24;	    
 	    
 	    try
 	    {
 		    st = connection.createStatement();
 		    
-			// SQL query, stored in String
-	    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_id, date_time_id, "
-	    			+ "film_id, available_seats)" + "VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
-	    			dayID + "," + timeID + "," + dateTimeID + "," + filmID + "," + availableSeats + ")";
-	     
-		    // Run query
-		    st.executeUpdate(query);
-		    System.out.println("Screening has been added to DB");
+		    // CHECK IF DATE DOESN'T EXIST IN DATABASE YET
+		    ObservableList<Screening> sameScreeningList = FXCollections.observableArrayList();
+		    ResultSet results = null;
+
+		    String test = "SELECT * FROM screening WHERE date_id='" + dateID + "' AND time_id=" + timeID;
+		    
+		    results = st.executeQuery(test);
+		    
+		    while(results.next())	{
+		    	
+		    	// create and instantiate a customer object
+		    	Screening screening = new Screening();
+		    	
+		    	screening.setScreeningID(results.getInt("screening_id"));
+		    	screening.setDateID(results.getString("date_id"));
+		    	screening.setYearID(results.getInt("year_id"));
+		    	screening.setMonthID(results.getInt("month_id"));
+		    	screening.setDayID(results.getInt("day_id"));
+		    	screening.setTimeID(results.getInt("time_id")); 
+		    	screening.setDateTimeID(results.getString("date_time_id"));
+		    	screening.setFilmID(results.getInt("film_id"));
+		    	screening.setAvailableSeats(results.getInt("available_seats"));
+		
+		    	sameScreeningList.add(screening);
+		    }
+		    
+		   Screening s = sameScreeningList.get(0);
+		   
+		   int i = s.getFilmID();
+		   
+		    
+		   boolean sameCheck = sameScreeningList.isEmpty();
+		   System.out.println("Film ID of first element:" + i + "__________" + sameCheck);
+		   
+		    
+		    // IF THE SCREENING HASN'T BEEN TAKEN, PURSUE THE ADD METHOD
+		    if(sameCheck)	{
+		    
+		    
+				// SQL query, stored in String
+		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_id, date_time_id, "
+		    			+ "film_id, available_seats)" + "VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
+		    			dayID + "," + timeID + "," + dateTimeID + "," + filmID + "," + availableSeats + ")";
+		     
+			    // Run query
+			    st.executeUpdate(query);
+			    System.out.println("Screening has been added to DB");
+		    }
+			
+		    
+		    // OTHERWISE, DON'T ADD
+		    else	{
+			    System.out.println("+++ This film slot is already taken. +++");
+			}
 	    }
 	    catch( SQLException e )
 	    {
@@ -527,5 +571,85 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	      }
 	    }
 	}
+	
+	
+	// *** UPDATE AVAILABLE SEATS FOR SPECIFIC SCREENING ***
+		public void updateAvailableSeats(int screeningID)	{
+			
+			// Establish database connection:
+			Connection connection = SqliteConnection.Connector();
+		    Statement st = null;
+		    
+		    ResultSet results = null;
+		    Screening screening = null;
+		    
+		    try	{
+		    	
+			    st = connection.createStatement();
+		    	
+				// 1. Retrieve selected screening from database
+		    	String query = "SELECT * FROM screening WHERE screening_id = " + "'" + screeningID + "'";
+		    	System.out.println(query);
+					    
+			    results = st.executeQuery(query);
+			    
+	            while(results.next())	{
+	            	screening = new Screening();
+	            	
+			    	screening.setScreeningID(results.getInt("screening_id"));
+			    	screening.setDateID(results.getString("date_id"));
+			    	screening.setYearID(results.getInt("year_id"));
+			    	screening.setMonthID(results.getInt("month_id"));
+			    	screening.setDayID(results.getInt("day_id"));
+			    	screening.setTimeID(results.getInt("time_id")); 
+			    	screening.setDateTimeID(results.getString("date_time_id"));
+			    	screening.setFilmID(results.getInt("film_id"));
+			    	screening.setAvailableSeats(results.getInt("available_seats"));
+	            	
+	            }
+	            
+	            // 2. Update number of seats
+	            int updatedAvailableSeats = screening.getAvailableSeats() - 1;
+	            
+	            System.out.println("Update number of seats will be: " + updatedAvailableSeats);
+	            
+	            
+	            // 3. Save updated number of seats to database
+	            
+	            String newQuery = "UPDATE screening SET available_seats=" + updatedAvailableSeats + "WHERE screening_id=" + screeningID;
+	            st.executeUpdate(newQuery);
+	            
+	            System.out.println("Seat number has been updated");
+	                        
+	        } catch (SQLException e) {
+	            System.err.println("While searching the screening " + screeningID  + " an error occurred: ");
+	            e.printStackTrace();
+	        }
+		    finally
+		    {
+		      try
+		      {
+		        if( connection != null )
+		        {
+		        	System.out.println("getScreening() --> connection is closed");
+		          connection.close();
+		        }
+
+		        if( results != null )
+		        {
+		        	System.out.println("getScreening() --> results is closed");
+		          results.close();
+		        }
+		      }
+		      catch( Exception exe )
+		      {
+		    	  System.out.println("getScreening() --> error has been caught");
+		        exe.printStackTrace();
+		      }
+
+		    }
+		  }
+		
+		
 }
 

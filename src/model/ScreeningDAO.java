@@ -19,7 +19,7 @@ import javafx.collections.ObservableList;
 
 public interface ScreeningDAO {
 	
-	// INFORMATION RETRIEVAL AND SEARCH METHODS
+	// Information retrieval and search methods
 	public ObservableList<Screening> getAllScreenings(); // tested
 	public ObservableList<Screening> getUpcomingScreenings(); // tested --> more extensive testing required
 	public ObservableList<Screening> searchScreeningsByDate(String dateID); // tested 
@@ -27,9 +27,9 @@ public interface ScreeningDAO {
 	public Screening getScreening(int screeningID); // tested
 	
 	
-	// CREATION, DELETION AND UPDATE METHODS
+	// Creation, delete and update methods
 	public void addScreening(String dateID, int yearID, int monthID,  int timeID, int dayID, int filmID); // Tested, still need add constraint!
 //	public void updateScreening(Screening screening);
 	public void deleteScreening(Screening screening); // tested
-//	public void updateAvailableSeats(int screeningID);
+	public void updateAvailableSeats(int screeningID);
 }

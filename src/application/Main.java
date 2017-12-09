@@ -35,7 +35,8 @@ public class Main extends Application {
 		
 		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
-//		System.out.println("_____________START OF NEW TEST: ___________________");
+		
+		System.out.println("_____________START OF NEW TEST: ___________________");
 //		FilmDAO filmDAO = new FilmDAOImpl();
 //		filmDAO.addFilm("The Devil Wears Prada", "New York fashion movie", "Comedy / girly / romance / idk", "Actor 1 and actress 2", "name of the filmDirector", "link to filmTrailer");
 		
@@ -49,13 +50,14 @@ public class Main extends Application {
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);
 		
-//		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 		
-//		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
+		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
 		
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
 //		ObservableList<Screening> ol = screeningDAO.getUpcomingScreenings();
+		
 //		Screening first = ol.get(0);
 //		Screening second = ol.get(1);
 //		Screening third = ol.get(2);
@@ -63,11 +65,7 @@ public class Main extends Application {
 //		String seconddate = second.getDateID();
 //		String thirddate = third.getDateID();
 //		
-//		System.out.println(firstdate + ", " +  seconddate + ", " + thirddate);
-		
-		
-		
-		
+//		System.out.println(firstdate + ", " +  seconddate + ", " + thirddate);								
 		
 		
 		
