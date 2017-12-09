@@ -18,9 +18,9 @@ import javafx.collections.ObservableList;
  */
 
 public interface BookingDAO {
-	public ObservableList<Customer> getAllCustomers();
-	public Customer getCustomer(int custID);
-	public void addCustomer(int custID, String cust_email, String cust_firstname, String cust_lastname);
-	public void updateCustomer(String cust_email, String cust_firstname, String cust_lastname);
-	public void deleteCustomer(int custID);
+	public ObservableList<Booking> getAllBookings(); //y
+	public Booking getBooking(int bookingID); //y
+	public void addBooking(int custID, int seatID, int screeningID); //y
+//	public void updateBooking(int bookingID, int custID, int seatID, int screeningID);
+	public void deleteBooking(int bookingID); //y
 }

@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 public interface CustomerDAO {
 	public ObservableList<Customer> getAllCustomers();
 	public Customer getCustomer(int custID);
-	public void addCustomer(int custID, String cust_email, String cust_firstname, String cust_lastname);
-	public void updateCustomer(String cust_email, String cust_firstname, String cust_lastname);
+	public void addCustomer(int custID, String custEmail, String custFirstName, String custLastName);
+	public void updateCustomer(String custEmail, String custFirstName, String custLastName);
 	public void deleteCustomer(int custID);
 }
