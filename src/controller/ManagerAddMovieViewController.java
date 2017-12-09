@@ -2,19 +2,62 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
+import java.awt.TextArea;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ManagerAddMovieViewController {
+public class ManagerAddMovieViewController implements Initializable {
+	
+	// @Lorenz: Instance variables to choose files
+	@FXML private Button chooseFile;
+	
+	
+	// @Lorenz: Instance variables to create new Film objects
+		@FXML private TextField filmTitleTextField;
+		@FXML private TextArea filmDescriptionTextField;
+		@FXML private TextField filmActorsTextField;
+		@FXML private TextField filmDirectorTextField;
+		@FXML private ComboBox<String> filmGenreComboBox;
+		@FXML private ListView fileList;
+		@FXML private TextField filmTrailerLinkTextField;
+		
+		
+	
 	@FXML
 	private Label userLbl2;
 
-	// Event Listener on Button.onAction
-	@FXML
+	//File Chooser for uploading image to application & database
+	public void chooseFile(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setInitialDirectory(new File("C:\\Users\\Lorenz\\Desktop\\repos\\GCO1_Project_2017_JavaFX_CinemaBookingSystem\\resources"));
+		File selectedFile = fileChooser.showOpenDialog(null);
+		
+		if(selectedFile != null) {
+			fileList.getItems().add(selectedFile.getName());
+		}
+		else {
+			System.out.println("File is not valid");
+		}
+	}
+	
+	
 	public void toDashboard(ActionEvent event) {
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
@@ -63,6 +106,15 @@ public class ManagerAddMovieViewController {
 	} catch (Exception e) {
 		
 	}
+	}
+
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		ObservableList<String> genreList = FXCollections.observableArrayList("Action", "Adventure", "Animation","Biography", "Comedy","Crime", "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Music", "Musical", "Mistery", "Romance", "Sci-Fi", "Sport", "Thriller", "War", "Western");
+		
+		filmGenreComboBox.setItems(genreList);
 	}
 	
 }
