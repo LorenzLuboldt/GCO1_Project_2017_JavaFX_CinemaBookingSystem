@@ -1,4 +1,4 @@
-package controller;
+	package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -37,6 +38,9 @@ public class ManagerMoviesViewController implements Initializable {
 	FilmDAO filmDAO = new FilmDAOImpl();
 	@FXML
 	private Label userLbl2;
+	
+	//Configure movie list
+	@FXML private ListView<Film> movieList;
 	
 	//Configure film table
 	@FXML private TableView<Film> tableView;
@@ -83,6 +87,7 @@ public class ManagerMoviesViewController implements Initializable {
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	} catch (Exception e) {
 		
@@ -144,15 +149,50 @@ public class ManagerMoviesViewController implements Initializable {
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	} catch (Exception e) {
 		
 	}
 	}
+	
+	// Manager clicks this button to go to a new view to add a new film to the cinema selection
+	public void LinkToAddFilm(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/ManagerAddMovieView.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
+	// Manager clicks this button to go to a new view to add a new film to the cinema selection
+	public void LinkToEditFilm(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/ManagerEditMovieView.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
 	@Override
 public void initialize(URL location, ResourceBundle resources) {
 		
-
 
 	}
 

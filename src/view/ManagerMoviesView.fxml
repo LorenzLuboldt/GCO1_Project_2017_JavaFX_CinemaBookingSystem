@@ -6,107 +6,73 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerMoviesViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerMoviesViewController">
    <top>
-      <HBox prefHeight="43.0" prefWidth="223.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="0.0" prefWidth="1400.0" spacing="110.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="47.0" prefWidth="603.0" style="-fx-background-color: darkgrey;">
-               <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="506.0" layoutY="5.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="30.0" prefWidth="80.0" text="Logout" textAlignment="JUSTIFY">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="userLbl2" alignment="CENTER" layoutX="220.0" prefHeight="47.0" prefWidth="160.0" text="Manage Films" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </Label>
-                <Button layoutX="7.0" layoutY="5.0" mnemonicParsing="false" onAction="#toDashboard" prefHeight="30.0" prefWidth="131.0" text="Dashboard">
-                     <font>
-                        <Font size="10.0" />
-                     </font></Button>
-               </children>
-            </AnchorPane>
+            <ImageView fitHeight="102.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="logo.png" />
+               </image>
+            </ImageView>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toDashboard" prefHeight="65.0" prefWidth="118.0" text="Home" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="20.0" top="18.0" />
+               </HBox.margin>
+            </Button>
+            <Label fx:id="userLbl2" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="415.0" styleClass="call_to_action" text="Welcome Customer" textAlignment="CENTER" textFill="#d0cece">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="90.0" />
+               </HBox.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="65.0" prefWidth="118.0" text="Logout" textAlignment="JUSTIFY">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="18.0" />
+               </HBox.margin>
+            </Button>
          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
       </HBox>
    </top>
-   <left>
-      <TableView fx:id="tableView" editable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="160.0" prefWidth="307.0" BorderPane.alignment="BOTTOM_LEFT">
-        <columns>
-          <TableColumn fx:id="film_title_column" prefWidth="92.0" text="Film Title" />
-          <TableColumn fx:id="film_description_column" prefWidth="210.0" text="Film Description" />
-        </columns>
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </TableView>
-   </left>
    <center>
-      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="160.0" prefWidth="647.0" BorderPane.alignment="BOTTOM_RIGHT">
+      <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="BOTTOM_CENTER" layoutX="104.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="160.0" prefWidth="160.0" spacing="15.0" AnchorPane.rightAnchor="14.0">
-               <children>
-                  <Label text="Add new film">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="filmTitleTextField" maxWidth="-Infinity" promptText="Film Title">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="filmDescriptionTextField" maxWidth="-Infinity" promptText="Film Description">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin></TextField>
-               </children>
-               <padding>
-                  <Insets bottom="60.0" />
-               </padding>
-            </VBox>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin></AnchorPane>
+            <TableView fx:id="tableView" layoutX="908.0" layoutY="41.0" prefHeight="315.0" prefWidth="411.0">
+              <columns>
+                <TableColumn fx:id="film_title_column" prefWidth="112.33332824707031" text="Film Title" />
+                <TableColumn fx:id="film_description_column" prefWidth="250.6666717529297" text="Film Description" />
+              </columns>
+            </TableView>
+            <Button layoutX="920.0" layoutY="474.0" mnemonicParsing="false" onAction="#ShowMovieSelection" text="Refresh Film List" />
+            <Button layoutX="1173.0" layoutY="475.0" mnemonicParsing="false" onAction="#addFilmButtonPushed" text="Add Film" />
+            <Button layoutX="943.0" layoutY="557.0" mnemonicParsing="false" onAction="#deleteFilmButtonPushed" text="Delete Film" />
+            <Button layoutX="1129.0" layoutY="554.0" mnemonicParsing="false" onAction="#goToFilmEdit" text="Edit Film Details" />
+            <Label layoutX="1139.0" layoutY="314.0" prefHeight="66.0" prefWidth="158.0" text="Add new film" />
+            <TextField fx:id="filmTitleTextField" layoutX="1152.0" layoutY="406.0" prefWidth="160.0" promptText="Film Title" styleClass="text_field_standard" />
+            <TextField fx:id="filmDescriptionTextField" layoutX="929.0" layoutY="402.0" prefWidth="160.0" promptText="Film Description" styleClass="text_field_standard" />
+            <Button layoutX="53.0" layoutY="558.0" mnemonicParsing="false" onAction="#LinkToAddFilm" text="Add New Film" />
+            <Button layoutX="294.0" layoutY="556.0" mnemonicParsing="false" onAction="#LinkToEditFilm" text="Edit Selected Film" />
+         </children></AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#ShowMovieSelection" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: darkgrey;" text="Refresh Film List">
-               <font>
-                  <Font size="10.0" />
-               </font></Button>
-            <Button fx:id="addFilmButton" layoutX="426.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFilmButtonPushed" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: lightgreen;" text="Add Film" AnchorPane.rightAnchor="14.0">
-               <font>
-                  <Font size="10.0" />
-               </font></Button>
-            <Button fx:id="deleteFilmButton" layoutX="319.0" layoutY="8.0" mnemonicParsing="false" onAction="#deleteFilmButtonPushed" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #FFA07A;" text="Delete Film">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-          		<Button fx:id="goToFilmEditButton" layoutX="166.0" layoutY="8.0" mnemonicParsing="false" onAction="#goToFilmEdit" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: darkgrey;" text="Edit Film Details">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
+      <ImageView fitHeight="50.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="slogan.png" />
+         </image>
+      </ImageView>
    </bottom>
 </BorderPane>
