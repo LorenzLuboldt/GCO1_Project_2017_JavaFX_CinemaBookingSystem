@@ -58,7 +58,7 @@
               </columns>
             </TableView>
             <Button layoutX="920.0" layoutY="474.0" mnemonicParsing="false" onAction="#ShowMovieSelection" text="Refresh Film List" />
-            <Button layoutX="1173.0" layoutY="475.0" mnemonicParsing="false" onAction="#addFilmButtonPushed" text="Add Film" />
+            <Button layoutX="1173.0" layoutY="475.0" mnemonicParsing="false" text="Add Film" />
             <Button layoutX="943.0" layoutY="557.0" mnemonicParsing="false" onAction="#deleteFilmButtonPushed" text="Delete Film" />
             <Button layoutX="1129.0" layoutY="554.0" mnemonicParsing="false" onAction="#goToFilmEdit" text="Edit Film Details" />
             <Label layoutX="1139.0" layoutY="314.0" prefHeight="66.0" prefWidth="158.0" text="Add new film" />

@@ -26,8 +26,11 @@ public class ManagerRootController implements Initializable {
 		userLbl2.setText(user);
 	}
 	
+	//Goes to Movie Overview Page
 	public void GoToMovieSelection(ActionEvent event) {
 		try {	
+			System.out.println("1 Was successfull");
+
 	((Node) event.getSource()).getScene().getWindow().hide();
 	Stage primaryStage = new Stage();
 	FXMLLoader loader = new FXMLLoader();
