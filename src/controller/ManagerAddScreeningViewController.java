@@ -15,7 +15,6 @@ import model.ScreeningDAOImpl;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -106,13 +105,13 @@ public class ManagerAddScreeningViewController implements Initializable {
 		int month =datePicker.getValue().getMonthValue();
 		int year = datePicker.getValue().getYear();
 		
-		screeningDAO.addScreening(datePicker.getValue().toString(), year , month ,screeningTimeComboBox.getValue(), day, currentFilmsAvailableComboBox.getValue());
+		screeningDAO.addScreening(datePicker.getValue().toString(), year , month, day, screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
 		
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		ObservableList<String> screeningTimeList = FXCollections.observableArrayList("14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00");
+		ObservableList<String> screeningTimeList = FXCollections.observableArrayList("2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM");
 		screeningTimeComboBox.setItems(screeningTimeList);
 		
 		ObservableList<Film> allFilms = filmDAO.getAllFilms();
@@ -120,9 +119,8 @@ public class ManagerAddScreeningViewController implements Initializable {
 		
 		for (int x = 0; x < allFilms.size(); ++x) {
 			
-		StringProperty f = allFilms.get(x).filmTitleProperty();
-		String fString = f.toString();
-		currentFilmTitle.add(fString);
+		String f = allFilms.get(x).getFilmTitle();
+		currentFilmTitle.add(f);
 			
 		}
 		

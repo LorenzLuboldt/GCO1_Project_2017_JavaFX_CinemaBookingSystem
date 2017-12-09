@@ -51,7 +51,7 @@
       <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="95.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMovieOverview" prefHeight="59.0" prefWidth="309.0" text="Back to View/Edit Films" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="557.0" layoutY="44.0" prefHeight="66.0" prefWidth="287.0" styleClass="call_to_action" text="Screening Details" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="331.0" layoutY="39.0" prefHeight="63.0" prefWidth="740.0" styleClass="call_to_action" text="Please Add Screening Details For Existing Film Here:" />
             <DatePicker fx:id="datePicker" layoutX="560.0" layoutY="254.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
             <Button layoutX="559.0" layoutY="448.0" mnemonicParsing="false" onAction="#addScreeningButtonPushed" prefHeight="59.0" prefWidth="283.0" text="Add Screening Time" />
             <ComboBox fx:id="screeningTimeComboBox" layoutX="560.0" layoutY="346.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Day Time" styleClass="text_field_standard" visibleRowCount="5" />

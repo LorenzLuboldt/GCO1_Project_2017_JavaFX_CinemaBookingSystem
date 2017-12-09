@@ -37,15 +37,15 @@ public class ManagerRootController implements Initializable {
 	
 	// INCOMPLETE METHOD BELOW
 	// Populates the table in this view 
-	public void FillUpcomingScreeningsListView(ActionEvent event) {
-		//Set up the columns in the table
-		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
-		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
-
-		//load data from 
-		final ObservableList<Film> filmList = filmDAO.getAllFilms();
-		tableView.setItems(filmList);
-	}
+//	public void FillUpcomingScreeningsListView(ActionEvent event) {
+//		//Set up the columns in the table
+//		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
+//		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
+//
+//		//load data from 
+//		final ObservableList<Film> filmList = filmDAO.getAllFilms();
+//		tableView.setItems(filmList);
+//	}
 	
 	//Goes to Movie Overview Page
 	public void GoToMovieSelection(ActionEvent event) {
