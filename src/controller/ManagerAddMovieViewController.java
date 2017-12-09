@@ -73,11 +73,10 @@ public class ManagerAddMovieViewController implements Initializable {
 	
 	// @Lorenz: method to enable manager to add film to database
 	public void addFilmButtonPushed(ActionEvent event)	{
-		System.out.println(1);
+		
 		// filmDAO method adds film to DB. 
 		// Parameters are the user inputs from the text fields on the screen
 		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
-		System.out.println(2);
 
 	}
 	
@@ -130,13 +129,28 @@ public class ManagerAddMovieViewController implements Initializable {
 		
 	}
 	}
-
+	
+	public void linkToAddScreeningTimeView(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/ManagerAddScreeningView.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		ObservableList<String> genreList = FXCollections.observableArrayList("Action", "Adventure", "Animation","Biography", "Comedy","Crime", "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Music", "Musical", "Mistery", "Romance", "Sci-Fi", "Sport", "Thriller", "War", "Western");
-		
 		filmGenreComboBox.setItems(genreList);
 	}
 	

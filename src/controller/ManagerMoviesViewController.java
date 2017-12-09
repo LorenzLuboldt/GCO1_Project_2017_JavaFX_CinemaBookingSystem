@@ -191,6 +191,24 @@ public class ManagerMoviesViewController implements Initializable {
 	}
 	}
 	
+	public void linkToAddScreeningTime(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/ManagerAddScreeningView.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
+	
+	
 	@Override
 public void initialize(URL location, ResourceBundle resources) {
 		
