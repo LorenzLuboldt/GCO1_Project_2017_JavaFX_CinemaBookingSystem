@@ -11,7 +11,7 @@
 }
 
 .call_to_action {
-	-fx-color: #d0cece; -fx-font: 32.0px "Lao UI"; -fx-font-style: bold;
+	-fx-color: #d0cece; -fx-font: 32.0px "Lao UI";-fx-text-fill:  #d0cece;
 }
 
 .button {

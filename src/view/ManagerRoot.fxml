@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerRootController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerRootController">
    <top>
       <HBox prefHeight="0.0" prefWidth="1400.0" spacing="250.0" BorderPane.alignment="CENTER">
          <children>
@@ -19,7 +19,7 @@
                   <Image url="logo.png" />
                </image>
             </ImageView>
-            <Label fx:id="userLbl2" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="415.0" style="-fx-font-weight: 40px;" styleClass="call_to_action" text="Welcome Customer" textAlignment="CENTER" textFill="#d0cece">
+            <Label fx:id="userLbl2" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="415.0" styleClass="call_to_action" text="Welcome Customer" textAlignment="CENTER" textFill="#d0cece">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -39,11 +39,12 @@
       </HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="194.0" prefWidth="297.0" stylesheets="@../application/application.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1080.0" layoutY="53.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
-            <Button layoutX="1078.0" layoutY="402.0" mnemonicParsing="false" onAction="#GoToBookings" prefHeight="150.0" prefWidth="300.0" stylesheets="@../application/application.css" text="View Room Bookings" />
-            <ListView layoutX="14.0" layoutY="23.0" prefHeight="612.0" prefWidth="846.0" />
+            <Button layoutX="1076.0" layoutY="109.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
+            <Button layoutX="1078.0" layoutY="402.0" mnemonicParsing="false" onAction="#GoToBookings" prefHeight="150.0" prefWidth="300.0" text="View Room Bookings" />
+            <ListView layoutX="14.0" layoutY="94.0" prefHeight="541.0" prefWidth="846.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="501.0" layoutY="22.0" styleClass="call_to_action" text="What would you like to do?" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </center>

@@ -35,6 +35,7 @@ public class ManagerRootController implements Initializable {
 	Scene scene = new Scene(root);
 	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 	primaryStage.setScene(scene);
+	primaryStage.setResizable(false);
 	primaryStage.show();
 		} catch (Exception e) {
 			
@@ -51,6 +52,7 @@ public class ManagerRootController implements Initializable {
 	Scene scene = new Scene(root);
 	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 	primaryStage.setScene(scene);
+	primaryStage.setResizable(false);
 	primaryStage.show();
 		} catch (Exception e) {
 			
@@ -67,6 +69,7 @@ public class ManagerRootController implements Initializable {
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	} catch (Exception e) {
 		
