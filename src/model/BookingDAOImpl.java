@@ -151,6 +151,7 @@ public class BookingDAOImpl implements BookingDAO {
 	      }
 
 	    }
+	    System.out.println("CustomerBookingList has been retrieved and is returned");
 	    return customerBookingList;
 	 }
 	
