@@ -396,6 +396,7 @@ public class BookingDAOImpl implements BookingDAO {
 			        e.printStackTrace();
 			      }
 			    }
+			    	System.out.println("Seat Availability --> " + seatIsAvailable);
 				   return seatIsAvailable;
 
 	}
