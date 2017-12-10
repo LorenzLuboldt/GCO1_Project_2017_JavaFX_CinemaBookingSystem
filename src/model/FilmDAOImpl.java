@@ -169,8 +169,8 @@ public class FilmDAOImpl implements FilmDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "INSERT INTO film (film_title, film_description, film_genre, film_cast_members, film_director, film_trailer)" + 
-			"VALUES ('" + filmTitle + "', '" + filmDescription + "', '" + filmGenre + "', '" + filmCastMembers + "', '" + filmDirector
+	    	String query = "INSERT INTO film (film_title, film_description, film_image, film_genre, film_cast_members, film_director, film_trailer)" + 
+			"VALUES ('" + filmTitle + "', '" + filmDescription + "', '" + filmImage + "', '" + filmGenre + "', '" + filmCastMembers + "', '" + filmDirector
 			 + "', '" + filmTrailer + "')";
 	     
 		    // Run query

@@ -82,10 +82,11 @@ public class ManagerAddMovieViewController implements Initializable {
 	public void addFilmButtonPushed(ActionEvent event)	{
 		
 		// Upload Film poster and copy to destination
-		uploadFile();
+		String imgPath = uploadFile();
+		
 		
 		// Add Film object to DB
-		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
+		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
 
 	}
 	
@@ -167,8 +168,8 @@ public class ManagerAddMovieViewController implements Initializable {
 	// _________________________SUPPORTING METHODS____________________________________
 	
 	// upload file method
-	public void uploadFile()	{
-		System.out.println(checkIfFileChosen);
+	public String uploadFile()	{
+		String imgPath = "UPLOAD FAILED"; // Initial value, will be overwritten if upload succeeds
 		
 		if(checkIfFileChosen = true)	{
 			// Obtain source path
@@ -181,7 +182,7 @@ public class ManagerAddMovieViewController implements Initializable {
 			String firstPartOfPath = "/Users/Michael/Desktop/";
 			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
 			String lastPartOfPath = ".png";
-			String imgPath = firstPartOfPath + imgID + lastPartOfPath;
+			imgPath = firstPartOfPath + imgID + lastPartOfPath;
 			System.out.println("image path: " + imgPath);
 			File dest = new File(imgPath);
 			
@@ -201,6 +202,7 @@ public class ManagerAddMovieViewController implements Initializable {
 		else {
 			System.out.println("### Display to user: PLEASE SELECT PNG FILE TO UPLOAD. ###");
 		}
+		return imgPath;
 	}
 	
 	// copy file method
