@@ -15,10 +15,26 @@
 }
 
 .button {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button_header {
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #7E7878; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button_header_logout {
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #3D3939; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover{
+	-fx-background-color: #d50000;
+}
+
+.button_header:hover{
+	-fx-background-color: #d50000;
+}
+
+.button_header_logout:hover{
 	-fx-background-color: #d50000;
 }
 
@@ -30,4 +46,28 @@
 .alert {
     
 	-fx-background-color:black;    
+}
+
+.table-view {
+    -fx-base: #3D3939;
+    -fx-control-inner-background: #3D3939;
+    -fx-background-color: #3D3939;
+    -fx-padding: 5;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 21px;
+    -fx-font-family: "Lao UI";
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-opacity: 1;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 21;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: 
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
 }

@@ -1,19 +1,20 @@
 package controller;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
@@ -100,6 +101,41 @@ public class CustomerEditInformationViewController implements Initializable {
 		
 	}
 	}
+	
+	public void BackToDashboard(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/CustomerRoot.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
+	//Brings User to booking history view
+	public void goToBookingsHistory(ActionEvent event) {
+	try {	
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		Pane root = loader.load(getClass().getResource("/view/CustomerBookingHistoryView.fxml").openStream());
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
+	} catch (Exception e) {
+		
+	}
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
 	 */
