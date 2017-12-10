@@ -26,7 +26,7 @@ public class CustomerRootController implements Initializable {
 		userLbl.setText(user);
 	}
 	
-	public void EditProfile(ActionEvent event) {
+	public void toAccountSettings(ActionEvent event) {
 		try {	
 	((Node) event.getSource()).getScene().getWindow().hide();
 	Stage primaryStage = new Stage();

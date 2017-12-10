@@ -1,63 +1,83 @@
 package controller;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Film;
-import model.FilmDAO;
-import model.FilmDAOImpl;
 
-public class CustomerBookingProcessViewController implements Initializable {
-	
-	FilmDAO filmDAO = new FilmDAOImpl();
+public class CustomerBookingProcessViewController implements Initializable{
 	@FXML
 	private Label userLbl;
-	
-	//Configure movie table
-	@FXML private TableView<Film> tableView;
-	@FXML private TableColumn<Film, String> film_title_column;
-	@FXML private TableColumn<Film, String> film_description_column;
 
-	public void GetCustomer(String user) {
-		// TODO Auto-generated method stub
-		userLbl.setText(user);
+	// Event Listener on Button.onAction
+	@FXML
+	public void toAccountSettings(ActionEvent event) {
+		try {	
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/CustomerEditInformationView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {
+			
+		}
 	}
-	
 
-	// Manager is able to logout at this page
+	// Event Listener on Button.onAction
+	@FXML
 	public void SignOut(ActionEvent event) {
-	try {	
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Stage primaryStage = new Stage();
-		FXMLLoader loader = new FXMLLoader();
-		Pane root = loader.load(getClass().getResource("/view/LoginView.fxml").openStream());
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
-		primaryStage.show();
-	} catch (Exception e) {
-		
+		try {	
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/LoginView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {
+			
+		}
 	}
-	}
-	// Manager is able to go back to overview page to select another option
+	// Event Listener on Button.onAction
+	@FXML
 	public void toDashboard(ActionEvent event) {
+		try {	
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/CustomerRoot.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	//Brings User to booking history view
+	public void goToBookingsHistory(ActionEvent event) {
 	try {	
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
-		Pane root = loader.load(getClass().getResource("/view/CustomerRoot.fxml").openStream());
+		Pane root = loader.load(getClass().getResource("/view/CustomerBookingHistoryView.fxml").openStream());
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		primaryStage.setScene(scene);
@@ -67,13 +87,28 @@ public class CustomerBookingProcessViewController implements Initializable {
 		
 	}
 	}
-	@Override
-public void initialize(URL location, ResourceBundle resources) {
-		
-
-
+	
+	// Event Listener on Button.onAction
+	@FXML
+	public void toSelectSeatOptions(ActionEvent event) {
+		try {	
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {
+			
+		}
 	}
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
 		
-	
+	}
 }
