@@ -2,17 +2,32 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Film;
+import model.FilmDAO;
+import model.FilmDAOImpl;
 
-public class CustomerFilmDetailsViewController {
+public class CustomerFilmDetailsViewController implements Initializable {
 	@FXML
 	private Label userLbl;
 
+	@FXML
+	private ListView allFilmsList;
+	FilmDAO filmDAO = new FilmDAOImpl();
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void toAccountSettings(ActionEvent event) {
@@ -95,6 +110,14 @@ public class CustomerFilmDetailsViewController {
 	} catch (Exception e) {
 		
 	}
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		ObservableList<Film> allFilms = filmDAO.getAllFilms();
+		//allFilmsList
+		
+		
 	}
 }
 
