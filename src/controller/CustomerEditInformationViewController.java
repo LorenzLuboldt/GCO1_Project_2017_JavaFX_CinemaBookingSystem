@@ -164,7 +164,8 @@ public void initialize(URL location, ResourceBundle resources) {
 
 	// Populates the table in this view 
 	public void EditCustomerData(ActionEvent event) {
-		//Set up the columns in the table		
+		
+		//Set up the columns in the table	
 		customerDAO.updateCustomer(personSelected.getCustEmail(), personSelected.getFirstName(), personSelected.getLastName());
 	}
 	

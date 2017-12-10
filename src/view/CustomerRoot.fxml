@@ -58,7 +58,7 @@
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="1100.0" layoutY="431.0" mnemonicParsing="false" onAction="#BookTickets" prefHeight="59.0" prefWidth="250.0" text="Book Tickets" />
-            <Button layoutX="821.0" layoutY="430.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="59.0" prefWidth="250.0" text="Edit Customer Profile" />
+            <Button layoutX="821.0" layoutY="430.0" mnemonicParsing="false" onAction="#toAccountSettings" prefHeight="59.0" prefWidth="250.0" text="Edit Customer Profile" />
             <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="1165.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icon_seat.png" />
