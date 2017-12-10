@@ -67,7 +67,7 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="71.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="filmImage" fitHeight="150.0" fitWidth="200.0" layoutX="71.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
             <TextArea layoutX="461.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" />
             <TextField layoutX="97.0" layoutY="302.0" />
             <TextField layoutX="97.0" layoutY="363.0" />

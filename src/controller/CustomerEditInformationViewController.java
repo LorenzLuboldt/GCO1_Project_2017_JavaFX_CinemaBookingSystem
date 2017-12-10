@@ -193,11 +193,13 @@ public void initialize(URL location, ResourceBundle resources) {
 		customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
 		System.out.println("Changes have been saved.");
 		
-		// Refresh the table that shows customer data
+		// Refresh the table that shows customer data --> This doesn't work yet
 		customerDAO.getCustomer(1);
 		final ObservableList<Customer> customerData = FXCollections.observableArrayList();
 		customerData.add(cus);
 		customer_data.setItems(customerData);
+		 
+		// @TODO Pop-up to user that informs her that changes have been saved
 		
 	}
 	

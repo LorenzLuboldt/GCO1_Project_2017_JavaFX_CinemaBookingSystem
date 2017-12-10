@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
@@ -23,10 +25,14 @@ import model.FilmDAOImpl;
 public class CustomerFilmDetailsViewController implements Initializable {
 	@FXML
 	private Label userLbl;
+	private ImageView filmImage;
 
 	@FXML
 	private ListView allFilmsList;
 	FilmDAO filmDAO = new FilmDAOImpl();
+	
+	
+	// @Michael: new fxid of image view is filmImage
 	
 	// Event Listener on Button.onAction
 	@FXML
@@ -111,13 +117,27 @@ public class CustomerFilmDetailsViewController implements Initializable {
 		
 	}
 	}
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		ObservableList<Film> allFilms = filmDAO.getAllFilms();
-		//allFilmsList
-		
-		
+		loadFilmImage();
 	}
-}
+	
+	
+	// method loads film image
+	public void loadFilmImage()	{
+		
+		// Create film object and retrieve path to image
+		FilmDAO filmDAO = new FilmDAOImpl();
+		Film film = filmDAO.getFilm("Harry Potter");
+		String filmPath = film.getFilmImage();		
+		
+		// Set ImageView to display image
+		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(filmPath));
+		filmImage.setImage(imageFile);
 
+	}
+
+}

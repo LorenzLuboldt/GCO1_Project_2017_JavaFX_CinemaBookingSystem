@@ -22,7 +22,7 @@ public class ManagerRootController implements Initializable {
 	@FXML
 	private Label userLbl2;
 	
-	@FXML private ListView<Screening> upcomingScreeningsList; 
+	@FXML private ListView<Screening> allFilmsList; 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
