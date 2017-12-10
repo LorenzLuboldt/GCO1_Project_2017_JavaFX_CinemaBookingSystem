@@ -399,7 +399,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    Statement st = null;   
 	  
 	    // Initialize available seats
-	    availableSeats = 24;	 
+	    availableSeats = 16;	 
 	    
 	    // Initialize timeInt
 	    

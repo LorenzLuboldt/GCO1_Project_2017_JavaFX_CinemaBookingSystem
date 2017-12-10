@@ -33,6 +33,8 @@ public class Screening {
 	private StringProperty  time_string; // time saved as "4 pm" etc.
 	private StringProperty  film_title; // foreign key corresponds to 'Film' table
 	private IntegerProperty available_seats; // keeps count of the number of available seats for a particular screening
+	private StringProperty  available_info; 	// availableInfo: "8 of 16"
+	private StringProperty  occupancy_rate; 		// occupancy: "80%"
 
 	
 	// constructor
@@ -46,6 +48,8 @@ public class Screening {
 		this.time_string = new SimpleStringProperty();
 		this.film_title = new SimpleStringProperty();
 		this.available_seats = new SimpleIntegerProperty();
+		this.available_info = new SimpleStringProperty();
+		this.occupancy_rate = new SimpleStringProperty();
 	}
 	
 	// *** SCREENING ID ***
@@ -201,5 +205,38 @@ public class Screening {
 			return available_seats;
 		}	
 
+		
+		// *** AVAILABLE INFO ***
+		// getter
+		public String getAvailableInfo()	{
+			return available_info.get();
+		}
+		
+			// setter
+		public void setAvailableInfo(String availableInfo)	{
+			this.available_info.set(availableInfo);
+		}
+		
+			// property
+		public StringProperty availableInfo()	{
+			return available_info;
+		}	
+	
+	
+		// *** OCCUPANCY RATE ***
+		// getter
+		public String getOccupancyRate()	{
+			return occupancy_rate.get();
+		}
+		
+			// setter
+		public void setOccupancyRate(String occupancyRate)	{
+			this.occupancy_rate.set(occupancyRate);
+		}
+		
+			// property
+		public StringProperty occupancyRate()	{
+			return occupancy_rate;
+		}	
 }
 

@@ -25,7 +25,9 @@ import model.FilmDAOImpl;
 public class CustomerFilmDetailsViewController implements Initializable {
 	@FXML
 	private Label userLbl;
-	private ImageView filmImage;
+	
+	@FXML
+	private ImageView filmImage = new ImageView();
 
 	@FXML
 	private ListView allFilmsList;
@@ -121,8 +123,9 @@ public class CustomerFilmDetailsViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		loadFilmImage();
+
 	}
 	
 	
