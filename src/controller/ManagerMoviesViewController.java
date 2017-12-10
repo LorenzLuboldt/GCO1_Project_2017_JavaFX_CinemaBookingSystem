@@ -245,7 +245,7 @@ public void initialize(URL location, ResourceBundle resources) {
 		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
 		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
 
-		//load data from 
+		// load data from 
 		final ObservableList<Film> filmList = filmDAO.getAllFilms();
 		tableView.setItems(filmList);
 	}

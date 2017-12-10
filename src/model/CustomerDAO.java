@@ -18,9 +18,9 @@ import javafx.collections.ObservableList;
  */
 
 public interface CustomerDAO {
-	public ObservableList<Customer> getAllCustomers();
+	public ObservableList<Customer> getAllCustomers(); // retrieve all variables except custID
 	public Customer getCustomer(int custID);
-	public void addCustomer(int custID, String custEmail, String custFirstName, String custLastName);
-	public void updateCustomer(String custEmail, String custFirstName, String custLastName);
+//	public void addCustomer(String custEmail, String custFirstName, String custLastName);
+	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName);
 	public void deleteCustomer(int custID);
 }

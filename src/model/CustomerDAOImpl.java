@@ -50,7 +50,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    	// create and instantiate a customer object
 		    	Customer customer = new Customer();
 		    	
-		    	customer.setCustID(results.getInt("cust_ID"));
+		    	// customer.setCustID(results.getInt("cust_ID"));
 		    	customer.setCustEmail(results.getString("cust_email"));
 		    	customer.setFirstName(results.getString("cust_firstname"));
 		    	customer.setLastName(results.getString("cust_lastname"));
@@ -144,49 +144,49 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    return customer;
 	  }
 	
-	// *** 3. ADD CUSTOMER ***	
-	public void addCustomer(int custID, String custEmail, String custFirstName, String custLastName) 	{
-		
-		// Establish database connection:
-		Connection connection = SqliteConnection.Connector();
-	    Statement st = null;   
-	  
-	    try
-	    {
-		    st = connection.createStatement();
-		    
-			// SQL query, stored in String
-	    	String query = "INSERT INTO customer (cust_id, cust_email, cust_firstname, cust_lastname)" 
-			+ "VALUES ('" + custID + "', '" + custEmail + "', '" + custFirstName + "', '" + custLastName + "')";
-	     
-		    // Run query
-		    st.executeUpdate(query);
-		    
-	    }
-	    catch( SQLException e )
-	    {
-	    	System.err.println("Exception occured while adding new customer " + custID);
-	    	e.printStackTrace();
-	    }
-
-	    finally
-	    {
-	      try
-	      {
-	        if( connection != null )
-	        {
-	          connection.close();
-	        }
-	      }
-	      catch( Exception e )
-	      {
-	        e.printStackTrace();
-	      }
-	    }
-	  }
+	// *** 3. ADD CUSTOMER ***	(Not needed currently)
+//	public void addCustomer(String custEmail, String custFirstName, String custLastName) 	{
+//		
+//		// Establish database connection:
+//		Connection connection = SqliteConnection.Connector();
+//	    Statement st = null;   
+//	  
+//	    try
+//	    {
+//		    st = connection.createStatement();
+//		    
+//			// SQL query, stored in String
+//	    	String query = "INSERT INTO customer (cust_email, cust_firstname, cust_lastname)" 
+//			+ "VALUES ('" + custEmail + "', '" + custFirstName + "', '" + custLastName + "')";
+//	     
+//		    // Run query
+//		    st.executeUpdate(query);
+//		    
+//	    }
+//	    catch( SQLException e )
+//	    {
+//	    	System.err.println("Exception occured while adding new customer " + custFirstName);
+//	    	e.printStackTrace();
+//	    }
+//
+//	    finally
+//	    {
+//	      try
+//	      {
+//	        if( connection != null )
+//	        {
+//	          connection.close();
+//	        }
+//	      }
+//	      catch( Exception e )
+//	      {
+//	        e.printStackTrace();
+//	      }
+//	    }
+//	  }
 	  
 	// *** 4. UPDATE CUSTOMER ***
-	public void updateCustomer(String custEmail, String custFirstName, String custLastName)	{
+	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -198,7 +198,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    
 			// SQL query, stored in String
 	    	String query = "UPDATE customer SET cust_email=" + "'" + custEmail + "'," 
-			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"';";
+			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"' WHERE cust_id=" + custID;
 	    	
 		    // Run query
 		    st.executeUpdate(query);

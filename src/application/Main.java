@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
+import model.Customer;
+import model.CustomerDAO;
+import model.CustomerDAOImpl;
 import model.FilmDAO;
 import model.FilmDAOImpl;
 import model.Screening;
@@ -62,9 +65,14 @@ public class Main extends Application {
 			
 //		customerDAO.addCustomer(5, "Jason", "Gekton", "jk@a.com");
 //		
-//		Customer Lorenz = customerDAO.getCustomer(1);
+		
+//		CustomerDAO customerDAO  = new CustomerDAOImpl();
+//		
+//		customerDAO.addCustomer("custEmail", "custFirstName", "custLastName");
+//		Customer Lorenz = customerDAO.getCustomer(6);
 //		String PersonalInfo = Lorenz.getFirstName() + Lorenz.getLastName() + Lorenz.getCustEmail();
 //		System.out.println(PersonalInfo);
+		
 //		
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);

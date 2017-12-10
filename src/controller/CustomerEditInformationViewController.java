@@ -7,13 +7,16 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -34,10 +37,16 @@ public class CustomerEditInformationViewController implements Initializable {
 	
 	//Configure the customer table
 	@FXML private TableView<Customer> customer_data;
-	@FXML private TableColumn<Customer, String> firstname;
-	@FXML private TableColumn<Customer, String> surname;
+	@FXML private TableColumn<Customer, String> firstName;
+	@FXML private TableColumn<Customer, String> lastName;
 	@FXML private TableColumn<Customer, String> emailAddress;
-	@FXML private TableColumn<Customer, String> customerID;
+//	@FXML private TableColumn<Customer, String> customerID;
+	
+	// @Michael: Instance variables to edit customer data
+	@FXML private Button saveChangesButton;
+	@FXML private TextField editedFirstNameTextField;
+	@FXML private TextField editedLastNameTextField;
+	@FXML private TextField editedEmailTextField;
 
 
 	/**
@@ -143,30 +152,53 @@ public class CustomerEditInformationViewController implements Initializable {
 public void initialize(URL location, ResourceBundle resources) {
 		
 		//Connects table column to respective table column in database
-		firstname.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
-		surname.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
+		firstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
+		lastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
 		emailAddress.setCellValueFactory(new PropertyValueFactory<Customer, String>("custEmail"));
-		customerID.setCellValueFactory(new PropertyValueFactory<Customer, String>("custID"));
-
+//		customerID.setCellValueFactory(new PropertyValueFactory<Customer, String>("custID"));
+		
 
 		//load data from Customer Table
-		final ObservableList<Customer> customerData = customerDAO.getAllCustomers();
+		Customer cus = customerDAO.getCustomer(1);
+		final ObservableList<Customer> customerData = FXCollections.observableArrayList();
+		customerData.add(cus);
 		customer_data.setItems(customerData);
 		
-		//Update customer data table to allow for the the customer data fields to be editable
 		
+		//Update customer data table to allow for the the customer data fields to be editable
 		customer_data.setEditable(true);
-		firstname.setCellFactory(TextFieldTableCell.forTableColumn());
-		surname.setCellFactory(TextFieldTableCell.forTableColumn());
+		firstName.setCellFactory(TextFieldTableCell.forTableColumn());
+		lastName.setCellFactory(TextFieldTableCell.forTableColumn());
 		emailAddress.setCellFactory(TextFieldTableCell.forTableColumn());
 
 	}
 
-	// Populates the table in this view 
-	public void EditCustomerData(ActionEvent event) {
+	public void saveChangesButtonPushed()	{
 		
-		//Set up the columns in the table	
-		customerDAO.updateCustomer(personSelected.getCustEmail(), personSelected.getFirstName(), personSelected.getLastName());
+		// Declare variables and create customer object
+		String editedEmail, editedFirstName, editedLastName;
+		Customer cus = customerDAO.getCustomer(1);
+		
+		// Retrieve user inputs from text field
+		String e = editedEmailTextField.getText();
+		String f = editedFirstNameTextField.getText();
+		String l = editedLastNameTextField.getText();
+				
+		// Check if fields have been edited: if not, keep old value
+		editedEmail = (e.length() == 0) ? cus.getCustEmail() : editedEmailTextField.getText();
+		editedFirstName = (f.length() == 0) ? cus.getFirstName() : editedFirstNameTextField.getText();
+		editedLastName = (l.length() == 0) ? cus.getLastName() : editedLastNameTextField.getText();
+		
+		// Update customer data in data base for customer id 1
+		customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
+		System.out.println("Changes have been saved.");
+		
+		// Refresh the table that shows customer data
+		customerDAO.getCustomer(1);
+		final ObservableList<Customer> customerData = FXCollections.observableArrayList();
+		customerData.add(cus);
+		customer_data.setItems(customerData);
+		
 	}
 	
 }
