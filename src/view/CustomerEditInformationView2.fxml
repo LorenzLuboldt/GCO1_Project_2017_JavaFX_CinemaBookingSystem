@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerEditInformationViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerEditInformationView">
    <top>
       <HBox prefHeight="43.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="102.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="logo.png" />
+                  <Image url="@../../resources/logo.png" />
                </image>
             </ImageView>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="116.0" styleClass="button_header" text="My Bookings" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
@@ -41,7 +41,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets left="5.0" top="15.0" />
+                  <Insets left="10.0" right="-20.0" top="15.0" />
                </HBox.margin>
             </Label>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="Home" textAlignment="JUSTIFY">
@@ -49,7 +49,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets left="150.0" top="22.0" />
+                  <Insets left="300.0" top="22.0" />
                </HBox.margin>
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
@@ -57,7 +57,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets left="150.0" top="22.0" />
+                  <Insets top="22.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -66,15 +66,15 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="customer_data" layoutX="325.0" layoutY="123.0" prefHeight="200.0" prefWidth="631.0">
+            <TableView fx:id="customer_data" layoutX="238.0" layoutY="208.0" prefHeight="96.0" prefWidth="917.0">
               <columns>
-                <TableColumn fx:id="firstname" prefWidth="145.66665649414062" text="Firstname" />
-                <TableColumn fx:id="surname" minWidth="0.0" prefWidth="120.33334350585938" text="Surname" />
-                  <TableColumn fx:id="emailAddress" prefWidth="200.33331298828125" text="Email Address" />
-                  <TableColumn fx:id="customerID" minWidth="0.0" prefWidth="164.66668701171875" text="Customer ID" />
+                <TableColumn fx:id="firstname" prefWidth="202.0" text="Firstname" />
+                <TableColumn fx:id="surname" minWidth="0.0" prefWidth="183.0" text="Surname" />
+                  <TableColumn fx:id="emailAddress" prefWidth="287.0" text="Email Address" />
+                  <TableColumn fx:id="customerID" minWidth="0.0" prefWidth="240.0" text="Customer ID" />
               </columns>
             </TableView>
-            <Button layoutX="649.0" layoutY="428.0" mnemonicParsing="false" onAction="#EditCustomerData" text="Save Changes" />
+            <Button layoutX="615.0" layoutY="342.0" mnemonicParsing="false" onAction="#EditCustomerData" text="Save Changes" />
          </children>
       </AnchorPane>
    </center>
@@ -83,10 +83,10 @@
          <children>
             <ImageView fitHeight="50.0" fitWidth="275.0" layoutX="579.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="slogan.png" />
+                  <Image url="@../../resources/slogan.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="4.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="&lt;&lt; Back" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="4.0" mnemonicParsing="false" onAction="#BackToDashboard" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="&lt;&lt; Back" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
