@@ -40,14 +40,19 @@ public class Main extends Application {
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
-		
+//		
 //		BookingDAO bookingDAO = new BookingDAOImpl();
-//		bookingDAO.addBooking(1, 1, 1);
-//		bookingDAO.addBooking(2, 2, 2);
+//		bookingDAO.addBooking(1, "A01", 1);
+//		bookingDAO.addBooking(2, "A02", 8);
+//		bookingDAO.addBooking(1, "A02", 3);
 //		bookingDAO.addBooking(3, 3, 3);
 //		ObservableList<Booking> ol = bookingDAO.getAllBookings();
 //		Booking spec = bookingDAO.getBooking(2);
 //		bookingDAO.deleteBooking(3);
+//		boolean First = bookingDAO.checkSeatAvailability("A01", 1);
+//		boolean Second = bookingDAO.checkSeatAvailability("A01", 2);
+//		System.out.println("First: " + First + ", Second: " + Second);
+//		bookingDAO.getCustomerBookings(1);
 //		
 		
 		

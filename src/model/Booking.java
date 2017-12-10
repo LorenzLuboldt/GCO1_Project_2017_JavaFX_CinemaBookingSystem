@@ -21,15 +21,15 @@ public class Booking {
 	
 	// variables (correspond to table columns)
 	private IntegerProperty booking_ID;
-	private IntegerProperty cust_ID;
-	private IntegerProperty seat_ID;
-	private IntegerProperty screening_ID;
+	private IntegerProperty cust_ID; // foreign key from 'customer'
+	private StringProperty seat_ID;
+	private IntegerProperty screening_ID; // foreign key from 'screening'
 	
 	// constructor
 	public Booking()	{
 		this.booking_ID = new SimpleIntegerProperty();
 		this.cust_ID = new SimpleIntegerProperty();
-		this.seat_ID = new SimpleIntegerProperty();
+		this.seat_ID = new SimpleStringProperty();
 		this.screening_ID = new SimpleIntegerProperty();
 	}
 	
@@ -72,17 +72,17 @@ public class Booking {
 	// *** BOOKING ID ***
 	
 		// getter
-	public int getSeatID()	{
+	public String getSeatID()	{
 		return seat_ID.get();
 	}
 	
 		// setter
-	public void setSeatID(int seatID)	{
+	public void setSeatID(String seatID)	{
 		this.seat_ID.set(seatID);
 	}
 	
 		// property
-	public IntegerProperty seatIDProperty()	{
+	public StringProperty seatIDProperty()	{
 		return seat_ID;
 	}
 

@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import javafx.beans.property.*; 
 
@@ -26,6 +26,7 @@ public class Film {
 	private IntegerProperty film_id;
 	private StringProperty film_title;
 	private StringProperty film_description;
+	private StringProperty film_image;
 	private StringProperty film_genre;
 	private StringProperty film_cast_members;
 	private StringProperty film_director;
@@ -37,6 +38,7 @@ public class Film {
 		this.film_id = new SimpleIntegerProperty();
 		this.film_title = new SimpleStringProperty();
 		this.film_description = new SimpleStringProperty();
+		this.film_image = new SimpleStringProperty();
 		this.film_genre = new SimpleStringProperty();
 		this.film_cast_members = new SimpleStringProperty();
 		this.film_director = new SimpleStringProperty();
@@ -95,6 +97,24 @@ public class Film {
 	// property
 	public StringProperty filmDescriptionProperty()	{
 		return film_description;
+	}
+	
+	
+	// *** FILM IMAGE ***
+	
+	// getter
+	public String getFilmImage()	{
+		return film_image.get();
+	}
+	
+	// setter
+	public void setFilmImage(String filmImage)	{
+		this.film_image.set(filmImage);
+	}
+	
+	// property
+	public StringProperty filmImageProperty()	{
+		return film_image;
 	}
 	
 	
