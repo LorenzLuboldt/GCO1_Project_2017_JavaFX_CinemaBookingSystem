@@ -52,7 +52,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    	
 		    	booking.setBookingID(results.getInt("booking_ID"));
 		    	booking.setCustID(results.getInt("cust_ID"));
-		    	booking.setSeatID(results.getInt("seat_ID"));
+		    	booking.setSeatID(results.getString("seat_ID"));
 		    	booking.setScreeningID(results.getInt("screening_ID"));
 
 		    	bookingList.add(booking);
@@ -87,6 +87,74 @@ public class BookingDAOImpl implements BookingDAO {
 	    }
 	    return bookingList;
 	  }
+
+	
+	// GET ALL BOOKINGS FOR A SPECIFIC CUSTOMER
+	public ObservableList<Booking> getCustomerBookings(int custID)	{
+		
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+		Statement st = null;
+	    
+	    // Create ObservableList to store customers from DB
+	    ObservableList<Booking> customerBookingList = FXCollections.observableArrayList();
+	    
+	    ResultSet results = null;
+		
+	    try
+	    {
+		    st = connection.createStatement();
+	    	
+			// SQL query, stored in String
+	    	String query = "SELECT * FROM booking WHERE cust_id=" + custID;
+				    
+		    // Run query and save results in ResultSet
+		    results = st.executeQuery(query);
+		    
+		    while(results.next())	{
+		    	
+		    	// create and instantiate a customer object
+		    	Booking booking = new Booking();
+		    	
+		    	booking.setBookingID(results.getInt("booking_ID"));
+		    	booking.setCustID(results.getInt("cust_ID"));
+		    	booking.setSeatID(results.getString("seat_ID"));
+		    	booking.setScreeningID(results.getInt("screening_ID"));
+
+		    	customerBookingList.add(booking);
+		    }
+		 
+	    }
+	    catch( SQLException e )
+	    {
+	    	System.err.println("Exception occured while fetching booking  data: ");
+	    	e.printStackTrace();
+	    }
+
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
+
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	        exe.printStackTrace();
+	      }
+
+	    }
+	    return customerBookingList;
+	 }
+	
+	
 	
 	// *** 2. GET SPECIFIC BOOKING ***
 	public Booking getBooking(int bookingID) {
@@ -102,7 +170,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    st = connection.createStatement();
 	    	
 			// SQL query, stored in String
-	    	String query = "SELECT * FROM booking WHERE booking_id = " + "'" + bookingID + "'";
+	    	String query = "SELECT * FROM booking WHERE booking_id = " + bookingID;
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
@@ -111,7 +179,7 @@ public class BookingDAOImpl implements BookingDAO {
             	booking = new Booking();
             	
             	booking.setCustID(results.getInt("cust_ID"));
-		    	booking.setSeatID(results.getInt("seat_ID"));
+		    	booking.setSeatID(results.getString("seat_ID"));
 		    	booking.setScreeningID(results.getInt("screening_ID"));
             }            
                         
@@ -143,7 +211,7 @@ public class BookingDAOImpl implements BookingDAO {
 	  }
 	
 	// *** 3. ADD BOOKING ***	
-	public void addBooking(int custID, int seatID, int screeningID) 	{
+	public void addBooking(int custID, String seatID, int screeningID) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -155,7 +223,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    
 			// SQL query, stored in String
 	    	String query = "INSERT INTO booking (cust_id, seat_id, screening_id)" 
-			+ "VALUES ('" + custID + "', '" + seatID + "', '" + screeningID + "')";
+			+ "VALUES (" + custID + ", '" + seatID + "', " + screeningID + ")";
 	     
 		    // Run query
 		    st.executeUpdate(query);
@@ -238,7 +306,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "DELETE FROM booking WHERE booking_id=" + "'" + bookingID + "'";
+	    	String query = "DELETE FROM booking WHERE booking_id=" + bookingID;
 				    
 		    // Run query
 		    st.executeUpdate(query);
@@ -265,5 +333,69 @@ public class BookingDAOImpl implements BookingDAO {
 	        e.printStackTrace();
 	      }
 	    }
+	}
+	
+	public boolean checkSeatAvailability(String seatID, int screeningID)	{
+		
+		boolean seatIsAvailable = true; // initialize variable
+		
+		// Establish database connection:
+				Connection connection = SqliteConnection.Connector();
+			    Statement st = null;   
+			    
+			 
+			    try
+			    {
+				    st = connection.createStatement();
+				    
+				    // CHECK IF DATE DOESN'T EXIST IN DATABASE YET
+				    ObservableList<Booking> sameBookingList = FXCollections.observableArrayList();
+				    ResultSet results = null;
+
+				    String test = "SELECT * FROM booking WHERE seat_id='" + seatID + "' AND screening_id=" + screeningID;
+				    
+				    results = st.executeQuery(test);
+				    
+				    while(results.next())	{
+				    	
+				    	// create and instantiate a customer object
+				    	Booking booking = new Booking();
+				    	
+				    	booking.setBookingID(results.getInt("booking_ID"));
+				    	booking.setCustID(results.getInt("cust_ID"));
+				    	booking.setSeatID(results.getString("seat_ID"));
+				    	booking.setScreeningID(results.getInt("screening_ID"));
+	
+				
+				    	sameBookingList.add(booking);
+				    }
+				        
+				   seatIsAvailable = sameBookingList.isEmpty(); // TRUE, if seat is still available for screeningID
+				   
+		
+				   
+			    }
+			    catch( SQLException e )
+			    {
+			    	System.err.println("Exception occured while checking seat availability for seat: " + seatID);
+			    	e.printStackTrace();
+			    }
+
+			    finally
+			    {
+			      try
+			      {
+			        if( connection != null )
+			        {
+			          connection.close();
+			        }
+			      }
+			      catch( Exception e )
+			      {
+			        e.printStackTrace();
+			      }
+			    }
+				   return seatIsAvailable;
+
 	}
 }
