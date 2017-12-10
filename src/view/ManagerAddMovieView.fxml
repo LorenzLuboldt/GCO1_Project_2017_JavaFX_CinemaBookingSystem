@@ -75,6 +75,7 @@
             </Label>
             <TextField fx:id="filmTrailerLinkTextField" layoutX="500.0" layoutY="447.0" prefHeight="51.0" prefWidth="277.0" promptText="Trailer Link" styleClass="text_field_standard" />
             <Button layoutX="976.0" layoutY="583.0" mnemonicParsing="false" onAction="#linkToAddScreeningTimeView" prefHeight="59.0" prefWidth="234.0" text="Add Screening Time" />
+            <Button layoutX="500.0" layoutY="295.0" mnemonicParsing="false" onAction="#uploadFileButtonPushed" text="Upload File" />
          </children></AnchorPane>
    </center>
    <bottom>

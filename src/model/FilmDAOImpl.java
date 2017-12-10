@@ -158,7 +158,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	
 	// *** 3. ADD FILM ***	
-	public void addFilm(String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer) 	{
+	public void addFilm(String filmTitle, String filmDescription, String filmImage, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -293,5 +293,56 @@ public class FilmDAOImpl implements FilmDAO {
 	      }
 	    }
 	}
+	
+	public String getFilmImagePath(int filmID)	{
+		String imagePath = null;
+		
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+	    Statement st = null;
+	    
+	    ResultSet results = null;
+	    
+	    try	{
+		    st = connection.createStatement();
+	    	
+	    	
+			// SQL query, stored in String
+	    	String query = "SELECT film_image FROM film WHERE film_id =" + filmID;
+				    
+		    // Run query and save results in ResultSet
+		    results = st.executeQuery(query);
+		    
+            while(results.next())	{
+            	imagePath = (results.getString("film_image"));
+            }
+                        
+        } catch (SQLException e) {
+            System.err.println("While searching the film image for " + filmID + "an error occured.");
+            e.printStackTrace();
+        }
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
+
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	    	  System.out.println("search Film Image --> error has been caught");
+	        exe.printStackTrace();
+	      }
+
+	    }
+	    return imagePath;
+	  }
 }
 

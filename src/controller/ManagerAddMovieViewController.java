@@ -5,7 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.channels.FileChannel;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -30,6 +34,8 @@ public class ManagerAddMovieViewController implements Initializable {
 	
 	
 	FilmDAO filmDAO = new FilmDAOImpl();
+	File selectedFile;
+	boolean checkIfFileChosen = false;
 	
 	// @Lorenz: Instance variables to choose files
 	@FXML private Button chooseFile;
@@ -41,10 +47,10 @@ public class ManagerAddMovieViewController implements Initializable {
 		@FXML private TextField filmActorsTextField;
 		@FXML private TextField filmDirectorTextField;
 		@FXML private ComboBox<String> filmGenreComboBox;
-		@FXML private ListView fileList;
+		@FXML private ListView<File> fileList;
 		@FXML private TextField filmTrailerLinkTextField;
 		
-		
+	
 	
 	@FXML
 	private Label userLbl2;
@@ -53,16 +59,15 @@ public class ManagerAddMovieViewController implements Initializable {
 	public void chooseFile(ActionEvent event) {
 		
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File("C:\\Users\\Lorenz\\Desktop\\repos\\GCO1_Project_2017_JavaFX_CinemaBookingSystem\\resources"));
+		fileChooser.setInitialDirectory(new File("/Users/Michael/git/GCO1_Project_2017_JavaFX_CinemaBookingSystem/resources/Film Posters"));
 		fileChooser.getExtensionFilters().addAll(
 
-				new ExtensionFilter("Image Files", "*. png"));
-		File selectedFile = fileChooser.showOpenDialog(null);
-		
-		System.out.println("1");
+		new ExtensionFilter("Image Files", "*.png"));
+		selectedFile = fileChooser.showOpenDialog(null);
 		
 		if(selectedFile != null) {
-			fileList.getItems().add(selectedFile.getName());
+			fileList.getItems().add(selectedFile);
+			checkIfFileChosen = true;
 		}
 		else {
 			System.out.println("File is not valid");
@@ -71,11 +76,15 @@ public class ManagerAddMovieViewController implements Initializable {
 		
 	}
 	
+
+	
 	// @Lorenz: method to enable manager to add film to database
 	public void addFilmButtonPushed(ActionEvent event)	{
 		
-		// filmDAO method adds film to DB. 
-		// Parameters are the user inputs from the text fields on the screen
+		// Upload Film poster and copy to destination
+		uploadFile();
+		
+		// Add Film object to DB
 		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
 
 	}
@@ -154,4 +163,63 @@ public class ManagerAddMovieViewController implements Initializable {
 		filmGenreComboBox.setItems(genreList);
 	}
 	
+	
+	// _________________________SUPPORTING METHODS____________________________________
+	
+	// upload file method
+	public void uploadFile()	{
+		System.out.println(checkIfFileChosen);
+		
+		if(checkIfFileChosen = true)	{
+			// Obtain source path
+			String sourcePath = selectedFile.getPath();
+			System.out.println(sourcePath);
+			
+			File source = new File(sourcePath);
+			
+			// Create destination path for the copied file
+			String firstPartOfPath = "/Users/Michael/Desktop/";
+			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
+			String lastPartOfPath = ".png";
+			String imgPath = firstPartOfPath + imgID + lastPartOfPath;
+			System.out.println("image path: " + imgPath);
+			File dest = new File(imgPath);
+			
+			// Copy the file from source path to destination path
+			try {
+				copyFileUsingFileChannels(source, dest);
+			} catch (IOException e) {
+				System.out.println("An IO Exeception was detected when copying files.");
+				e.printStackTrace();
+			}
+			System.out.println("File Copied");	
+			
+			// Add destination path to corresponding film table
+			
+			// Display 'Upload successful' message to user
+		}
+		else {
+			System.out.println("### Display to user: PLEASE SELECT PNG FILE TO UPLOAD. ###");
+		}
+	}
+	
+	// copy file method
+	public void copyFileUsingFileChannels(File source, File dest) throws IOException {
+		FileChannel inputChannel = null;
+		FileChannel outputChannel = null;
+		try {
+			inputChannel = new FileInputStream(source).getChannel();
+			outputChannel = new FileOutputStream(dest).getChannel();
+			outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+		} catch (IOException e) {
+			System.err.print(e);
+			
+		}
+		finally{
+			inputChannel.close();
+			outputChannel.close();
+		}
+	}
+
 }
+	
