@@ -59,7 +59,7 @@ public class ManagerAddMovieViewController implements Initializable {
 	public void chooseFile(ActionEvent event) {
 		
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File("/Users/Michael/git/GCO1_Project_2017_JavaFX_CinemaBookingSystem/resources/Film Posters"));
+		fileChooser.setInitialDirectory(new File("/Users/Michael/Desktop"));
 		fileChooser.getExtensionFilters().addAll(
 
 		new ExtensionFilter("Image Files", "*.png"));
@@ -180,8 +180,8 @@ public class ManagerAddMovieViewController implements Initializable {
 			
 			// Create destination path for the copied file			
 			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
-			imgPath = "/resources/" + imgID + ".png";
-			File dest = new File(System.getProperty("user.dir") + imgPath);
+			imgPath = imgID + ".png";
+			File dest = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 			
 			// Copy the file from source path to destination path
 			try {

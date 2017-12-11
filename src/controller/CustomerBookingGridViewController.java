@@ -43,22 +43,6 @@ public class CustomerBookingGridViewController implements Initializable{
 	// Create instance variables for seating map
 	@FXML
 	private GridPane seatingMap;
-//	private ImageView seat_A1 = new ImageView("http://www.pvhc.net/img5/qgzhvcgxvgymswayxxdb.jpg");
-//	private ImageView seat_A2;
-//	private ImageView seat_A3;
-//	private ImageView seat_A4;
-//	private ImageView seat_B1;
-//	private ImageView seat_B2;
-//	private ImageView seat_B3;
-//	private ImageView seat_B4;
-//	private ImageView seat_C1;
-//	private ImageView seat_C2;
-//	private ImageView seat_C3;
-//	private ImageView seat_C4;
-//	private ImageView seat_D1;
-//	private ImageView seat_D2;
-//	private ImageView seat_D3;
-//	private ImageView seat_D4;
 	
 	// Create other instance variables
 	@FXML
@@ -157,10 +141,20 @@ public class CustomerBookingGridViewController implements Initializable{
 				
 				 seatingMap.getChildren().addAll(seatSelected);
 		    	 
-		    	 int seatID = 15;
+		    	 String seatID = computeSeatID(col, row);
 		    	 System.out.println("User selected seat: " + seatID);
 		 	}
 		});   // closes EventHandler 	     
+	}
+	
+	public String computeSeatID(int col, int row)	{
+		
+		String seatID; // return variable
+		
+		switch(row)	{
+		case 1 : seatID = "A1";
+			break;
+		case 2 : 		
 	}
 	
 	// Event Listener on Button.onAction
