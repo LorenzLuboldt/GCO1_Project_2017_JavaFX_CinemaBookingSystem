@@ -178,13 +178,10 @@ public class ManagerAddMovieViewController implements Initializable {
 			
 			File source = new File(sourcePath);
 			
-			// Create destination path for the copied file
-			String firstPartOfPath = "/Users/Michael/Desktop/";
+			// Create destination path for the copied file			
 			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
-			String lastPartOfPath = ".png";
-			imgPath = firstPartOfPath + imgID + lastPartOfPath;
-			System.out.println("image path: " + imgPath);
-			File dest = new File(imgPath);
+			imgPath = "/resources/" + imgID + ".png";
+			File dest = new File(System.getProperty("user.dir") + imgPath);
 			
 			// Copy the file from source path to destination path
 			try {
@@ -194,10 +191,8 @@ public class ManagerAddMovieViewController implements Initializable {
 				e.printStackTrace();
 			}
 			System.out.println("File Copied");	
-			
-			// Add destination path to corresponding film table
-			
-			// Display 'Upload successful' message to user
+						
+			// TODO: Display 'Upload successful' message to user
 		}
 		else {
 			System.out.println("### Display to user: PLEASE SELECT PNG FILE TO UPLOAD. ###");
