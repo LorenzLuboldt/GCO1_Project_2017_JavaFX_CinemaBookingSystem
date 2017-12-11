@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,12 +13,14 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -28,13 +31,14 @@ import model.Film;
  * References for seating map: 
  * https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html
  * https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+ * https://stackoverflow.com/questions/25550518/add-eventhandler-to-imageview-contained-in-tilepane-contained-in-vbox
  * 
  * @author Michael
  *
  */
 
 
-public class CustomerBookingGridViewController {
+public class CustomerBookingGridViewController implements Initializable{
 	
 	// Create instance variables for seating map
 	@FXML
@@ -60,33 +64,105 @@ public class CustomerBookingGridViewController {
 	@FXML
 	private Label userLbl;
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 	public void loadSeatsButtonPushed() throws NullPointerException	{
 		System.out.println("___________________LOAD SEATS BUTTON PUSHED:_____________________");
 		
-		seatingMap.getColumnConstraints().add(new ColumnConstraints(75)); // column 1 is 100 wide
-	    seatingMap.getColumnConstraints().add(new ColumnConstraints(75));
+		// Create and build all seats
+		ImageView seatA1 = new ImageView();
+		buildSeat(seatA1, 1, 1);
 		
-		for(int col = 1; col <= 4; col++)	
-		{
-			for(int row = 1; row <= 4; row++)	
-			{    
-				
-				// load the image
-				Image image = new Image("/../bin/icons/seat-free.png");		
-				ImageView seat = new ImageView();
-				seat.setImage(image);
-				
-			    GridPane.setRowIndex(seat, row);
-			    GridPane.setColumnIndex(seat, col);
-			    
-				 // Add children to seating map
-				 seatingMap.getChildren().addAll(seat);
-				 System.out.println("Seat added for: " + col + "," + row);
-			}
-		}
+		ImageView seatA2 = new ImageView();
+		buildSeat(seatA2, 1, 2);
 		
+		ImageView seatA3 = new ImageView();
+		buildSeat(seatA3, 1, 3);
+		
+		ImageView seatA4 = new ImageView();
+		buildSeat(seatA4, 1, 4);
+		
+		ImageView seatB1 = new ImageView();
+		buildSeat(seatB1, 2, 1);
+		
+		ImageView seatB2 = new ImageView();
+		buildSeat(seatB2, 2, 2);
+		
+		ImageView seatB3 = new ImageView();
+		buildSeat(seatB3, 2, 3);
+		
+		ImageView seatB4 = new ImageView();
+		buildSeat(seatB4, 2, 4);
+		
+		ImageView seatC1 = new ImageView();
+		buildSeat(seatC1, 3, 1);
+		
+		ImageView seatC2 = new ImageView();
+		buildSeat(seatC2, 3, 2);
+		
+		ImageView seatC3 = new ImageView();
+		buildSeat(seatC3, 3, 3);
+		
+		ImageView seatC4 = new ImageView();
+		buildSeat(seatC4, 3, 4);
+		
+		ImageView seatD1 = new ImageView();
+		buildSeat(seatD1, 4, 1);
+		
+		ImageView seatD2 = new ImageView();
+		buildSeat(seatD2, 4, 2);
+		
+		ImageView seatD3 = new ImageView();
+		buildSeat(seatD3, 4, 3);
+		
+		ImageView seatD4 = new ImageView();
+		buildSeat(seatD4, 4, 4);
+				
 	}
+	
+	public void buildSeat(final ImageView seatFree, int col, int row)	{
+		Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
+		seatFree.setImage(seatFreeImg);
+		
+		GridPane.setRowIndex(seatFree, row);
+		GridPane.setColumnIndex(seatFree, col);
+		
+		seatingMap.getChildren().addAll(seatFree);
+		System.out.println("Seat added ADDITIONALLY");
+		
+		// Make seat icon clickable
+		seatFree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 
+		    	 // Remove unselected seat icon
+		    	 seatingMap.getChildren().remove(seatFree);
+		    	 
+		    	 // Add selected seat icon
+			   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
+			   	 ImageView seatSelected = new ImageView();
+			   	 seatSelected.setImage(seatSelectedImg);
+			   	 System.out.println("SET TO NEW SEAT");
+			   
+				 GridPane.setRowIndex(seatSelected,row);
+				 GridPane.setColumnIndex(seatSelected, col);
+				
+				 seatingMap.getChildren().addAll(seatSelected);
+		    	 
+		    	 System.out.println("User selected seat.");
+		    	 
+		    	 int seatID = 15;
+		    	 System.out.println("User selected seat: " + seatID);
+		 	}
+		});   // closes EventHandler 	     
+	}
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void goToBookingsHistory(ActionEvent event) {
@@ -172,6 +248,5 @@ public class CustomerBookingGridViewController {
 			
 		}
 	}
-	
 	
 }
