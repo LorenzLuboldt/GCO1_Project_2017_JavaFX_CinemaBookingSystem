@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,7 +26,11 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Booking;
+import model.BookingDAO;
+import model.BookingDAOImpl;
 import model.Film;
+import model.Selection;
 import model.SelectionDAO;
 import model.SelectionDAOImpl;
 
@@ -50,7 +55,11 @@ public class CustomerBookingGridViewController implements Initializable{
 	@FXML
 	private Label userLbl;
 	
+	static String seatID;
+	
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -66,6 +75,11 @@ public class CustomerBookingGridViewController implements Initializable{
 		
 	// Loads new seating map
 	public void loadSeatingMap() throws NullPointerException	{
+		
+		// Check for booked seats --> SCREENING ID
+		
+		
+		
 		
 		// Delete all existing seat selections from seat table
 		selectionDAO.deleteSelectedSeat();
@@ -219,7 +233,37 @@ public class CustomerBookingGridViewController implements Initializable{
 	
 	// Event Listener on Button.onAction
 	@FXML
-	public void goToBookingsHistory(ActionEvent event) {
+	public void confirmBookingButtonPushed(ActionEvent event) {
+		
+		// Retrieve seat IDs stored in selection table
+		ObservableList<Selection> selectionList = selectionDAO.getSelectedSeats();
+		int index = selectionList.size();
+		
+		for(int i = 0; i < index; i++)
+		{
+			BookingDAO b = new BookingDAOImpl();
+			Booking bo = new Booking();
+			
+			
+			Selection s = new Selection();
+			
+//			TableView screeningsTable = new TableView();
+//			int screeningId;
+//			
+//			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
+			
+			
+			s = selectionList.get(i);
+			seatID = s.getSeatID();
+			
+//			b.addBooking(1, seatID, screeningID);
+		}
+		
+		
+		
+		// Clean up selection table for next booking
+		selectionDAO.deleteSelectedSeat();
+		
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
