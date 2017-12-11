@@ -11,17 +11,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -38,7 +35,7 @@ public class CustomerFilmDetailsViewController implements Initializable {
 	private ImageView filmImage = new ImageView();
 
 	@FXML
-	private ListView allFilmsList;
+	private ListView<Film> allFilmsList;
 	FilmDAO filmDAO = new FilmDAOImpl();
 	
 	
