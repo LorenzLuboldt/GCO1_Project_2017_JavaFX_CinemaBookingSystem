@@ -67,12 +67,16 @@ public class CustomerBookingGridViewController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+		loadSeatingMap();
 	}
 	
 	
-	
-	public void loadSeatsButtonPushed() throws NullPointerException	{
+	public void deselectSeatsButtonPushed()	{
+		loadSeatingMap();
+		System.out.println("User deselected seat.");
+	}
+		
+	public void loadSeatingMap() throws NullPointerException	{
 		System.out.println("___________________LOAD SEATS BUTTON PUSHED:_____________________");
 		
 		// Create and build all seats
@@ -134,7 +138,6 @@ public class CustomerBookingGridViewController implements Initializable{
 		GridPane.setColumnIndex(seatFree, col);
 		
 		seatingMap.getChildren().addAll(seatFree);
-		System.out.println("Seat added ADDITIONALLY");
 		
 		// Make seat icon clickable
 		seatFree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -148,14 +151,11 @@ public class CustomerBookingGridViewController implements Initializable{
 			   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
 			   	 ImageView seatSelected = new ImageView();
 			   	 seatSelected.setImage(seatSelectedImg);
-			   	 System.out.println("SET TO NEW SEAT");
 			   
 				 GridPane.setRowIndex(seatSelected,row);
 				 GridPane.setColumnIndex(seatSelected, col);
 				
 				 seatingMap.getChildren().addAll(seatSelected);
-		    	 
-		    	 System.out.println("User selected seat.");
 		    	 
 		    	 int seatID = 15;
 		    	 System.out.println("User selected seat: " + seatID);

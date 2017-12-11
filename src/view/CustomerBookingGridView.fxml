@@ -67,7 +67,7 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="770.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadSeatsButtonPushed" style="-fx-background-color: red;" text="Load Seats" />
+            <Button layoutX="770.0" layoutY="14.0" mnemonicParsing="false" onAction="#deselectSeatsButtonPushed" style="-fx-background-color: red;" text="Deselect Seats" />
             <Button layoutX="770.0" layoutY="544.0" mnemonicParsing="false" onAction="#goToBookingsHistory" text="Confirm Booking" />
             <GridPane fx:id="seatingMap" layoutX="113.0" layoutY="44.0">
               <columnConstraints>
