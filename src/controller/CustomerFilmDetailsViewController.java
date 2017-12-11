@@ -1,9 +1,17 @@
 package controller;
 
+
+/**
+ * 
+ * References: http://www.java2s.com/Code/Java/JavaFX/UsingImageViewtodisplayimage.htm
+ * 
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -135,10 +143,10 @@ public class CustomerFilmDetailsViewController implements Initializable {
 		// Create film object and retrieve path to image
 		FilmDAO filmDAO = new FilmDAOImpl();
 		Film film = filmDAO.getFilm("Harry Potter");
-		String filmPath = film.getFilmImage();		
+		String imgPath = film.getFilmImage();
 		
 		// Set ImageView to display image
-		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(filmPath));
+		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(System.getProperty("user.dir") + imgPath));
 		filmImage.setImage(imageFile);
 
 	}
