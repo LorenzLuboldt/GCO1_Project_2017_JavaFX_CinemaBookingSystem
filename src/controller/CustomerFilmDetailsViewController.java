@@ -144,10 +144,14 @@ public class CustomerFilmDetailsViewController implements Initializable {
 		FilmDAO filmDAO = new FilmDAOImpl();
 		Film film = filmDAO.getFilm("Harry Potter");
 		String imgPath = film.getFilmImage();
+		System.out.println("LOADED SUCCESSFULLY.");
 		
 		// Set ImageView to display image
 		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(System.getProperty("user.dir") + imgPath));
+		System.out.println("WAS LOADED SUCCESSFULLY.");
 		filmImage.setImage(imageFile);
+		System.out.println("IMAGE WAS LOADED SUCCESSFULLY.");
+		System.out.println("FILM IMAGE WAS LOADED SUCCESSFULLY.");
 
 	}
 

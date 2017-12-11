@@ -17,6 +17,7 @@ import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 
 public class Main extends Application {
@@ -43,6 +44,9 @@ public class Main extends Application {
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
+		
+		
+		
 //		
 //		BookingDAO bookingDAO = new BookingDAOImpl();
 //		bookingDAO.addBooking(1, "A01", 1);
