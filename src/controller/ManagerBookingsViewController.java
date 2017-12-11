@@ -9,14 +9,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.FilmDAO;
+import model.FilmDAOImpl;
 
 public class ManagerBookingsViewController implements Initializable {
 	
 	@FXML
 	private Label userLbl2;
+	@FXML
+	private Button downloadAllBookingData;
+	
+	@Override
+public void initialize(URL location, ResourceBundle resources) {
+
+	}
 
 	public void GetManager(String user) {
 		// TODO Auto-generated method stub
@@ -55,13 +65,27 @@ public class ManagerBookingsViewController implements Initializable {
 		
 	}
 	}
-	@Override
-public void initialize(URL location, ResourceBundle resources) {
+	
+	public void downloadAllBookingData(ActionEvent event) {
+	
+		java.sql.ResultSet myResultSet = getResultSetFromSomewhere();
+		writer.writeAll(myResultSet, true);
 		
+		
+		downloadAllBookingData = new Button();
+		downloadAllBookingData.setOnAction(e ->(
+				
+				ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
-
+				)
+				
+		
+				);
+		
+		
 	}
-
-		
+	
+	
+	
 	
 }

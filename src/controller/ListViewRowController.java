@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,9 +81,12 @@ public class ListViewRowController {
 		String imgPath = film.getFilmImage();
 		System.out.println(6);
 	// Set ImageView to display image
-		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(System.getProperty("user.dir") + imgPath + film.getFilmImage()));
-		filmPoster.setImage(imageFile);
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		System.out.println(7);
+		Image img = new Image(file.toURI().toString());
+		filmPoster.setImage(img);
+		System.out.println(33);
 		
 	}
 	
