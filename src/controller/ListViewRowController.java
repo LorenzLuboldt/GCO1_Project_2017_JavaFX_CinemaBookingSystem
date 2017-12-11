@@ -50,6 +50,8 @@ public class ListViewRowController implements Initializable {
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
 	public void populateCells() {
 		
+		
+		
 	}
 	
 	
