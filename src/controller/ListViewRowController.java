@@ -1,19 +1,18 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
 
@@ -24,24 +23,41 @@ import model.FilmDAOImpl;
  *
  */
 
-public class ListViewRowController implements Initializable {
+public class ListViewRowController {
 
 	
 	//Declares elements of the list view row layout
 	@FXML
-	private Label filmTitle;
-	@FXML
-	private Label filmGenre;
-	@FXML
-	private ImageView filmPoster;
-	@FXML
-	private Button showFilmDetails;
+	AnchorPane container;
 
+	public AnchorPane getContainer() {
+		return container;
+	}
+
+	@FXML
+	Label filmTitle;
+	@FXML
+	Label filmGenre;
+	@FXML
+	ImageView filmPoster;
+	@FXML
+	Button showFilmDetails;
+	
+	private Film film;
+	
 	//Creates a Film object
 	FilmDAO filmDAO = new FilmDAOImpl();
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	
+	public Film getFilm() {
+		return film;
+	}
+
+	public void setFilm(Film film) {
+		this.film = film;
+	}
+
+	public void initialize() {
 
 		showFilmDetails.setOnAction(event -> showMovieDetailPage(event));
 		
@@ -49,6 +65,23 @@ public class ListViewRowController implements Initializable {
 	
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
 	public void populateCells() {
+		System.out.println(2);
+	// Sets 
+		Film film = filmDAO.getFilm("a");
+	//Fills film title label with corresponding film title
+		System.out.println(3);
+		filmTitle.setText(film.getFilmTitle());
+	//Fills genre label with corresponding film genre
+		System.out.println(4);
+		filmGenre.setText(film.getFilmGenre());	
+	//Fills imageView with corresponding image from local resource folder
+		System.out.println(5);
+		String imgPath = film.getFilmImage();
+		System.out.println(6);
+	// Set ImageView to display image
+		final Image imageFile = new Image(CustomerFilmDetailsViewController.class.getResourceAsStream(System.getProperty("user.dir") + imgPath + film.getFilmImage()));
+		filmPoster.setImage(imageFile);
+		System.out.println(7);
 		
 	}
 	
