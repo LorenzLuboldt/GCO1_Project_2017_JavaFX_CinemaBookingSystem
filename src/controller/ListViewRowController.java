@@ -78,7 +78,8 @@ public class ListViewRowController {
 		filmGenre.setText(film.getFilmGenre());	
 	//Fills imageView with corresponding image from local resource folder
 		System.out.println(5);
-		String imgPath = film.getFilmImage();
+		int filmID = film.getFilmId();
+		String imgPath = filmDAO.getFilmImagePath(filmID);
 		System.out.println(6);
 	// Set ImageView to display image
 		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);

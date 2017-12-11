@@ -235,34 +235,34 @@ public class CustomerBookingGridViewController implements Initializable{
 	@FXML
 	public void confirmBookingButtonPushed(ActionEvent event) {
 		
-		// Retrieve seat IDs stored in selection table
-		ObservableList<Selection> selectionList = selectionDAO.getSelectedSeats();
-		int index = selectionList.size();
-		
-		for(int i = 0; i < index; i++)
-		{
-			BookingDAO b = new BookingDAOImpl();
-			Booking bo = new Booking();
-			
-			
-			Selection s = new Selection();
-			
-//			TableView screeningsTable = new TableView();
-//			int screeningId;
+//		// Retrieve seat IDs stored in selection table
+//		ObservableList<Selection> selectionList = selectionDAO.getSelectedSeats();
+//		int index = selectionList.size();
+//		
+//		for(int i = 0; i < index; i++)
+//		{
+//			BookingDAO b = new BookingDAOImpl();
+//			Booking bo = new Booking();
 //			
-//			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
-			
-			
-			s = selectionList.get(i);
-			seatID = s.getSeatID();
-			
-//			b.addBooking(1, seatID, screeningID);
-		}
-		
-		
-		
-		// Clean up selection table for next booking
-		selectionDAO.deleteSelectedSeat();
+//			
+//			Selection s = new Selection();
+//			
+////			TableView screeningsTable = new TableView();
+////			int screeningId;
+////			
+////			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
+//			
+//			
+//			s = selectionList.get(i);
+//			seatID = s.getSeatID();
+//			
+////			b.addBooking(1, seatID, screeningID);
+//		}
+//		
+//		
+//		
+//		// Clean up selection table for next booking
+//		selectionDAO.deleteSelectedSeat();
 		
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
