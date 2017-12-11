@@ -26,6 +26,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
+import model.SelectionDAO;
+import model.SelectionDAOImpl;
 
 /**
  * References for seating map: 
@@ -48,6 +50,8 @@ public class CustomerBookingGridViewController implements Initializable{
 	@FXML
 	private Label userLbl;
 	
+	SelectionDAO selectionDAO = new SelectionDAOImpl();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -62,7 +66,9 @@ public class CustomerBookingGridViewController implements Initializable{
 		
 	// Loads new seating map
 	public void loadSeatingMap() throws NullPointerException	{
-		System.out.println("___________________LOAD SEATS BUTTON PUSHED:_____________________");
+		
+		// Delete all existing seat selections from seat table
+		selectionDAO.deleteSelectedSeat();
 		
 		// Create and build all seats
 		ImageView seatA1 = new ImageView();
@@ -143,7 +149,9 @@ public class CustomerBookingGridViewController implements Initializable{
 				
 				 seatingMap.getChildren().addAll(seatSelected);
 		    	 
+				 // The seat ID is computed and stored in the selection table until the booking is confirmed
 		    	 String seatID = computeSeatID(col, row);
+		    	 selectionDAO.addSelectedSeat(seatID);
 		    	 System.out.println("User selected seat: " + seatID);
 		 	}
 		});   // closes EventHandler 	     
