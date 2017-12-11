@@ -15,6 +15,9 @@ import model.FilmDAOImpl;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
+import model.Selection;
+import model.SelectionDAO;
+import model.SelectionDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -45,7 +48,13 @@ public class Main extends Application {
 		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
 		
-		
+//		SelectionDAO s = new SelectionDAOImpl();
+//		Selection ss = new Selection();
+//		
+//		s.addSelectedSeat("A1");
+//		s.addSelectedSeat("A2");
+//		s.getSelectedSeats();
+//		s.deleteSelectedSeat();
 		
 //		
 //		BookingDAO bookingDAO = new BookingDAOImpl();

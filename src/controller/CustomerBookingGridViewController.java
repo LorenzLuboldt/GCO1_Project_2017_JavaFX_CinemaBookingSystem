@@ -60,6 +60,7 @@ public class CustomerBookingGridViewController implements Initializable{
 		System.out.println("User deselected seat.");
 	}
 		
+	// Loads new seating map
 	public void loadSeatingMap() throws NullPointerException	{
 		System.out.println("___________________LOAD SEATS BUTTON PUSHED:_____________________");
 		
@@ -114,6 +115,7 @@ public class CustomerBookingGridViewController implements Initializable{
 				
 	}
 	
+	// Builds the full functionality of each seat icon
 	public void buildSeat(final ImageView seatFree, int col, int row)	{
 		Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
 		seatFree.setImage(seatFreeImg);
@@ -147,14 +149,64 @@ public class CustomerBookingGridViewController implements Initializable{
 		});   // closes EventHandler 	     
 	}
 	
+	// Returns a seat ID to be stored in the selection cache
 	public String computeSeatID(int col, int row)	{
 		
-		String seatID; // return variable
+		String seatID = null; // return variable
 		
-		switch(row)	{
-		case 1 : seatID = "A1";
-			break;
-		case 2 : 		
+		if(col == 1)
+		{
+			switch(row)	{
+			case 1 : seatID = "A1";	
+				break;
+			case 2 : seatID = "A2";
+				break;
+			case 3 : seatID = "A3";
+				break;
+			case 4 : seatID = "A4";
+				break;
+			}
+		}
+		else if (col == 2)
+		{
+			switch(row)	{
+			case 1 : seatID = "B1";	
+				break;
+			case 2 : seatID = "B2";
+				break;
+			case 3 : seatID = "B3";
+				break;
+			case 4 : seatID = "B4";
+				break;
+			}
+		}
+		else if (col == 3)
+		{
+			switch(row)	{
+			case 1 : seatID = "C1";	
+				break;
+			case 2 : seatID = "C2";
+				break;
+			case 3 : seatID = "C3";
+				break;
+			case 4 : seatID = "C4";
+				break;
+			}
+		}	
+		else if (col == 4)
+		{
+			switch(row)	{
+			case 1 : seatID = "D1";	
+				break;
+			case 2 : seatID = "D2";
+				break;
+			case 3 : seatID = "D3";
+				break;
+			case 4 : seatID = "D4";
+				break;
+			}
+		}	
+		return seatID;
 	}
 	
 	// Event Listener on Button.onAction
