@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="150.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MovieListViewRowController">
+<AnchorPane prefHeight="150.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScreeningListViewRowController">
    <children>
       <HBox fx:id="container" prefHeight="150.0" prefWidth="900.0" spacing="10.0">
          <children>
@@ -26,7 +26,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="filmActors" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="336.0" text="13/16 Seats Booked" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP" />
+                  <Label fx:id="seatAvailability" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="336.0" text="13/16 Seats Booked" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP" />
                </children>
                <HBox.margin>
                   <Insets />

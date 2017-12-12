@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -60,7 +60,7 @@ public class ScreeningListViewRowController {
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 	
-	public Screening getScreening() {
+	public Screening setScreening(Screening screening) {
 		return screening;
 	}
 
@@ -73,12 +73,25 @@ public class ScreeningListViewRowController {
 	}
 	
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
-	public void populateCells() {
-		Film film = screening.getFilmTitle();
+	public void populateCells() throws SQLException, ClassNotFoundException {
+		System.out.println(18);
+
+		String filmtitle = screening.getFilmTitle();		
+		System.out.println(filmtitle);
+		
+		System.out.println(19);
+
+		Film film = filmDAO.getFilm(filmtitle);
+		System.out.println(20);
+
 	//Fills film title label with corresponding film title
 		filmTitle.setText(film.getFilmTitle());
+		System.out.println(21);
+
 	//Fills genre label with corresponding film genre
 		screeningDate.setText(screening.getDateID() + "," + screening.getTimeString());	
+		System.out.println(22);
+
 
 	//Fills director label with corresponding film director
 		seatAvailability.setText(screening.getAvailableSeats() + "/16 Seats available");	

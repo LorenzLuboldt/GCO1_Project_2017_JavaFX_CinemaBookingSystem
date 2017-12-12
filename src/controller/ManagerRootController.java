@@ -17,7 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.ListViewCellScreening;
 import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 
 
 
@@ -30,11 +33,44 @@ public class ManagerRootController implements Initializable {
 	private List<Screening> screeningList = new ArrayList<>();
 	private ObservableList<Screening> observableList = FXCollections.observableArrayList();
 	
+	//Creates a Screening object
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		setListView();
+	}
+	
+	/**
+	 * Purpose: Setsup Movie ListView displaying all current Movies with the custom ListRows
+	 * Source: https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml
+	 * @author Lorenz
+	 */
+	private void setListView() {
+		
+	//Retrieve all film entries from the database
+	try {
+		screeningList = screeningDAO.getAllScreenings();
+		}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+	//Fill the Observable List with items pulled from the database
+	
+	observableList.setAll(screeningList);
+	
+	//Fill ListView with content
+	
+	allScreeningList.setItems(observableList);
+	
+	//Allow for custom display of the ListView Items 
+
+	allScreeningList.setCellFactory(ListView -> new ListViewCellScreening());
+
 		
 	}
+	
 	public void GetManager(String user) {
 		// TODO Auto-generated method stub
 		userLbl2.setText(user);
