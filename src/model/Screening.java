@@ -33,8 +33,9 @@ public class Screening {
 	private StringProperty  time_string; // time saved as "4 pm" etc.
 	private StringProperty  film_title; // foreign key corresponds to 'Film' table
 	private IntegerProperty available_seats; // keeps count of the number of available seats for a particular screening
-	private StringProperty  available_info; 	// availableInfo: "8 of 16"
-	private StringProperty  occupancy_rate; 		// occupancy: "80%"
+	private StringProperty  available_info; 	// availableInfo: "8 of 16" --> NOT IMPLEMENTED IN METHODS AND DB
+	private StringProperty  occupancy_rate; 		// occupancy: "80%" --> --> NOT IMPLEMENTED IN METHODS AND DB
+	private StringProperty ticket_status;	// returns "Tickets available" or "Sold out"
 
 	
 	// constructor
@@ -50,6 +51,7 @@ public class Screening {
 		this.available_seats = new SimpleIntegerProperty();
 		this.available_info = new SimpleStringProperty();
 		this.occupancy_rate = new SimpleStringProperty();
+		this.ticket_status = new SimpleStringProperty();
 	}
 	
 	// *** SCREENING ID ***
@@ -237,6 +239,23 @@ public class Screening {
 			// property
 		public StringProperty occupancyRate()	{
 			return occupancy_rate;
-		}	
+		}
+		
+		
+		// *** TICKET STATUS***
+		// getter
+		public String getTicketStatus()	{
+			return ticket_status.get();
+		}
+		
+			// setter
+		public void setTicketStatus(String ticketStatus)	{
+			this.ticket_status.set(ticketStatus);
+		}
+		
+			// property
+		public StringProperty ticketStatus()	{
+			return ticket_status;
+		}
 }
 

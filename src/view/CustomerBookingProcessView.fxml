@@ -68,18 +68,23 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker layoutX="205.0" layoutY="61.0" promptText="Select Date..." />
-            <Label layoutX="136.0" layoutY="25.0" text="When do you want to go to the cinema?" textFill="WHITE">
+            <DatePicker layoutX="378.0" layoutY="96.0" promptText="Select Date..." />
+            <Label layoutX="297.0" layoutY="47.0" text="When do you want to go to the cinema?" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="227.0" layoutY="117.0" mnemonicParsing="false" text="Show films" />
-            <TableView layoutX="188.0" layoutY="241.0" prefHeight="200.0" prefWidth="200.0">
+            <Button layoutX="400.0" layoutY="152.0" mnemonicParsing="false" text="Show films" />
+            <TableView layoutX="361.0" layoutY="406.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
               </columns>
             </TableView>
+            <Label layoutX="334.0" layoutY="329.0" text="Screenings on your selected date:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </center>
    <bottom>

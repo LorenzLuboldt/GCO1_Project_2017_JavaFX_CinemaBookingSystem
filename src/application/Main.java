@@ -96,7 +96,9 @@ public class Main extends Application {
 //		
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
-//		ObservableList<Screening> ol = screeningDAO.getUpcomingScreenings();
+//		ObservableList<Screening> ol = screeningDAO.searchScreeningsByDate("2017-12-20");
+//		int size = ol.size();
+//		System.out.println(size);
 //		
 //		Booking first = ol.get(0);
 //		Booking second = ol.get(1);

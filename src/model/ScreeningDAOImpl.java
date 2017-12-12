@@ -313,7 +313,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		  }
 	
 	
-		// *** X. SEARCH SCREENINGS BY DATE ***
+		// *** SEARCH SCREENINGS BY DATE ***
 				public ObservableList<Screening> searchScreeningsByDate(String dateID)	{
 					
 					// Establish database connection:
@@ -330,7 +330,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    st = connection.createStatement();
 				    	
 						// SQL query, stored in String
-				    	String query = "SELECT * FROM screening WHERE date_id='" + dateID + "'";
+				    	String query = "SELECT screening_id, time_string, film_title, ticket_status FROM screening WHERE date_id='" + dateID + "' ORDER BY time_int ASC";
 							    
 					    // Run query and save results in ResultSet
 					    results = st.executeQuery(query);
@@ -341,15 +341,15 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    	Screening screening = new Screening();
 					    	
 					    	screening.setScreeningID(results.getInt("screening_id"));
-					    	screening.setDateID(results.getString("date_id"));
-					    	screening.setYearID(results.getInt("year_id"));
-					    	screening.setMonthID(results.getInt("month_id"));
-					    	screening.setDayID(results.getInt("day_id"));
-					    	screening.setTimeInt(results.getInt("time_int")); 
-					    	screening.setTimeString(results.getString("time_string"));
+//					    	screening.setDateID(results.getString("date_id"));
+//					    	screening.setYearID(results.getInt("year_id"));
+//					    	screening.setMonthID(results.getInt("month_id"));
+//					    	screening.setDayID(results.getInt("day_id"));
+//					    	screening.setTimeInt(results.getInt("time_int")); 
 					    	screening.setTimeString(results.getString("time_string"));
 					    	screening.setFilmTitle(results.getString("film_title"));
-					    	screening.setAvailableSeats(results.getInt("available_seats"));
+//					    	screening.setAvailableSeats(results.getInt("available_seats"));
+					    	screening.setTicketStatus(results.getString("ticket_status"));
 					
 					    	screeningList.add(screening);
 					    }
@@ -393,6 +393,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	public void addScreening(String dateID, int yearID, int monthID, int dayID, String timeString, String filmTitle) 	{
 		
 		int timeInt, availableSeats;
+		String ticketStatus;
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -400,6 +401,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	  
 	    // Initialize available seats
 	    availableSeats = 16;	 
+	    
+	    // Initialize ticket status:
+	    ticketStatus = "Tickets available";
 	    
 	    // Initialize timeInt
 	    
@@ -476,8 +480,8 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    
 		    
 				// SQL query, stored in String
-		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_int, time_string, film_title, available_seats) VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
-		    			dayID + "," + timeInt + ",'" + timeString + "', '"+ filmTitle + "'," + availableSeats + ")";
+		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_int, time_string, film_title, available_seats, ticket_status) VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
+		    			dayID + "," + timeInt + ",'" + timeString + "', '"+ filmTitle + "'," + availableSeats + ", '" + ticketStatus + "')";
 		     
 			    // Run query
 			    st.executeUpdate(query);
@@ -605,6 +609,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	// *** UPDATE AVAILABLE SEATS FOR SPECIFIC SCREENING ***
 		public void updateAvailableSeats(int screeningID)	{
 			
+			int updatedAvailableSeats;
+			String ticketStatus;
+			
 			// Establish database connection:
 			Connection connection = SqliteConnection.Connector();
 		    Statement st = null;
@@ -637,18 +644,30 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	            	
 	            }
 	            
-	            // 2. Update number of seats
-	            int updatedAvailableSeats = screening.getAvailableSeats() - 1;
+	            // Update number of seats
+	            updatedAvailableSeats = screening.getAvailableSeats() - 1;
+	            
+	            // Update ticket status
+	            if (updatedAvailableSeats > 0)
+	            {
+	            	ticketStatus = "Tickets available";
+	            }
+	            else
+	            {
+	            	ticketStatus = "Sold out";
+	            }
 	            
 	            System.out.println("Update number of seats will be: " + updatedAvailableSeats);
 	            
 	            
-	            // 3. Save updated number of seats to database
-	            
+	            // Save updated number of seats and ticket status to database
 	            String newQuery = "UPDATE screening SET available_seats=" + updatedAvailableSeats + "WHERE screening_id=" + screeningID;
 	            st.executeUpdate(newQuery);
 	            
-	            System.out.println("Seat number has been updated");
+	            String thirdQuery = "UPDATE screening SET ticket_status='" + ticketStatus + "WHERE screening_id=" + screeningID;
+	            st.executeUpdate(thirdQuery);
+	            
+	            System.out.println("Seat number and ticket status have been updated");
 	                        
 	        } catch (SQLException e) {
 	            System.err.println("While searching the screening " + screeningID  + " an error occurred: ");
