@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,12 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
+import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 
 /**
  * Purpose: Controls the elements in the specified row layout for the list view and populates the individual elements (Image, text etc.) with data from database
@@ -25,31 +29,42 @@ import model.FilmDAOImpl;
  *
  */
 
-public class ListViewRowController {
+public class ScreeningListViewRowController {
 
 	
 	//Declares elements of the list view row layout
 	@FXML
-	AnchorPane container;
+	HBox container;
 
-	public AnchorPane getContainer() {
+	public HBox getContainer() {
 		return container;
 	}
 
 	@FXML
 	Label filmTitle;
 	@FXML
-	Label filmGenre;
+	Label screeningDate;
 	@FXML
 	ImageView filmPoster;
 	@FXML
-	Button showFilmDetails;
+	Button showScreeningDetails;
+	@FXML
+	Label seatAvailability;
 	
+	private Screening screening;
 	private Film film;
 	
-	//Creates a Film object
+	// Create DAO objects
 	FilmDAO filmDAO = new FilmDAOImpl();
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
+	public Screening getScreening() {
+		return screening;
+	}
+	
+	public void setScreening(Screening screening) {
+		this.screening = screening;
+	}
 	
 	public Film getFilm() {
 		return film;
@@ -59,35 +74,44 @@ public class ListViewRowController {
 		this.film = film;
 	}
 
+
 	public void initialize() {
 
-		showFilmDetails.setOnAction(event -> showMovieDetailPage(event));
+		showScreeningDetails.setOnAction(event -> showScreeningDetailPage(event));
 		
 	}
 	
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
-	public void populateCells() {
-		System.out.println(2);
-	// Sets 
-		Film film = filmDAO.getFilm("a");
+	public void populateCells() throws SQLException, ClassNotFoundException {
+		System.out.println(18);
+
+		String filmtitle = screening.getFilmTitle();		
+		System.out.println(filmtitle);
+		
+		System.out.println(19);
+
+		Film film = filmDAO.getFilm(filmtitle);
+		System.out.println(20);
+
 	//Fills film title label with corresponding film title
-		System.out.println(3);
 		filmTitle.setText(film.getFilmTitle());
+		System.out.println(21);
+
 	//Fills genre label with corresponding film genre
-		System.out.println(4);
-		filmGenre.setText(film.getFilmGenre());	
+		screeningDate.setText(screening.getDateID() + "," + screening.getTimeString());	
+		System.out.println(22);
+
+
+	//Fills director label with corresponding film director
+		seatAvailability.setText(screening.getAvailableSeats() + "/16 Seats available");	
+
 	//Fills imageView with corresponding image from local resource folder
-		System.out.println(5);
-		int filmID = film.getFilmId();
-		String imgPath = filmDAO.getFilmImagePath(filmID);
-		System.out.println(6);
+		
 	// Set ImageView to display image
-		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
-		System.out.println(7);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
-		System.out.println(33);
 		
 	}
 	
@@ -98,7 +122,7 @@ public class ListViewRowController {
 	 * @author Lorenz
 	 */
 	@FXML
-	private void showMovieDetailPage(ActionEvent event) {
+	private void showScreeningDetailPage(ActionEvent event) {
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();

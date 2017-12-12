@@ -2,7 +2,7 @@ package model;
 
 import java.io.IOException;
 
-import controller.ListViewRowController;
+import controller.MovieListViewRowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
@@ -18,9 +18,9 @@ public void updateItem(Film film, boolean empty) {
 	System.out.println(11);
 
 	if (film != null) {
-		ListViewRowController controller = null;
+		MovieListViewRowController controller = null;
 		
-		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("/view/ListViewRow.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("/view/MovieListViewRow.fxml"));
 		System.out.println(12);
 
 			try {

@@ -212,7 +212,7 @@ public class FilmDAOImpl implements FilmDAO {
 		    
 			// SQL query, stored in String
 	    	String query = "UPDATE film SET film_title='" + filmTitle + "', film_description=" + "'" + filmDescription + "', film_genre='" + filmGenre + "', film_cast_members='"
-			+ filmCastMembers + "', film_director='" + filmDirector + "', filmTrailer='" + filmTrailer + "WHERE film_id=" + filmID;
+			+ filmCastMembers + "', film_director='" + filmDirector + "', film_trailer='" + filmTrailer + "WHERE film_id=" + filmID;
 	    	
 	    	System.out.println("Record WILL be updated for film id: " + filmID);
 	    	

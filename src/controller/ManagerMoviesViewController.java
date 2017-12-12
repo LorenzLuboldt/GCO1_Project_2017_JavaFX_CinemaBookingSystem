@@ -2,8 +2,11 @@
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +28,7 @@ import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
+import model.ListViewCell;
 
 /**
  * Purpose: This controller is connected to the ManagerMoviesView, where the staff member can add a new film in the sreening schedule
@@ -40,9 +44,6 @@ public class ManagerMoviesViewController implements Initializable {
 	@FXML
 	private Label userLbl2;
 	
-	//Configure movie list
-	@FXML private ListView<Film> movieList;
-	
 	//Configure film table
 	@FXML private TableView<Film> tableView;
 	@FXML private TableColumn<Film, String> film_title_column;
@@ -57,11 +58,50 @@ public class ManagerMoviesViewController implements Initializable {
 	@FXML private Button cancelFilmEditButton;
 	@FXML private TextField editFilmTitleTextField;
 	@FXML private TextField editFilmDescriptionTextField;
+	@FXML private ListView<Film> allFilmsList;
 	
-//	@FXML private DatePicker screeningDatePicker; not used as Film object doesn't contain a date variable
-	
+	private List<Film> filmList = new ArrayList<>();
+	private ObservableList<Film> observableList = FXCollections.observableArrayList();
+
 	
 
+	@Override
+public void initialize(URL location, ResourceBundle resources) {
+		
+		setListView();
+
+	}
+	
+	
+	/**
+	 * Purpose: Setsup Movie ListView displaying all current Movies with the custom ListRows
+	 * Source: https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml
+	 * @author Lorenz
+	 */
+	private void setListView() {
+		
+	//Retrieve all film entries from the database
+	try {
+		filmList = filmDAO.getAllFilms();
+		}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+	//Fill the Observable List with items pulled from the database
+	
+	observableList.setAll(filmList);
+	
+	//Fill ListView with content
+	
+	allFilmsList.setItems(observableList);
+	
+	//Allow for custom display of the ListView Items 
+
+	allFilmsList.setCellFactory(ListView -> new ListViewCell());
+
+		
+	}
 	public void GetManager(String user) {
 		// TODO Auto-generated method stub
 		userLbl2.setText(user);
@@ -209,11 +249,7 @@ public class ManagerMoviesViewController implements Initializable {
 	
 	
 	
-	@Override
-public void initialize(URL location, ResourceBundle resources) {
-		
 
-	}
 
 	// @Michael: method to enable manager to add film to database and see updated film list
 //	public void addFilmButtonPushed()	{

@@ -27,7 +27,7 @@
                   <Insets right="90.0" />
                </HBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="65.0" prefWidth="118.0" text="Logout" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="65.0" prefWidth="118.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -43,8 +43,9 @@
          <children>
             <Button layoutX="1076.0" layoutY="109.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
             <Button layoutX="1078.0" layoutY="402.0" mnemonicParsing="false" onAction="#GoToBookings" prefHeight="150.0" prefWidth="300.0" text="View Room Bookings" />
-            <ListView layoutX="14.0" layoutY="94.0" prefHeight="541.0" prefWidth="846.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="501.0" layoutY="22.0" styleClass="call_to_action" text="What would you like to do?" textAlignment="CENTER" />
+            <ListView fx:id="allScreeningList" layoutX="14.0" layoutY="94.0" prefHeight="541.0" prefWidth="900.0" styleClass="table-view" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="987.0" layoutY="28.0" styleClass="call_to_action" text="What would you like to do?" textAlignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="15.0" styleClass="call_to_action" text="Upcoming Screenings" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </center>

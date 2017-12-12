@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -66,26 +68,21 @@ public void initialize(URL location, ResourceBundle resources) {
 	}
 	}
 	
-	public void downloadAllBookingData(ActionEvent event) {
-	
-		java.sql.ResultSet myResultSet = getResultSetFromSomewhere();
-		writer.writeAll(myResultSet, true);
+	public void downloadBookingData(ActionEvent event) {
 		
-		
-		downloadAllBookingData = new Button();
-		downloadAllBookingData.setOnAction(e ->(
+		String fileName = "out.txt";
+		try {
+			PrintWriter outputStream = new PrintWriter(fileName);
+			outputStream.println("Hi there file");
+			outputStream.close();
+			System.out.println("Done");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
-				ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+		
+		
 
-				)
-				
-		
-				);
-		
-		
 	}
-	
-	
-	
-	
 }
