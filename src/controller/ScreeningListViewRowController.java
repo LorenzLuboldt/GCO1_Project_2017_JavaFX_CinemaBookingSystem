@@ -98,7 +98,7 @@ public class ScreeningListViewRowController {
 		System.out.println(21);
 
 	//Fills genre label with corresponding film genre
-		screeningDate.setText(screening.getDateID() + "," + screening.getTimeString());	
+		screeningDate.setText(screening.getDateID() + ", " + screening.getTimeString());	
 		System.out.println(22);
 
 

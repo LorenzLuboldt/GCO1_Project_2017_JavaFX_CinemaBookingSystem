@@ -96,24 +96,6 @@ public class CustomerRootController implements Initializable {
 
 	}
 	
-	public void downloadBookingData(ActionEvent event) {
-		
-		String fileName = "out.txt";
-		try {
-			PrintWriter outputStream = new PrintWriter(fileName);
-			outputStream.println("Hi there file");
-			outputStream.close();
-			System.out.println("Done");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-		
-		
-
-	}
-	
 	public void BookTickets(ActionEvent event) {
 		try {	
 	((Node) event.getSource()).getScene().getWindow().hide();
