@@ -68,14 +68,15 @@ public class CustomerBookingProcessViewController implements Initializable{
 	// User wants to see list of films for given date
 	public void showFilmsButtonPushed(ActionEvent event)	{				
 		
-		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
-//		screening_id_column.setCellValueFactory(new PropertyValueFactory<Screening, Integer>("screeningID"));
+		// Set column values
 		time_id_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("timeString"));
 		film_title_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("filmTitle"));
 		ticket_status_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("ticketStatus"));
 		
+		// Query database to retrieve list of screenings on selected date
 		final ObservableList<Screening> screeningList = screeningDAO.searchScreeningsByDate(datePicker.getValue().toString());
 		
+		// Fill table with screenings
 		tableView.setItems(screeningList);
 		
 		
@@ -102,28 +103,6 @@ public class CustomerBookingProcessViewController implements Initializable{
 		} catch (Exception e) {	
 		}
 	}
-	
-	// @Michael: method to enable manager to add film to database and see updated film list
-//	public void addFilmButtonPushed()	{
-//		
-//		// filmDAO method adds film to DB. 
-//		// Parameters are the user inputs from the text fields on the screen
-//		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextField.getText());
-//		
-//		// Empty text fields
-//		filmTitleTextField.clear();
-//		filmDescriptionTextField.clear();
-//		
-//		
-//		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
-//		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
-//		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
-//
-//		//load data from 
-//		final ObservableList<Film> filmList = filmDAO.getAllFilms();
-//		tableView.setItems(filmList);
-//	}
-	
 	
 	
 	// Event Listener on Button.onAction

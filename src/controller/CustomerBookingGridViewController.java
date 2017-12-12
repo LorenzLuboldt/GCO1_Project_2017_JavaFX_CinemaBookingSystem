@@ -82,6 +82,8 @@ public class CustomerBookingGridViewController implements Initializable{
 		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
 		int screeningID = screeningsList.get(0).getScreeningID();
 		
+		System.out.println(screeningID);
+		
 		// Delete all existing selections from seat table
 		selectionDAO.deleteSelection();
 		
@@ -155,40 +157,57 @@ public class CustomerBookingGridViewController implements Initializable{
 	// Builds the full functionality of each seat icon
 	public void buildSeat(int screeningID, String seatID, final ImageView seatFree, int col, int row)	{
 		
-		Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
-		seatFree.setImage(seatFreeImg);
+		boolean seatIsFree = bookingDAO.checkSeatAvailability(seatID, screeningID);
 		
-		GridPane.setRowIndex(seatFree, row);
-		GridPane.setColumnIndex(seatFree, col);
+		System.out.println(seatIsFree);
 		
-		seatingMap.getChildren().addAll(seatFree);
-		
-		// Make seat icon clickable
-		seatFree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		     @Override
-		     public void handle(MouseEvent event) {
-		    	 
-		    	 // Remove unselected seat icon
-		    	 seatingMap.getChildren().remove(seatFree);
-		    	 
-		    	 // Add selected seat icon
-			   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
-			   	 ImageView seatSelected = new ImageView();
-			   	 seatSelected.setImage(seatSelectedImg);
-			   
-				 GridPane.setRowIndex(seatSelected,row);
-				 GridPane.setColumnIndex(seatSelected, col);
-				
-				 seatingMap.getChildren().addAll(seatSelected);
-		    	 
-				 // The seat ID is computed and stored in the selection table until the booking is confirmed
-		    	 String seatID = computeSeatID(col, row);
-		    	 selectionDAO.addSelectedSeat(seatID);
-		    	 System.out.println("User selected seat: " + seatID);
-		 	}
-		});   // closes EventHandler 	     
+		if(seatIsFree)	{
+			Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
+			
+			seatFree.setImage(seatFreeImg);
+			
+			GridPane.setRowIndex(seatFree, row);
+			GridPane.setColumnIndex(seatFree, col);
+			
+			seatingMap.getChildren().addAll(seatFree);
+			
+			// Make seat icon clickable
+			seatFree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			    	 // Remove unselected seat icon
+			    	 seatingMap.getChildren().remove(seatFree);
+			    	 
+			    	 // Add "selected seat" icon
+				   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
+				   	 ImageView seatSelected = new ImageView();
+				   	 seatSelected.setImage(seatSelectedImg);
+				   
+					 GridPane.setRowIndex(seatSelected,row);
+					 GridPane.setColumnIndex(seatSelected, col);
+					
+					 seatingMap.getChildren().addAll(seatSelected);
+			    	 
+					 // Store seat ID in selection cache
+			    	 selectionDAO.addSelectedSeat(seatID, screeningID);
+			    	 System.out.println("User selected seat: " + seatID);
+			 	}
+			});   // closes EventHandler 	     
+		}
+		else {
+			Image seatBlockedImg = new Image("/../bin/icons/seat-blocked.png");	
+			seatFree.setImage(seatBlockedImg);
+			System.out.println("BLOCKED IMAGE");
+			
+			GridPane.setRowIndex(seatFree, row);
+			GridPane.setColumnIndex(seatFree, col);
+			
+			seatingMap.getChildren().addAll(seatFree);
+		}
 	}
 	
+	// TODO delete this method if no longer needed
 	// Returns a seat ID to be stored in the selection cache
 	public String computeSeatID(int col, int row)	{
 		
@@ -253,35 +272,31 @@ public class CustomerBookingGridViewController implements Initializable{
 	@FXML
 	public void confirmBookingButtonPushed(ActionEvent event) {
 		
-//		// Retrieve seat IDs stored in selection table
-//		ObservableList<Selection> selectionList = selectionDAO.getSelectedSeats();
-//		int index = selectionList.size();
-//		
-//		for(int i = 0; i < index; i++)
-//		{
-//			BookingDAO b = new BookingDAOImpl();
-//			Booking bo = new Booking();
-//			
-//			
-//			Selection s = new Selection();
-//			
-////			TableView screeningsTable = new TableView();
-////			int screeningId;
-////			
-////			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
-//			
-//			
-//			s = selectionList.get(i);
-//			seatID = s.getSeatID();
-//			
-////			b.addBooking(1, seatID, screeningID);
-//		}
-//		
-//		
-//		
-//		// Clean up selection table for next booking
-//		selectionDAO.deleteSelection();
+		// Retrieve seat IDs stored in selection table
+		ObservableList<Selection> selectionList = selectionDAO.getSelection();
+		int index = selectionList.size();
 		
+		for(int i = 0; i < index; i++)
+		{
+			BookingDAO b = new BookingDAOImpl();
+			Booking bo = new Booking();
+			
+			
+			Selection s = new Selection();
+			
+//			TableView screeningsTable = new TableView();
+//			int screeningId;
+//			
+//			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
+			
+			s = selectionList.get(i);			
+			b.addBooking(1, s.getSeatID(), s.getScreeningID());
+		}
+		
+		// Clean up selection table for next booking
+		selectionDAO.deleteSelection();
+		
+		// Send user to 'My bookings'
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
@@ -330,6 +345,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 		}
 	}
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void toDashboard(ActionEvent event) {
@@ -347,6 +363,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 		}
 	}
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void SignOut(ActionEvent event) {

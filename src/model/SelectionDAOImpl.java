@@ -91,7 +91,7 @@ public class SelectionDAOImpl implements SelectionDAO {
 	  }
 	
 	// *** ADD SELECTED SEAT ***	
-	public void addSelectedSeat(String seatID) 	{
+	public void addSelectedSeat(String seatID, int screeningID) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -102,8 +102,8 @@ public class SelectionDAOImpl implements SelectionDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "INSERT INTO selection (seat_id)" + 
-			"VALUES ('" + seatID + "')";
+	    	String query = "INSERT INTO selection (seat_id, screening_id)" + 
+			"VALUES ('" + seatID + "' ," + screeningID + ")";
 	     
 		    // Run query
 		    st.executeUpdate(query);

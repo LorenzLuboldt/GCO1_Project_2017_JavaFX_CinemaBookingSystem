@@ -69,7 +69,7 @@ public class Booking {
 		return cust_ID;
 	}
 	
-	// *** BOOKING ID ***
+	// *** SEAT ID ***
 	
 		// getter
 	public String getSeatID()	{
