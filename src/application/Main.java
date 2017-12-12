@@ -1,5 +1,7 @@
 package application;
 	
+import java.io.PrintWriter;
+
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
-		
+	}
 		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 		
@@ -113,4 +115,4 @@ public class Main extends Application {
 		
 		// ________________________TESTING AREA OVER____________________________________
 	}
-}
+

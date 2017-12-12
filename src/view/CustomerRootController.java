@@ -1,5 +1,7 @@
 package view;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +93,24 @@ public class CustomerRootController implements Initializable {
 		} catch (Exception e) {
 			
 		}
+
+	}
+	
+	public void downloadBookingData(ActionEvent event) {
+		
+		String fileName = "out.txt";
+		try {
+			PrintWriter outputStream = new PrintWriter(fileName);
+			outputStream.println("Hi there file");
+			outputStream.close();
+			System.out.println("Done");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		
+		
 
 	}
 	

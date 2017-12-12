@@ -51,19 +51,28 @@ public class ScreeningListViewRowController {
 	@FXML
 	Label seatAvailability;
 	
-	
 	private Screening screening;
+	private Film film;
 	
-	//Creates a Film object
+	// Create DAO objects
 	FilmDAO filmDAO = new FilmDAOImpl();
-	//Creates a Screening object
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
-	
-	public Screening setScreening(Screening screening) {
+	public Screening getScreening() {
 		return screening;
 	}
+	
+	public void setScreening(Screening screening) {
+		this.screening = screening;
+	}
+	
+	public Film getFilm() {
+		return film;
+	}
 
+	public void setFilm(Film film) {
+		this.film = film;
+	}
 
 
 	public void initialize() {
