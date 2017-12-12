@@ -7,18 +7,56 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Booking;
+import model.BookingDAO;
+import model.BookingDAOImpl;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CustomerBookingHistoryViewController implements Initializable{
 	@FXML
 	private Label userLbl;
+	
+	//Configure film table
+	@FXML private TableView<Booking> myBookingsTable;
+	@FXML private TableColumn<Booking, String> seat_id_column;
+	@FXML private TableColumn<Booking, Integer> screening_id_column;
 
+	// DAO objects to query database
+	BookingDAO bookingDAO = new BookingDAOImpl();
 
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		loadMyBookingsTable();
+		
+	}
+	
+	
+	public void loadMyBookingsTable()	{
+		
+		// Set column values
+		seat_id_column.setCellValueFactory(new PropertyValueFactory<Booking, String>("seatID"));
+		screening_id_column.setCellValueFactory(new PropertyValueFactory<Booking, Integer>("screeningID"));
+		
+		// Query database to retrieve list of screenings on selected date
+		final ObservableList<Booking> bookingList = bookingDAO.getAllBookings();
+		
+		// Fill table with screenings
+		myBookingsTable.setItems(bookingList);
+	}
+	
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void SignOut(ActionEvent event) {
@@ -86,11 +124,4 @@ public class CustomerBookingHistoryViewController implements Initializable{
 	}
 	}
 
-
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 }

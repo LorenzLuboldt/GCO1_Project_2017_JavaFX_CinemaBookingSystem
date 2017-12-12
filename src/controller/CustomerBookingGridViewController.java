@@ -284,11 +284,6 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 			Selection s = new Selection();
 			
-//			TableView screeningsTable = new TableView();
-//			int screeningId;
-//			
-//			screeningId = screeningsTable.getSelectionModel().getSelectedItem().getId();
-			
 			s = selectionList.get(i);			
 			b.addBooking(1, s.getSeatID(), s.getScreeningID());
 		}

@@ -79,7 +79,6 @@ public class CustomerBookingProcessViewController implements Initializable{
 		// Fill table with screenings
 		tableView.setItems(screeningList);
 		
-		
 		}
 	
 	
