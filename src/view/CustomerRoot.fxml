@@ -70,7 +70,6 @@
                </image>
             </ImageView>
             <ListView fx:id="allFilmsList" layoutX="32.0" layoutY="19.0" prefHeight="598.0" prefWidth="756.0" styleClass="table-view" />
-            <Button fx:id="toHarryPotterButton" layoutX="857.0" layoutY="136.0" mnemonicParsing="false" onAction="#goToHarryPotterButton" text="Harry Potter" />
          </children>
          <BorderPane.margin>
             <Insets />

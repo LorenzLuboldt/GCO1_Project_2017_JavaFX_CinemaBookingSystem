@@ -32,13 +32,10 @@ public class CustomerBookingHistoryViewController implements Initializable{
 	@FXML private TableColumn<Booking, String> film_title_column;
 	@FXML private TableColumn<Booking, String> seat_id_column;
 	@FXML private TableColumn<Booking, Integer> booking_id_column;
-	
-	
 
 	// DAO objects to query database
 	BookingDAO bookingDAO = new BookingDAOImpl();
 
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -61,6 +58,15 @@ public class CustomerBookingHistoryViewController implements Initializable{
 		
 		// Fill table with screenings
 		myBookingsTable.setItems(bookingList);
+	}
+	
+	public void deleteBookingButtonPushed(ActionEvent event)	{
+		
+		// delete selected film from DB
+		bookingDAO.deleteBooking(myBookingsTable.getSelectionModel().getSelectedItem().getBookingID());
+		
+		// reload table
+		loadMyBookingsTable();
 	}
 	
 	

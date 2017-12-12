@@ -35,6 +35,8 @@ import model.SelectionDAO;
 import model.SelectionDAOImpl;
 
 /**
+ * Purpose: Controller for View on which the user can select a seat for a previously chosen film screening.
+ * 
  * References for seating map: 
  * https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html
  * https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
@@ -162,7 +164,7 @@ public class CustomerBookingGridViewController implements Initializable{
 		System.out.println(seatIsFree);
 		
 		if(seatIsFree)	{
-			Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
+			Image seatFreeImg = new Image("/res/icons/seat-free.png");	
 			
 			seatFree.setImage(seatFreeImg);
 			
@@ -180,7 +182,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			    	 seatingMap.getChildren().remove(seatFree);
 			    	 
 			    	 // Add "selected seat" icon
-				   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
+				   	 Image seatSelectedImg = new Image("/res/icons/seat-selected.png");
 				   	 ImageView seatSelected = new ImageView();
 				   	 seatSelected.setImage(seatSelectedImg);
 				   
@@ -196,7 +198,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			});   // closes EventHandler 	     
 		}
 		else {
-			Image seatBlockedImg = new Image("/../bin/icons/seat-blocked.png");	
+			Image seatBlockedImg = new Image("/res/icons/seat-blocked.png");	
 			seatFree.setImage(seatBlockedImg);
 			System.out.println("BLOCKED IMAGE");
 			
