@@ -67,10 +67,13 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="myBookingsTable" layoutX="372.0" layoutY="139.0" prefHeight="351.0" prefWidth="260.0">
+            <TableView fx:id="myBookingsTable" layoutX="372.0" layoutY="139.0" prefHeight="351.0" prefWidth="700.0">
               <columns>
-                <TableColumn fx:id="seat_id_column" prefWidth="130" text="Seat Number" />
-                <TableColumn fx:id="screening_id_column" prefWidth="130" text="Screening Number" />
+                <TableColumn fx:id="date_id_column" prefWidth="130" text="Date" />
+                <TableColumn fx:id="time_string_column" prefWidth="130" text="Time" />
+                <TableColumn fx:id="film_title_column" prefWidth="180" text="Film" />
+                <TableColumn fx:id="seat_id_column" prefWidth="130" text="Seat" />
+                <TableColumn fx:id="booking_id_column" prefWidth="130" text="Booking #" />
               </columns>
             </TableView>
             <Label layoutX="372.0" layoutY="94.0" text="Review your past and upcoming bookings:" textFill="WHITE">

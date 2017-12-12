@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CustomerBookingHistoryViewController implements Initializable{
 	@FXML
@@ -28,8 +27,13 @@ public class CustomerBookingHistoryViewController implements Initializable{
 	
 	//Configure film table
 	@FXML private TableView<Booking> myBookingsTable;
+	@FXML private TableColumn<Booking, String> date_id_column;
+	@FXML private TableColumn<Booking, String> time_string_column;
+	@FXML private TableColumn<Booking, String> film_title_column;
 	@FXML private TableColumn<Booking, String> seat_id_column;
-	@FXML private TableColumn<Booking, Integer> screening_id_column;
+	@FXML private TableColumn<Booking, Integer> booking_id_column;
+	
+	
 
 	// DAO objects to query database
 	BookingDAO bookingDAO = new BookingDAOImpl();
@@ -46,11 +50,14 @@ public class CustomerBookingHistoryViewController implements Initializable{
 	public void loadMyBookingsTable()	{
 		
 		// Set column values
+		date_id_column.setCellValueFactory(new PropertyValueFactory<Booking, String>("dateID"));
+		time_string_column.setCellValueFactory(new PropertyValueFactory<Booking, String>("timeString"));
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Booking, String>("filmTitle"));
 		seat_id_column.setCellValueFactory(new PropertyValueFactory<Booking, String>("seatID"));
-		screening_id_column.setCellValueFactory(new PropertyValueFactory<Booking, Integer>("screeningID"));
+		booking_id_column.setCellValueFactory(new PropertyValueFactory<Booking, Integer>("bookingID"));
 		
 		// Query database to retrieve list of screenings on selected date
-		final ObservableList<Booking> bookingList = bookingDAO.getAllBookings();
+		final ObservableList<Booking> bookingList = bookingDAO.getCustomerBookings(1);
 		
 		// Fill table with screenings
 		myBookingsTable.setItems(bookingList);

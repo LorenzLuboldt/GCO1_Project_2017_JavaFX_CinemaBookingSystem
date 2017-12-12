@@ -46,7 +46,7 @@ public class Main extends Application {
 		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 //		
-//		System.out.println("_____________START OF NEW TEST: ___________________");
+		System.out.println("_____________START OF NEW TEST: ___________________");
 		
 //		SelectionDAO s = new SelectionDAOImpl();
 //		Selection ss = new Selection();
@@ -57,11 +57,13 @@ public class Main extends Application {
 //		s.deleteSelectedSeat();
 		
 //		
-//		BookingDAO bookingDAO = new BookingDAOImpl();
+		BookingDAO bookingDAO = new BookingDAOImpl();
 //		bookingDAO.addBooking(1, "A01", 1);
 //		bookingDAO.addBooking(2, "A02", 8);
 //		bookingDAO.addBooking(1, "A02", 3);
 //		bookingDAO.addBooking(3, 3, 3);
+		bookingDAO.getCustomerBookings(1);
+		
 //		ObservableList<Booking> ol = bookingDAO.getAllBookings();
 //		Booking spec = bookingDAO.getBooking(2);
 //		bookingDAO.deleteBooking(3);
