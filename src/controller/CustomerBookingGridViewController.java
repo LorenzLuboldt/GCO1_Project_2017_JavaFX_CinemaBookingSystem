@@ -30,6 +30,8 @@ import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
 import model.Film;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 import model.Selection;
 import model.SelectionDAO;
 import model.SelectionDAOImpl;
@@ -61,6 +63,7 @@ public class CustomerBookingGridViewController implements Initializable{
 	// DAO objects to query database
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
 	BookingDAO bookingDAO = new BookingDAOImpl();
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 	
 	
 	
@@ -278,6 +281,7 @@ public class CustomerBookingGridViewController implements Initializable{
 		ObservableList<Selection> selectionList = selectionDAO.getSelection();
 		int index = selectionList.size();
 		
+		// Add seats to booking table and update ticket availability
 		for(int i = 0; i < index; i++)
 		{
 			BookingDAO b = new BookingDAOImpl();
@@ -288,6 +292,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 			s = selectionList.get(i);			
 			b.addBooking(1, s.getSeatID(), s.getScreeningID());
+			screeningDAO.updateAvailableSeats(s.getScreeningID());
 		}
 		
 		// Clean up selection table for next booking
