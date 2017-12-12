@@ -22,6 +22,8 @@ import model.Film;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
+import model.SelectionDAO;
+import model.SelectionDAOImpl;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
@@ -35,12 +37,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 
 public class CustomerBookingProcessViewController implements Initializable{
-	
-	// DAO objects to query database
-	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-	Screening screening = new Screening();
-	
-	
+
 	// Declare instance variables
 	@FXML private Label userLbl;
 	@FXML private DatePicker datePicker;
@@ -54,6 +51,11 @@ public class CustomerBookingProcessViewController implements Initializable{
 	@FXML private TableColumn<Screening, String> time_id_column;
 	@FXML private TableColumn<Screening, String> film_title_column;
 	@FXML private TableColumn<Screening, String> ticket_status_column;
+	
+	// DAO objects to query database
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	Screening screening = new Screening();
+	SelectionDAO selectionDAO = new SelectionDAOImpl();
 	
 	
 	@Override
@@ -74,22 +76,31 @@ public class CustomerBookingProcessViewController implements Initializable{
 		
 		final ObservableList<Screening> screeningList = screeningDAO.searchScreeningsByDate(datePicker.getValue().toString());
 		
-		// TODO: Delete this later
-		screening = screeningList.get(0);
-		String time = screening.getTimeString();
-		String title = screening.getFilmTitle();
-		String status = screening.getTicketStatus();
-		System.out.println(time + ", " + title + ", " +  status);
-		
 		tableView.setItems(screeningList);
 		
-//		tableView.getColumns().setAll(time_id_column, film_title_column, ticket_status_column);
-		System.out.println("Never printed this part before");	
-	}
+		
+		}
 	
 	
 	public void chooseSeatsButtonPushed(ActionEvent event)	{
 		
+		// Save selected screening to cache in data base
+		Screening selectedScreening = tableView.getSelectionModel().getSelectedItem();
+		selectionDAO.addSelectedScreening(selectedScreening.getScreeningID());
+		
+		// Take user to next page with seating map
+		try {	
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {	
+		}
 	}
 	
 	// @Michael: method to enable manager to add film to database and see updated film list
@@ -188,19 +199,19 @@ public class CustomerBookingProcessViewController implements Initializable{
 	// Event Listener on Button.onAction
 	@FXML
 	public void toSelectSeatOptions(ActionEvent event) {
-		try {	
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-		} catch (Exception e) {
-			
-		}
+//		try {	
+//			((Node)event.getSource()).getScene().getWindow().hide();
+//			Stage primaryStage = new Stage();
+//			FXMLLoader loader = new FXMLLoader();
+//			Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
+//			Scene scene = new Scene(root);
+//			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+//			primaryStage.setScene(scene);
+//			primaryStage.setResizable(false);
+//			primaryStage.show();
+//		} catch (Exception e) {
+//			
+//		}
 	}
 
 }

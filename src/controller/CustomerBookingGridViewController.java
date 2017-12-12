@@ -54,89 +54,107 @@ public class CustomerBookingGridViewController implements Initializable{
 	// Create other instance variables
 	@FXML
 	private Label userLbl;
-	
 	static String seatID;
-	
+		
+	// DAO objects to query database
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
+	BookingDAO bookingDAO = new BookingDAOImpl();
 	
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		loadSeatingMap();
+		
+		loadSeatingMap();		
+		
 	}
 	
 	
 	public void deselectSeatsButtonPushed()	{
 		loadSeatingMap();
-		System.out.println("User deselected seat.");
 	}
 		
 	// Loads new seating map
 	public void loadSeatingMap() throws NullPointerException	{
 		
 		// Check for booked seats --> SCREENING ID
+		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
+		int screeningID = screeningsList.get(0).getScreeningID();
 		
-		
-		
-		
-		// Delete all existing seat selections from seat table
-		selectionDAO.deleteSelectedSeat();
+		// Delete all existing selections from seat table
+		selectionDAO.deleteSelection();
 		
 		// Create and build all seats
 		ImageView seatA1 = new ImageView();
-		buildSeat(seatA1, 1, 1);
+		String seatIdA1 = "A1";
+		buildSeat(screeningID, seatIdA1, seatA1, 1, 1);
 		
 		ImageView seatA2 = new ImageView();
-		buildSeat(seatA2, 1, 2);
+		String seatIdA2 = "A2";
+		buildSeat(screeningID, seatIdA2, seatA2, 1, 2);
 		
 		ImageView seatA3 = new ImageView();
-		buildSeat(seatA3, 1, 3);
+		String seatIdA3 = "A3";
+		buildSeat(screeningID, seatIdA3, seatA3, 1, 3);
 		
 		ImageView seatA4 = new ImageView();
-		buildSeat(seatA4, 1, 4);
+		String seatIdA4 = "A4";
+		buildSeat(screeningID, seatIdA4, seatA4, 1, 4);
 		
 		ImageView seatB1 = new ImageView();
-		buildSeat(seatB1, 2, 1);
+		String seatIdB1 = "B1";
+		buildSeat(screeningID, seatIdB1, seatB1, 2, 1);
 		
 		ImageView seatB2 = new ImageView();
-		buildSeat(seatB2, 2, 2);
+		String seatIdB2 = "B2";
+		buildSeat(screeningID, seatIdB2, seatB2, 2, 2);
 		
 		ImageView seatB3 = new ImageView();
-		buildSeat(seatB3, 2, 3);
+		String seatIdB3 = "B3";
+		buildSeat(screeningID, seatIdB3, seatB3, 2, 3);
 		
 		ImageView seatB4 = new ImageView();
-		buildSeat(seatB4, 2, 4);
+		String seatIdB4 = "B4";
+		buildSeat(screeningID, seatIdB4, seatB4, 2, 4);
 		
 		ImageView seatC1 = new ImageView();
-		buildSeat(seatC1, 3, 1);
+		String seatIdC1 = "C1";
+		buildSeat(screeningID, seatIdC1, seatC1, 3, 1);
 		
 		ImageView seatC2 = new ImageView();
-		buildSeat(seatC2, 3, 2);
+		String seatIdC2 = "C2";
+		buildSeat(screeningID, seatIdC2, seatC2, 3, 2);
 		
 		ImageView seatC3 = new ImageView();
-		buildSeat(seatC3, 3, 3);
+		String seatIdC3 = "C3";
+		buildSeat(screeningID, seatIdC3, seatC3, 3, 3);
 		
 		ImageView seatC4 = new ImageView();
-		buildSeat(seatC4, 3, 4);
+		String seatIdC4 = "C4";
+		buildSeat(screeningID, seatIdC4, seatC4, 3, 4);
 		
 		ImageView seatD1 = new ImageView();
-		buildSeat(seatD1, 4, 1);
+		String seatIdD1 = "D1";
+		buildSeat(screeningID, seatIdD1, seatD1, 4, 1);
 		
 		ImageView seatD2 = new ImageView();
-		buildSeat(seatD2, 4, 2);
+		String seatIdD2 = "D2";
+		buildSeat(screeningID, seatIdD2, seatD2, 4, 2);
 		
 		ImageView seatD3 = new ImageView();
-		buildSeat(seatD3, 4, 3);
+		String seatIdD3 = "D3";
+		buildSeat(screeningID, seatIdD3, seatD3, 4, 3);
 		
 		ImageView seatD4 = new ImageView();
-		buildSeat(seatD4, 4, 4);
+		String seatIdD4 = "D4";
+		buildSeat(screeningID, seatIdD4, seatD4, 4, 4);
 				
 	}
 	
 	// Builds the full functionality of each seat icon
-	public void buildSeat(final ImageView seatFree, int col, int row)	{
+	public void buildSeat(int screeningID, String seatID, final ImageView seatFree, int col, int row)	{
+		
 		Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
 		seatFree.setImage(seatFreeImg);
 		
@@ -262,7 +280,7 @@ public class CustomerBookingGridViewController implements Initializable{
 //		
 //		
 //		// Clean up selection table for next booking
-//		selectionDAO.deleteSelectedSeat();
+//		selectionDAO.deleteSelection();
 		
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();

@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
 public class SelectionDAOImpl implements SelectionDAO {
 	
 	// *** GET SELECTED SEATS ***
-	public ObservableList<Selection> getSelectedSeats()	{
+	public ObservableList<Selection> getSelection()	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -40,7 +40,7 @@ public class SelectionDAOImpl implements SelectionDAO {
 		    st = connection.createStatement();
 	    	
 			// SQL query, stored in String
-	    	String query = "SELECT seat_id FROM selection";
+	    	String query = "SELECT * FROM selection";
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
@@ -49,7 +49,9 @@ public class SelectionDAOImpl implements SelectionDAO {
 		    	
 		    	// create and instantiate a customer object
 		    	Selection selection = new Selection();
+		    	selection.setSelectionID(results.getInt("selection_id"));
 		    	selection.setSeatID(results.getString("seat_id"));
+		    	selection.setScreeningID(results.getInt("screening_id"));
 		
 		    	selectedSeatsList.add(selection);
 		    }
@@ -127,9 +129,51 @@ public class SelectionDAOImpl implements SelectionDAO {
 	      }
 	    }
 	  }
+	
+	
+	// *** ADD SELECTED SCREENING ***
+	public void addSelectedScreening(int screeningID)	{
+
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+	    Statement st = null;   
+	  
+	    try
+	    {
+		    st = connection.createStatement();
+		    
+			// SQL query, stored in String
+	    	String query = "INSERT INTO selection (screening_id)" + 
+			"VALUES (" + screeningID + ")";
+	     
+		    // Run query
+		    st.executeUpdate(query);
+	    }
+	    catch( SQLException e )
+	    {
+	    	System.err.println("Exception occured while adding selected Screening.");
+	    	e.printStackTrace();
+	    }
+
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
+	      }
+	      catch( Exception e )
+	      {
+	        e.printStackTrace();
+	      }
+	    }	
+		
+	}
 	  
 	// *** DELETE SELECTION ***
-	public void deleteSelectedSeat()	{
+	public void deleteSelection()	{
 
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();

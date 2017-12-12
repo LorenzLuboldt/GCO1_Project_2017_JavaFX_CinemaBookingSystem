@@ -25,12 +25,13 @@ public class Selection {
 	// variables (correspond to table columns)
 	private IntegerProperty selection_id;
 	private StringProperty seat_id; // stores the seat as a string such as "A1"
-
+	private IntegerProperty screening_id;
 	
 	// constructor
 	public Selection()	{
 		this.selection_id = new SimpleIntegerProperty();
 		this.seat_id = new SimpleStringProperty();
+		this.screening_id = new SimpleIntegerProperty();
 	}
 	
 	
@@ -67,6 +68,23 @@ public class Selection {
 	// property
 	public StringProperty seatIDProperty()	{
 		return seat_id;
+	}
+	
+	// *** SELECTION ID ***
+	
+	// getter
+	public int getScreeningID() {
+		return screening_id.get();
+	}
+
+	// setter
+	public void setScreeningID(int screeningID) {
+		this.screening_id.set(screeningID);
+	}
+	
+	// property
+	public IntegerProperty screeningIDProperty()	{
+		return screening_id;
 	}
 	
 }

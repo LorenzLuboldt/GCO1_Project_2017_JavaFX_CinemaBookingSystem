@@ -18,7 +18,8 @@ import javafx.collections.ObservableList;
  */
 
 public interface SelectionDAO {
-	public ObservableList<Selection> getSelectedSeats();
+	public ObservableList<Selection> getSelection();
 	public void addSelectedSeat(String seatID);
-	public void deleteSelectedSeat();
+	public void addSelectedScreening(int screeningID);
+	public void deleteSelection();
 }
