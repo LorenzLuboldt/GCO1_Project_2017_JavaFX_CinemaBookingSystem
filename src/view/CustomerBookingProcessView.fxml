@@ -68,23 +68,26 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker layoutX="378.0" layoutY="96.0" promptText="Select Date..." />
-            <Label layoutX="297.0" layoutY="47.0" text="When do you want to go to the cinema?" textFill="WHITE">
+            <DatePicker fx:id="datePicker" layoutX="62.0" layoutY="125.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
+            <Label layoutX="61.0" layoutY="77.0" text="1. When do you want to go to the cinema?" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="400.0" layoutY="152.0" mnemonicParsing="false" text="Show films" />
-            <TableView layoutX="361.0" layoutY="406.0" prefHeight="200.0" prefWidth="200.0">
+            <Button layoutX="75.0" layoutY="202.0" mnemonicParsing="false" onAction="#showFilmsButtonPushed" text="Show films" />
+            <TableView fx:id="tableView" layoutX="693.0" layoutY="124.0" prefHeight="200.0" prefWidth="500.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn fx:id="time_id_column" prefWidth="100" text="Time" />
+                <TableColumn fx:id="film_title_column" prefWidth="200" text="Film" />
+                <TableColumn fx:id="ticket_status_column" prefWidth="200" text="Ticket Status" />
               </columns>
             </TableView>
-            <Label layoutX="334.0" layoutY="329.0" text="Screenings on your selected date:" textFill="WHITE">
+            <Label layoutX="695.0" layoutY="74.0" text="2. Select your preferred screening" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button layoutX="691.0" layoutY="365.0" mnemonicParsing="false" onAction="#chooseSeatsButtonPushed" text="Choose seats" />
          </children></AnchorPane>
    </center>
    <bottom>

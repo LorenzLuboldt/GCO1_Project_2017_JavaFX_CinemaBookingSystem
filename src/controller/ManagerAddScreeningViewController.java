@@ -27,6 +27,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
 public class ManagerAddScreeningViewController implements Initializable {
+	
+	// Create instance variables
 	@FXML
 	private Label userLbl2;
 	@FXML
@@ -38,12 +40,11 @@ public class ManagerAddScreeningViewController implements Initializable {
 	@FXML
 	private ComboBox<String> currentFilmsAvailableComboBox;
 
-
+	// DAO objects to query database
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 	FilmDAO filmDAO = new FilmDAOImpl();
 
-
-
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void toDashboard(ActionEvent event) {

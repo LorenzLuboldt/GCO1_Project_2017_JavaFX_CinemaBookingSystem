@@ -45,7 +45,7 @@ public class Main extends Application {
 		
 		
 		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
-		
+//		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
 		
 //		SelectionDAO s = new SelectionDAOImpl();
@@ -92,8 +92,7 @@ public class Main extends Application {
 //		
 //		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 //		
-//		screeningDAO.addScreening("2018-01-15", 2018, 02, 10, 15, 2);
-//		
+//				screeningDAO.deleteScreening(10);	
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
 //		ObservableList<Screening> ol = screeningDAO.searchScreeningsByDate("2017-12-20");

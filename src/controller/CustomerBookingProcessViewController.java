@@ -7,12 +7,22 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Film;
+import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 /**
@@ -25,12 +35,62 @@ import javafx.stage.Stage;
  */
 
 public class CustomerBookingProcessViewController implements Initializable{
-	@FXML
-	private Label userLbl;
-
+	
+	// DAO objects to query database
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	Screening screening = new Screening();
 	
 	
-	// _________MAIN ACTION____________
+	// Declare instance variables
+	@FXML private Label userLbl;
+	@FXML private DatePicker datePicker;
+	
+	//Configure movie list
+//	@FXML private ListView<Screening> screeningList;
+	
+	//Configure film table
+	@FXML private TableView<Screening> tableView;
+//	@FXML private TableColumn<Screening, Integer> screening_id_column;
+	@FXML private TableColumn<Screening, String> time_id_column;
+	@FXML private TableColumn<Screening, String> film_title_column;
+	@FXML private TableColumn<Screening, String> ticket_status_column;
+	
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		tableView.setPlaceholder(new Label("Choose a date first."));
+	}
+	
+	
+	// User wants to see list of films for given date
+	public void showFilmsButtonPushed(ActionEvent event)	{				
+		
+		// Show updated films in table (same as above method ShowMovieSelection(ActionEvent))
+//		screening_id_column.setCellValueFactory(new PropertyValueFactory<Screening, Integer>("screeningID"));
+		time_id_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("timeString"));
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("filmTitle"));
+		ticket_status_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("ticketStatus"));
+		
+		final ObservableList<Screening> screeningList = screeningDAO.searchScreeningsByDate(datePicker.getValue().toString());
+		
+		// TODO: Delete this later
+		screening = screeningList.get(0);
+		String time = screening.getTimeString();
+		String title = screening.getFilmTitle();
+		String status = screening.getTicketStatus();
+		System.out.println(time + ", " + title + ", " +  status);
+		
+		tableView.setItems(screeningList);
+		
+//		tableView.getColumns().setAll(time_id_column, film_title_column, ticket_status_column);
+		System.out.println("Never printed this part before");	
+	}
+	
+	
+	public void chooseSeatsButtonPushed(ActionEvent event)	{
+		
+	}
 	
 	// @Michael: method to enable manager to add film to database and see updated film list
 //	public void addFilmButtonPushed()	{
@@ -143,9 +203,4 @@ public class CustomerBookingProcessViewController implements Initializable{
 		}
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 }

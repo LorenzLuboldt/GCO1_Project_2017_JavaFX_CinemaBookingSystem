@@ -330,8 +330,10 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    st = connection.createStatement();
 				    	
 						// SQL query, stored in String
-				    	String query = "SELECT screening_id, time_string, film_title, ticket_status FROM screening WHERE date_id='" + dateID + "' ORDER BY time_int ASC";
+				    	String query = "SELECT * FROM screening WHERE date_id='" + dateID + "' ORDER BY time_int ASC";
 							    
+//				    	screening_id, time_string, film_title, ticket_status
+				    	
 					    // Run query and save results in ResultSet
 					    results = st.executeQuery(query);
 					    
@@ -341,14 +343,16 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 					    	Screening screening = new Screening();
 					    	
 					    	screening.setScreeningID(results.getInt("screening_id"));
-//					    	screening.setDateID(results.getString("date_id"));
-//					    	screening.setYearID(results.getInt("year_id"));
-//					    	screening.setMonthID(results.getInt("month_id"));
-//					    	screening.setDayID(results.getInt("day_id"));
-//					    	screening.setTimeInt(results.getInt("time_int")); 
+					    	screening.setDateID(results.getString("date_id"));
+					    	screening.setYearID(results.getInt("year_id"));
+					    	screening.setMonthID(results.getInt("month_id"));
+					    	screening.setDayID(results.getInt("day_id"));
+					    	screening.setTimeInt(results.getInt("time_int")); 
 					    	screening.setTimeString(results.getString("time_string"));
 					    	screening.setFilmTitle(results.getString("film_title"));
-//					    	screening.setAvailableSeats(results.getInt("available_seats"));
+					    	screening.setAvailableSeats(results.getInt("available_seats"));
+					    	screening.setAvailableInfo(results.getString("available_info"));
+					    	screening.setOccupancyRate(results.getString("occupancy_rate"));
 					    	screening.setTicketStatus(results.getString("ticket_status"));
 					
 					    	screeningList.add(screening);
@@ -559,13 +563,13 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 //	}
 	
 	// *** 5. DELETE SCREENING ***
-	public void deleteScreening(Screening screening)	{
+	public void deleteScreening(int screeningID)	{
 		
 		
 		System.out.println("Delete screening method has been invoked.");
 		
-		int screening_id = screening.getScreeningID();
-		System.out.println("screening id is:" + screening_id);
+//		int screening_id = screening.getScreeningID();
+//		System.out.println("screening id is:" + screening_id);
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -576,16 +580,16 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    st = connection.createStatement();
 		    
 			// SQL query, stored in String
-	    	String query = "DELETE FROM screening WHERE screening_id=" +screening_id;
+	    	String query = "DELETE FROM screening WHERE screening_id=" + screeningID;
 				    
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been deleted for screening ID: " + screening_id);
+		    System.out.println("Record has been deleted for screening ID: " + screeningID);
 
 	    }
 	    catch( SQLException e )
 	    {
-	    	System.err.println("Exception occured while deleting screening ID: " + screening_id);
+	    	System.err.println("Exception occured while deleting screening ID: " + screeningID);
 	    	e.printStackTrace();
 	    }
 
