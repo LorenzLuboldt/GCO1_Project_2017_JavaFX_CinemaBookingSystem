@@ -1,8 +1,11 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,17 +15,20 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Film;
 import model.Screening;
+
+
 
 public class ManagerRootController implements Initializable {
 	@FXML
 	private Label userLbl2;
 	
-	@FXML private ListView<Screening> allFilmsList; 
+	@FXML private ListView<Screening> allScreeningList; 
+	
+	private List<Screening> screeningList = new ArrayList<>();
+	private ObservableList<Screening> observableList = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -34,18 +40,6 @@ public class ManagerRootController implements Initializable {
 		userLbl2.setText(user);
 	}
 	
-	
-	// INCOMPLETE METHOD BELOW
-	// Populates the table in this view 
-//	public void FillUpcomingScreeningsListView(ActionEvent event) {
-//		//Set up the columns in the table
-//		film_title_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmTitle"));
-//		film_description_column.setCellValueFactory(new PropertyValueFactory<Film, String>("filmDescription"));
-//
-//		//load data from 
-//		final ObservableList<Film> filmList = filmDAO.getAllFilms();
-//		tableView.setItems(filmList);
-//	}
 	
 	//Goes to Movie Overview Page
 	public void GoToMovieSelection(ActionEvent event) {

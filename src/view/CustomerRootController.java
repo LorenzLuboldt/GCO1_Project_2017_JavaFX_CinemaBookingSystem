@@ -39,7 +39,6 @@ public class CustomerRootController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setListView();
-		System.out.println(1);
 	}
 	
 	
@@ -68,10 +67,8 @@ public class CustomerRootController implements Initializable {
 	allFilmsList.setItems(observableList);
 	
 	//Allow for custom display of the ListView Items 
-	System.out.println(8);
 
 	allFilmsList.setCellFactory(ListView -> new ListViewCell());
-	System.out.println(9);
 
 		
 	}

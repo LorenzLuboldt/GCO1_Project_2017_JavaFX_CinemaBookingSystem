@@ -173,11 +173,9 @@ public class FilmDAOImpl implements FilmDAO {
 			"VALUES ('" + filmTitle + "', '" + filmDescription + "', '" + filmImage + "', '" + filmGenre + "', '" + filmCastMembers + "', '" + filmDirector
 			 + "', '" + filmTrailer + "')";
 	     
-	    	System.out.println(3);
 		    // Run query
 		    st.executeUpdate(query);
 		    System.out.println("Film has been added to DB");
-		    System.out.println(4);
 	    }
 	    catch( SQLException e )
 	    {

@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -17,6 +18,9 @@ import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
+import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 
 /**
  * Purpose: Controls the elements in the specified row layout for the list view and populates the individual elements (Image, text etc.) with data from database
@@ -25,7 +29,7 @@ import model.FilmDAOImpl;
  *
  */
 
-public class ListViewRowController {
+public class ScreeningListViewRowController {
 
 	
 	//Declares elements of the list view row layout
@@ -39,69 +43,53 @@ public class ListViewRowController {
 	@FXML
 	Label filmTitle;
 	@FXML
-	Label filmGenre;
+	Label screeningDate;
 	@FXML
 	ImageView filmPoster;
 	@FXML
-	Button showFilmDetails;
+	Button showScreeningDetails;
 	@FXML
-	Label filmActors;
-	@FXML
-	Label filmDirector;
-	@FXML
-	Label filmDescription;
+	Label seatAvailability;
 	
 	
-	private Film film;
+	private Screening screening;
 	
 	//Creates a Film object
 	FilmDAO filmDAO = new FilmDAOImpl();
+	//Creates a Screening object
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 	
-	public Film getFilm() {
-		return film;
+	public Screening getScreening() {
+		return screening;
 	}
 
-	public void setFilm(Film film) {
-		this.film = film;
-	}
+
 
 	public void initialize() {
 
-		showFilmDetails.setOnAction(event -> showMovieDetailPage(event));
+		showScreeningDetails.setOnAction(event -> showScreeningDetailPage(event));
 		
 	}
 	
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
 	public void populateCells() {
-		System.out.println(2);
-	// Sets 
-		Film film = filmDAO.getFilm("E.T. the Extra-Terrestrial");
+		Film film = screening.getFilmTitle();
 	//Fills film title label with corresponding film title
 		filmTitle.setText(film.getFilmTitle());
 	//Fills genre label with corresponding film genre
-		filmGenre.setText(film.getFilmGenre());	
-
-	//Fills actor label with corresponding film actors
-		filmActors.setText(film.getFilmCastMembers());	
+		screeningDate.setText(screening.getDateID() + "," + screening.getTimeString());	
 
 	//Fills director label with corresponding film director
-		filmDirector.setText(film.getFilmDirector());	
-
-	//Fills director label with corresponding film director
-		filmDescription.setText(film.getFilmDescription());		
+		seatAvailability.setText(screening.getAvailableSeats() + "/16 Seats available");	
 
 	//Fills imageView with corresponding image from local resource folder
-		int filmID = film.getFilmId();
-		String imgPath = filmDAO.getFilmImagePath(filmID);
-		System.out.println(10);
+		
 	// Set ImageView to display image
-		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
-		System.out.println(11);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
-		System.out.println(33);
 		
 	}
 	
@@ -112,7 +100,7 @@ public class ListViewRowController {
 	 * @author Lorenz
 	 */
 	@FXML
-	private void showMovieDetailPage(ActionEvent event) {
+	private void showScreeningDetailPage(ActionEvent event) {
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();

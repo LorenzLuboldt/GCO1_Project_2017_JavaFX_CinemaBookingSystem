@@ -71,3 +71,17 @@
         transparent;
     -fx-border-insets: 0 10 1 0;
 }
+
+
+.haeading_listview {
+	-fx-color: #d0cece; -fx-font: 20.0px "Lao UI";-fx-text-fill: white; -fx-text-overrun: clip;
+}
+
+.genre_listview {
+	-fx-color: #d0cece; -fx-font: 20.0px "Lao UI";-fx-text-fill: white;
+}
+
+.button_listview {
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 12.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+

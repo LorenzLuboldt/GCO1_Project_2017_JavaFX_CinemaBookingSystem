@@ -6,7 +6,7 @@ import controller.MovieListViewRowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
-public class ListViewCell extends ListCell<Film> {
+public class ListViewCellScreening extends ListCell<Film> {
 
 	
 
