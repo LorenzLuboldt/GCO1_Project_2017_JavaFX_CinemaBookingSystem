@@ -46,7 +46,10 @@
       </HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="export" layoutX="572.0" layoutY="265.0" mnemonicParsing="false" onAction="#downloadAllBookingData" text="CSV | Download Booking Data" />
+         </children></AnchorPane>
    </center>
    <bottom>
       <ImageView fitHeight="50.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">

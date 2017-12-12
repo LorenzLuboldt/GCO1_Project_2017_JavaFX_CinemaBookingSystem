@@ -62,7 +62,10 @@
       </HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="180.0" layoutY="50.0" prefHeight="47.0" prefWidth="377.0" styleClass="call_to_action" text="Label" />
+         </children></AnchorPane>
    </center>
    <bottom>
       <AnchorPane prefHeight="69.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
