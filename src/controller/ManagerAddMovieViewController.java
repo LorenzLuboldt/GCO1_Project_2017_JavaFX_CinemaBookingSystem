@@ -59,10 +59,8 @@ public class ManagerAddMovieViewController implements Initializable {
 	public void chooseFile(ActionEvent event) {
 		
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File("/Users/Michael/Desktop"));
-		fileChooser.getExtensionFilters().addAll(
-
-		new ExtensionFilter("Image Files", "*.png"));
+		fileChooser.setInitialDirectory(new File("/Users/Lorenz/Desktop"));
+		fileChooser.getExtensionFilters().addAll();
 		selectedFile = fileChooser.showOpenDialog(null);
 		
 		if(selectedFile != null) {
@@ -84,10 +82,10 @@ public class ManagerAddMovieViewController implements Initializable {
 		// Upload Film poster and copy to destination
 		String imgPath = uploadFile();
 		
-		
+		System.out.println(1);
 		// Add Film object to DB
 		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
-
+System.out.println(2);
 	}
 	
 	public void toDashboard(ActionEvent event) {
@@ -180,7 +178,7 @@ public class ManagerAddMovieViewController implements Initializable {
 			
 			// Create destination path for the copied file			
 			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
-			imgPath = imgID + ".png";
+			imgPath = imgID + ".jpg";
 			File dest = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 			
 			// Copy the file from source path to destination path

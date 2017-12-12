@@ -66,24 +66,24 @@ public void initialize(URL location, ResourceBundle resources) {
 	}
 	}
 	
-	public void downloadAllBookingData(ActionEvent event) {
-	
-		java.sql.ResultSet myResultSet = getResultSetFromSomewhere();
-		writer.writeAll(myResultSet, true);
-		
-		
-		downloadAllBookingData = new Button();
-		downloadAllBookingData.setOnAction(e ->(
-				
-				ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-
-				)
-				
-		
-				);
-		
-		
-	}
+//	public void downloadAllBookingData(ActionEvent event) {
+//	
+//		java.sql.ResultSet myResultSet = getResultSetFromSomewhere();
+//		writer.writeAll(myResultSet, true);
+//		
+//		
+//		downloadAllBookingData = new Button();
+//		downloadAllBookingData.setOnAction(e ->(
+//				
+//				ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+//
+//				)
+//				
+//		
+//				);
+//		
+//		
+//	}
 	
 	
 	

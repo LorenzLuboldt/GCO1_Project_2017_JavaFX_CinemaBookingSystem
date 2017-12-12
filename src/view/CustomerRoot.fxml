@@ -57,20 +57,21 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1100.0" layoutY="431.0" mnemonicParsing="false" onAction="#BookTickets" prefHeight="59.0" prefWidth="250.0" text="Book Tickets" />
-            <Button layoutX="821.0" layoutY="430.0" mnemonicParsing="false" onAction="#toAccountSettings" prefHeight="59.0" prefWidth="250.0" text="Edit Customer Profile" />
-            <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="1165.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="1085.0" layoutY="170.0" mnemonicParsing="false" onAction="#BookTickets" prefHeight="59.0" prefWidth="250.0" text="Book Tickets" />
+            <Button layoutX="1085.0" layoutY="473.0" mnemonicParsing="false" onAction="#toAccountSettings" prefHeight="59.0" prefWidth="250.0" text="Edit Customer Profile" />
+            <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="972.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icon_seat.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="886.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="972.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icon_profile.png" />
                </image>
             </ImageView>
-            <ListView fx:id="allFilmsList" layoutX="32.0" layoutY="19.0" prefHeight="598.0" prefWidth="756.0" styleClass="table-view" />
-            <Button fx:id="toHarryPotterButton" layoutX="857.0" layoutY="136.0" mnemonicParsing="false" onAction="#goToHarryPotterButton" text="Harry Potter" />
+            <ListView fx:id="allFilmsList" layoutX="12.0" layoutY="66.0" prefHeight="570.0" prefWidth="900.0" styleClass="table-view" />
+            <Button fx:id="toHarryPotterButton" layoutX="1178.0" layoutY="562.0" mnemonicParsing="false" onAction="#goToHarryPotterButton" text="Harry Potter" />
+            <Label layoutX="151.0" layoutY="9.0" styleClass="call_to_action" text="Explore the current film selection at Nero!" />
          </children>
          <BorderPane.margin>
             <Insets />

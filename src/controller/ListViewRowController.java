@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
@@ -30,9 +30,9 @@ public class ListViewRowController {
 	
 	//Declares elements of the list view row layout
 	@FXML
-	AnchorPane container;
+	HBox container;
 
-	public AnchorPane getContainer() {
+	public HBox getContainer() {
 		return container;
 	}
 
@@ -44,6 +44,13 @@ public class ListViewRowController {
 	ImageView filmPoster;
 	@FXML
 	Button showFilmDetails;
+	@FXML
+	Label filmActors;
+	@FXML
+	Label filmDirector;
+	@FXML
+	Label filmDescription;
+	
 	
 	private Film film;
 	
@@ -69,22 +76,29 @@ public class ListViewRowController {
 	public void populateCells() {
 		System.out.println(2);
 	// Sets 
-		Film film = filmDAO.getFilm("a");
+		Film film = filmDAO.getFilm("E.T. the Extra-Terrestrial");
 	//Fills film title label with corresponding film title
-		System.out.println(3);
 		filmTitle.setText(film.getFilmTitle());
 	//Fills genre label with corresponding film genre
-		System.out.println(4);
 		filmGenre.setText(film.getFilmGenre());	
+
+	//Fills actor label with corresponding film actors
+		filmActors.setText(film.getFilmCastMembers());	
+
+	//Fills director label with corresponding film director
+		filmDirector.setText(film.getFilmDirector());	
+
+	//Fills director label with corresponding film director
+		filmDescription.setText(film.getFilmDescription());		
+
 	//Fills imageView with corresponding image from local resource folder
-		System.out.println(5);
 		int filmID = film.getFilmId();
 		String imgPath = filmDAO.getFilmImagePath(filmID);
-		System.out.println(6);
+		System.out.println(10);
 	// Set ImageView to display image
 		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
-		System.out.println(7);
+		System.out.println(11);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
 		System.out.println(33);
