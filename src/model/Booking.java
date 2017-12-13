@@ -27,6 +27,7 @@ public class Booking {
 	
 	// additional variables used in customer bookings method
 	private StringProperty date_ID;
+	private IntegerProperty time_int;
 	private StringProperty time_string;
 	private StringProperty film_title;
 	
@@ -42,6 +43,7 @@ public class Booking {
 		this.date_ID = new SimpleStringProperty();
 		this.time_string = new SimpleStringProperty();
 		this.film_title = new SimpleStringProperty();
+		this.time_int = new SimpleIntegerProperty();
 	}
 	
 	
@@ -127,6 +129,24 @@ public class Booking {
 		// property
 	public StringProperty dateIDProperty()	{
 		return date_ID;
+	}
+	
+	
+	// *** BOOKING ID ***
+		
+		// getter
+	public int getTimeInt()	{
+		return time_int.get();
+	}
+	
+		// setter
+	public void setTimeInt(int timeInt)	{
+		this.time_int.set(timeInt);
+	}
+	
+		// property
+	public IntegerProperty timeIntProperty()	{
+		return time_int;
 	}
 	
 	

@@ -67,7 +67,7 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="myBookingsTable" layoutX="155.0" layoutY="129.0" prefHeight="351.0" prefWidth="700.0">
+            <TableView fx:id="futureBookingsTable" layoutX="346.0" layoutY="98.0" prefHeight="156.0" prefWidth="700.0">
               <columns>
                 <TableColumn fx:id="date_id_column" prefWidth="130" text="Date" />
                 <TableColumn fx:id="time_string_column" prefWidth="130" text="Time" />
@@ -76,12 +76,31 @@
                 <TableColumn fx:id="booking_id_column" prefWidth="130" text="Booking #" />
               </columns>
             </TableView>
-            <Label layoutX="166.0" layoutY="70.0" text="Review your past and upcoming bookings:" textFill="WHITE">
+            <Label layoutX="558.0" layoutY="42.0" text="Your Upcoming Films" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="157.0" layoutY="505.0" mnemonicParsing="false" onAction="#deleteBookingButtonPushed" prefHeight="55.0" prefWidth="323.0" text="Delete selected Booking" />
+            <Button layoutX="765.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteBookingButtonPushed" prefHeight="45.0" prefWidth="282.0" text="Delete selected Booking" />
+            <Label layoutX="352.0" layoutY="276.0" text="You can click on any booking and delete it:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Regular" size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="pastBookingsTable" layoutX="348.0" layoutY="405.0" prefHeight="156.0" prefWidth="700.0">
+               <columns>
+                  <TableColumn fx:id="past_date_id_column" prefWidth="130" text="Date" />
+                  <TableColumn fx:id="past_time_string_column" prefWidth="130" text="Time" />
+                  <TableColumn fx:id="past_film_title_column" prefWidth="180" text="Film" />
+                  <TableColumn fx:id="past_seat_id_column" prefWidth="130" text="Seat" />
+                  <TableColumn fx:id="past_booking_id_column" prefWidth="130" text="Booking #" />
+               </columns>
+            </TableView>
+            <Label layoutX="606.0" layoutY="358.0" text="Past Bookings" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </center>
    <bottom>

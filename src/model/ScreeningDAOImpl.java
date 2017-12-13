@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import application.SqliteConnection;
 import javafx.collections.FXCollections;
@@ -104,6 +106,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	
 	// *** GET UPCOMING SCREENINGS (RANKED IN ORDER) ***
 		public ObservableList<Screening> getUpcomingScreenings()	{
+			String t; // time
 			
 			// Establish database connection:
 			Connection connection = SqliteConnection.Connector();
@@ -142,8 +145,14 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 			    	screening.setAvailableInfo(results.getString("available_info"));
 			    	screening.setOccupancyRate(results.getString("occupancy_rate"));
 			    	screening.setTicketStatus(results.getString("ticket_status"));
-			
-			    	screeningList.add(screening);
+			    	
+			    	// Validate time and add to screening list only, if date today is today or in the future
+			    	t = screening.getTimeInt() + ":00";
+			    	LocalTime time = LocalTime.parse(t);
+			    	LocalDate date = LocalDate.parse(screening.getDateID());
+			    	if (date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) || date.isAfter(LocalDate.now()))	{
+			    		screeningList.add(screening);
+			    	}
 			    }
 			 
 		    }
@@ -750,34 +759,34 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		
 		switch(timeString)	{
     	case "2:00 PM" :
-    		timeInt = 2;
+    		timeInt = 14;
     		break;
     	case "3:00 PM" :
-    		timeInt = 3;
+    		timeInt = 15;
     		break;
     	case "4:00 PM" :
-    		timeInt = 4;
+    		timeInt = 16;
     		break;
     	case "5:00 PM" :
-    		timeInt = 5;
+    		timeInt = 17;
     		break;
     	case "6:00 PM" :
-    		timeInt = 6;
+    		timeInt = 18;
     		break;
     	case "7:00 PM" :
-    		timeInt = 7;
+    		timeInt = 19;
     		break;
     	case "8:00 PM" :
-    		timeInt = 8;
+    		timeInt = 20;
     		break;
     	case "9:00 PM" :
-    		timeInt = 9;
+    		timeInt = 21;
     		break;
     	case "10:00 PM" :
-    		timeInt = 10;
+    		timeInt = 22;
     		break;
     	case "11:00 PM" :
-    		timeInt = 11;
+    		timeInt = 23;
     		break;
 		}
 		

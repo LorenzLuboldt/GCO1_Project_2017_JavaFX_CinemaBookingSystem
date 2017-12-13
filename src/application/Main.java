@@ -99,8 +99,8 @@ public class Main extends Application {
 		
 //		
 //		Film f = filmDAO.getFilm("The Dark Knight");
-//		filmDAO.deleteFilm(f);
-//		
+
+		
 //				screeningDAO.deleteScreening(10);	
 //		Screening a = new Screening();
 //		a.setScreeningID(2);

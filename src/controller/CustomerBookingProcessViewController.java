@@ -61,7 +61,7 @@ public class CustomerBookingProcessViewController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		tableView.setPlaceholder(new Label("Choose a date first."));
+		tableView.setPlaceholder(new Label("No screenings on your selected dates."));
 	}
 	
 	

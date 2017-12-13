@@ -106,7 +106,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    st = connection.createStatement();
 	    	
 			// SQL query, stored in String
-	    	String query = "SELECT date_id, time_string, film_title, seat_id, booking_id "
+	    	String query = "SELECT date_id, time_int, time_string, film_title, seat_id, booking_id "
 	    	+ "FROM booking "
 	    	+ "INNER JOIN screening ON booking.screening_id=screening.screening_id;"
 	    	+ "WHERE "
@@ -122,6 +122,7 @@ public class BookingDAOImpl implements BookingDAO {
 		    	Booking booking = new Booking();
 		    	
 		    	booking.setDateID(results.getString("date_ID"));
+		    	booking.setTimeInt(results.getInt("time_int"));
 		    	booking.setTimeString(results.getString("time_string"));
 		    	booking.setFilmTitle(results.getString("film_title"));
 		    	booking.setSeatID(results.getString("seat_id"));
