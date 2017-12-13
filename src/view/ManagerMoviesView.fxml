@@ -50,9 +50,8 @@
       <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="1071.0" layoutY="94.0" mnemonicParsing="false" onAction="#LinkToAddFilm" text="Add New Film" />
-            <Button layoutX="1042.0" layoutY="253.0" mnemonicParsing="false" onAction="#LinkToEditFilm" text="Edit Selected Film" />
             <Button layoutX="1027.0" layoutY="402.0" mnemonicParsing="false" onAction="#linkToAddScreeningTime" text="Add Screening Time" />
-            <ListView fx:id="allFilmsList" layoutX="22.0" layoutY="70.0" prefHeight="570.0" prefWidth="900.0" styleClass="table-view" />
+            <ListView fx:id="allFilmsList" layoutX="22.0" layoutY="70.0" prefHeight="541.0" prefWidth="900.0" styleClass="table-view" />
             <Label layoutX="301.0" layoutY="7.0" styleClass="call_to_action" text="Current Film Selection" />
          </children></AnchorPane>
    </center>

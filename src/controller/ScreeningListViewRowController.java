@@ -103,7 +103,7 @@ public class ScreeningListViewRowController {
 
 
 	//Fills director label with corresponding film director
-		seatAvailability.setText(screening.getAvailableSeats() + "/16 Seats available");	
+		seatAvailability.setText(screening.getBookedSeats() + "/16 Seats booked");	
 
 	//Fills imageView with corresponding image from local resource folder
 		

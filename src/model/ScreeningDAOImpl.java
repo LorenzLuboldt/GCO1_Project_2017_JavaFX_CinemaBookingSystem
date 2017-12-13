@@ -469,7 +469,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    if(sameCheck)	{
 		    
 				// SQL query, stored in String
-		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_int, time_string, film_title, available_seats, booked_seats, available_info, occupancy_rate ticket_status) VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
+		    	String query = "INSERT INTO screening (date_id, year_id, month_id, day_id, time_int, time_string, film_title, available_seats, booked_seats, available_info, occupancy_rate, ticket_status) VALUES ('" + dateID + "', " + yearID + "," + monthID + "," + 
 		    			dayID + "," + timeInt + ",'" + timeString + "', '"+ filmTitle + "'," + availableSeats + "," + bookedSeats + ",'" + availableInfo + "', '" + occupancyRate + "', '" + ticketStatus + "')";
 		     
 			    // Run query
