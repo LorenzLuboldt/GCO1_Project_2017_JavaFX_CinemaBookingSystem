@@ -15,33 +15,42 @@
       <HBox fx:id="container" prefHeight="150.0" prefWidth="900.0" spacing="10.0">
          <children>
             <ImageView fx:id="filmPoster" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="150.0" prefWidth="349.0">
                <children>
-                  <Label fx:id="filmTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="120.0" text="Film Title" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="filmTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="419.0" text="Film Title" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="filmGenre" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="120.0" text="Film Genre" textAlignment="CENTER" textFill="#fc0000">
+                  <Label fx:id="filmGenre" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="363.0" text="Film Genre" textAlignment="CENTER" textFill="#fc0000">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="filmActors" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="120.0" text="Film Actors" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP" />
-                  <Label fx:id="filmDirector" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="120.0" text="Film Director" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP" />
+                  <Label fx:id="filmActors" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="372.0" text="Film Actors" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="filmDirector" alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="368.0" text="Film Director" textAlignment="CENTER" textFill="#a1a1a1" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </VBox>
-            <TextArea fx:id="filmDescription" editable="false" prefHeight="135.0" prefWidth="332.0">
+            <TextArea fx:id="filmDescription" editable="false" prefHeight="150.0" prefWidth="256.0" wrapText="true">
                <HBox.margin>
-                  <Insets left="60.0" />
+                  <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="Lao UI" size="14.0" />
+               </font>
             </TextArea>
             <Button fx:id="showFilmDetails" mnemonicParsing="false" onAction="#showMovieDetailPage" styleClass="button_listview" text="Book Now">
                <HBox.margin>
-                  <Insets left="40.0" top="50.0" />
+                  <Insets left="20.0" top="60.0" />
                </HBox.margin>
             </Button>
          </children>

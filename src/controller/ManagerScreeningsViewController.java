@@ -52,6 +52,7 @@ public class ManagerScreeningsViewController implements Initializable {
 	@FXML private Label filmTitleLabel;
 	@FXML private Label dateLabel;
 	@FXML private Label timeLabel;	
+	@FXML private Label successNotification;
 
 	// Create DAO Objects for Data base access
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
@@ -83,7 +84,7 @@ public class ManagerScreeningsViewController implements Initializable {
                 new PieChart.Data("Available Seats", s.getAvailableSeats()),
                 new PieChart.Data("Booked Seats", s.getBookedSeats()));
         
-        pieChart.setTitle("Ticket Sales");
+        pieChart.setTitle("Occupancy Rate");
         pieChart.setData(pieChartData);
        
 	}
@@ -282,7 +283,7 @@ System.out.println("Method started");
 			}
 			outputStream.close();
 
-			System.out.println("Done");
+			successNotification.setText("Download successful.");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

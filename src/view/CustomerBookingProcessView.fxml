@@ -22,7 +22,7 @@
                   <Image url="logo.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToBookingsHistory" prefHeight="54.0" prefWidth="116.0" styleClass="button_header" text="My Bookings" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToBookingsHistory" prefHeight="50.0" prefWidth="116.0" styleClass="button_header" text="My Bookings" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -46,7 +46,7 @@
                   <Insets left="5.0" top="15.0" />
                </HBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toDashboard" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="Home" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toDashboard" prefHeight="50.0" prefWidth="88.0" styleClass="button_header" text="Home" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -54,7 +54,7 @@
                   <Insets left="150.0" top="22.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -68,27 +68,35 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="datePicker" layoutX="491.0" layoutY="130.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
-            <Label layoutX="490.0" layoutY="82.0" text="1. When do you want to go to the cinema?" textFill="WHITE">
+            <DatePicker fx:id="datePicker" layoutX="489.0" layoutY="153.0" prefHeight="55.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
+            <Label layoutX="488.0" layoutY="105.0" text="1. Choose A Date" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="782.0" layoutY="128.0" mnemonicParsing="false" onAction="#showFilmsButtonPushed" prefHeight="57.0" prefWidth="208.0" text="Show films" />
-            <TableView fx:id="tableView" layoutX="488.0" layoutY="288.0" prefHeight="200.0" prefWidth="500.0">
+            <Button layoutX="780.0" layoutY="152.0" mnemonicParsing="false" onAction="#showFilmsButtonPushed" prefHeight="58.0" prefWidth="208.0" text="Show films" />
+            <TableView fx:id="tableView" layoutX="487.0" layoutY="277.0" prefHeight="200.0" prefWidth="500.0">
               <columns>
                 <TableColumn fx:id="time_id_column" prefWidth="100" text="Time" />
                 <TableColumn fx:id="film_title_column" prefWidth="200" text="Film" />
                 <TableColumn fx:id="ticket_status_column" prefWidth="200" text="Ticket Status" />
               </columns>
             </TableView>
-            <Label layoutX="493.0" layoutY="244.0" text="2. Select your preferred screening" textFill="WHITE">
+            <Label layoutX="492.0" layoutY="233.0" text="2. Choose A Screening" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="483.0" layoutY="499.0" mnemonicParsing="false" onAction="#chooseSeatsButtonPushed" prefHeight="20.0" prefWidth="508.0" text="Choose seats" />
-         </children></AnchorPane>
+            <Button layoutX="483.0" layoutY="521.0" mnemonicParsing="false" onAction="#chooseSeatsButtonPushed" prefHeight="55.0" prefWidth="508.0" text="Choose seats" />
+            <Label layoutX="622.0" layoutY="35.0" styleClass="call_to_action" text="Booking Process" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin></AnchorPane>
    </center>
    <bottom>
       <AnchorPane prefHeight="69.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
