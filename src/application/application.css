@@ -85,3 +85,8 @@
 	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 12.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+.call_to_action_success {
+	-fx-color: black; -fx-font: 20.0px "Lao UI";-fx-text-fill: black; -fx-background-color: #82d024;
+}
+
+

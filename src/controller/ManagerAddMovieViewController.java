@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.FileChannel;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -37,6 +38,7 @@ public class ManagerAddMovieViewController implements Initializable {
 	boolean checkIfFileChosen = false;
 	
 	// @Lorenz: Instance variables to choose files
+	@FXML private Label successNotification;
 	@FXML private Button chooseFile;
 	@FXML private Button addFilmButtonPushed;
 	
@@ -80,8 +82,17 @@ public class ManagerAddMovieViewController implements Initializable {
 		String imgPath = uploadFile();
 		
 		// Add Film object to DB
+		
+		try {
 		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText());
+		successNotification.setText("Successfully Added Film.");
+
+		} catch (Exception e) {
+			successNotification.setText("Please Fill All Input Fields");
+			e.printStackTrace();
 	}
+	}
+
 	
 	public void toDashboard(ActionEvent event) {
 		try {	
