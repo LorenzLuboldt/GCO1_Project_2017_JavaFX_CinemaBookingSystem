@@ -108,7 +108,15 @@ public class ScreeningListViewRowController {
 	//Fills imageView with corresponding image from local resource folder
 		
 	// Set ImageView to display image
-		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
+//		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
+//		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
+//		Image img = new Image(file.toURI().toString());
+//		filmPoster.setImage(img);
+//		
+		int filmID = film.getFilmId();
+		String imgPath = filmDAO.getFilmImagePath(filmID);
+	// Set ImageView to display image
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
@@ -127,7 +135,7 @@ public class ScreeningListViewRowController {
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/CustomerFilmDetailsView.fxml").openStream());
+			Pane root = loader.load(getClass().getResource("/view/ManagerBookingsView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);

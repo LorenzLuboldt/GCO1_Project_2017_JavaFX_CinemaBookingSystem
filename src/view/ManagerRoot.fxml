@@ -41,11 +41,21 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1076.0" layoutY="109.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="150.0" prefWidth="300.0" text="View/Edit Movie Selection" />
-            <Button layoutX="1078.0" layoutY="402.0" mnemonicParsing="false" onAction="#GoToBookings" prefHeight="150.0" prefWidth="300.0" text="View Room Bookings" />
+            <Button layoutX="1016.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoToMovieSelection" prefHeight="80.0" prefWidth="300.0" text="View/Edit Movie Selection" />
+            <Button layoutX="1016.0" layoutY="554.0" mnemonicParsing="false" onAction="#GoToStatistics" prefHeight="80.0" prefWidth="300.0" text="Statistics" />
             <ListView fx:id="allScreeningList" layoutX="14.0" layoutY="94.0" prefHeight="541.0" prefWidth="900.0" styleClass="table-view" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="987.0" layoutY="28.0" styleClass="call_to_action" text="What would you like to do?" textAlignment="CENTER" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="15.0" styleClass="call_to_action" text="Upcoming Screenings" textAlignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1034.0" layoutY="28.0" styleClass="call_to_action" text="Managing Options" textAlignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="28.0" styleClass="call_to_action" text="Screenings Overview" textAlignment="CENTER" />
+            <ImageView fitHeight="123.0" fitWidth="104.0" layoutX="1114.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="chart-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="123.0" fitWidth="104.0" layoutX="1114.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="movie-icon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>

@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -41,7 +42,7 @@ public class LoginController implements Initializable {
 									// Builder
 
 	@FXML
-	private TextField txtPassword; // Name of text field is equal to the name
+	private PasswordField txtPassword; // Name of text field is equal to the name
 									// assigned in the ID section of the Scene
 									// Builder
 

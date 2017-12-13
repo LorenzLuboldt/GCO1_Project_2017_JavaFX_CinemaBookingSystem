@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ManagerEditMovieViewController {
+public class ManagerStatisticsViewController {
 	@FXML
 	private Label userLbl2;
 
