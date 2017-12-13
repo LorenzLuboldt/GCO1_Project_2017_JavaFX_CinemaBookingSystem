@@ -24,7 +24,7 @@ import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
 
-public class ManagerBookingsViewController implements Initializable {
+public class ManagerScreeningsViewController implements Initializable {
 
 	@FXML
 	private Label userLbl2;
@@ -33,7 +33,8 @@ public class ManagerBookingsViewController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		loadSeatingMap();
+		
 	}
 
 	public void GetManager(String user) {

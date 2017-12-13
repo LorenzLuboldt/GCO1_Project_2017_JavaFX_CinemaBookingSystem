@@ -12,6 +12,7 @@ import model.BookingDAOImpl;
 import model.Customer;
 import model.CustomerDAO;
 import model.CustomerDAOImpl;
+import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
 import model.Screening;
@@ -44,9 +45,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
-	}
 		
-		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
+//		 ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 //		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
 		
@@ -58,7 +58,14 @@ public class Main extends Application {
 //		s.getSelectedSeats();
 //		s.deleteSelectedSeat();
 		
+//		FilmDAO filmDAO = new FilmDAOImpl();
+//		filmDAO.addFilm("Nme", "filmDescription", "filmImage", "filmGenre", "filmCastMembers", "filmDirector");
+//		Film f = filmDAO.getFilm("Nme");
+//		filmDAO.updateFilm(f.getFilmId(), "filmTitle", "filmDescription", "filmGenre", "filmCastMembers", "filmDirector");
+//		Film fi = filmDAO.getFilm("filmTitle");
+//		filmDAO.deleteFilm(fi);
 //		
+		
 //		BookingDAO bookingDAO = new BookingDAOImpl();
 //		bookingDAO.addBooking(1, "A01", 1);
 //		bookingDAO.addBooking(2, "A02", 8);
@@ -94,8 +101,6 @@ public class Main extends Application {
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);
 //		
-//		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-//		
 //				screeningDAO.deleteScreening(10);	
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
@@ -114,8 +119,6 @@ public class Main extends Application {
 		
 		
 		
-		
-		
-		// ________________________TESTING AREA OVER____________________________________
 	}
+}
 

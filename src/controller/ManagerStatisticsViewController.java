@@ -2,6 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,10 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ManagerStatisticsViewController {
+public class ManagerStatisticsViewController implements Initializable {
 	@FXML
 	private Label userLbl2;
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		}
+	
 	// Event Listener on Button.onAction
 	@FXML
 	public void toDashboard(ActionEvent event) {
@@ -69,4 +79,5 @@ public class ManagerStatisticsViewController {
 			
 		}
 	}
+
 }

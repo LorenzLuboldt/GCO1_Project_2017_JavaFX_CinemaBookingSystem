@@ -550,9 +550,10 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	}
 	
 	
-	// *** UPDATE AVAILABLE SEATS FOR SPECIFIC SCREENING ***
-	public void updateAvailableSeats(int screeningID)	{
+	// *** DECREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS MADE) ***
+	public void decreaseAvailableSeats(int screeningID)	{
 		
+		System.out.println("Decrease seats method has been called.");
 		// Create variables to be updated
 		int availableSeats, bookedSeats;
 		String availableInfo, ticketStatus, occupancyRate;
@@ -598,14 +599,13 @@ public class ScreeningDAOImpl implements ScreeningDAO {
     	    bookedSeats = screening.getBookedSeats() + 1;
     	    availableInfo = computeAvailableInfo(availableSeats);
     	    occupancyRate = computeOccupancyRate(bookedSeats);
-    	    ticketStatus = computeTicketStatus(availableSeats);
-    		
+    	    ticketStatus = computeTicketStatus(availableSeats);    		
             
             // Save updated variables to database
-            String aQuery = "UPDATE screening SET available_seats=" + availableSeats + "WHERE screening_id=" + screeningID;
+            String aQuery = "UPDATE screening SET available_seats=" + availableSeats + " WHERE screening_id=" + screeningID;
             st.executeUpdate (aQuery);
             
-            String bQuery = "UPDATE screening SET booked_seats=" + bookedSeats + "WHERE screening_id=" + screeningID;
+            String bQuery = "UPDATE screening SET booked_seats=" + bookedSeats + " WHERE screening_id=" + screeningID;
             st.executeUpdate(bQuery);
             
             String cQuery = "UPDATE screening SET available_info='" + availableInfo + "' WHERE screening_id=" + screeningID;
@@ -646,6 +646,101 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    }
 	  }
 	
+	// *** INCREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS DELETED) ***
+	public void increaseAvailableSeats(int screeningID)
+	{
+		System.out.println("Increase seats method has been called.");
+		// Create variables to be updated
+		int availableSeats, bookedSeats;
+		String availableInfo, ticketStatus, occupancyRate;
+		
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+	    Statement st = null;
+	    
+	    ResultSet results = null;
+	    Screening screening = null;
+	    
+	    try	{
+	    	
+		    st = connection.createStatement();
+	    	
+			// 1. Retrieve selected screening from database
+	    	String query = "SELECT * FROM screening WHERE screening_id = " + "'" + screeningID + "'";
+	    	System.out.println(query);
+				    
+		    results = st.executeQuery(query);
+		    
+            while(results.next())	{
+            	screening = new Screening();
+            	
+		    	screening.setScreeningID(results.getInt("screening_id"));
+		    	screening.setDateID(results.getString("date_id"));
+		    	screening.setYearID(results.getInt("year_id"));
+		    	screening.setMonthID(results.getInt("month_id"));
+		    	screening.setDayID(results.getInt("day_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
+		    	screening.setFilmTitle(results.getString("film_title"));
+		    	screening.setAvailableSeats(results.getInt("available_seats"));
+		    	screening.setBookedSeats(results.getInt("booked_seats"));
+		    	screening.setAvailableInfo(results.getString("available_info"));
+		    	screening.setOccupancyRate(results.getString("occupancy_rate"));
+		    	screening.setTicketStatus(results.getString("ticket_status"));
+            	
+            }
+            
+    	    // Compute information of variables to be updated  
+    	    availableSeats = screening.getAvailableSeats() + 1;;	 
+    	    bookedSeats = screening.getBookedSeats() - 1;
+    	    availableInfo = computeAvailableInfo(availableSeats);
+    	    occupancyRate = computeOccupancyRate(bookedSeats);
+    	    ticketStatus = computeTicketStatus(availableSeats);    		
+            
+            // Save updated variables to database
+            String aQuery = "UPDATE screening SET available_seats=" + availableSeats + " WHERE screening_id=" + screeningID;
+            st.executeUpdate (aQuery);
+            
+            String bQuery = "UPDATE screening SET booked_seats=" + bookedSeats + " WHERE screening_id=" + screeningID;
+            st.executeUpdate(bQuery);
+            
+            String cQuery = "UPDATE screening SET available_info='" + availableInfo + "' WHERE screening_id=" + screeningID;
+            st.executeUpdate(cQuery);
+            
+            String dQuery = "UPDATE screening SET occupancy_rate='" + occupancyRate + "' WHERE screening_id=" + screeningID;
+            st.executeUpdate(dQuery);
+            
+            String eQuery = "UPDATE screening SET ticket_status='" + ticketStatus + "' WHERE screening_id=" + screeningID;
+            st.executeUpdate(eQuery);
+            
+            System.out.println("Screening info has been updated");
+                        
+        } catch (SQLException e) {
+            System.err.println("While updating the screening " + screeningID  + " an error occurred: ");
+            e.printStackTrace();
+        }
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
+
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	    	  System.out.println("udpateScreening() --> error has been caught");
+	        exe.printStackTrace();
+	      }
+
+	    }
+	}
 	
 	// HELPER METHODS:
 	

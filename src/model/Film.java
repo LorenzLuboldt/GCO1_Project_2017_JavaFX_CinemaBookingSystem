@@ -30,7 +30,6 @@ public class Film {
 	private StringProperty film_genre;
 	private StringProperty film_cast_members;
 	private StringProperty film_director;
-	private StringProperty film_trailer;
 	
 	
 	// constructor
@@ -42,7 +41,6 @@ public class Film {
 		this.film_genre = new SimpleStringProperty();
 		this.film_cast_members = new SimpleStringProperty();
 		this.film_director = new SimpleStringProperty();
-		this.film_trailer = new SimpleStringProperty();
 	}
 	
 	
@@ -169,22 +167,5 @@ public class Film {
 	// property
 	public StringProperty filmDirector()	{
 		return film_director;
-	}
-	
-	// *** FILM TRAILER ***
-	
-	// getter
-	public String getFilmTrailer()	{
-		return film_trailer.get();
-	}
-	
-	// setter
-	public void setFilmTrailer(String filmTrailer)	{
-		this.film_trailer.set(filmTrailer);
-	}
-	
-	// property
-	public StringProperty filmTrailer()	{
-		return film_trailer;
 	}
 }

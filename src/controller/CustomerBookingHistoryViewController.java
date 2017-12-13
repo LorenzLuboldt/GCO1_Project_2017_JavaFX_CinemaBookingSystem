@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 
 public class CustomerBookingHistoryViewController implements Initializable{
 	@FXML
@@ -35,6 +37,7 @@ public class CustomerBookingHistoryViewController implements Initializable{
 
 	// DAO objects to query database
 	BookingDAO bookingDAO = new BookingDAOImpl();
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -62,7 +65,11 @@ public class CustomerBookingHistoryViewController implements Initializable{
 	
 	public void deleteBookingButtonPushed(ActionEvent event)	{
 		
-		// delete selected film from DB
+		// Update seat statistics for screening
+		Booking bk = bookingDAO.getBooking(myBookingsTable.getSelectionModel().getSelectedItem().getBookingID());
+		screeningDAO.increaseAvailableSeats(bk.getScreeningID());
+		
+		// Delete selected film from DB
 		bookingDAO.deleteBooking(myBookingsTable.getSelectionModel().getSelectedItem().getBookingID());
 		
 		// reload table
