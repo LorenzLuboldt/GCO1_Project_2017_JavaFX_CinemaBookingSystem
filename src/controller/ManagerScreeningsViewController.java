@@ -33,7 +33,7 @@ public class ManagerScreeningsViewController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loadSeatingMap();
+	//	loadSeatingMap();
 		
 	}
 
@@ -90,7 +90,7 @@ public class ManagerScreeningsViewController implements Initializable {
 	 */
 	public void downloadBookingData(ActionEvent event) {
 System.out.println("Method started");
-		String fileName = "resources/allScreeningsData.txt";
+		String fileName = "resources/allScreeningsData.csv";
 		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 		ObservableList<Screening> output = screeningDAO.getAllScreenings();
@@ -98,11 +98,12 @@ System.out.println("Method started");
 		try {
 			
 			PrintWriter outputStream = new PrintWriter (fileName);
-			
+		
+			outputStream.println("ScreeningID" + "," + "FilmTitle" + "," + "Date" + "," + "Time" + "," + "AvailableSeats" + "," + "OccupancyRate");
 			for(int i = 0; i < output.size(); i++) {
 				System.out.println("2");
 				Screening s = output.get(i);
-				outputStream.println(s.getScreeningID() + "," + s.getFilmTitle() + "," + s.getDateID() + "," + s.getTimeInt() + "," + s.getAvailableSeats());
+				outputStream.println(s.getScreeningID() + "," + s.getFilmTitle() + "," + s.getDateID() + "," + s.getTimeString() + "," + s.getAvailableInfo() + "," + s.getOccupancyRate());
 			}
 			outputStream.close();
 

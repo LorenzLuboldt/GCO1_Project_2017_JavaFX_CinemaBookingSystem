@@ -86,7 +86,11 @@
 }
 
 .call_to_action_success {
-	-fx-color: black; -fx-font: 20.0px "Lao UI";-fx-text-fill: black; -fx-background-color: #82d024;
+	-fx-color: #82d024; -fx-font: 20.0px "Lao UI";-fx-text-fill: #82d024; -fx-background-color: black;
+}
+
+.call_to_action_error {
+	-fx-color: #ea4315; -fx-font: 20.0px "Lao UI";-fx-text-fill: #ea4315; -fx-background-color: black;
 }
 
 

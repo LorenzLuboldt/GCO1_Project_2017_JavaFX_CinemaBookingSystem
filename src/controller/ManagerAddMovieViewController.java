@@ -39,6 +39,7 @@ public class ManagerAddMovieViewController implements Initializable {
 	
 	// @Lorenz: Instance variables to choose files
 	@FXML private Label successNotification;
+	@FXML private Label errorNotification;
 	@FXML private Button chooseFile;
 	@FXML private Button addFilmButtonPushed;
 	
@@ -88,7 +89,8 @@ public class ManagerAddMovieViewController implements Initializable {
 		successNotification.setText("Successfully Added Film.");
 
 		} catch (Exception e) {
-			successNotification.setText("Please Fill All Input Fields");
+			
+			errorNotification.setText("Please Fill All Input Fields");
 			e.printStackTrace();
 	}
 	}
