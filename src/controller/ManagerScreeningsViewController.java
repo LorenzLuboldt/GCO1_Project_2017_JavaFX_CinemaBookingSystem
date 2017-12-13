@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -23,6 +24,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.scene.chart.*;
+import javafx.scene.Group;
+
+
+// Import models
 import model.BookingDAO;
 import model.BookingDAOImpl;
 import model.FilmDAO;
@@ -40,15 +47,56 @@ public class ManagerScreeningsViewController implements Initializable {
 	@FXML private Label userLbl2;
 	@FXML private Button downloadAllBookingData;
 	@FXML private GridPane seatingMap;
+	@FXML private PieChart pieChart; 
+	
+	@FXML private Label filmTitleLabel;
+	@FXML private Label dateLabel;
+	@FXML private Label timeLabel;	
 
 	// Create DAO Objects for Data base access
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
 	BookingDAO bookingDAO = new BookingDAOImpl();
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		loadPieChart();
+		loadScreeningDetails();
 		loadSeatingMap();
 		
+	}
+	
+	
+	
+	public void loadPieChart() {
+
+		// Check for booked seats --> SCREENING ID
+		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
+		int screeningID = screeningsList.get(0).getScreeningID();
+		Screening s = screeningDAO.getScreening(screeningID);
+
+		ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                new PieChart.Data("Available Seats", s.getAvailableSeats()),
+                new PieChart.Data("Booked Seats", s.getBookedSeats()));
+        
+        pieChart.setTitle("Ticket Sales");
+        pieChart.setData(pieChartData);
+       
+	}
+	
+	public void loadScreeningDetails()	{
+		
+		// Check for booked seats --> SCREENING ID
+		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
+		int screeningID = screeningsList.get(0).getScreeningID();
+		
+		// Load screening details for selected screening and set text fields
+		Screening selectedScreening = screeningDAO.getScreening(screeningID);
+		filmTitleLabel.setText(selectedScreening.getFilmTitle());
+		dateLabel.setText(selectedScreening.getDateID());
+		timeLabel.setText(selectedScreening.getTimeString());
 	}
 	
 	public void loadSeatingMap() throws NullPointerException	{
@@ -214,7 +262,6 @@ public class ManagerScreeningsViewController implements Initializable {
 	public void downloadBookingData(ActionEvent event) {
 System.out.println("Method started");
 		String fileName = "resources/allScreeningsData.txt";
-		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 		ObservableList<Screening> output = screeningDAO.getAllScreenings();
 		
