@@ -73,7 +73,7 @@ public class ManagerRootController implements Initializable {
 	
 	public void GetManager(String user) {
 		// TODO Auto-generated method stub
-		userLbl2.setText(user);
+		userLbl2.setText("Welcome, "+ user + "!");
 	}
 	
 	
@@ -97,12 +97,12 @@ public class ManagerRootController implements Initializable {
 
 	}
 	
-	public void GoToBookings(ActionEvent event) {
+	public void GoToStatistics(ActionEvent event) {
 		try {	
 	((Node) event.getSource()).getScene().getWindow().hide();
 	Stage primaryStage = new Stage();
 	FXMLLoader loader = new FXMLLoader();
-	Pane root = loader.load(getClass().getResource("/view/ManagerBookingsView.fxml").openStream());
+	Pane root = loader.load(getClass().getResource("/view/ManagerEditMovieView.fxml").openStream());
 	Scene scene = new Scene(root);
 	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 	primaryStage.setScene(scene);

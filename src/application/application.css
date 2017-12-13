@@ -15,15 +15,15 @@
 }
 
 .button {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button_header {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #7E7878; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #7E7878; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button_header_logout {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #3D3939; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #3D3939; -fx-color: black; -fx-font: 14.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover{
@@ -82,6 +82,6 @@
 }
 
 .button_listview {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 7; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 12.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 12.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
