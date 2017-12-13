@@ -31,51 +31,73 @@ public class CustomerEditInformationViewController implements Initializable {
 
 	Customer personSelected = new Customer();
 	CustomerDAO customerDAO= new CustomerDAOImpl();
-	@FXML
-	private Label userLbl;
-		
 	
-	//Configure the customer table
-	@FXML private TableView<Customer> customer_data;
-	@FXML private TableColumn<Customer, String> firstName;
-	@FXML private TableColumn<Customer, String> lastName;
-	@FXML private TableColumn<Customer, String> emailAddress;
-//	@FXML private TableColumn<Customer, String> customerID;
-	
-	// @Michael: Instance variables to edit customer data
+	// Instance variables to edit customer data
 	@FXML private Button saveChangesButton;
 	@FXML private TextField editedFirstNameTextField;
 	@FXML private TextField editedLastNameTextField;
 	@FXML private TextField editedEmailTextField;
+	
+	// Instance variable to display customer data
+	@FXML private Label firstNameLabel;
+	@FXML private Label lastNameLabel;
+	@FXML private Label emailLabel;
+	
+	@FXML private Label userLbl;
 
-
+	
 	/**
-	 * This method will allow the user to double click on a cell and update the first name of theperson
+	 * This method will allow the user to double click on a cell and update the first name of the person
 	 * Sources: https://www.youtube.com/watch?v=z4LVoLg6ch0
 	 * @author Lorenz
 	 * @param user
 	 */
 	
-	public void changeFirstNameCellEvent(CellEditEvent edittedCell) {
-		personSelected = customer_data.getSelectionModel().getSelectedItem();
-		personSelected.setFirstName(edittedCell.getNewValue().toString());
-	}
-
-	public void changeLastNameCellEvent(CellEditEvent edittedCell) {
-		personSelected = customer_data.getSelectionModel().getSelectedItem();
-		personSelected.setLastName(edittedCell.getNewValue().toString());
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+			
+		loadCustomerInfo();
+	
 	}
 	
-	public void changeEmailAdressCellEvent(CellEditEvent edittedCell) {
-		personSelected = customer_data.getSelectionModel().getSelectedItem();
-		personSelected.setCustEmail(edittedCell.getNewValue().toString());
+	
+	public void loadCustomerInfo()	{
+		Customer cus = customerDAO.getCustomer(1);
+		
+		firstNameLabel.setText(cus.getFirstName());
+		lastNameLabel.setText(cus.getLastName());
+		emailLabel.setText(cus.getCustEmail());
 	}
+
+	
+	public void saveChangesButtonPushed()	{
+		
+		// Declare variables and create customer object
+		String editedEmail, editedFirstName, editedLastName;
+		Customer cus = customerDAO.getCustomer(1);
+				
+		// Check if fields have been edited: if not, keep old value
+		editedEmail = (editedEmailTextField.getText().length() == 0) ? cus.getCustEmail() : editedEmailTextField.getText();
+		editedFirstName = (editedFirstNameTextField.getText().length() == 0) ? cus.getFirstName() : editedFirstNameTextField.getText();
+		editedLastName = (editedLastNameTextField.getText().length() == 0) ? cus.getLastName() : editedLastNameTextField.getText();
+		
+		// Update customer data in data base for customer id 1
+		customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
+		
+		// Display updated info to user
+		loadCustomerInfo();
+		 
+		// @TODO Pop-up to user that informs her that changes have been saved
+	}
+	
 	
 	public void GetCustomer(String user) {
 		// TODO Auto-generated method stub
 		userLbl.setText(user);
 	}
-	
 
 
 	// Manager is able to logout at this page
@@ -95,6 +117,8 @@ public class CustomerEditInformationViewController implements Initializable {
 	}
 	}
 	// Manager is able to go back to overview page to select another option
+	
+
 	public void toDashboard(ActionEvent event) {
 	try {	
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -110,6 +134,7 @@ public class CustomerEditInformationViewController implements Initializable {
 		
 	}
 	}
+
 	
 	public void BackToDashboard(ActionEvent event) {
 	try {	
@@ -126,6 +151,7 @@ public class CustomerEditInformationViewController implements Initializable {
 		
 	}
 	}
+
 	
 	//Brings User to booking history view
 	public void goToBookingsHistory(ActionEvent event) {
@@ -142,65 +168,6 @@ public class CustomerEditInformationViewController implements Initializable {
 	} catch (Exception e) {
 		
 	}
-	}
-	
-	
-	/* (non-Javadoc)
-	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
-	 */
-	@Override
-public void initialize(URL location, ResourceBundle resources) {
-		
-		//Connects table column to respective table column in database
-		firstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
-		lastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
-		emailAddress.setCellValueFactory(new PropertyValueFactory<Customer, String>("custEmail"));
-//		customerID.setCellValueFactory(new PropertyValueFactory<Customer, String>("custID"));
-		
-
-		//load data from Customer Table
-		Customer cus = customerDAO.getCustomer(1);
-		final ObservableList<Customer> customerData = FXCollections.observableArrayList();
-		customerData.add(cus);
-		customer_data.setItems(customerData);
-		
-		
-		//Update customer data table to allow for the the customer data fields to be editable
-		customer_data.setEditable(true);
-		firstName.setCellFactory(TextFieldTableCell.forTableColumn());
-		lastName.setCellFactory(TextFieldTableCell.forTableColumn());
-		emailAddress.setCellFactory(TextFieldTableCell.forTableColumn());
-
-	}
-
-	public void saveChangesButtonPushed()	{
-		
-		// Declare variables and create customer object
-		String editedEmail, editedFirstName, editedLastName;
-		Customer cus = customerDAO.getCustomer(1);
-		
-		// Retrieve user inputs from text field
-		String e = editedEmailTextField.getText();
-		String f = editedFirstNameTextField.getText();
-		String l = editedLastNameTextField.getText();
-				
-		// Check if fields have been edited: if not, keep old value
-		editedEmail = (e.length() == 0) ? cus.getCustEmail() : editedEmailTextField.getText();
-		editedFirstName = (f.length() == 0) ? cus.getFirstName() : editedFirstNameTextField.getText();
-		editedLastName = (l.length() == 0) ? cus.getLastName() : editedLastNameTextField.getText();
-		
-		// Update customer data in data base for customer id 1
-		customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
-		System.out.println("Changes have been saved.");
-		
-		// Refresh the table that shows customer data --> This doesn't work yet
-		customerDAO.getCustomer(1);
-		final ObservableList<Customer> customerData = FXCollections.observableArrayList();
-		customerData.add(cus);
-		customer_data.setItems(customerData);
-		 
-		// @TODO Pop-up to user that informs her that changes have been saved
-		
 	}
 	
 }
