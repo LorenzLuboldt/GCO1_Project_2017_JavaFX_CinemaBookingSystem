@@ -58,12 +58,12 @@ public class Main extends Application {
 //		s.getSelectedSeats();
 //		s.deleteSelectedSeat();
 		
-		FilmDAO filmDAO = new FilmDAOImpl();
-		filmDAO.addFilm("Nme", "filmDescription", "filmImage", "filmGenre", "filmCastMembers", "filmDirector");
-		Film f = filmDAO.getFilm("Nme");
-		filmDAO.updateFilm(f.getFilmId(), "filmTitle", "filmDescription", "filmGenre", "filmCastMembers", "filmDirector");
-		Film fi = filmDAO.getFilm("filmTitle");
-		filmDAO.deleteFilm(fi);
+//		FilmDAO filmDAO = new FilmDAOImpl();
+//		filmDAO.addFilm("Nme", "filmDescription", "filmImage", "filmGenre", "filmCastMembers", "filmDirector");
+//		Film f = filmDAO.getFilm("Nme");
+//		filmDAO.updateFilm(f.getFilmId(), "filmTitle", "filmDescription", "filmGenre", "filmCastMembers", "filmDirector");
+//		Film fi = filmDAO.getFilm("filmTitle");
+//		filmDAO.deleteFilm(fi);
 //		
 		
 //		BookingDAO bookingDAO = new BookingDAOImpl();
