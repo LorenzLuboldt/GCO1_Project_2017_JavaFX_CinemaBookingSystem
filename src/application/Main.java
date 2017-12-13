@@ -44,9 +44,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
-	}
 		
-		// ________________________TESTING AREA FOR DAO METHODS:_____________________________________
+//		 ________________________TESTING AREA FOR DAO METHODS:_____________________________________
 //		
 //		System.out.println("_____________START OF NEW TEST: ___________________");
 		
@@ -94,8 +93,6 @@ public class Main extends Application {
 //		Film f = filmDAO.getFilm("The Dark Knight");
 //		filmDAO.deleteFilm(f);
 //		
-//		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-//		
 //				screeningDAO.deleteScreening(10);	
 //		Screening a = new Screening();
 //		a.setScreeningID(2);
@@ -114,8 +111,6 @@ public class Main extends Application {
 		
 		
 		
-		
-		
-		// ________________________TESTING AREA OVER____________________________________
 	}
+}
 

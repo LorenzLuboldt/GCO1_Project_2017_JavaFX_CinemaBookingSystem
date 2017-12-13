@@ -292,7 +292,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 			s = selectionList.get(i);			
 			b.addBooking(1, s.getSeatID(), s.getScreeningID());
-			screeningDAO.updateAvailableSeats(s.getScreeningID());
+			screeningDAO.decreaseAvailableSeats(s.getScreeningID());
 		}
 		
 		// Clean up selection table for next booking
