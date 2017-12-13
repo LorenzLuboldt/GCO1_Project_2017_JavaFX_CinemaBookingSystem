@@ -56,7 +56,6 @@ public class FilmDAOImpl implements FilmDAO {
 		    	film.setFilmGenre(results.getString("film_genre"));
 		    	film.setFilmCastMembers(results.getString("film_cast_members"));
 		    	film.setFilmDirector(results.getString("film_director"));
-		    	film.setFilmTrailer(results.getString("film_trailer"));
 		
 		    	filmList.add(film);
 		    }
@@ -124,7 +123,6 @@ public class FilmDAOImpl implements FilmDAO {
 		    	film.setFilmGenre(results.getString("film_genre"));
 		    	film.setFilmCastMembers(results.getString("film_cast_members"));
 		    	film.setFilmDirector(results.getString("film_director"));
-		    	film.setFilmTrailer(results.getString("film_trailer"));
             }
                         
         } catch (SQLException e) {
@@ -158,7 +156,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	
 	// *** 3. ADD FILM ***	
-	public void addFilm(String filmTitle, String filmDescription, String filmImage, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer) 	{
+	public void addFilm(String filmTitle, String filmDescription, String filmImage, String filmGenre, String filmCastMembers, String filmDirector) 	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -171,7 +169,7 @@ public class FilmDAOImpl implements FilmDAO {
 			// SQL query, stored in String
 	    	String query = "INSERT INTO film (film_title, film_description, film_image, film_genre, film_cast_members, film_director, film_trailer)" + 
 			"VALUES ('" + filmTitle + "', '" + filmDescription + "', '" + filmImage + "', '" + filmGenre + "', '" + filmCastMembers + "', '" + filmDirector
-			 + "', '" + filmTrailer + "')";
+			 + "')";
 	     
 		    // Run query
 		    st.executeUpdate(query);
@@ -200,7 +198,7 @@ public class FilmDAOImpl implements FilmDAO {
 	  }
 	  
 	// *** 4. UPDATE FILM ***
-	public void updateFilm(int filmID, String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector, String filmTrailer)	{
+	public void updateFilm(int filmID, String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector)	{
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -212,7 +210,7 @@ public class FilmDAOImpl implements FilmDAO {
 		    
 			// SQL query, stored in String
 	    	String query = "UPDATE film SET film_title='" + filmTitle + "', film_description=" + "'" + filmDescription + "', film_genre='" + filmGenre + "', film_cast_members='"
-			+ filmCastMembers + "', film_director='" + filmDirector + "', film_trailer='" + filmTrailer + "WHERE film_id=" + filmID;
+			+ filmCastMembers + "', film_director='" + filmDirector + "' WHERE film_id=" + filmID;
 	    	
 	    	System.out.println("Record WILL be updated for film id: " + filmID);
 	    	

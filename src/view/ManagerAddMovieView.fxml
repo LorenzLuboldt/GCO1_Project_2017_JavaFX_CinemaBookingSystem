@@ -68,12 +68,6 @@
                   <Font name="Lao UI Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="513.0" layoutY="394.0" text="Add Link To Trailer" textFill="WHITE">
-               <font>
-                  <Font name="Lao UI Bold" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="filmTrailerLinkTextField" layoutX="500.0" layoutY="447.0" prefHeight="51.0" prefWidth="277.0" promptText="Trailer Link" styleClass="text_field_standard" />
             <Button layoutX="976.0" layoutY="583.0" mnemonicParsing="false" onAction="#linkToAddScreeningTimeView" prefHeight="59.0" prefWidth="234.0" text="Add Screening Time" />
          </children></AnchorPane>
    </center>

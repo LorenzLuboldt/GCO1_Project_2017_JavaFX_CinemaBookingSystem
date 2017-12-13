@@ -25,7 +25,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.FilmDAO;
 import model.FilmDAOImpl;
@@ -47,9 +46,7 @@ public class ManagerAddMovieViewController implements Initializable {
 		@FXML private TextField filmActorsTextField;
 		@FXML private TextField filmDirectorTextField;
 		@FXML private ComboBox<String> filmGenreComboBox;
-		@FXML private ListView<File> fileList;
-		@FXML private TextField filmTrailerLinkTextField;
-		
+		@FXML private ListView<File> fileList;		
 	
 	
 	@FXML
@@ -82,10 +79,8 @@ public class ManagerAddMovieViewController implements Initializable {
 		// Upload Film poster and copy to destination
 		String imgPath = uploadFile();
 		
-		System.out.println(1);
 		// Add Film object to DB
-		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
-System.out.println(2);
+		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText());
 	}
 	
 	public void toDashboard(ActionEvent event) {
