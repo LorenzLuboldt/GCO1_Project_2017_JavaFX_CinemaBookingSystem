@@ -27,7 +27,7 @@
                   <Insets top="22.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="116.0" styleClass="button_header" text="My Account" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toAccountSettings" prefHeight="50.0" prefWidth="116.0" styleClass="button_header" text="My Account" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -43,7 +43,7 @@
                   <Insets top="15.0" />
                </HBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="54.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -61,7 +61,7 @@
          </image>
       </ImageView>
    </bottom>
-   <right>
+   <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="1016.0" layoutY="276.0" mnemonicParsing="false" onAction="#BookTickets" prefHeight="55.0" prefWidth="300.0" text="Book Tickets" />
@@ -71,7 +71,7 @@
                   <Image url="icon_seat.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="120.0" fitWidth="159.0" layoutX="1114.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="123.0" fitWidth="104.0" layoutX="1114.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icon_profile.png" />
                </image>
@@ -84,5 +84,5 @@
             <Insets />
          </BorderPane.margin>
       </AnchorPane>
-   </right>
+   </center>
 </BorderPane>
