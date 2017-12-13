@@ -108,7 +108,15 @@ public class ScreeningListViewRowController {
 	//Fills imageView with corresponding image from local resource folder
 		
 	// Set ImageView to display image
-		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
+//		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
+//		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
+//		Image img = new Image(file.toURI().toString());
+//		filmPoster.setImage(img);
+//		
+		int filmID = film.getFilmId();
+		String imgPath = filmDAO.getFilmImagePath(filmID);
+	// Set ImageView to display image
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
