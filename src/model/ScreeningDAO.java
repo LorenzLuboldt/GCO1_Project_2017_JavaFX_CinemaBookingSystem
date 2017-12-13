@@ -20,16 +20,15 @@ import javafx.collections.ObservableList;
 public interface ScreeningDAO {
 	
 	// Information retrieval and search methods
-	public ObservableList<Screening> getAllScreenings(); // tested
-	public ObservableList<Screening> getUpcomingScreenings(); // tested --> more extensive testing required
-	public ObservableList<Screening> searchScreeningsByDate(String dateID); // tested 
-	public ObservableList<Screening> searchScreeningsByFilm(int filmID);  // tested
-	public Screening getScreening(int screeningID); // tested
+	public ObservableList<Screening> getAllScreenings();
+	public ObservableList<Screening> getUpcomingScreenings();
+	public ObservableList<Screening> searchScreeningsByDate(String dateID);
+	public ObservableList<Screening> searchScreeningsByFilm(int filmID);
+	public Screening getScreening(int screeningID);
 	
 	
 	// Creation, delete and update methods
-	public void addScreening(String dateID, int yearID, int monthID, int dayID,  String timeString, String filmTitle); // Tested
-//	public void updateScreening(Screening screening);
-	public void deleteScreening(int screeningID); // tested
+	public void addScreening(String dateID, int yearID, int monthID, int dayID,  String timeString, String filmTitle);
+	public void deleteScreening(int screeningID);
 	public void updateAvailableSeats(int screeningID);
 }
