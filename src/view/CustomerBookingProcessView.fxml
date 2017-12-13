@@ -68,26 +68,26 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="datePicker" layoutX="62.0" layoutY="125.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
-            <Label layoutX="61.0" layoutY="77.0" text="1. When do you want to go to the cinema?" textFill="WHITE">
+            <DatePicker fx:id="datePicker" layoutX="491.0" layoutY="130.0" prefHeight="51.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
+            <Label layoutX="490.0" layoutY="82.0" text="1. When do you want to go to the cinema?" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="75.0" layoutY="202.0" mnemonicParsing="false" onAction="#showFilmsButtonPushed" text="Show films" />
-            <TableView fx:id="tableView" layoutX="693.0" layoutY="124.0" prefHeight="200.0" prefWidth="500.0">
+            <Button layoutX="782.0" layoutY="128.0" mnemonicParsing="false" onAction="#showFilmsButtonPushed" prefHeight="57.0" prefWidth="208.0" text="Show films" />
+            <TableView fx:id="tableView" layoutX="488.0" layoutY="288.0" prefHeight="200.0" prefWidth="500.0">
               <columns>
                 <TableColumn fx:id="time_id_column" prefWidth="100" text="Time" />
                 <TableColumn fx:id="film_title_column" prefWidth="200" text="Film" />
                 <TableColumn fx:id="ticket_status_column" prefWidth="200" text="Ticket Status" />
               </columns>
             </TableView>
-            <Label layoutX="695.0" layoutY="74.0" text="2. Select your preferred screening" textFill="WHITE">
+            <Label layoutX="493.0" layoutY="244.0" text="2. Select your preferred screening" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="691.0" layoutY="365.0" mnemonicParsing="false" onAction="#chooseSeatsButtonPushed" text="Choose seats" />
+            <Button layoutX="483.0" layoutY="499.0" mnemonicParsing="false" onAction="#chooseSeatsButtonPushed" prefHeight="20.0" prefWidth="508.0" text="Choose seats" />
          </children></AnchorPane>
    </center>
    <bottom>

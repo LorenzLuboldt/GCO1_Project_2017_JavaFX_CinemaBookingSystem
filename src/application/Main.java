@@ -64,6 +64,8 @@ public class Main extends Application {
 //		bookingDAO.addBooking(2, "A02", 8);
 //		bookingDAO.addBooking(1, "A02", 3);
 //		bookingDAO.addBooking(3, 3, 3);
+//		bookingDAO.getCustomerBookings(1);
+		
 //		ObservableList<Booking> ol = bookingDAO.getAllBookings();
 //		Booking spec = bookingDAO.getBooking(2);
 //		bookingDAO.deleteBooking(3);

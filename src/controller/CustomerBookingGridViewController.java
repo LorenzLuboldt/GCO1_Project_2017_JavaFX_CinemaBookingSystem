@@ -30,11 +30,15 @@ import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
 import model.Film;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
 import model.Selection;
 import model.SelectionDAO;
 import model.SelectionDAOImpl;
 
 /**
+ * Purpose: Controller for View on which the user can select a seat for a previously chosen film screening.
+ * 
  * References for seating map: 
  * https://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html
  * https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
@@ -59,6 +63,7 @@ public class CustomerBookingGridViewController implements Initializable{
 	// DAO objects to query database
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
 	BookingDAO bookingDAO = new BookingDAOImpl();
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 	
 	
 	
@@ -162,7 +167,7 @@ public class CustomerBookingGridViewController implements Initializable{
 		System.out.println(seatIsFree);
 		
 		if(seatIsFree)	{
-			Image seatFreeImg = new Image("/../bin/icons/seat-free.png");	
+			Image seatFreeImg = new Image("/res/icons/seat-free.png");	
 			
 			seatFree.setImage(seatFreeImg);
 			
@@ -180,7 +185,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			    	 seatingMap.getChildren().remove(seatFree);
 			    	 
 			    	 // Add "selected seat" icon
-				   	 Image seatSelectedImg = new Image("/../bin/icons/seat-selected.png");
+				   	 Image seatSelectedImg = new Image("/res/icons/seat-selected.png");
 				   	 ImageView seatSelected = new ImageView();
 				   	 seatSelected.setImage(seatSelectedImg);
 				   
@@ -196,7 +201,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			});   // closes EventHandler 	     
 		}
 		else {
-			Image seatBlockedImg = new Image("/../bin/icons/seat-blocked.png");	
+			Image seatBlockedImg = new Image("/res/icons/seat-blocked.png");	
 			seatFree.setImage(seatBlockedImg);
 			System.out.println("BLOCKED IMAGE");
 			
@@ -276,6 +281,7 @@ public class CustomerBookingGridViewController implements Initializable{
 		ObservableList<Selection> selectionList = selectionDAO.getSelection();
 		int index = selectionList.size();
 		
+		// Add seats to booking table and update ticket availability
 		for(int i = 0; i < index; i++)
 		{
 			BookingDAO b = new BookingDAOImpl();
@@ -286,6 +292,7 @@ public class CustomerBookingGridViewController implements Initializable{
 			
 			s = selectionList.get(i);			
 			b.addBooking(1, s.getSeatID(), s.getScreeningID());
+			screeningDAO.updateAvailableSeats(s.getScreeningID());
 		}
 		
 		// Clean up selection table for next booking

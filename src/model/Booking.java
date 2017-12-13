@@ -25,12 +25,23 @@ public class Booking {
 	private StringProperty seat_ID;
 	private IntegerProperty screening_ID; // foreign key from 'screening'
 	
+	// additional variables used in customer bookings method
+	private StringProperty date_ID;
+	private StringProperty time_string;
+	private StringProperty film_title;
+	
+	
 	// constructor
 	public Booking()	{
 		this.booking_ID = new SimpleIntegerProperty();
 		this.cust_ID = new SimpleIntegerProperty();
 		this.seat_ID = new SimpleStringProperty();
 		this.screening_ID = new SimpleIntegerProperty();
+		
+		// additionally
+		this.date_ID = new SimpleStringProperty();
+		this.time_string = new SimpleStringProperty();
+		this.film_title = new SimpleStringProperty();
 	}
 	
 	
@@ -70,7 +81,6 @@ public class Booking {
 	}
 	
 	// *** SEAT ID ***
-	
 		// getter
 	public String getSeatID()	{
 		return seat_ID.get();
@@ -88,7 +98,6 @@ public class Booking {
 
 	
 	// *** SCREENING ID ***
-	
 		// getter
 	public int getScreeningID()	{
 		return screening_ID.get();
@@ -103,4 +112,55 @@ public class Booking {
 	public IntegerProperty screeningIDProperty()	{
 		return screening_ID;
 	}
+	
+		// *** DATE ID ***
+		// getter
+	public String getDateID()	{
+		return date_ID.get();
+	}
+	
+		// setter
+	public void setDateID(String dateID)	{
+		this.date_ID.set(dateID);
+	}
+	
+		// property
+	public StringProperty dateIDProperty()	{
+		return date_ID;
+	}
+	
+	
+	// *** TIME STRING ***
+	// getter
+	public String getTimeString()	{
+	return time_string.get();
+	}
+	
+	// setter
+	public void setTimeString(String timeString)	{
+	this.time_string.set(timeString);
+	}
+	
+	// property
+	public StringProperty timeStringProperty()	{
+	return time_string;
+	}
+	
+	
+	// *** FILM TITLE ***
+	// getter
+	public String getFilmTitle()	{
+	return film_title.get();
+	}
+	
+	// setter
+	public void setFilmTitle(String filmTitle)	{
+	this.film_title.set(filmTitle);
+	}
+	
+	// property
+	public StringProperty filmTitleProperty()	{
+	return film_title;
+}
+
 }
