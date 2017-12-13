@@ -70,7 +70,6 @@
                </image>
          </ImageView>
             <ListView fx:id="allFilmsList" layoutX="12.0" layoutY="66.0" prefHeight="570.0" prefWidth="900.0" styleClass="table-view" />
-            <Button layoutX="1178.0" layoutY="562.0" mnemonicParsing="false" onAction="#downloadBookingData" text="Download" />
             <Label layoutX="151.0" layoutY="9.0" styleClass="call_to_action" text="Explore the current film selection at Nero!" />
          </children>
          <BorderPane.margin>
