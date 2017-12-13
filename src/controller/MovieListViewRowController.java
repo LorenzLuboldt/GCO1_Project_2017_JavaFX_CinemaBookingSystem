@@ -69,8 +69,6 @@ public class MovieListViewRowController {
 	}
 
 	public void initialize() {
-
-		showFilmDetails.setOnAction(event -> showMovieDetailPage(event));
 		
 	}
 	
@@ -111,12 +109,12 @@ public class MovieListViewRowController {
 	 * @author Lorenz
 	 */
 	@FXML
-	private void showMovieDetailPage(ActionEvent event) {
+	private void goToBookingPage(ActionEvent event) {
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/CustomerFilmDetailsView.fxml").openStream());
+			Pane root = loader.load(getClass().getResource("/view/CustomerBookingProcessView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);

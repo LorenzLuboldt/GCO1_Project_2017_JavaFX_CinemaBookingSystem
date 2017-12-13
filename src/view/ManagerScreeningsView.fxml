@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -169,7 +170,7 @@
             </Label>
             <HBox layoutX="799.0" layoutY="56.0" prefHeight="50.0" prefWidth="512.0">
                <children>
-                  <Label fx:id="filmTitleLabel" textFill="#ff7700">
+                  <Label fx:id="filmTitleLabel" textFill="RED">
                      <font>
                         <Font name="Avenir Next Regular" size="24.0" />
                      </font>
@@ -179,7 +180,7 @@
                         <Font name="Avenir Next Regular" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dateLabel" textFill="#ff7700">
+                  <Label fx:id="dateLabel" textFill="RED">
                      <font>
                         <Font name="Avenir Next Regular" size="24.0" />
                      </font>
@@ -189,14 +190,17 @@
                         <Font name="Avenir Next Regular" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="timeLabel" layoutX="41.0" layoutY="10.0" textFill="#ff7700">
+                  <Label fx:id="timeLabel" layoutX="41.0" layoutY="10.0" textFill="RED">
                      <font>
                         <Font name="Avenir Next Regular" size="24.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <PieChart fx:id="pieChart" layoutX="888.0" layoutY="113.0" prefHeight="305.0" prefWidth="335.0" />
+            <PieChart fx:id="pieChart" animated="false" layoutX="782.0" layoutY="90.0" prefHeight="380.0" prefWidth="541.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></PieChart>
             <Label fx:id="successNotification" layoutX="1107.0" layoutY="521.0" prefHeight="51.0" prefWidth="248.0" styleClass="call_to_action_success" />
          </children></AnchorPane>
    </center>

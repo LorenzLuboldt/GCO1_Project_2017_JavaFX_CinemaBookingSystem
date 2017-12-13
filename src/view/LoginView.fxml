@@ -22,7 +22,7 @@
                   <Font name="Lao UI Bold" size="32.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="577.0" layoutY="186.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field_standard" stylesheets="@../application/application.css">
+            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="577.0" layoutY="186.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" styleClass="text_field_standard">
                <font>
                   <Font size="22.0" />
                </font>

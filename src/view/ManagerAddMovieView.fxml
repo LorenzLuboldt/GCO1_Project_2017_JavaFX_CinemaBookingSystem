@@ -69,7 +69,7 @@
             </Label>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="14.0" prefHeight="47.0" prefWidth="713.0" styleClass="call_to_action" text="Please add film details" />
             <Label fx:id="successNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="496.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_success" textAlignment="CENTER" textFill="#ebe8e8" />
-            <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="496.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_error" textAlignment="CENTER" textFill="#ebe8e8" />
+            <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="454.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_error" textAlignment="CENTER" textFill="#ebe8e8" />
          </children></AnchorPane>
    </center>
    <bottom>

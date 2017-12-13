@@ -48,7 +48,7 @@
                   <Font name="Lao UI" size="14.0" />
                </font>
             </TextArea>
-            <Button fx:id="showFilmDetails" mnemonicParsing="false" onAction="#showMovieDetailPage" styleClass="button_listview" text="Book Now">
+            <Button fx:id="showFilmDetails" mnemonicParsing="false" onAction="#goToBookingPage" styleClass="button_listview" text="Book Now">
                <HBox.margin>
                   <Insets left="20.0" top="60.0" />
                </HBox.margin>

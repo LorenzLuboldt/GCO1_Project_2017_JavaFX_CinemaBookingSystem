@@ -7,19 +7,12 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Customer;
@@ -42,7 +35,8 @@ public class CustomerEditInformationViewController implements Initializable {
 	@FXML private Label firstNameLabel;
 	@FXML private Label lastNameLabel;
 	@FXML private Label emailLabel;
-	
+	@FXML private Label successNotification;
+	@FXML Label errorNotification;
 	@FXML private Label userLbl;
 
 	
@@ -85,7 +79,14 @@ public class CustomerEditInformationViewController implements Initializable {
 		editedLastName = (editedLastNameTextField.getText().length() == 0) ? cus.getLastName() : editedLastNameTextField.getText();
 		
 		// Update customer data in data base for customer id 1
-		customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
+		try{ customerDAO.updateCustomer(1, editedEmail, editedFirstName, editedLastName);
+		successNotification.setText("Successfully saved changes");
+		}
+		catch (Exception e) {
+			
+			errorNotification.setText("An error occurred.");
+			e.printStackTrace();
+	}
 		
 		// Display updated info to user
 		loadCustomerInfo();

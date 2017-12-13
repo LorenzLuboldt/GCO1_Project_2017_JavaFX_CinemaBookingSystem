@@ -7,7 +7,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .text_field_standard {
-	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: white; -fx-color: white;
+	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: #7E7878; -fx-text-fill: white;
 }
 
 .call_to_action {
@@ -15,7 +15,7 @@
 }
 
 .button {
-	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;
+	-fx-border-radius: 0; -fx-border-color: black; -fx-border-width: 2; -fx-background-color: #FF0000; -fx-color: black; -fx-font: 21.0px "Lao UI"; -fx-background-insets: 0 0 0 0, 0, 1, 2;  
 }
 
 .button_header {
@@ -27,7 +27,7 @@
 }
 
 .button:hover{
-	-fx-background-color: #d50000;
+	-fx-background-color: #d50000; -fx-cursor: hand;
 }
 
 .button_header:hover{
@@ -110,11 +110,11 @@
 
 .chart-pie-label {
     -fx-fill: white;
-    -fx-font-size: 12px;
+    -fx-font-size: 16px;
 } 
 
 .chart-pie-title {
     -fx-fill: white;
-    -fx-font-size: 16px; -fx-font-style: bold;
+    -fx-font-size: 18px;
 } 
 

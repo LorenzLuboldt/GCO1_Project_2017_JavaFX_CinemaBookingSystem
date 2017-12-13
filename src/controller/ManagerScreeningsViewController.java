@@ -81,8 +81,8 @@ public class ManagerScreeningsViewController implements Initializable {
 
 		ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                new PieChart.Data("Available Seats", s.getAvailableSeats()),
-                new PieChart.Data("Booked Seats", s.getBookedSeats()));
+                new PieChart.Data(s.availableSeats() + "Available Seats", s.getAvailableSeats()),
+                new PieChart.Data(s.bookedSeats() + "Booked Seats", s.getBookedSeats()));
         
         pieChart.setTitle("Occupancy Rate");
         pieChart.setData(pieChartData);
