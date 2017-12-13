@@ -50,7 +50,7 @@ public class ManagerRootController implements Initializable {
 		
 	//Retrieve all film entries from the database
 	try {
-		screeningList = screeningDAO.getAllScreenings();
+		screeningList = screeningDAO.getUpcomingScreenings();
 		}
 	catch (Exception e) {
 		e.printStackTrace();

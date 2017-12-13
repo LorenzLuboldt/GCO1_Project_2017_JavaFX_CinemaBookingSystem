@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.FileChannel;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -25,7 +26,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.FilmDAO;
 import model.FilmDAOImpl;
@@ -38,6 +38,7 @@ public class ManagerAddMovieViewController implements Initializable {
 	boolean checkIfFileChosen = false;
 	
 	// @Lorenz: Instance variables to choose files
+	@FXML private Label successNotification;
 	@FXML private Button chooseFile;
 	@FXML private Button addFilmButtonPushed;
 	
@@ -47,9 +48,7 @@ public class ManagerAddMovieViewController implements Initializable {
 		@FXML private TextField filmActorsTextField;
 		@FXML private TextField filmDirectorTextField;
 		@FXML private ComboBox<String> filmGenreComboBox;
-		@FXML private ListView<File> fileList;
-		@FXML private TextField filmTrailerLinkTextField;
-		
+		@FXML private ListView<File> fileList;		
 	
 	
 	@FXML
@@ -82,11 +81,18 @@ public class ManagerAddMovieViewController implements Initializable {
 		// Upload Film poster and copy to destination
 		String imgPath = uploadFile();
 		
-		System.out.println(1);
 		// Add Film object to DB
-		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText(),  filmTrailerLinkTextField.getText());
-System.out.println(2);
+		
+		try {
+		filmDAO.addFilm(filmTitleTextField.getText(), filmDescriptionTextArea.getText(), imgPath, filmGenreComboBox.getValue().toString(),filmActorsTextField.getText(), filmDirectorTextField.getText());
+		successNotification.setText("Successfully Added Film.");
+
+		} catch (Exception e) {
+			successNotification.setText("Please Fill All Input Fields");
+			e.printStackTrace();
 	}
+	}
+
 	
 	public void toDashboard(ActionEvent event) {
 		try {	

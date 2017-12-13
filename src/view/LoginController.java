@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		if (loginModel.isDBconnected()) {
-			isConnected.setText("Welcome to Nero");
+			isConnected.setText("Welcome to Nero Cinema");
 		} else {
 			isConnected.setText("Not connected");
 		}

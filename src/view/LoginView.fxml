@@ -17,27 +17,33 @@
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;" stylesheets="@../application/application.css">
          <children>
-            <Label fx:id="isConnected" alignment="CENTER" layoutX="468.0" layoutY="178.0" prefHeight="50.0" prefWidth="456.0" text="Welcome to Nero Cinema" textAlignment="CENTER" textFill="#d0cece">
+            <Label fx:id="isConnected" alignment="CENTER" layoutX="472.0" layoutY="103.0" prefHeight="50.0" prefWidth="456.0" text="Welcome to Nero Cinema" textAlignment="CENTER" textFill="#d0cece">
                <font>
                   <Font name="Lao UI Bold" size="32.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="573.0" layoutY="261.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field_standard" stylesheets="@../application/application.css">
+            <TextField fx:id="txtUsername" alignment="CENTER" layoutX="577.0" layoutY="186.0" prefHeight="50.0" prefWidth="250.0" promptText="User Name" style="-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black;" styleClass="text_field_standard" stylesheets="@../application/application.css">
                <font>
                   <Font size="22.0" />
                </font>
             </TextField>
-            <Button layoutX="572.0" layoutY="408.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
+            <Button layoutX="576.0" layoutY="333.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
                <font>
                   <Font name="Lao UI" size="22.0" />
                </font>
             </Button>
-            <Button layoutX="572.0" layoutY="472.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Staff Login">
+            <Button layoutX="576.0" layoutY="397.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Staff Login">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <PasswordField fx:id="txtPassword" alignment="CENTER" layoutX="573.0" layoutY="330.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field_standard" />
+            <PasswordField fx:id="txtPassword" alignment="CENTER" layoutX="577.0" layoutY="255.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field_standard" />
+            <Button layoutX="711.0" layoutY="515.0" mnemonicParsing="false" style="-fx-background-color: grey; -fx-font-size: 14;" text="Sign up" />
+            <Label layoutX="623.0" layoutY="522.0" text="New here?" textFill="WHITE">
+               <font>
+                  <Font name="Lao UI Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

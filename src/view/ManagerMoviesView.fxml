@@ -49,11 +49,21 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1071.0" layoutY="94.0" mnemonicParsing="false" onAction="#LinkToAddFilm" text="Add New Film" />
-            <Button layoutX="1042.0" layoutY="253.0" mnemonicParsing="false" onAction="#LinkToEditFilm" text="Edit Selected Film" />
-            <Button layoutX="1027.0" layoutY="402.0" mnemonicParsing="false" onAction="#linkToAddScreeningTime" text="Add Screening Time" />
-            <ListView fx:id="allFilmsList" layoutX="22.0" layoutY="70.0" prefHeight="570.0" prefWidth="900.0" styleClass="table-view" />
+            <Button layoutX="1016.0" layoutY="276.0" mnemonicParsing="false" onAction="#LinkToAddFilm" prefHeight="55.0" prefWidth="300.0" text="Add New Film" />
+            <Button layoutX="1016.0" layoutY="554.0" mnemonicParsing="false" onAction="#linkToAddScreeningTime" prefHeight="55.0" prefWidth="300.0" text="Add Screening Time" />
+            <ListView fx:id="allFilmsList" layoutX="22.0" layoutY="70.0" prefHeight="541.0" prefWidth="900.0" styleClass="table-view" />
             <Label layoutX="301.0" layoutY="7.0" styleClass="call_to_action" text="Current Film Selection" />
+            <ImageView fitHeight="123.0" fitWidth="104.0" layoutX="1114.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="add.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="132.0" fitWidth="104.0" layoutX="1114.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="date.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1011.0" layoutY="7.0" styleClass="call_to_action" text="Edit Current Selection" />
          </children></AnchorPane>
    </center>
    <bottom>
