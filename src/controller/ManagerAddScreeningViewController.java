@@ -39,6 +39,9 @@ public class ManagerAddScreeningViewController implements Initializable {
 	private ComboBox<String> screeningTimeComboBox;
 	@FXML
 	private ComboBox<String> currentFilmsAvailableComboBox;
+	@FXML Label successNotification;
+	
+	@FXML Label errorNotification;
 
 	// DAO objects to query database
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
@@ -106,7 +109,18 @@ public class ManagerAddScreeningViewController implements Initializable {
 		int month =datePicker.getValue().getMonthValue();
 		int year = datePicker.getValue().getYear();
 		
-		screeningDAO.addScreening(datePicker.getValue().toString(), year , month, day, screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
+		
+		try {
+			
+			screeningDAO.addScreening(datePicker.getValue().toString(), year , month, day, screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
+			successNotification.setText("Successfully Added Screening Slot.");
+		}
+		
+		catch (Exception e) {
+			
+			errorNotification.setText("Overlap With Other Screening");
+			e.printStackTrace();
+	}
 		
 	}
 	@Override
