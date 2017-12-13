@@ -73,7 +73,7 @@
 }
 
 
-.haeading_listview {
+.heading_listview {
 	-fx-color: #d0cece; -fx-font: 20.0px "Lao UI";-fx-text-fill: white; -fx-text-overrun: clip;
 }
 
@@ -93,7 +93,28 @@
 	-fx-color: #ea4315; -fx-font: 20.0px "Lao UI";-fx-text-fill: #ea4315; -fx-background-color: black;
 }
 
-.pieChart { -fx-pie-label-visible: 
-	
+.chart-pie {
+     -fx-pie-label-visible: true; -fx-background-color: black; -fx-color: black;
 }
+
+.data0.chart-pie {
+	-fx-background-color: #cdcdcd;
+}
+
+.data1.chart-pie {
+	-fx-background-color: #717171;
+}
+
+.chart-area-symbol{-fx-background-radius: 0;}
+.chart-legend { -fx-background-color: black; }
+
+.chart-pie-label {
+    -fx-fill: white;
+    -fx-font-size: 12px;
+} 
+
+.chart-pie-title {
+    -fx-fill: white;
+    -fx-font-size: 16px; -fx-font-style: bold;
+} 
 
