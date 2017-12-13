@@ -30,6 +30,7 @@ import model.Booking;
 import model.BookingDAO;
 import model.BookingDAOImpl;
 import model.Film;
+import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
 import model.Selection;
@@ -52,13 +53,14 @@ import model.SelectionDAOImpl;
 public class CustomerBookingGridViewController implements Initializable{
 	
 	// Create instance variables for seating map
-	@FXML
-	private GridPane seatingMap;
+	@FXML private GridPane seatingMap;
+
 	
 	// Create other instance variables
-	@FXML
-	private Label userLbl;
-	static String seatID;
+	@FXML private Label userLbl; // NOT NEEDED ?
+	@FXML private Label filmTitleLabel;
+	@FXML private Label dateLabel;
+	@FXML private Label timeLabel;
 		
 	// DAO objects to query database
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
@@ -71,10 +73,23 @@ public class CustomerBookingGridViewController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
+		loadScreeningDetails();
 		loadSeatingMap();		
 		
 	}
 	
+	public void loadScreeningDetails()	{
+		
+		// Check for booked seats --> SCREENING ID
+		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
+		int screeningID = screeningsList.get(0).getScreeningID();
+		
+		// Load screening details for selected screening and set text fields
+		Screening selectedScreening = screeningDAO.getScreening(screeningID);
+		filmTitleLabel.setText(selectedScreening.getFilmTitle());
+		dateLabel.setText(selectedScreening.getDateID());
+		timeLabel.setText(selectedScreening.getTimeString());
+	}
 	
 	public void deselectSeatsButtonPushed()	{
 		loadSeatingMap();

@@ -70,8 +70,8 @@
    <center>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="829.0" layoutY="383.0" mnemonicParsing="false" onAction="#deselectSeatsButtonPushed" style="-fx-background-color: red;" text="Deselect Seats" />
-            <Button layoutX="1039.0" layoutY="384.0" mnemonicParsing="false" onAction="#confirmBookingButtonPushed" text="Confirm Booking" />
+            <Button layoutX="829.0" layoutY="451.0" mnemonicParsing="false" onAction="#deselectSeatsButtonPushed" style="-fx-background-color: red;" text="Deselect Seats" />
+            <Button layoutX="1039.0" layoutY="452.0" mnemonicParsing="false" onAction="#confirmBookingButtonPushed" text="Confirm Booking" />
             <GridPane fx:id="seatingMap" layoutX="170.0" layoutY="71.0" prefHeight="441.0" prefWidth="440.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -173,7 +173,7 @@
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <HBox layoutX="779.0" layoutY="148.0" prefHeight="61.0" prefWidth="460.0">
+            <HBox layoutX="779.0" layoutY="175.0" prefHeight="61.0" prefWidth="460.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdcdcd" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0">
                      <HBox.margin>
@@ -192,36 +192,65 @@
                   </Rectangle>
                </children>
             </HBox>
-            <Label layoutX="833.0" layoutY="216.0" text="Available" textFill="WHITE">
+            <Label layoutX="833.0" layoutY="243.0" text="Available" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="981.0" layoutY="216.0" text="Unavailable" textFill="WHITE">
+            <Label layoutX="981.0" layoutY="243.0" text="Unavailable" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="1129.0" layoutY="215.0" text="Your selection" textFill="WHITE">
+            <Label layoutX="1129.0" layoutY="242.0" text="Your selection" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="833.0" layoutY="89.0" text="Select your seats by clicking on the seat icons" textFill="WHITE">
+            <Label layoutX="833.0" layoutY="116.0" text="Select your seats by clicking on the seat icons" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="805.0" layoutY="49.0" text="1. Choose your seats on the map" textFill="WHITE">
+            <Label layoutX="805.0" layoutY="71.0" text="1. Choose your seats on the map" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="807.0" layoutY="317.0" text="2. Confirm or make a new selection" textFill="WHITE">
+            <Label layoutX="807.0" layoutY="340.0" text="2. Confirm or make a new selection" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
+            <HBox layoutX="833.0" layoutY="396.0" prefHeight="50.0" prefWidth="512.0">
+               <children>
+                  <Label fx:id="filmTitleLabel" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text=" on " textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateLabel" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text=" at " textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timeLabel" layoutX="41.0" layoutY="10.0" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Regular" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children></AnchorPane>
    </center>
    <bottom>

@@ -12,6 +12,7 @@ import model.BookingDAOImpl;
 import model.Customer;
 import model.CustomerDAO;
 import model.CustomerDAOImpl;
+import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
 import model.Screening;
@@ -57,7 +58,14 @@ public class Main extends Application {
 //		s.getSelectedSeats();
 //		s.deleteSelectedSeat();
 		
+		FilmDAO filmDAO = new FilmDAOImpl();
+		filmDAO.addFilm("Nme", "filmDescription", "filmImage", "filmGenre", "filmCastMembers", "filmDirector");
+		Film f = filmDAO.getFilm("Nme");
+		filmDAO.updateFilm(f.getFilmId(), "filmTitle", "filmDescription", "filmGenre", "filmCastMembers", "filmDirector");
+		Film fi = filmDAO.getFilm("filmTitle");
+		filmDAO.deleteFilm(fi);
 //		
+		
 //		BookingDAO bookingDAO = new BookingDAOImpl();
 //		bookingDAO.addBooking(1, "A01", 1);
 //		bookingDAO.addBooking(2, "A02", 8);
