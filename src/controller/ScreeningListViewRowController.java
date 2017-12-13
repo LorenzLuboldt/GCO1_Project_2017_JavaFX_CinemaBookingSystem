@@ -21,6 +21,9 @@ import model.FilmDAOImpl;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
+import model.Selection;
+import model.SelectionDAO;
+import model.SelectionDAOImpl;
 
 /**
  * Purpose: Controls the elements in the specified row layout for the list view and populates the individual elements (Image, text etc.) with data from database
@@ -57,6 +60,7 @@ public class ScreeningListViewRowController {
 	// Create DAO objects
 	FilmDAO filmDAO = new FilmDAOImpl();
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	SelectionDAO selectionDAO = new SelectionDAOImpl();
 
 	public Screening getScreening() {
 		return screening;
@@ -131,11 +135,15 @@ public class ScreeningListViewRowController {
 	 */
 	@FXML
 	private void showScreeningDetailPage(ActionEvent event) {
+		
+		selectionDAO.addSelectedScreening(screening.getScreeningID());
+		System.out.println(screening.getScreeningID());
+		
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/ManagerBookingsView.fxml").openStream());
+			Pane root = loader.load(getClass().getResource("/view/ManagerScreeningsView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
