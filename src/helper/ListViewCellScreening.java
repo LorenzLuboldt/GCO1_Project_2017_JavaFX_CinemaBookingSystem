@@ -1,4 +1,4 @@
-package model;
+package helper;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -6,7 +6,16 @@ import java.sql.SQLException;
 import controller.ScreeningListViewRowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
+import model.Screening;
 
+/**
+ * Purpose: This class serves as connector between the customised & populated
+ * list cell and the root controller where the actual list view is placed It
+ * loads the customised cell into the list view scene
+ * 
+ * @author Lorenz
+ *
+ */
 public class ListViewCellScreening extends ListCell<Screening> {
 
 	

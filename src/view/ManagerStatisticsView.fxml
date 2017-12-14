@@ -21,7 +21,7 @@
                   <Image url="logo.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toDashboard" prefHeight="65.0" prefWidth="118.0" text="Home" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#toDashboard" prefHeight="50.0" prefWidth="88.0" styleClass="button_header" text="Home" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -37,7 +37,7 @@
                   <Insets right="90.0" />
                </HBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="65.0" prefWidth="118.0" text="Logout" textAlignment="JUSTIFY">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="88.0" styleClass="button_header_logout" text="Logout" textAlignment="JUSTIFY">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -48,25 +48,17 @@
          </children>
       </HBox>
    </top>
-   <bottom>
-      <ImageView fitHeight="50.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="slogan.png" />
-         </image>
-      </ImageView>
-   </bottom>
    <left>
       <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="55.0" layoutY="547.0" mnemonicParsing="false" onAction="#backToMovieOverview" text="Back to View/Edit Films" />
-            <VBox layoutX="221.0" layoutY="88.0" prefHeight="272.0" prefWidth="934.0">
+            <VBox layoutX="221.0" layoutY="88.0" prefHeight="600.0" prefWidth="934.0">
                <children>
                   <Label alignment="CENTER" prefHeight="35.0" prefWidth="944.0" styleClass="call_to_action" text="Review the ticket sales of past screenings">
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
                   </Label>
-                  <TableView fx:id="statisticsTable" prefHeight="170.0" prefWidth="925.0">
+                  <TableView fx:id="statisticsTable" prefHeight="414.0" prefWidth="934.0">
                     <columns>
                       <TableColumn fx:id="date_id_column" prefWidth="125.0" text="Date" />
                       <TableColumn fx:id="time_string_column" prefWidth="75.0" text="Time" />
@@ -80,4 +72,20 @@
             </VBox>
          </children></AnchorPane>
    </left>
+   <bottom>
+      <AnchorPane prefHeight="69.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="275.0" layoutX="579.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="slogan.png" />
+               </image>
+            </ImageView>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToMovieOverview" prefHeight="50.0" prefWidth="88.0" styleClass="button_header" text="Home" textAlignment="JUSTIFY">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

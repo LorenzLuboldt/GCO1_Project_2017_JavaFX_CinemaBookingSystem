@@ -15,9 +15,9 @@
 
 <BorderPane styleClass="window" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <center>
-      <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;" stylesheets="@../application/application.css">
+      <AnchorPane prefHeight="800.0" prefWidth="1400.0">
          <children>
-            <Label fx:id="isConnected" alignment="CENTER" layoutX="472.0" layoutY="103.0" prefHeight="50.0" prefWidth="456.0" text="Welcome to Nero Cinema" textAlignment="CENTER" textFill="#d0cece">
+            <Label fx:id="isConnected" alignment="CENTER" layoutX="307.0" layoutY="105.0" prefHeight="50.0" prefWidth="787.0" text="Welcome to Nero Cinema" textAlignment="CENTER" textFill="#d0cece">
                <font>
                   <Font name="Lao UI Bold" size="32.0" />
                </font>
@@ -27,12 +27,12 @@
                   <Font size="22.0" />
                </font>
             </TextField>
-            <Button layoutX="576.0" layoutY="333.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Customer Login" textAlignment="CENTER">
+            <Button layoutX="576.0" layoutY="333.0" mnemonicParsing="false" onAction="#LoginCheckCustomer" prefHeight="55.0" prefWidth="253.0" text="Customer Login" textAlignment="CENTER">
                <font>
                   <Font name="Lao UI" size="22.0" />
                </font>
             </Button>
-            <Button layoutX="576.0" layoutY="397.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="55.0" prefWidth="253.0" stylesheets="@../application/application.css" text="Staff Login">
+            <Button layoutX="576.0" layoutY="397.0" mnemonicParsing="false" onAction="#LoginCheckManager" prefHeight="55.0" prefWidth="253.0" text="Staff Login">
                <font>
                   <Font size="22.0" />
                </font>

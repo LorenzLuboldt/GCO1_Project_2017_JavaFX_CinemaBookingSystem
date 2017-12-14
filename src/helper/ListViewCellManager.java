@@ -1,12 +1,21 @@
-package model;
+package helper;
 
 import java.io.IOException;
 
-import controller.MovieListViewRowController;
+import controller.MovieListViewRowControllerCustomer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
+import model.Film;
 
-public class ListViewCell extends ListCell<Film> {
+/**
+ * Purpose: This class serves as connector between the customised & populated
+ * list cell and the root controller where the actual list view is placed It
+ * loads the customised cell into the list view scene on the manager side
+ * 
+ * @author Lorenz
+ *
+ */
+public class ListViewCellManager extends ListCell<Film> {
 
 	
 
@@ -18,9 +27,9 @@ public void updateItem(Film film, boolean empty) {
 	System.out.println(11);
 
 	if (film != null) {
-		MovieListViewRowController controller = null;
+		MovieListViewRowControllerCustomer controller = null;
 		
-		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("/view/MovieListViewRow.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("/view/MovieListViewRowManager.fxml"));
 		System.out.println(12);
 
 			try {

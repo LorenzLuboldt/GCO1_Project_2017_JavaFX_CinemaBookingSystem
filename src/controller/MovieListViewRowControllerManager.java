@@ -3,19 +3,12 @@ package controller;
 import java.io.File;
 
 import application.Main;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
@@ -32,7 +25,7 @@ import model.FilmDAOImpl;
  * @author Lorenz
  *
  */
-public class MovieListViewRowController {
+public class MovieListViewRowControllerManager {
 
 	// Declares elements inserted into the  list view row layout
 	@FXML
@@ -43,8 +36,6 @@ public class MovieListViewRowController {
 	Label filmGenre;
 	@FXML
 	ImageView filmPoster;
-	@FXML
-	Button showFilmDetails;
 	@FXML
 	Label filmActors;
 	@FXML
@@ -99,26 +90,5 @@ public class MovieListViewRowController {
 
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
-	}
-
-	/**
-	 * Purpose: Button links to new Movie Detail View of the respective film
-	 * 
-	 * @author Lorenz
-	 */
-	@FXML
-	private void goToBookingPage(ActionEvent event) {
-		try {
-			((Node) event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/CustomerBookingProcessView.fxml").openStream());
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-		} catch (Exception e) {
-		}
 	}
 }

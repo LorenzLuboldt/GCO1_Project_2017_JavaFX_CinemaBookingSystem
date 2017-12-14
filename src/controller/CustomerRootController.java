@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import helper.ListViewCellCustomer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +21,6 @@ import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
-import model.ListViewCell;
 
 /**
  * Purpose: Root view of the user after login. Controller selects all current
@@ -85,7 +85,7 @@ public class CustomerRootController implements Initializable {
 
 		// Allow for custom display of the ListView Items
 
-		allFilmsList.setCellFactory(ListView -> new ListViewCell());
+		allFilmsList.setCellFactory(ListView -> new ListViewCellCustomer());
 
 	}
 
@@ -103,6 +103,7 @@ public class CustomerRootController implements Initializable {
 			Pane root = loader.load(getClass().getResource("/view/CustomerEditInformationView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -125,6 +126,7 @@ public class CustomerRootController implements Initializable {
 			Pane root = loader.load(getClass().getResource("/view/CustomerBookingProcessView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -145,6 +147,7 @@ public class CustomerRootController implements Initializable {
 			Pane root = loader.load(getClass().getResource("/view/LoginView.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

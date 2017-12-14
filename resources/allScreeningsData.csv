@@ -1,0 +1,8 @@
+ScreeningID,FilmTitle,Date,Time,AvailableSeats,OccupancyRate
+1,Herr der Ringe,2017-12-15,8:00 PM,10/16 seats available,37.50%
+2,Kings Speech,2017-12-13,2:00 PM,14/16 seats available,12.50%
+3,Kings Speech,2017-12-13,4:00 PM,8/16 seats available,50.00%
+4,Slumdog Millionaire,2017-12-21,5:00 PM,16/16 seats available,0.00%
+5,No Country for Old Men,2017-12-27,6:00 PM,16/16 seats available,0.00%
+6,No Country for Old Men,2017-12-22,5:00 PM,16/16 seats available,0.00%
+7,No Country for Old Men,2017-12-19,4:00 PM,16/16 seats available,0.00%

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import helper.ListViewCellManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +25,6 @@ import javafx.stage.Stage;
 import model.Film;
 import model.FilmDAO;
 import model.FilmDAOImpl;
-import model.ListViewCell;
 
 /**
  * Purpose: This controller is connected to the ManagerMoviesView, where the
@@ -107,7 +107,7 @@ public class ManagerMoviesViewController implements Initializable {
 		// Fill ListView with content
 		allFilmsList.setItems(observableList);
 		// Populates individual list rows with customised list view cell
-		allFilmsList.setCellFactory(ListView -> new ListViewCell());
+		allFilmsList.setCellFactory(ListView -> new ListViewCellManager());
 	}
 
 	/**
