@@ -27,7 +27,9 @@ import model.LoginModel;
  * implementation of the DAO model, which separates database operations form the
  * business logic.
  * 
- * @author Lorenz Tutorials & resources:
+ * @author Lorenz 
+ * 
+ * Tutorials & resources:
  *         https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq,
  *         https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm,
  *         http://www.swtestacademy.com/database-operations-javafx/
@@ -43,6 +45,8 @@ public class LoginController implements Initializable {
 	private TextField txtUsername;
 	@FXML
 	private PasswordField txtPassword;
+	
+	public static String username;
 
 	/**
 	 * Purpose: Initialises flash message for user communicating whether
@@ -64,7 +68,7 @@ public class LoginController implements Initializable {
 	 * customer data in SQLite database). If yes it initiates the
 	 * CustomerRoot.fxml.
 	 * 
-	 * @param event
+	 * @param event	
 	 */
 	public void LoginCheckCustomer(ActionEvent event) {
 		try {
@@ -73,6 +77,7 @@ public class LoginController implements Initializable {
 
 				((Node) event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
+				username = txtUsername.getText();
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/view/CustomerRoot.fxml").openStream());
 				CustomerRootController customerRootController = (CustomerRootController) loader.getController();
@@ -110,6 +115,7 @@ public class LoginController implements Initializable {
 
 				((Node) event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
+				username = txtUsername.getText();
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/view/ManagerRoot.fxml").openStream());
 				ManagerRootController managerRootController = (ManagerRootController) loader.getController();
@@ -127,7 +133,6 @@ public class LoginController implements Initializable {
 			isConnected.setText("Invalid Username and/or Password");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

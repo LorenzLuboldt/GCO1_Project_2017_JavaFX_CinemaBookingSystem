@@ -21,23 +21,22 @@ import model.FilmDAO;
 import model.FilmDAOImpl;
 
 /**
- * Purpose: Controls the elements in the specified row layout for the list view and populates the individual elements (Image, text etc.) with data from database
- * Sources: https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml, https://stackoverflow.com/questions/10699655/combo-box-key-value-pair-in-javafx-2/10700642#10700642, https://stackoverflow.com/questions/41319752/listview-setcellfactory-with-generic-label 
+ * Purpose: Controls the elements in the specified row layout for the list view
+ * and populates the individual elements (Image, text etc.) with data from
+ * database 
+ * Tutorials & resources:
+ * https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml,
+ * https://stackoverflow.com/questions/10699655/combo-box-key-value-pair-in-javafx-2/10700642#10700642,
+ * https://stackoverflow.com/questions/41319752/listview-setcellfactory-with-generic-label
+ * 
  * @author Lorenz
  *
  */
-
 public class MovieListViewRowController {
 
-	
-	//Declares elements of the list view row layout
+	// Declares elements inserted into the  list view row layout
 	@FXML
 	HBox container;
-
-	public HBox getContainer() {
-		return container;
-	}
-
 	@FXML
 	Label filmTitle;
 	@FXML
@@ -52,15 +51,19 @@ public class MovieListViewRowController {
 	Label filmDirector;
 	@FXML
 	TextArea filmDescription;
-	
-	
-	private Film film;
-	
-	//Creates a Film object
-	FilmDAO filmDAO = new FilmDAOImpl();
-	
 
-	
+	private Film film;
+	FilmDAO filmDAO = new FilmDAOImpl();
+
+	/**
+	 * Returns container containing individual elements to the list view
+	 * @return
+	 */
+	public HBox getContainer() {
+		return container;
+	}
+
+	//Setters & Getters for film and screening objects
 	public Film getFilm() {
 		return film;
 	}
@@ -69,55 +72,44 @@ public class MovieListViewRowController {
 		this.film = film;
 	}
 
-	public void initialize() {
-		
-	}
-	
-	// Populates declared elements with respective information from the film object (linked to film table in Database)
+	/**
+	 * Purpose: Populates declared elements with respective information from the film object (linked to film table in Database)
+	 */
 	public void populateCells() {
-		
-	// Sets 
+
+		// Sets single film (in the list view controller, method will iterate through each film listing)
 		film.getFilmTitle();
-	//Fills film title label with corresponding film title
+		// Fills film title label with corresponding film title
 		filmTitle.setText(film.getFilmTitle());
-	//Fills genre label with corresponding film genre
-		filmGenre.setText(film.getFilmGenre());	
-
-	//Fills actor label with corresponding film actors
-		filmActors.setText(film.getFilmCastMembers());	
-
-	//Fills director label with corresponding film director
-		filmDirector.setText(film.getFilmDirector());	
-
-	//Fills director label with corresponding film director
-		filmDescription.setText(film.getFilmDescription());		
-
-	//Fills imageView with corresponding image from local resource folder
+		// Fills genre label with corresponding film genre
+		filmGenre.setText(film.getFilmGenre());
+		// Fills actor label with corresponding film actors
+		filmActors.setText(film.getFilmCastMembers());
+		// Fills director label with corresponding film director
+		filmDirector.setText(film.getFilmDirector());
+		// Fills film description text area with corresponding film desription from database
+		filmDescription.setText(film.getFilmDescription());
+		// Fills imageView with corresponding image from local resource folder
 		int filmID = film.getFilmId();
 		String imgPath = filmDAO.getFilmImagePath(filmID);
-	// Set ImageView to display image
-		
+		// Set ImageView to display image
+
 		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		File file = new File(jarFile.getParentFile().getParent(), "images/" + imgPath);
-		
-		//		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
-		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
-		
+
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
-		
 	}
-	
-	
-	
+
 	/**
 	 * Purpose: Button links to new Movie Detail View of the respective film
+	 * 
 	 * @author Lorenz
 	 */
 	@FXML
 	private void goToBookingPage(ActionEvent event) {
-		try {	
-			((Node)event.getSource()).getScene().getWindow().hide();
+		try {
+			((Node) event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			Pane root = loader.load(getClass().getResource("/view/CustomerBookingProcessView.fxml").openStream());
@@ -127,8 +119,6 @@ public class MovieListViewRowController {
 			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch (Exception e) {
-			
 		}
 	}
-
 }
