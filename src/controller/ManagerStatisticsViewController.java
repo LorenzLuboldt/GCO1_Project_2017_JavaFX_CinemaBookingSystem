@@ -7,21 +7,72 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Screening;
+import model.BookingDAO;
+import model.BookingDAOImpl;
+import model.Screening;
+import model.ScreeningDAO;
+import model.ScreeningDAOImpl;
+
+/**
+ * Purpose: This controller controls the view on which the manager can analyze 
+ * past screenings and see, how well they sold.
+ * 
+ * @author Michael
+ *
+ */
 
 public class ManagerStatisticsViewController implements Initializable {
 	@FXML
 	private Label userLbl2;
+	
+	// Configure table
+	@FXML private TableView<Screening> statisticsTable;
+	
+	// Columns
+	@FXML private TableColumn<Screening, String> date_id_column;
+	@FXML private TableColumn<Screening, String> time_string_column;
+	@FXML private TableColumn<Screening, String> film_title_column;
+	@FXML private TableColumn<Screening, Integer> available_seats_column;
+	@FXML private TableColumn<Screening, Integer> booked_seats_column;
+	@FXML private TableColumn<Screening, String> occupancy_rate_column;
 
+	// Create DAO objects to query database
+	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		}
+
+		loadStatisticsTable();
+		
+	}
+	
+	public void loadStatisticsTable()	{
+		
+		// Set column values for futureBookingsTable
+		date_id_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("dateID"));
+		time_string_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("timeString"));
+		film_title_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("filmTitle"));
+		available_seats_column.setCellValueFactory(new PropertyValueFactory<Screening, Integer>("availableSeats"));
+		booked_seats_column.setCellValueFactory(new PropertyValueFactory<Screening, Integer>("bookedSeats"));
+		occupancy_rate_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("occupancyRate"));
+		
+		// Load screening data from data base
+		ObservableList<Screening> pastScreeningList = screeningDAO.getPastScreenings();
+		
+		statisticsTable.setItems(pastScreeningList);
+		
+	}
 	
 	// Event Listener on Button.onAction
 	@FXML

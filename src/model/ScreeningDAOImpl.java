@@ -188,7 +188,94 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
 		    return screeningList;
 		  }
+
+		// *** GET PAST SCREENINGS (RANKED IN ORDER) ***
+		public ObservableList<Screening> getPastScreenings()	{
+			String t; // time
+			
+			// Establish database connection:
+			Connection connection = SqliteConnection.Connector();
+			Statement st = null;
+		    
+		    // Create ObservableList to store films from DB
+		    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
+		    
+		    ResultSet results = null;
+			
+		    try
+		    {
+			    st = connection.createStatement();
+		    	
+				// SQL query, stored in String
+		    	String query = "SELECT * FROM screening ORDER BY year_id , month_id ASC, day_id ASC";
+					    
+			    // Run query and save results in ResultSet
+			    results = st.executeQuery(query);
+			    
+			    while(results.next())	{
+			    	
+			    	// create and instantiate a customer object
+			    	Screening screening = new Screening();
+			    	
+			    	screening.setScreeningID(results.getInt("screening_id"));
+			    	screening.setDateID(results.getString("date_id"));
+			    	screening.setYearID(results.getInt("year_id"));
+			    	screening.setMonthID(results.getInt("month_id"));
+			    	screening.setDayID(results.getInt("day_id"));
+			    	screening.setTimeInt(results.getInt("time_int")); 
+			    	screening.setTimeString(results.getString("time_string"));
+			    	screening.setFilmTitle(results.getString("film_title"));
+			    	screening.setAvailableSeats(results.getInt("available_seats"));
+			    	screening.setBookedSeats(results.getInt("booked_seats"));
+			    	screening.setAvailableInfo(results.getString("available_info"));
+			    	screening.setOccupancyRate(results.getString("occupancy_rate"));
+			    	screening.setTicketStatus(results.getString("ticket_status"));
+			    	
+			    	// Validate time and add to screening list only, if date is not today or in the future
+			    	t = screening.getTimeInt() + ":00";
+			    	LocalTime time = LocalTime.parse(t);
+			    	LocalDate date = LocalDate.parse(screening.getDateID());
+			    	if (date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) || date.isAfter(LocalDate.now()))	{
+			    	}
+			    	else { screeningList.add(screening); }
+			    }
+			 
+		    }
+		    catch( SQLException e )
+		    {
+		    	System.err.println("Exception occured while fetching screening data: ");
+		    	e.printStackTrace();
+		    }
+
+		    finally
+		    {
+		      try
+		      {
+		        if( connection != null )
+		        {
+		          System.out.println("getAllScreenings() --> connection is closed");
+		          connection.close();
+		        }
+
+		        if( results != null )
+		        {
+		        	System.out.println("getAllScreenings() --> results are closed");
+		          results.close();
+		        }
+		      }
+		      catch( Exception exe )
+		      {
+		    	  System.out.println("getAllScreenings() --> error has been caught");
+		        exe.printStackTrace();
+		      }
+
+		    }
+		    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
+		    return screeningList;
+		  }
+
 	
+		
 	// *** GET SPECIFIC SCREENING ***
 	public Screening getScreening(int screeningID)	{
 		
