@@ -22,7 +22,6 @@ import model.FilmDAOImpl;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
-import model.Selection;
 import model.SelectionDAO;
 import model.SelectionDAOImpl;
 
