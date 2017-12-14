@@ -24,6 +24,8 @@ public class Customer {
 	private StringProperty cust_email;
 	private StringProperty cust_firstname;
 	private StringProperty cust_lastname;
+	private StringProperty cust_username;
+	private StringProperty cust_password;
 	
 	// constructor
 	public Customer()	{
@@ -31,6 +33,8 @@ public class Customer {
 		this.cust_email = new SimpleStringProperty();
 		this.cust_firstname = new SimpleStringProperty();
 		this.cust_lastname = new SimpleStringProperty();
+		this.cust_username = new SimpleStringProperty();
+		this.cust_password = new SimpleStringProperty();
 	}
 	
 	
@@ -103,6 +107,42 @@ public class Customer {
 		// property
 	public StringProperty lastNameProperty()	{
 		return cust_lastname;
+	}
+	
+	
+	
+	// *** USERNAME ***
+
+		// getter
+	public String getUserName()	{
+		return cust_username.get();
+	}
+	
+		// setter
+	public void setUserName(String userName)	{
+		this.cust_username.set(userName);
+	}
+	
+		// property
+	public StringProperty userNameProperty()	{
+		return cust_username;
+	}
+
+	// *** PASSWORD ***
+	
+	// getter
+	public String getPassWord()	{
+	return cust_password.get();
+	}
+	
+	// setter
+	public void setPassWord(String passWord)	{
+	this.cust_password.set(passWord);
+	}
+	
+	// property
+	public StringProperty passWordProperty()	{
+	return cust_password;
 	}
 }
 	

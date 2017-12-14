@@ -30,41 +30,7 @@ public class LoginModel {
 			return false;
 		}
 	}
-	
-	public boolean isLoginCustomer(String user, String password) throws SQLException {
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		// SQL Query searching for specific username/password combination in the customerLogin tab
-		String query = "SELECT * FROM customerLogin WHERE user_name = ? AND password = ?";
-		
-		try{
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, user);
-			preparedStatement.setString(2, password);
-			
-			resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
-				return true;
-			}
-			
-			else{
-				return false; 
-			}
-		}
-		
-		catch (Exception e) {
-			System.out.println("Login model (CUSTOMER) caught exception: " + e);
-			return false;
-		}
-		
-		finally {
-			preparedStatement.close();
-			resultSet.close();
-			System.out.println("Login model (CUSTOMER) closed preparedStatement and resultSet. ");
-		}
-	}
-	
+
 	public boolean isLoginManager(String user, String password) throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;

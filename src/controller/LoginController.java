@@ -16,6 +16,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.CustomerDAO;
+import model.CustomerDAOImpl;
 import model.LoginModel;
 
 /**
@@ -68,7 +70,9 @@ public class LoginController implements Initializable {
 	 */
 	public void LoginCheckCustomer(ActionEvent event) {
 		try {
-			if (loginModel.isLoginCustomer(txtUsername.getText(), txtPassword.getText())) {
+			CustomerDAO c = new CustomerDAOImpl();
+			
+			if (c.checkPassword(txtUsername.getText(), txtPassword.getText())) {
 				isConnected.setText("Valid Username and Password");
 
 				((Node) event.getSource()).getScene().getWindow().hide();
@@ -86,11 +90,8 @@ public class LoginController implements Initializable {
 			} else {
 				isConnected.setText("Invalid Username and/or Password");
 			}
-		} catch (SQLException e) {
-			isConnected.setText("Invalid Username and/or Password");
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			isConnected.setText("Exception ");
 			e.printStackTrace();
 		}
 	}

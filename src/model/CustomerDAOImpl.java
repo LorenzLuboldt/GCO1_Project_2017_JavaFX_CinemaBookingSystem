@@ -267,4 +267,77 @@ public class CustomerDAOImpl implements CustomerDAO {
 	      }
 	    }
 	}
+	
+	// *** 2. PASSWORD CHECK ***
+		public boolean checkPassword(String userName, String passWord)	{
+
+			Boolean check = false;
+			
+			// Establish database connection:
+			Connection connection = SqliteConnection.Connector();
+		    Statement st = null;
+		    
+		    ResultSet results = null;
+		    Customer customer = null;
+		    
+		    try	{
+			    st = connection.createStatement();
+		    	
+			    // Create ObservableList to store customers from DB
+			    ObservableList<Customer> custList = FXCollections.observableArrayList();
+			    
+				// SQL query, stored in String
+		    	String query = "SELECT * FROM customer WHERE cust_username = " + "'" + userName + "' AND cust_password= '" + passWord + "'";
+					    
+			    // Run query and save results in ResultSet
+			    results = st.executeQuery(query);
+			    
+	            while(results.next())	{
+	            	System.out.println("Customer found!");
+	            	customer = new Customer();
+			    	customer.setCustEmail(results.getString("cust_email"));
+			    	customer.setFirstName(results.getString("cust_firstname"));
+			    	customer.setLastName(results.getString("cust_lastname"));
+			    	customer.setUserName(results.getString("cust_username"));
+			    	customer.setPassWord(results.getString("cust_password"));
+
+			    	custList.add(customer);
+	            }
+	            
+	            
+	            if(custList.size()>0)	{
+	            	check = true;
+	            	
+	            }
+	            else {
+	            	check = false;
+	            }
+	            
+	                        
+	        } catch (SQLException e) {
+
+	            e.printStackTrace();
+	        }
+		    finally
+		    {
+		      try
+		      {
+		        if( connection != null )
+		        {
+		          connection.close();
+		        }
+
+		        if( results != null )
+		        {
+		          results.close();
+		        }
+		      }
+		      catch( Exception exe )
+		      {
+		        exe.printStackTrace();
+		      }
+		    }
+		    return check;
+		  }
+	
 }
