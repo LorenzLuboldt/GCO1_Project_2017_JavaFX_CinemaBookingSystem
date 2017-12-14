@@ -21,10 +21,14 @@ import model.LoginModel;
 /**
  * Purpose: LoginController class handles business logic for the login process
  * as it initiates either customer or manager root views, depending on the
- * option chosen (customer login or employee log in)
+ * option chosen (customer login or employee log in). The class connects this application to SQLite database
+ * which is used as a database. 
+ * The project is also based on the "Model-View-Controller" framework, and includes the implementation of the DAO model, which separates database operations form the business logic.
  * 
- * @author Lorenz Tutorials & resources:
- *         https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq
+ * @author Lorenz 
+ * Tutorials & resources: https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq, 
+ * https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm, 
+ * http://www.swtestacademy.com/database-operations-javafx/
  */
 public class LoginController implements Initializable {
 
