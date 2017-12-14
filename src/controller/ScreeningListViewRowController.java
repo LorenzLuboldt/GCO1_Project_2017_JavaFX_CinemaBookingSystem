@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.sql.SQLException;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -110,17 +111,10 @@ public class ScreeningListViewRowController {
 		seatAvailability.setText(screening.getBookedSeats() + "/16 Seats booked");	
 
 	//Fills imageView with corresponding image from local resource folder
-		
-	// Set ImageView to display image
-//		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
-//		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
-//		Image img = new Image(file.toURI().toString());
-//		filmPoster.setImage(img);
-//		
 		int filmID = film.getFilmId();
 		String imgPath = filmDAO.getFilmImagePath(filmID);
-	// Set ImageView to display image
-		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		File file = new File(jarFile.getParentFile().getParent(), "images/" + imgPath);
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);

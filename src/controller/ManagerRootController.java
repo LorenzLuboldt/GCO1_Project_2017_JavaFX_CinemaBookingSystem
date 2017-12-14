@@ -22,111 +22,128 @@ import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
 
-
-
+/**
+ * Purpose: Landing page for the Employee after successful login. Shows all
+ * future screenings sorted by date & time. Provides links to several other
+ * views with cinema managing options
+ * 
+ * @author Lorenz
+ *
+ */
 public class ManagerRootController implements Initializable {
+
 	@FXML
 	private Label userLbl2;
-	
-	@FXML private ListView<Screening> allScreeningList; 
-	
+	@FXML
+	private ListView<Screening> allScreeningList;
 	private List<Screening> screeningList = new ArrayList<>();
+	// Creates observable list for connecting screening list to final ListView
 	private ObservableList<Screening> observableList = FXCollections.observableArrayList();
-	
-	//Creates a Screening object
+	// Creates a Screening object
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
-	
+
+	/**
+	 * Purpose: Initialises the ListView and populates it with all current
+	 * future screenings.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setListView();
 	}
-	
+
 	/**
-	 * Purpose: Setsup Movie ListView displaying all current Movies with the custom ListRows
-	 * Source: https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml
-	 * @author Lorenz
+	 * Purpose: Setup Movie ListView displaying all current Screenings with
+	 * customised ListView cells Tutorials & resources:
+	 * https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml
 	 */
 	private void setListView() {
-		
-	//Retrieve all film entries from the database
-	try {
-		screeningList = screeningDAO.getUpcomingScreenings();
+
+		// Retrieve all upcoming screenings from the database via DAO Model
+		try {
+			screeningList = screeningDAO.getUpcomingScreenings();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
-		
-	//Fill the Observable List with items pulled from the database
-	
-	observableList.setAll(screeningList);
-	
-	//Fill ListView with content
-	
-	allScreeningList.setItems(observableList);
-	
-	//Allow for custom display of the ListView Items 
 
-	allScreeningList.setCellFactory(ListView -> new ListViewCellScreening());
+		// Fill the Observable List with items pulled from the database
+		observableList.setAll(screeningList);
 
-		
+		// Fill ListView with content
+		allScreeningList.setItems(observableList);
+
+		// Allow for custom display of the ListView Items, link to class
+		// ListViewCellScreening, which populates ListView with customised Cell
+		allScreeningList.setCellFactory(ListView -> new ListViewCellScreening());
 	}
-	
+
+	/**
+	 * Purpose: Displays the name of the Manager currently logged in.
+	 * 
+	 * @param user
+	 */
 	public void GetManager(String user) {
-		// TODO Auto-generated method stub
-		userLbl2.setText("Welcome, "+ user + "!");
+		userLbl2.setText("Welcome, " + user + "!");
 	}
-	
-	
-	//Goes to Movie Overview Page
+
+	/**
+	 * Purpose: Makes the connection to ManagerMoviesView when button clicked.
+	 * 
+	 * @param event
+	 */
 	public void GoToMovieSelection(ActionEvent event) {
-		try {	
-			System.out.println("1 Was successful");
-
-	((Node) event.getSource()).getScene().getWindow().hide();
-	Stage primaryStage = new Stage();
-	FXMLLoader loader = new FXMLLoader();
-	Pane root = loader.load(getClass().getResource("/view/ManagerMoviesView.fxml").openStream());
-	Scene scene = new Scene(root);
-	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-	primaryStage.setScene(scene);
-	primaryStage.setResizable(false);
-	primaryStage.show();
+		try {
+			((Node) event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/ManagerMoviesView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
 		} catch (Exception e) {
-			
 		}
-
 	}
-	
+
+	/**
+	 * Purpose: Makes the connection to ManagerStatisticsView when button
+	 * clicked.
+	 * 
+	 * @param event
+	 */
 	public void GoToStatistics(ActionEvent event) {
-		try {	
-	((Node) event.getSource()).getScene().getWindow().hide();
-	Stage primaryStage = new Stage();
-	FXMLLoader loader = new FXMLLoader();
-	Pane root = loader.load(getClass().getResource("/view/ManagerStatisticsView.fxml").openStream());
-	Scene scene = new Scene(root);
-	scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-	primaryStage.setScene(scene);
-	primaryStage.setResizable(false);
-	primaryStage.show();
+		try {
+			((Node) event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/ManagerStatisticsView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
 		} catch (Exception e) {
-			
 		}
-
 	}
 
+	/**
+	 * Purpose: When button clicked, manager gets back to LoginView (Logout)
+	 * clicked.
+	 * 
+	 * @param event
+	 */
 	public void SignOut(ActionEvent event) {
-	try {	
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Stage primaryStage = new Stage();
-		FXMLLoader loader = new FXMLLoader();
-		Pane root = loader.load(getClass().getResource("/view/LoginView.fxml").openStream());
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
-		primaryStage.show();
-	} catch (Exception e) {
-		
-	}
+		try {
+			((Node) event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/view/LoginView.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e) {
+		}
 	}
 }
