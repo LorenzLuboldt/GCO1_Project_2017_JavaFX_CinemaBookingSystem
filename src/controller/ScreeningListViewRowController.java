@@ -3,7 +3,6 @@ package controller;
 import java.io.File;
 import java.sql.SQLException;
 
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +21,7 @@ import model.FilmDAOImpl;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
+import model.Selection;
 import model.SelectionDAO;
 import model.SelectionDAOImpl;
 
@@ -31,16 +31,18 @@ import model.SelectionDAOImpl;
  * @author Lorenz
  *
  */
+
 public class ScreeningListViewRowController {
+
 	
-	/**
-	 * Returns container containing individual elements to the list view
-	 * @return
-	 */
+	//Declares elements of the list view row layout
+	@FXML
 	HBox container;
+
 	public HBox getContainer() {
 		return container;
 	}
+
 	@FXML
 	Label filmTitle;
 	@FXML
@@ -76,9 +78,14 @@ public class ScreeningListViewRowController {
 		this.film = film;
 	}
 
-	/**
-	 * Purpose: Populates declared elements with respective information from the screenings object (linked to film table in Database)
-	 */
+
+	public void initialize() {
+
+		showScreeningDetails.setOnAction(event -> showScreeningDetailPage(event));
+		
+	}
+	
+	// Populates declared elements with respective information from the film object (linked to film table in Database)
 	public void populateCells() throws SQLException, ClassNotFoundException {
 		System.out.println(18);
 
@@ -101,16 +108,26 @@ public class ScreeningListViewRowController {
 
 	//Fills director label with corresponding film director
 		seatAvailability.setText(screening.getBookedSeats() + "/16 Seats booked");	
+
+	//Fills imageView with corresponding image from local resource folder
+		
+	// Set ImageView to display image
+//		File file = new File(System.getProperty("user.dir") + "/resources/films/" + film.getFilmImage());
+//		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
+//		Image img = new Image(file.toURI().toString());
+//		filmPoster.setImage(img);
+//		
 		int filmID = film.getFilmId();
 		String imgPath = filmDAO.getFilmImagePath(filmID);
-	
-		// Set ImageView to display image
-		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-		File file = new File(jarFile.getParentFile().getParent(), "images/" + imgPath);
+	// Set ImageView to display image
+		File file = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
 		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
+		
 	}
+	
+	
 	
 	/**
 	 * Purpose: Button links to new Movie Detail View of the respective film
@@ -136,4 +153,5 @@ public class ScreeningListViewRowController {
 			
 		}
 	}
+
 }
