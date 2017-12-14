@@ -16,7 +16,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public interface BookingDAO {
 	public ObservableList<Booking> getAllBookings();
 	public ObservableList<Booking> getCustomerBookings(int custID);	// returns list of bookings of a specific customer

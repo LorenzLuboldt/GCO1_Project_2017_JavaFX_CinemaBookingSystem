@@ -37,6 +37,8 @@ import model.ScreeningDAOImpl;
 public class CustomerBookingHistoryViewController implements Initializable {
 	@FXML
 	private Label userLbl;
+	@FXML
+	Label successNotification;
 	// Configure 2 tables: one for future bookings, one for past bookings
 	@FXML
 	private TableView<Booking> futureBookingsTable;
@@ -158,7 +160,7 @@ public class CustomerBookingHistoryViewController implements Initializable {
 
 		// Delete selected booking from DB
 		bookingDAO.deleteBooking(futureBookingsTable.getSelectionModel().getSelectedItem().getBookingID());
-
+		successNotification.setText("Successfully deleted booking");
 		// Reload tables in view with updated values
 		loadMyBookingsTables();
 	}

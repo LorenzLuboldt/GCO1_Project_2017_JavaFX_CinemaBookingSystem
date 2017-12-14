@@ -16,7 +16,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public interface FilmDAO {
 	public ObservableList<Film> getAllFilms();
 	public Film getFilm(String filmTitle);

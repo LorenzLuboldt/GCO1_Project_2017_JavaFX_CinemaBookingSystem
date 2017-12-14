@@ -3,7 +3,7 @@
 import javafx.beans.property.*; 
 
 /** 
- * Explanation:
+ * Purpose:
  * This file holds all columns of the 'film' table. It contains private variables for each column,
  * a constructor to initialize them, and getters and setters for each.
  * The variables are created as properties.
@@ -18,8 +18,6 @@ import javafx.beans.property.*;
  * @author Michael Aring
  * @version 04/12/2017
  */
-
-
 public class Film {
 	
 	// variables (correspond to table columns)

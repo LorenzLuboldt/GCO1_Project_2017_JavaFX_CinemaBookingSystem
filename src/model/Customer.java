@@ -15,8 +15,6 @@ import javafx.beans.property.*;
  * @author Michael Aring
  * @version 24/11/2017
  */
-
-
 public class Customer {
 	
 	// variables (correspond to table columns)

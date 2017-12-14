@@ -22,7 +22,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public class ScreeningDAOImpl implements ScreeningDAO {
 	
 	/**

@@ -19,8 +19,6 @@ import javafx.beans.property.*;
  * @author Michael Aring
  * @version 04/12/2017
  */
-
-
 public class Screening {
 	
 	// variables (correspond to table columns)

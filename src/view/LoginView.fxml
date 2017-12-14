@@ -38,12 +38,6 @@
                </font>
             </Button>
             <PasswordField fx:id="txtPassword" alignment="CENTER" layoutX="577.0" layoutY="255.0" prefHeight="50.0" prefWidth="250.0" promptText="Password" styleClass="text_field_standard" />
-            <Button layoutX="711.0" layoutY="515.0" mnemonicParsing="false" style="-fx-background-color: grey; -fx-font-size: 14;" text="Sign up" />
-            <Label layoutX="623.0" layoutY="522.0" text="New here?" textFill="WHITE">
-               <font>
-                  <Font name="Lao UI Bold" size="14.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </center>

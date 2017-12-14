@@ -16,7 +16,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public interface CustomerDAO {
 	public ObservableList<Customer> getAllCustomers(); // retrieve all variables except custID
 	public Customer getCustomer(int custID);
