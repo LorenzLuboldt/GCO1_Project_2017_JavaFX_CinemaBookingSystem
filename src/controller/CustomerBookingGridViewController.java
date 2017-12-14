@@ -118,7 +118,6 @@ public class CustomerBookingGridViewController implements Initializable {
 		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
 		int screeningID = screeningsList.get(0).getScreeningID();
 
-		System.out.println(screeningID);
 
 		// Delete all existing selections from seat table
 		selectionDAO.deleteSelection();
@@ -198,7 +197,6 @@ public class CustomerBookingGridViewController implements Initializable {
 
 		boolean seatIsFree = bookingDAO.checkSeatAvailability(seatID, screeningID);
 
-		System.out.println(seatIsFree);
 
 		if (seatIsFree) {
 			Image seatFreeImg = new Image("/res/icons/seat-free.png");
@@ -230,13 +228,11 @@ public class CustomerBookingGridViewController implements Initializable {
 
 					// Store seat ID in selection cache
 					selectionDAO.addSelectedSeat(seatID, screeningID);
-					System.out.println("User selected seat: " + seatID);
 				}
 			}); // closes EventHandler
 		} else {
 			Image seatBlockedImg = new Image("/res/icons/seat-blocked.png");
 			seatFree.setImage(seatBlockedImg);
-			System.out.println("BLOCKED IMAGE");
 
 			GridPane.setRowIndex(seatFree, row);
 			GridPane.setColumnIndex(seatFree, col);
@@ -266,7 +262,7 @@ public class CustomerBookingGridViewController implements Initializable {
 		
 		
 		
-		// ADD POP UP WINDOW HERE
+		// Alert shows all information about booking
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(null);
 		alert.setHeaderText("Booking Successful!");
