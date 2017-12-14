@@ -49,6 +49,7 @@ public class LoginController implements Initializable {
 	private PasswordField txtPassword;
 	
 	public static String username;
+	CustomerDAO customerDAO = new CustomerDAOImpl();
 
 	/**
 	 * Purpose: Initialises flash message for user communicating whether
@@ -74,9 +75,8 @@ public class LoginController implements Initializable {
 	 */
 	public void LoginCheckCustomer(ActionEvent event) {
 		try {
-			CustomerDAO c = new CustomerDAOImpl();
 			
-			if (c.checkPassword(txtUsername.getText(), txtPassword.getText())) {
+			if (customerDAO.checkPassword(txtUsername.getText(), txtPassword.getText())) {
 				isConnected.setText("Valid Username and Password");
 
 				((Node) event.getSource()).getScene().getWindow().hide();
