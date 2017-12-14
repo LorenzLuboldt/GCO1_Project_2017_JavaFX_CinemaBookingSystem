@@ -21,14 +21,16 @@ import model.LoginModel;
 /**
  * Purpose: LoginController class handles business logic for the login process
  * as it initiates either customer or manager root views, depending on the
- * option chosen (customer login or employee log in). The class connects this application to SQLite database
- * which is used as a database. 
- * The project is also based on the "Model-View-Controller" framework, and includes the implementation of the DAO model, which separates database operations form the business logic.
+ * option chosen (customer login or employee log in). The class connects this
+ * application to SQLite database which is used as a database. The project is
+ * also based on the "Model-View-Controller" framework, and includes the
+ * implementation of the DAO model, which separates database operations form the
+ * business logic.
  * 
- * @author Lorenz 
- * Tutorials & resources: https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq, 
- * https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm, 
- * http://www.swtestacademy.com/database-operations-javafx/
+ * @author Lorenz Tutorials & resources:
+ *         https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq,
+ *         https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm,
+ *         http://www.swtestacademy.com/database-operations-javafx/
  */
 public class LoginController implements Initializable {
 
@@ -37,18 +39,15 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private Label isConnected;
-
 	@FXML
-
-	private TextField txtUsername; // Name of text field is equal to the name
-									// assigned in the ID section of the Scene
-									// Builder
-
+	private TextField txtUsername;
 	@FXML
-	private PasswordField txtPassword; // Name of text field is equal to the name
-									// assigned in the ID section of the Scene
-									// Builder
+	private PasswordField txtPassword;
 
+	/**
+	 * Purpose: Initialises flash message for user communicating whether
+	 * database is connected or not.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -59,16 +58,11 @@ public class LoginController implements Initializable {
 		}
 	}
 
-	
-	
-	
-	
-// tests whether user-name and password are correct and opens up start
-// application view
 	/**
 	 * Purpose: Controls the login process for customer by testing whether
-	 * user-name and password are correct. If yes it initiates the root
-	 * borderPane and sets the initial view in its center.
+	 * user-name and password are correct (compares user input to stored
+	 * customer data in SQLite database). If yes it initiates the
+	 * CustomerRoot.fxml.
 	 * 
 	 * @param event
 	 */
@@ -102,9 +96,10 @@ public class LoginController implements Initializable {
 	}
 
 	/**
-	 * Purpose: Controls the login process for managers by testing whether
-	 * user-name and password are correct. If yes it initiates the root
-	 * borderPane and sets the initial view in its center.
+	 * Purpose: Controls the login process for employee by testing whether
+	 * user-name and password are correct (compares user input to stored
+	 * employee data in SQLite database). If yes it initiates the
+	 * ManagerRoot.fxml.
 	 * 
 	 * @param event
 	 */
