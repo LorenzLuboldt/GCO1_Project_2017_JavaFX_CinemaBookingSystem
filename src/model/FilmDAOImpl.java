@@ -20,7 +20,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public class FilmDAOImpl implements FilmDAO {
 	
 	// *** 1. GET ALL FILMS ***
