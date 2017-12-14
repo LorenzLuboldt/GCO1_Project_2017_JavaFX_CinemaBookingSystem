@@ -70,9 +70,9 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="14.0" prefHeight="47.0" prefWidth="713.0" styleClass="call_to_action" text="Please add film details" />
             <Label fx:id="successNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="496.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_success" textAlignment="CENTER" textFill="#ebe8e8" />
             <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="454.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_error" textAlignment="CENTER" textFill="#ebe8e8" />
-            <Pane layoutX="710.0" layoutY="207.0" prefHeight="330.0" prefWidth="379.0">
+            <Pane layoutX="743.0" layoutY="207.0">
                <children>
-                  <ComboBox fx:id="filmGenreComboBox" layoutX="33.0" prefHeight="51.0" prefWidth="313.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
+                  <ComboBox fx:id="filmGenreComboBox" prefHeight="51.0" prefWidth="313.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
                </children>
             </Pane>
          </children></AnchorPane>
