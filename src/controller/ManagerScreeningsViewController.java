@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -291,13 +293,17 @@ public class ManagerScreeningsViewController implements Initializable {
 	 */
 	public void downloadBookingData(ActionEvent event) {
 
-		String fileName = "resources/allScreeningsData.csv";
+//		String fileName = "resources/allScreeningsData.csv";
+		
+		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		File dest = new File(jarFile.getParentFile().getParent(), "resources/allScreeningsData.csv");
+		
 		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
 
 		ObservableList<Screening> output = screeningDAO.getAllScreenings();
 
 		try {
-			PrintWriter outputStream = new PrintWriter(fileName);
+			PrintWriter outputStream = new PrintWriter(dest);			
 
 			outputStream.println("ScreeningID" + "," + "FilmTitle" + "," + "Date" + "," + "Time" + ","
 					+ "AvailableSeats" + "," + "OccupancyRate");
