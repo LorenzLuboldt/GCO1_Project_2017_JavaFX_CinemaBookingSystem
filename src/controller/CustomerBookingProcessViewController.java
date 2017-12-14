@@ -84,24 +84,36 @@ public class CustomerBookingProcessViewController implements Initializable{
 	
 	public void chooseSeatsButtonPushed(ActionEvent event)	{
 		
+		// If user has not selected a screening, she can not advance
+		if(tableView.getSelectionModel().getSelectedItem().equals(null)) {
+			
+			// Add flash message: "Click on the screening you would like to book."
+		}
+		
+		// If user has selected a screening, she can advance to seat selection
+		else{
 		// Save selected screening to cache in data base
 		Screening selectedScreening = tableView.getSelectionModel().getSelectedItem();
 		selectionDAO.addSelectedScreening(selectedScreening.getScreeningID());
 		
 		// Take user to next page with seating map
-		try {	
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-		} catch (Exception e) {	
+			try 
+			{	
+				((Node)event.getSource()).getScene().getWindow().hide();
+				Stage primaryStage = new Stage();
+				FXMLLoader loader = new FXMLLoader();
+				Pane root = loader.load(getClass().getResource("/view/CustomerBookingGridView.fxml").openStream());
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.setResizable(false);
+				primaryStage.show();
+			} 
+			catch (Exception e) {	
+			}
 		}
 	}
+		
 	
 	
 	// Event Listener on Button.onAction

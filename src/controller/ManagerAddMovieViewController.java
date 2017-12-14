@@ -10,9 +10,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.FileChannel;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +32,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.FilmDAO;
 import model.FilmDAOImpl;
+
+/**
+ * References:
+ * https://examples.javacodegeeks.com/core-java/io/file/4-ways-to-copy-file-in-java/
+ * https://stackoverflow.com/questions/40317459/how-to-open-a-file-in-the-same-directory-as-the-jar-file-of-the-application
+ * 
+ * @author Michael
+ *
+ */
 
 public class ManagerAddMovieViewController implements Initializable {
 	
@@ -59,7 +71,16 @@ public class ManagerAddMovieViewController implements Initializable {
 	public void chooseFile(ActionEvent event) {
 		
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File("/Users/Lorenz/Desktop"));
+		
+//		ProtectionDomain pd = Main.class.getProtectionDomain();
+//		CodeSource cs = pd.getCodeSource();
+//		URL location = cs.getLocation();
+		
+		
+//		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+//		fileChooser.setInitialDirectory(new File(location));
+		fileChooser.setInitialDirectory(new File("."));
+
 		fileChooser.getExtensionFilters().addAll();
 		selectedFile = fileChooser.showOpenDialog(null);
 		
@@ -69,12 +90,9 @@ public class ManagerAddMovieViewController implements Initializable {
 		}
 		else {
 			System.out.println("File is not valid");
-		}
-		
-		
+		}	
 	}
 	
-
 	
 	// @Lorenz: method to enable manager to add film to database
 	public void addFilmButtonPushed(ActionEvent event)	{
@@ -187,7 +205,23 @@ public class ManagerAddMovieViewController implements Initializable {
 			// Create destination path for the copied file			
 			long imgID = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L; // Creates random 10-digit number
 			imgPath = imgID + ".jpg";
-			File dest = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+			
+			File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+			File dest = new File(jarFile.getParentFile().getParent(), "images/" + imgID + ".jpg");
+			
+		// ________OBSOLETE: _____________________________________________________________________
+			
+//			File jarFile = (new File(".")).getAbsolutePath();
+			
+//			jarFile.getAbsolutePath();
+//			File parentDirectory = jarFile.getParentFile();
+//			File imagesFolder = new File(parentDirectory, "images");
+//			File dest = new File(imagesFolder, imgPath);
+					
+//			File dest = new File(System.getProperty("user.dir") + "/resources/films/" + imgPath);
+			
+			// ________________________________________________________________________________________
+
 			
 			// Copy the file from source path to destination path
 			try {
