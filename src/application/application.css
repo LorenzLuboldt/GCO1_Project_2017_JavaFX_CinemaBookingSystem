@@ -10,6 +10,10 @@
 	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: #7E7878; -fx-text-fill: white;
 }
 
+.TextArea {
+	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: #7E7878; -fx-text-fill: black;
+}
+
 .call_to_action {
 	-fx-color: #d0cece; -fx-font: 32.0px "Lao UI";-fx-text-fill:  #d0cece;
 }
@@ -113,4 +117,39 @@
     -fx-font-size: 16px;
 } 
 
+ .dialog-pane{
+  -fx-border-color:black;
+  -fx-border-width:1.0px;
+ }
 
+.dialog-pane > .button-bar > .container {
+  -fx-background-color:black;
+}
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: #FF0000;
+   -fx-text-fill:black;
+   -fx-font-size:15.0px;
+}
+
+/**Customization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+  -fx-background-color: black;
+}
+
+/**Costumization of Buttons**/
+.dialog-pane .button{
+-fx-border-radius: 0; 
+-fx-border-color: black; 
+-fx-border-width: 2;
+ -fx-background-color: #FF0000; 
+ -fx-color: black; 
+ -fx-font: 21.0px "Lao UI"; 
+ -fx-background-insets: 0 0 0 0, 0, 1, 2;
+  -fx-cursor:hand;
+ }
+
+.dialog-pane .button:hover{     
+	-fx-background-color: #d50000; -fx-cursor: hand;
+ }

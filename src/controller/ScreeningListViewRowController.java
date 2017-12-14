@@ -31,7 +31,6 @@ import model.SelectionDAOImpl;
  * @author Lorenz
  *
  */
-
 public class ScreeningListViewRowController {
 
 	
@@ -77,15 +76,10 @@ public class ScreeningListViewRowController {
 	public void setFilm(Film film) {
 		this.film = film;
 	}
-
-
-	public void initialize() {
-
-		showScreeningDetails.setOnAction(event -> showScreeningDetailPage(event));
-		
-	}
 	
-	// Populates declared elements with respective information from the film object (linked to film table in Database)
+	/**
+	 * Purpose: Populates declared elements with respective information from the film object (linked to film table in Database)
+	 */
 	public void populateCells() throws SQLException, ClassNotFoundException {
 
 		String filmtitle = screening.getFilmTitle();		
@@ -113,8 +107,6 @@ public class ScreeningListViewRowController {
 		filmPoster.setImage(img);
 		
 	}
-	
-	
 	
 	/**
 	 * Purpose: Button links to new Movie Detail View of the respective film

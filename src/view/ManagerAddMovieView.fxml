@@ -57,7 +57,7 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="75.0" prefHeight="7.0" prefWidth="301.0" styleClass="call_to_action" text="Film Details" />
             <TextField fx:id="filmTitleTextField" layoutX="345.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Film Title" styleClass="text_field_standard" />
             <TextField fx:id="filmActorsTextField" layoutX="345.0" layoutY="428.0" prefHeight="51.0" prefWidth="313.0" promptText="Actors" styleClass="text_field_standard" />
-            <TextArea fx:id="filmDescriptionTextArea" layoutX="345.0" layoutY="207.0" prefHeight="200.0" prefWidth="313.0" promptText="Film Description" styleClass="text_field_standard" />
+            <TextArea fx:id="filmDescriptionTextArea" layoutX="345.0" layoutY="207.0" prefHeight="200.0" prefWidth="313.0" promptText="Film Description" styleClass="TextArea" />
             <TextField fx:id="filmDirectorTextField" layoutX="743.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Director" styleClass="text_field_standard" />
             <ComboBox fx:id="filmGenreComboBox" layoutX="743.0" layoutY="207.0" prefHeight="51.0" prefWidth="313.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
             <ListView fx:id="fileList" layoutX="743.0" layoutY="325.0" prefHeight="50.0" prefWidth="313.0" styleClass="text_field_standard" />
