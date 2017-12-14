@@ -23,6 +23,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.BookingDAO;
 import model.BookingDAOImpl;
+import model.CustomerDAO;
+import model.CustomerDAOImpl;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
@@ -56,9 +58,11 @@ public class CustomerBookingGridViewController implements Initializable {
 	@FXML
 	private Label timeLabel;
 
+	// Create objects for database access
 	SelectionDAO selectionDAO = new SelectionDAOImpl();
 	BookingDAO bookingDAO = new BookingDAOImpl();
 	ScreeningDAO screeningDAO = new ScreeningDAOImpl();
+	CustomerDAO customerDAO = new CustomerDAOImpl();
 
 	/**
 	 * Purpose: Initialises display of user name in header and loads data for
@@ -265,11 +269,12 @@ public class CustomerBookingGridViewController implements Initializable {
 		// ADD POP UP WINDOW HERE
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(null);
-		alert.setHeaderText("Booking Confirmation");
-		alert.setContentText("Film: " + selectedScreening.getFilmTitle() 
-		+ "\nDate: " + selectedScreening.getDateID()
-		+ "\nTime: " + selectedScreening.getTimeString()
-		+ "\nNumber of tickets: " + numTicketsSelected);
+		alert.setHeaderText("Booking Successful!");
+		alert.setContentText("Film:  " + selectedScreening.getFilmTitle() 
+		+ "\nDate:  " + selectedScreening.getDateID()
+		+ "\nTime:  " + selectedScreening.getTimeString()
+		+ "\nTickets:  " + numTicketsSelected
+		+ "\nName:  " + customerDAO.getCustomer(1).getFirstName() + " " + customerDAO.getCustomer(1).getLastName());
 
 		alert.showAndWait();
 		

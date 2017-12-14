@@ -130,7 +130,9 @@ public class ManagerAddScreeningViewController implements Initializable {
 
 	/**
 	 * Purpose: Method to enable manager to add screening to database when
-	 * button clicked
+	 * button clicked. The enclosed addScreening method does 2 things: first, it returns true
+	 * if the slot is free and false if the slot is taken. Second, it adds the screening if
+	 * the slot is free.
 	 * 
 	 * @param event
 	 */
@@ -141,14 +143,15 @@ public class ManagerAddScreeningViewController implements Initializable {
 		int day = datePicker.getValue().getDayOfMonth();
 		int month = datePicker.getValue().getMonthValue();
 		int year = datePicker.getValue().getYear();
-
-		try {
-			screeningDAO.addScreening(datePicker.getValue().toString(), year, month, day,
-					screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
+		
+		boolean checkIfDateIsFree = screeningDAO.addScreening(datePicker.getValue().toString(), year, month, day,
+				screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
+		
+		if(checkIfDateIsFree){
 			successNotification.setText("Successfully Added Screening Slot.");
-		} catch (Exception e) {
+		}
+		else	{
 			errorNotification.setText("Overlap With Other Screening");
-			e.printStackTrace();
 		}
 	}
 }

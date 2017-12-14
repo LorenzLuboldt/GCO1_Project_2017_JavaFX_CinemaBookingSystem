@@ -55,6 +55,7 @@ public class ManagerStatisticsViewController implements Initializable {
 @Override
 public void initialize(URL location, ResourceBundle resources) {
 	GetManager(LoginController.username);
+	loadStatisticsTable();
 }
 
 /**

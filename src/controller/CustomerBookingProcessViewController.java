@@ -92,8 +92,8 @@ public class CustomerBookingProcessViewController implements Initializable {
 		ticket_status_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("ticketStatus"));
 
 		// Query database to retrieve list of screenings on selected date
-		final ObservableList<Screening> screeningList = screeningDAO
-				.searchScreeningsByDate(datePicker.getValue().toString());
+		final ObservableList<Screening> screeningList = screeningDAO.searchScreeningsByDate(datePicker.getValue().toString());
+		
 		// Fill table with screenings
 		tableView.setItems(screeningList);
 	}

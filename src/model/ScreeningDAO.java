@@ -29,7 +29,7 @@ public interface ScreeningDAO {
 	
 	
 	// Creation, delete and update methods
-	public void addScreening(String dateID, int yearID, int monthID, int dayID,  String timeString, String filmTitle);
+	public boolean addScreening(String dateID, int yearID, int monthID, int dayID,  String timeString, String filmTitle);
 	public void deleteScreening(int screeningID);
 	public void decreaseAvailableSeats(int screeningID); // Updates screening statistics after a booking has been made
 	public void increaseAvailableSeats(int screeningID); // Updates screening statistics after a booking has been deleted

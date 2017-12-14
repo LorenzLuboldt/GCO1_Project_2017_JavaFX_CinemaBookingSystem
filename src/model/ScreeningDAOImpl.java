@@ -82,13 +82,11 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	      {
 	        if( connection != null )
 	        {
-	          System.out.println("getAllScreenings() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("getAllScreenings() --> results are closed");
 	          results.close();
 	        }
 	      }
@@ -99,7 +97,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	      }
 
 	    }
-	    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
 	    return screeningList;
 	  }
 	
@@ -168,13 +165,11 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      {
 		        if( connection != null )
 		        {
-		          System.out.println("getAllScreenings() --> connection is closed");
 		          connection.close();
 		        }
 
 		        if( results != null )
 		        {
-		        	System.out.println("getAllScreenings() --> results are closed");
 		          results.close();
 		        }
 		      }
@@ -185,7 +180,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      }
 
 		    }
-		    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
 		    return screeningList;
 		  }
 
@@ -253,13 +247,11 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      {
 		        if( connection != null )
 		        {
-		          System.out.println("getAllScreenings() --> connection is closed");
 		          connection.close();
 		        }
 
 		        if( results != null )
 		        {
-		        	System.out.println("getAllScreenings() --> results are closed");
 		          results.close();
 		        }
 		      }
@@ -270,7 +262,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      }
 
 		    }
-		    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
 		    return screeningList;
 		  }
 
@@ -291,7 +282,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    	
 			// SQL query, stored in String
 	    	String query = "SELECT * FROM screening WHERE screening_id = " + "'" + screeningID + "'";
-	    	System.out.println(query);
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
@@ -325,19 +315,16 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	      {
 	        if( connection != null )
 	        {
-	        	System.out.println("getScreening() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("getScreening() --> results is closed");
 	          results.close();
 	        }
 	      }
 	      catch( Exception exe )
 	      {
-	    	  System.out.println("getScreening() --> error has been caught");
 	        exe.printStackTrace();
 	      }
 
@@ -403,13 +390,11 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      {
 		        if( connection != null )
 		        {
-		          System.out.println("searchScreeningsByFilm() --> connection is closed");
 		          connection.close();
 		        }
 
 		        if( results != null )
 		        {
-		        	System.out.println("searchScreeningsByFilm() --> results are closed");
 		          results.close();
 		        }
 		      }
@@ -420,94 +405,104 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		      }
 
 		    }
-		    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
 		    return screeningList;
 		  }
 	
+		/**
+		 * Purpose: Method queries screenings table in data base and retrieves an observable list of screenings on a given date
+		 * in the future.
+		 * 
+		 * @author: Michael Aring
+		 */
 	
-	// *** SEARCH SCREENINGS BY DATE ***
+		// *** SEARCH SCREENINGS BY DATE ***
 		public ObservableList<Screening> searchScreeningsByDate(String dateID)	{
-					
-					// Establish database connection:
-					Connection connection = SqliteConnection.Connector();
-					Statement st = null;
-				    
-				    // Create ObservableList to store films from DB
-				    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
-				    
-				    ResultSet results = null;
-					
-				    try
-				    {
-					    st = connection.createStatement();
-				    	
-						// SQL query, stored in String
-				    	String query = "SELECT * FROM screening WHERE date_id='" + dateID + "' ORDER BY time_int ASC";
-							    
-//				    	screening_id, time_string, film_title, ticket_status
-				    	
-					    // Run query and save results in ResultSet
-					    results = st.executeQuery(query);
-					    
-					    while(results.next())	{
-					    	
-					    	// create and instantiate a customer object
-					    	Screening screening = new Screening();
-					    	
-					    	screening.setScreeningID(results.getInt("screening_id"));
-					    	screening.setDateID(results.getString("date_id"));
-					    	screening.setYearID(results.getInt("year_id"));
-					    	screening.setMonthID(results.getInt("month_id"));
-					    	screening.setDayID(results.getInt("day_id"));
-					    	screening.setTimeInt(results.getInt("time_int")); 
-					    	screening.setTimeString(results.getString("time_string"));
-					    	screening.setFilmTitle(results.getString("film_title"));
-					    	screening.setAvailableSeats(results.getInt("available_seats"));
-					    	screening.setBookedSeats(results.getInt("booked_seats"));
-					    	screening.setAvailableInfo(results.getString("available_info"));
-					    	screening.setOccupancyRate(results.getString("occupancy_rate"));
-					    	screening.setTicketStatus(results.getString("ticket_status"));
-					
-					    	screeningList.add(screening);
-					    }
-					 
-				    }
-				    catch( SQLException e )
-				    {
-				    	System.err.println("Exception occured while fetching screening data: ");
-				    	e.printStackTrace();
-				    }
+		String t; // time
+		
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+		Statement st = null;
+	    
+	    // Create ObservableList to store films from DB
+	    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
+	    
+	    ResultSet results = null;
+		
+	    try
+	    {
+		    st = connection.createStatement();
+	    	
+			// SQL query, stored in String
+	    	String query = "SELECT * FROM screening WHERE date_id='" + dateID + "' ORDER BY time_int ASC";
 
-				    finally
-				    {
-				      try
-				      {
-				        if( connection != null )
-				        {
-				          System.out.println("searchScreeningsByFilm() --> connection is closed");
-				          connection.close();
-				        }
+	    	
+		    // Run query and save results in ResultSet
+		    results = st.executeQuery(query);
+		    
+		    while(results.next())	{
+		    	
+		    	// create and instantiate a customer object
+		    	Screening screening = new Screening();
+		    	
+		    	screening.setScreeningID(results.getInt("screening_id"));
+		    	screening.setDateID(results.getString("date_id"));
+		    	screening.setYearID(results.getInt("year_id"));
+		    	screening.setMonthID(results.getInt("month_id"));
+		    	screening.setDayID(results.getInt("day_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
+		    	screening.setFilmTitle(results.getString("film_title"));
+		    	screening.setAvailableSeats(results.getInt("available_seats"));
+		    	screening.setBookedSeats(results.getInt("booked_seats"));
+		    	screening.setAvailableInfo(results.getString("available_info"));
+		    	screening.setOccupancyRate(results.getString("occupancy_rate"));
+		    	screening.setTicketStatus(results.getString("ticket_status"));
+		
+		    	// Validate time and add to screening list only, if date today is today or in the future
+		    	t = screening.getTimeInt() + ":00";
+		    	LocalTime time = LocalTime.parse(t);
+		    	LocalDate date = LocalDate.parse(screening.getDateID());
+		    	if (date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) || date.isAfter(LocalDate.now()))	{
+		    		screeningList.add(screening);
+		    	}
+		    }
+		 
+	    }
+	    catch( SQLException e )
+	    {
+	    	System.err.println("Exception occured while fetching screening data: ");
+	    	e.printStackTrace();
+	    }
 
-				        if( results != null )
-				        {
-				        	System.out.println("searchScreeningsByFilm() --> results are closed");
-				          results.close();
-				        }
-				      }
-				      catch( Exception exe )
-				      {
-				    	  System.out.println("searchScreeningsByFilm() --> error has been caught");
-				        exe.printStackTrace();
-				      }
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
 
-				    }
-				    System.out.println("All screenings have been retrieved from DB and stored in screeningList");
-				    return screeningList;
-				  }
-			
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	    	  System.out.println("searchScreeningsByFilm() --> error has been caught");
+	        exe.printStackTrace();
+	      }
+
+	    }
+	    return screeningList;
+	  }
+
 		
 	// *** ADD SCREENING ***	
-	public void addScreening(String dateID, int yearID, int monthID, int dayID, String timeString, String filmTitle) 	{
+	public boolean addScreening(String dateID, int yearID, int monthID, int dayID, String timeString, String filmTitle) 	{
+		
+		boolean checkIfSlotIsFree = true; 
 		
 		// Create variables not entered by user
 		int timeInt, availableSeats, bookedSeats;
@@ -570,13 +565,14 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 		     
 			    // Run query
 			    st.executeUpdate(query);
-			    System.out.println("Screening has been added to DB");
+			    return checkIfSlotIsFree;
 		    }
 			
 		    
 		    // OTHERWISE, DON'T ADD
 		    else	{
-			    System.out.println("+++ This film slot is already taken. +++");
+			    checkIfSlotIsFree = false;
+			    return checkIfSlotIsFree;
 			}
 	    }
 	    catch( SQLException e )
@@ -599,13 +595,13 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	        e.printStackTrace();
 	      }
 	    }
+	    return checkIfSlotIsFree;
 	  }
 	  
 	
 	// *** DELETE SCREENING ***
 	public void deleteScreening(int screeningID)	{	
 		
-		System.out.println("Delete screening method has been invoked.");
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -620,7 +616,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 				    
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been deleted for screening ID: " + screeningID);
 
 	    }
 	    catch( SQLException e )
@@ -649,7 +644,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	// *** DECREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS MADE) ***
 	public void decreaseAvailableSeats(int screeningID)	{
 		
-		System.out.println("Decrease seats method has been called.");
 		// Create variables to be updated
 		int availableSeats, bookedSeats;
 		String availableInfo, ticketStatus, occupancyRate;
@@ -667,7 +661,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    	
 			// 1. Retrieve selected screening from database
 	    	String query = "SELECT * FROM screening WHERE screening_id = " + "'" + screeningID + "'";
-	    	System.out.println(query);
 				    
 		    results = st.executeQuery(query);
 		    
@@ -713,7 +706,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
             String eQuery = "UPDATE screening SET ticket_status='" + ticketStatus + "' WHERE screening_id=" + screeningID;
             st.executeUpdate(eQuery);
             
-            System.out.println("Screening info has been updated");
                         
         } catch (SQLException e) {
             System.err.println("While updating the screening " + screeningID  + " an error occurred: ");
@@ -745,7 +737,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	// *** INCREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS DELETED) ***
 	public void increaseAvailableSeats(int screeningID)
 	{
-		System.out.println("Increase seats method has been called.");
 		// Create variables to be updated
 		int availableSeats, bookedSeats;
 		String availableInfo, ticketStatus, occupancyRate;
@@ -763,7 +754,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    	
 			// 1. Retrieve selected screening from database
 	    	String query = "SELECT * FROM screening WHERE screening_id = " + "'" + screeningID + "'";
-	    	System.out.println(query);
 				    
 		    results = st.executeQuery(query);
 		    
@@ -809,7 +799,6 @@ public class ScreeningDAOImpl implements ScreeningDAO {
             String eQuery = "UPDATE screening SET ticket_status='" + ticketStatus + "' WHERE screening_id=" + screeningID;
             st.executeUpdate(eQuery);
             
-            System.out.println("Screening info has been updated");
                         
         } catch (SQLException e) {
             System.err.println("While updating the screening " + screeningID  + " an error occurred: ");
