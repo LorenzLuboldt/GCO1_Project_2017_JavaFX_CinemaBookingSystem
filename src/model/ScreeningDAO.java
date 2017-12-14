@@ -16,7 +16,6 @@ import javafx.collections.ObservableList;
  * @version 04/12/17
  *
  */
-
 public interface ScreeningDAO {
 	
 	// Information retrieval and search methods

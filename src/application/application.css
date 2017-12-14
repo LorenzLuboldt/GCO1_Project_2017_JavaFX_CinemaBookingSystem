@@ -10,6 +10,10 @@
 	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: #7E7878; -fx-text-fill: white;
 }
 
+.ComboBox {
+	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: white; -fx-text-fill: black;
+}
+
 .TextArea {
 	-fx-border-radius: 0; -fx-border-color: white; -fx-border-width: 3; -fx-background-color: black; -fx-font: 21.0px "Lao UI"; -fx-prompt-text-fill: #7E7878; -fx-text-fill: black;
 }

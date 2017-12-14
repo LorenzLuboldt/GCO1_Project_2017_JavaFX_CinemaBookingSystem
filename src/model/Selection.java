@@ -12,14 +12,12 @@ import javafx.beans.property.*;
  * This helps us keep the view in sync with the data." (SW Test Academy)
  * 
  * References DAO Methodology: 
- * http://www.swtestacademy.com/database-operations-javafx/
- * https://www.youtube.com/watch?v=H1mePFyqqiE&t=18s
+ * http://www.swtestacademy.com/database-operations-javafx/;
+ * https://www.youtube.com/watch?v=H1mePFyqqiE&t=18s;
  * 
  * @author Michael Aring
  * @version 04/12/2017
  */
-
-
 public class Selection {
 	
 	// variables (correspond to table columns)

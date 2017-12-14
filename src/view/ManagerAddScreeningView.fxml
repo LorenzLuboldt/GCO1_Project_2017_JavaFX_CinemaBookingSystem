@@ -53,8 +53,8 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="14.0" prefHeight="63.0" prefWidth="740.0" styleClass="call_to_action" text="Please Add Screening Details For Any Film Here:" />
             <DatePicker fx:id="datePicker" layoutX="557.0" layoutY="209.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Date" styleClass="text_field_standard" />
             <Button layoutX="559.0" layoutY="518.0" mnemonicParsing="false" onAction="#addScreeningButtonPushed" prefHeight="51.0" prefWidth="313.0" text="Add Screening Time" />
-            <ComboBox fx:id="screeningTimeComboBox" layoutX="557.0" layoutY="289.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Day Time" styleClass="text_field_standard" visibleRowCount="5" />
-            <ComboBox fx:id="currentFilmsAvailableComboBox" layoutX="557.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Films Available" styleClass="text_field_standard" />
+            <ComboBox fx:id="screeningTimeComboBox" layoutX="557.0" layoutY="289.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Day Time" styleClass="ComboBox" visibleRowCount="5" />
+            <ComboBox fx:id="currentFilmsAvailableComboBox" layoutX="557.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Films Available" styleClass="ComboBox" />
             <Label fx:id="successNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="560.0" layoutY="465.0" prefHeight="44.0" prefWidth="309.0" styleClass="call_to_action_success" />
             <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="559.0" layoutY="421.0" prefHeight="44.0" prefWidth="309.0" styleClass="call_to_action_error" />
          </children></AnchorPane>

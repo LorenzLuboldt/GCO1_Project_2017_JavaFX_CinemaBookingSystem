@@ -168,40 +168,36 @@
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <HBox layoutX="799.0" layoutY="56.0" prefHeight="50.0" prefWidth="512.0">
-               <children>
-                  <Label fx:id="filmTitleLabel" textFill="RED">
-                     <font>
-                        <Font name="Avenir Next Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label text=" on " textFill="#ffffff">
-                     <font>
-                        <Font name="Avenir Next Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="dateLabel" textFill="RED">
-                     <font>
-                        <Font name="Avenir Next Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label text=" at " textFill="#ffffff">
-                     <font>
-                        <Font name="Avenir Next Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="timeLabel" layoutX="41.0" layoutY="10.0" textFill="RED">
-                     <font>
-                        <Font name="Avenir Next Regular" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
             <PieChart fx:id="pieChart" animated="false" layoutX="782.0" layoutY="90.0" legendVisible="false" prefHeight="380.0" prefWidth="541.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></PieChart>
             <Label fx:id="successNotification" layoutX="1107.0" layoutY="521.0" prefHeight="51.0" prefWidth="248.0" styleClass="call_to_action_success" />
+            <Label fx:id="filmTitleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="781.0" layoutY="54.0" prefHeight="35.0" prefWidth="564.0" text="ddd" textFill="RED">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="782.0" layoutY="89.0" style="-fx-background-color: black;" text="Date:" textFill="#ffffff">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="851.0" layoutY="90.0" prefHeight="35.0" prefWidth="191.0" style="-fx-background-color: black;" text="ddd" textFill="RED">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="1046.0" layoutY="89.0" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: black;" text="Time:" textFill="#ffffff">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" layoutX="1115.0" layoutY="90.0" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: black;" text="dd" textFill="RED">
+               <font>
+                  <Font name="Avenir Next Regular" size="24.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </center>
    <bottom>

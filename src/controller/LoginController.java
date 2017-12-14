@@ -32,8 +32,8 @@ import model.LoginModel;
  * @author Lorenz 
  * 
  * Tutorials & resources:
- *         https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq,
- *         https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm,
+ *         https://www.youtube.com/watch?v=NWcFTTbKbLs&index=31&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq
+ *         https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm
  *         http://www.swtestacademy.com/database-operations-javafx/
  */
 public class LoginController implements Initializable {
