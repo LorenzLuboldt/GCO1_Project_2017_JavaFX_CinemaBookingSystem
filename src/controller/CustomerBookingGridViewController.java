@@ -16,7 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
@@ -92,10 +96,12 @@ public class CustomerBookingGridViewController implements Initializable{
 	}
 	
 	public void deselectSeatsButtonPushed()	{
+		
+		// Load fresh seating map
 		loadSeatingMap();
 	}
 		
-	// Loads new seating map
+	// Load new seating map
 	public void loadSeatingMap() throws NullPointerException	{
 		
 		// Check for booked seats --> SCREENING ID
@@ -227,77 +233,38 @@ public class CustomerBookingGridViewController implements Initializable{
 		}
 	}
 	
-	// TODO delete this method if no longer needed
-	// Returns a seat ID to be stored in the selection cache
-	public String computeSeatID(int col, int row)	{
-		
-		String seatID = null; // return variable
-		
-		if(col == 1)
-		{
-			switch(row)	{
-			case 1 : seatID = "A1";	
-				break;
-			case 2 : seatID = "A2";
-				break;
-			case 3 : seatID = "A3";
-				break;
-			case 4 : seatID = "A4";
-				break;
-			}
-		}
-		else if (col == 2)
-		{
-			switch(row)	{
-			case 1 : seatID = "B1";	
-				break;
-			case 2 : seatID = "B2";
-				break;
-			case 3 : seatID = "B3";
-				break;
-			case 4 : seatID = "B4";
-				break;
-			}
-		}
-		else if (col == 3)
-		{
-			switch(row)	{
-			case 1 : seatID = "C1";	
-				break;
-			case 2 : seatID = "C2";
-				break;
-			case 3 : seatID = "C3";
-				break;
-			case 4 : seatID = "C4";
-				break;
-			}
-		}	
-		else if (col == 4)
-		{
-			switch(row)	{
-			case 1 : seatID = "D1";	
-				break;
-			case 2 : seatID = "D2";
-				break;
-			case 3 : seatID = "D3";
-				break;
-			case 4 : seatID = "D4";
-				break;
-			}
-		}	
-		return seatID;
-	}
-	
+
 	// Event Listener on Button.onAction
 	@FXML
 	public void confirmBookingButtonPushed(ActionEvent event) {
 		
 		// Retrieve seat IDs stored in selection table
 		ObservableList<Selection> selectionList = selectionDAO.getSelection();
-		int index = selectionList.size();
+		int numTicketsSelected = selectionList.size();
+		
+		// Check for booked seats --> SCREENING ID
+		ObservableList<Selection> screeningsList = selectionDAO.getSelection();
+		int screeningID = screeningsList.get(0).getScreeningID();
+		
+		// Load screening details for selected screening and set text fields
+		Screening selectedScreening = screeningDAO.getScreening(screeningID);
+		
+		
+		
+		// ADD POP UP WINDOW HERE
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(null);
+		alert.setHeaderText("Booking Confirmation");
+		alert.setContentText("Film: " + selectedScreening.getFilmTitle() 
+		+ "\nDate: " + selectedScreening.getDateID()
+		+ "\nTime: " + selectedScreening.getTimeString()
+		+ "\nNumber of tickets: " + numTicketsSelected);
+
+		alert.showAndWait();
+		
 		
 		// Add seats to booking table and update ticket availability
-		for(int i = 0; i < index; i++)
+		for(int i = 0; i < numTicketsSelected; i++)
 		{
 			BookingDAO b = new BookingDAOImpl();
 			Booking bo = new Booking();

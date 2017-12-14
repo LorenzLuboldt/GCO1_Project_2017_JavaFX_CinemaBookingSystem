@@ -71,8 +71,8 @@
                       <TableColumn fx:id="date_id_column" prefWidth="125.0" text="Date" />
                       <TableColumn fx:id="time_string_column" prefWidth="75.0" text="Time" />
                         <TableColumn fx:id="film_title_column" prefWidth="200.0" text="Film" />
-                        <TableColumn fx:id="available_seats_column" prefWidth="175.0" text="Free Seats" />
-                        <TableColumn fx:id="booked_seats_column" prefWidth="175.0" text="Booked Seats" />
+                        <TableColumn fx:id="available_seats_column" prefWidth="175.0" text="Unsold seats" />
+                        <TableColumn fx:id="booked_seats_column" prefWidth="175.0" text="Tickets sold" />
                         <TableColumn fx:id="occupancy_rate_column" prefWidth="175.0" text="Utilisation" />
                     </columns>
                   </TableView>

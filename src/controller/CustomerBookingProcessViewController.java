@@ -81,7 +81,6 @@ public class CustomerBookingProcessViewController implements Initializable{
 		
 		}
 	
-	
 	public void chooseSeatsButtonPushed(ActionEvent event)	{
 		
 		// If user has not selected a screening, she can not advance

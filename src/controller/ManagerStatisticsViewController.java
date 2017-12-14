@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import model.Screening;
 import model.BookingDAO;
 import model.BookingDAOImpl;
+import model.Film;
 import model.Screening;
 import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
@@ -36,8 +37,9 @@ public class ManagerStatisticsViewController implements Initializable {
 	@FXML
 	private Label userLbl2;
 	
-	// Configure table
+	// Configure table of past screenings
 	@FXML private TableView<Screening> statisticsTable;
+	@FXML private TableView<Film> filmStatisticsTable;
 	
 	// Columns
 	@FXML private TableColumn<Screening, String> date_id_column;
