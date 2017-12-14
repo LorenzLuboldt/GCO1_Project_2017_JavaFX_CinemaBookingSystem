@@ -23,7 +23,9 @@ import javafx.collections.ObservableList;
 
 public class SelectionDAOImpl implements SelectionDAO {
 	
-	// *** GET SELECTED SEATS ***
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of all selections made. This can be a selected screening or selected seats
+	 */	
 	public ObservableList<Selection> getSelection()	{
 		
 		// Establish database connection:
@@ -69,13 +71,11 @@ public class SelectionDAOImpl implements SelectionDAO {
 	      {
 	        if( connection != null )
 	        {
-	          System.out.println("getAllFilms() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("getAllFilms() --> results are closed");
 	          results.close();
 	        }
 	      }
@@ -86,11 +86,13 @@ public class SelectionDAOImpl implements SelectionDAO {
 	      }
 
 	    }
-	    System.out.println("All films have been retrieved from DB and stored in filmList");
 	    return selectedSeatsList;
 	  }
 	
-	// *** ADD SELECTED SEAT ***	
+
+	/**
+	 * Purpose: Method adds a new selected seat to the database.
+	 */
 	public void addSelectedSeat(String seatID, int screeningID) 	{
 		
 		// Establish database connection:
@@ -131,7 +133,9 @@ public class SelectionDAOImpl implements SelectionDAO {
 	  }
 	
 	
-	// *** ADD SELECTED SCREENING ***
+	/**
+	 * Purpose: Method adds a selected screening to the data base.
+	 */
 	public void addSelectedScreening(int screeningID)	{
 
 		// Establish database connection:
@@ -172,7 +176,10 @@ public class SelectionDAOImpl implements SelectionDAO {
 		
 	}
 	  
-	// *** DELETE SELECTION ***
+	/**
+	 * Purpose: Method deletes all current selection to the database. It is called whenever a user confirms a selection or 
+	 * unselects the items.
+	 */
 	public void deleteSelection()	{
 
 		// Establish database connection:

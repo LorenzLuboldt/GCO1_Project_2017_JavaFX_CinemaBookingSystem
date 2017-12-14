@@ -87,23 +87,17 @@ public class ScreeningListViewRowController {
 	
 	// Populates declared elements with respective information from the film object (linked to film table in Database)
 	public void populateCells() throws SQLException, ClassNotFoundException {
-		System.out.println(18);
 
 		String filmtitle = screening.getFilmTitle();		
-		System.out.println(filmtitle);
 		
-		System.out.println(19);
 
 		Film film = filmDAO.getFilm(filmtitle);
-		System.out.println(20);
 
 	//Fills film title label with corresponding film title
 		filmTitle.setText(film.getFilmTitle());
-		System.out.println(21);
 
 	//Fills genre label with corresponding film genre
 		screeningDate.setText(screening.getDateID() + ", " + screening.getTimeString());	
-		System.out.println(22);
 
 
 	//Fills director label with corresponding film director
@@ -130,7 +124,6 @@ public class ScreeningListViewRowController {
 	private void showScreeningDetailPage(ActionEvent event) {
 		
 		selectionDAO.addSelectedScreening(screening.getScreeningID());
-		System.out.println(screening.getScreeningID());
 		
 		try {	
 			((Node)event.getSource()).getScene().getWindow().hide();

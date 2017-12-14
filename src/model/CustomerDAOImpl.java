@@ -23,7 +23,10 @@ import javafx.collections.ObservableList;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	
-	// *** 1. GET ALL CUSTOMERS ***
+	
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of all customers.
+	 */
 	public ObservableList<Customer> getAllCustomers()	{
 		
 		// Establish database connection:
@@ -88,7 +91,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    return custList;
 	  }
 	
-	// *** 2. GET SPECIFIC CUSTOMER ***
+	/**
+	 * Purpose: Method queries data base and retrieves one customer as an object, identified by the customer ID
+	 */
 	public Customer getCustomer(int custID)	{
 		
 		// Establish database connection:
@@ -114,8 +119,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    	customer.setLastName(results.getString("cust_lastname"));
             }
             
-            // PRINTING TO CONSOLE:
-            System.out.println(customer.getFirstName() + ", " + customer.getLastName() + ", " + customer.getCustEmail());
                         
         } catch (SQLException e) {
             System.err.println("While searching the customer " + custID  + " an error occurred: ");
@@ -144,48 +147,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    return customer;
 	  }
 	
-	// *** 3. ADD CUSTOMER ***	(Not needed currently)
-//	public void addCustomer(String custEmail, String custFirstName, String custLastName) 	{
-//		
-//		// Establish database connection:
-//		Connection connection = SqliteConnection.Connector();
-//	    Statement st = null;   
-//	  
-//	    try
-//	    {
-//		    st = connection.createStatement();
-//		    
-//			// SQL query, stored in String
-//	    	String query = "INSERT INTO customer (cust_email, cust_firstname, cust_lastname)" 
-//			+ "VALUES ('" + custEmail + "', '" + custFirstName + "', '" + custLastName + "')";
-//	     
-//		    // Run query
-//		    st.executeUpdate(query);
-//		    
-//	    }
-//	    catch( SQLException e )
-//	    {
-//	    	System.err.println("Exception occured while adding new customer " + custFirstName);
-//	    	e.printStackTrace();
-//	    }
-//
-//	    finally
-//	    {
-//	      try
-//	      {
-//	        if( connection != null )
-//	        {
-//	          connection.close();
-//	        }
-//	      }
-//	      catch( Exception e )
-//	      {
-//	        e.printStackTrace();
-//	      }
-//	    }
-//	  }
 	  
-	// *** 4. UPDATE CUSTOMER ***
+	/**
+	 * Purpose: Method updates customer information for one specific customer in the data base
+	 */
 	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName)	{
 		
 		// Establish database connection:
@@ -202,7 +167,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    	
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been updated for customer: " + custFirstName + " " + custLastName);
 
 	    }
 	    catch( SQLException e )
@@ -227,7 +191,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    }
 	}
 	
-	// *** 5. DELETE CUSTOMER ***
+	/**
+	 * Purpose: Method deletes a customer in the database, provided a customer ID
+	 */
 	public void deleteCustomer(int custID)	{
 		
 		// Establish database connection:
@@ -243,7 +209,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 				    
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been deleted for customer ID: " + custID);
 
 	    }
 	    catch( SQLException e )
@@ -268,76 +233,77 @@ public class CustomerDAOImpl implements CustomerDAO {
 	    }
 	}
 	
-	// *** 2. PASSWORD CHECK ***
-		public boolean checkPassword(String userName, String passWord)	{
+	/**
+	 * Purpose: Method queries data base and returns true if user name password combination is correct, false if incorrect.
+	 */
+	public boolean checkPassword(String userName, String passWord)	{
 
-			Boolean check = false;
-			
-			// Establish database connection:
-			Connection connection = SqliteConnection.Connector();
-		    Statement st = null;
-		    
-		    ResultSet results = null;
-		    Customer customer = null;
-		    
-		    try	{
-			    st = connection.createStatement();
-		    	
-			    // Create ObservableList to store customers from DB
-			    ObservableList<Customer> custList = FXCollections.observableArrayList();
+	Boolean check = false;
+	
+	// Establish database connection:
+	Connection connection = SqliteConnection.Connector();
+    Statement st = null;
+    
+    ResultSet results = null;
+    Customer customer = null;
+    
+    try	{
+	    st = connection.createStatement();
+    	
+	    // Create ObservableList to store customers from DB
+	    ObservableList<Customer> custList = FXCollections.observableArrayList();
+	    
+		// SQL query, stored in String
+    	String query = "SELECT * FROM customer WHERE cust_username = " + "'" + userName + "' AND cust_password= '" + passWord + "'";
 			    
-				// SQL query, stored in String
-		    	String query = "SELECT * FROM customer WHERE cust_username = " + "'" + userName + "' AND cust_password= '" + passWord + "'";
-					    
-			    // Run query and save results in ResultSet
-			    results = st.executeQuery(query);
-			    
-	            while(results.next())	{
-	            	System.out.println("Customer found!");
-	            	customer = new Customer();
-			    	customer.setCustEmail(results.getString("cust_email"));
-			    	customer.setFirstName(results.getString("cust_firstname"));
-			    	customer.setLastName(results.getString("cust_lastname"));
-			    	customer.setUserName(results.getString("cust_username"));
-			    	customer.setPassWord(results.getString("cust_password"));
+	    // Run query and save results in ResultSet
+	    results = st.executeQuery(query);
+	    
+        while(results.next())	{
+        	customer = new Customer();
+	    	customer.setCustEmail(results.getString("cust_email"));
+	    	customer.setFirstName(results.getString("cust_firstname"));
+	    	customer.setLastName(results.getString("cust_lastname"));
+	    	customer.setUserName(results.getString("cust_username"));
+	    	customer.setPassWord(results.getString("cust_password"));
 
-			    	custList.add(customer);
-	            }
-	            
-	            
-	            if(custList.size()>0)	{
-	            	check = true;
-	            	
-	            }
-	            else {
-	            	check = false;
-	            }
-	            
-	                        
-	        } catch (SQLException e) {
+		    	custList.add(customer);
+            }
+            
+            
+            if(custList.size()>0)	{
+            	check = true;
+            	
+            }
+            else {
+            	check = false;
+            }
+            
+                        
+        } catch (SQLException e) {
 
-	            e.printStackTrace();
+            e.printStackTrace();
+        }
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
 	        }
-		    finally
-		    {
-		      try
-		      {
-		        if( connection != null )
-		        {
-		          connection.close();
-		        }
 
-		        if( results != null )
-		        {
-		          results.close();
-		        }
-		      }
-		      catch( Exception exe )
-		      {
-		        exe.printStackTrace();
-		      }
-		    }
-		    return check;
-		  }
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	        exe.printStackTrace();
+	      }
+	    }
+	    return check;
+	  }
 	
 }

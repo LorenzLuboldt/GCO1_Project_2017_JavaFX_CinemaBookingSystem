@@ -25,7 +25,9 @@ import javafx.collections.ObservableList;
 
 public class ScreeningDAOImpl implements ScreeningDAO {
 	
-	// *** GET ALL SCREENINGS ***
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of all screenings.
+	 */
 	public ObservableList<Screening> getAllScreenings()	{
 		
 		// Establish database connection:
@@ -101,89 +103,93 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	  }
 	
 	
-	// *** GET UPCOMING SCREENINGS (RANKED IN ORDER) ***
-		public ObservableList<Screening> getUpcomingScreenings()	{
-			String t; // time
-			
-			// Establish database connection:
-			Connection connection = SqliteConnection.Connector();
-			Statement st = null;
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of all upcoming screenings.
+	 */
+	public ObservableList<Screening> getUpcomingScreenings()	{
+		String t; // time
+		
+		// Establish database connection:
+		Connection connection = SqliteConnection.Connector();
+		Statement st = null;
+	    
+	    // Create ObservableList to store films from DB
+	    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
+	    
+	    ResultSet results = null;
+		
+	    try
+	    {
+		    st = connection.createStatement();
+	    	
+			// SQL query, stored in String
+	    	String query = "SELECT * FROM screening ORDER BY year_id , month_id ASC, day_id ASC";
+				    
+		    // Run query and save results in ResultSet
+		    results = st.executeQuery(query);
 		    
-		    // Create ObservableList to store films from DB
-		    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
-		    
-		    ResultSet results = null;
-			
-		    try
-		    {
-			    st = connection.createStatement();
+		    while(results.next())	{
 		    	
-				// SQL query, stored in String
-		    	String query = "SELECT * FROM screening ORDER BY year_id , month_id ASC, day_id ASC";
-					    
-			    // Run query and save results in ResultSet
-			    results = st.executeQuery(query);
-			    
-			    while(results.next())	{
-			    	
-			    	// create and instantiate a customer object
-			    	Screening screening = new Screening();
-			    	
-			    	screening.setScreeningID(results.getInt("screening_id"));
-			    	screening.setDateID(results.getString("date_id"));
-			    	screening.setYearID(results.getInt("year_id"));
-			    	screening.setMonthID(results.getInt("month_id"));
-			    	screening.setDayID(results.getInt("day_id"));
-			    	screening.setTimeInt(results.getInt("time_int")); 
-			    	screening.setTimeString(results.getString("time_string"));
-			    	screening.setFilmTitle(results.getString("film_title"));
-			    	screening.setAvailableSeats(results.getInt("available_seats"));
-			    	screening.setBookedSeats(results.getInt("booked_seats"));
-			    	screening.setAvailableInfo(results.getString("available_info"));
-			    	screening.setOccupancyRate(results.getString("occupancy_rate"));
-			    	screening.setTicketStatus(results.getString("ticket_status"));
-			    	
-			    	// Validate time and add to screening list only, if date today is today or in the future
-			    	t = screening.getTimeInt() + ":00";
-			    	LocalTime time = LocalTime.parse(t);
-			    	LocalDate date = LocalDate.parse(screening.getDateID());
-			    	if (date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) || date.isAfter(LocalDate.now()))	{
-			    		screeningList.add(screening);
-			    	}
-			    }
-			 
+		    	// create and instantiate a customer object
+		    	Screening screening = new Screening();
+		    	
+		    	screening.setScreeningID(results.getInt("screening_id"));
+		    	screening.setDateID(results.getString("date_id"));
+		    	screening.setYearID(results.getInt("year_id"));
+		    	screening.setMonthID(results.getInt("month_id"));
+		    	screening.setDayID(results.getInt("day_id"));
+		    	screening.setTimeInt(results.getInt("time_int")); 
+		    	screening.setTimeString(results.getString("time_string"));
+		    	screening.setFilmTitle(results.getString("film_title"));
+		    	screening.setAvailableSeats(results.getInt("available_seats"));
+		    	screening.setBookedSeats(results.getInt("booked_seats"));
+		    	screening.setAvailableInfo(results.getString("available_info"));
+		    	screening.setOccupancyRate(results.getString("occupancy_rate"));
+		    	screening.setTicketStatus(results.getString("ticket_status"));
+		    	
+		    	// Validate time and add to screening list only, if date today is today or in the future
+		    	t = screening.getTimeInt() + ":00";
+		    	LocalTime time = LocalTime.parse(t);
+		    	LocalDate date = LocalDate.parse(screening.getDateID());
+		    	if (date.isEqual(LocalDate.now()) && time.isAfter(LocalTime.now()) || date.isAfter(LocalDate.now()))	{
+		    		screeningList.add(screening);
+		    	}
 		    }
-		    catch( SQLException e )
-		    {
-		    	System.err.println("Exception occured while fetching screening data: ");
-		    	e.printStackTrace();
-		    }
+		 
+	    }
+	    catch( SQLException e )
+	    {
+	    	System.err.println("Exception occured while fetching screening data: ");
+	    	e.printStackTrace();
+	    }
 
-		    finally
-		    {
-		      try
-		      {
-		        if( connection != null )
-		        {
-		          connection.close();
-		        }
+	    finally
+	    {
+	      try
+	      {
+	        if( connection != null )
+	        {
+	          connection.close();
+	        }
 
-		        if( results != null )
-		        {
-		          results.close();
-		        }
-		      }
-		      catch( Exception exe )
-		      {
-		    	  System.out.println("getAllScreenings() --> error has been caught");
-		        exe.printStackTrace();
-		      }
+	        if( results != null )
+	        {
+	          results.close();
+	        }
+	      }
+	      catch( Exception exe )
+	      {
+	    	  System.out.println("getAllScreenings() --> error has been caught");
+	        exe.printStackTrace();
+	      }
 
-		    }
-		    return screeningList;
-		  }
+	    }
+	    return screeningList;
+	  }
 
-		// *** GET PAST SCREENINGS (RANKED IN ORDER) ***
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of screenings that were in the past.
+	 */
 		public ObservableList<Screening> getPastScreenings()	{
 			String t; // time
 			
@@ -267,7 +273,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 
 	
 		
-	// *** GET SPECIFIC SCREENING ***
+	/**
+	 * Purpose: Method queries data base and retrieves a screening object based on a screening ID
+	 */
 	public Screening getScreening(int screeningID)	{
 		
 		// Establish database connection:
@@ -333,86 +341,12 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	  }
 	
 	
-	// *** SEARCH SCREENINGS BY FILM ID ***
-		public ObservableList<Screening> searchScreeningsByFilm(int screeningID)	{
-			
-			// Establish database connection:
-			Connection connection = SqliteConnection.Connector();
-			Statement st = null;
-		    
-		    // Create ObservableList to store films from DB
-		    ObservableList<Screening> screeningList = FXCollections.observableArrayList();
-		    
-		    ResultSet results = null;
-			
-		    try
-		    {
-			    st = connection.createStatement();
-		    	
-				// SQL query, stored in String
-		    	String query = "SELECT * FROM screening WHERE screening_id='" + screeningID + "'";
-					    
-			    // Run query and save results in ResultSet
-			    results = st.executeQuery(query);
-			    
-			    while(results.next())	{
-			    	
-			    	// create and instantiate a customer object
-			    	Screening screening = new Screening();
-			    	
-			    	screening.setScreeningID(results.getInt("screening_id"));
-			    	screening.setDateID(results.getString("date_id"));
-			    	screening.setYearID(results.getInt("year_id"));
-			    	screening.setMonthID(results.getInt("month_id"));
-			    	screening.setDayID(results.getInt("day_id"));
-			    	screening.setTimeInt(results.getInt("time_int")); 
-			    	screening.setTimeString(results.getString("time_string"));
-			    	screening.setFilmTitle(results.getString("film_title"));
-			    	screening.setAvailableSeats(results.getInt("available_seats"));
-			    	screening.setBookedSeats(results.getInt("booked_seats"));
-			    	screening.setAvailableInfo(results.getString("available_info"));
-			    	screening.setOccupancyRate(results.getString("occupancy_rate"));
-			    	screening.setTicketStatus(results.getString("ticket_status"));
-			
-			    	screeningList.add(screening);
-			    }
-			 
-		    }
-		    catch( SQLException e )
-		    {
-		    	System.err.println("Exception occured while fetching screening data: ");
-		    	e.printStackTrace();
-		    }
-
-		    finally
-		    {
-		      try
-		      {
-		        if( connection != null )
-		        {
-		          connection.close();
-		        }
-
-		        if( results != null )
-		        {
-		          results.close();
-		        }
-		      }
-		      catch( Exception exe )
-		      {
-		    	  System.out.println("searchScreeningsByFilm() --> error has been caught");
-		        exe.printStackTrace();
-		      }
-
-		    }
-		    return screeningList;
-		  }
+	
 	
 		/**
 		 * Purpose: Method queries screenings table in data base and retrieves an observable list of screenings on a given date
 		 * in the future.
 		 * 
-		 * @author: Michael Aring
 		 */
 	
 		// *** SEARCH SCREENINGS BY DATE ***
@@ -498,7 +432,10 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    return screeningList;
 	  }
 
-		
+	/**
+	 * Purpose: Method adds a new screening to the data base.
+	 */
+	
 	// *** ADD SCREENING ***	
 	public boolean addScreening(String dateID, int yearID, int monthID, int dayID, String timeString, String filmTitle) 	{
 		
@@ -599,7 +536,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	  }
 	  
 	
-	// *** DELETE SCREENING ***
+	/**
+	 * Purpose: Method deletes a screening given a specific screening ID
+	 */
 	public void deleteScreening(int screeningID)	{	
 		
 		
@@ -641,7 +580,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	}
 	
 	
-	// *** DECREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS MADE) ***
+	/**
+	 * Purpose: Supporting Method that decreases the number of available seats saved for a screening. It is called whenever a booking is made.
+	 */
 	public void decreaseAvailableSeats(int screeningID)	{
 		
 		// Create variables to be updated
@@ -734,7 +675,9 @@ public class ScreeningDAOImpl implements ScreeningDAO {
 	    }
 	  }
 	
-	// *** INCREASE AVAILABLE SEATS FOR SPECIFIC SCREENING (AFTER BOOKING WAS DELETED) ***
+	/**
+	 * Purpose: Supporting Method that increases the number of available seats saved for a screening. It is called whenever a booking is deleted.
+	 */
 	public void increaseAvailableSeats(int screeningID)
 	{
 		// Create variables to be updated

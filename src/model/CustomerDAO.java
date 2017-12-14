@@ -20,7 +20,6 @@ import javafx.collections.ObservableList;
 public interface CustomerDAO {
 	public ObservableList<Customer> getAllCustomers(); // retrieve all variables except custID
 	public Customer getCustomer(int custID);
-//	public void addCustomer(String custEmail, String custFirstName, String custLastName);
 	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName);
 	public void deleteCustomer(int custID);
 	public boolean checkPassword(String userName, String passWord);

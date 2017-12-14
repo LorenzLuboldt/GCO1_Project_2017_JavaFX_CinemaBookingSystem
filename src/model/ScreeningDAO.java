@@ -24,7 +24,6 @@ public interface ScreeningDAO {
 	public ObservableList<Screening> getUpcomingScreenings();
 	public ObservableList<Screening> getPastScreenings();
 	public ObservableList<Screening> searchScreeningsByDate(String dateID);
-	public ObservableList<Screening> searchScreeningsByFilm(int filmID);
 	public Screening getScreening(int screeningID);
 	
 	

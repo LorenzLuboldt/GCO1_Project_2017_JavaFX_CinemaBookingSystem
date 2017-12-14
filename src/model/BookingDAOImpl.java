@@ -23,7 +23,11 @@ import javafx.collections.ObservableList;
 
 public class BookingDAOImpl implements BookingDAO {
 	
-	// *** 1. GET ALL CUSTOMERS ***
+	
+	/**
+	 * Purpose: getAllBookings retrieves an ObservableList with all bookings as objects and their corresponding field values
+	 * stored in variables.
+	 */
 	public ObservableList<Booking> getAllBookings()	{
 		
 		// Establish database connection:
@@ -89,7 +93,9 @@ public class BookingDAOImpl implements BookingDAO {
 	  }
 
 	
-	// GET ALL BOOKINGS FOR A SPECIFIC CUSTOMER
+	/**
+	 * Purpose: getCustomerBookings queries the data base and retrieves an ObservableList with all bookings made by a specific customer.
+	 */
 	public ObservableList<Booking> getCustomerBookings(int custID)	{
 		
 		// Establish database connection:
@@ -159,13 +165,14 @@ public class BookingDAOImpl implements BookingDAO {
 	      }
 
 	    }
-	    System.out.println("CustomerBookingList has been retrieved and is returned");
 	    return customerBookingList;
 	 }
 	
 	
 	
-	// *** 2. GET SPECIFIC BOOKING ***
+	/**
+	 * Purpose: getSpecificBookings queries the data base and retrieves a booking object provided a specific booking ID.
+	 */
 	public Booking getBooking(int bookingID) {
 		
 		// Establish database connection:
@@ -219,7 +226,10 @@ public class BookingDAOImpl implements BookingDAO {
 	    return booking;
 	  }
 	
-	// *** 3. ADD BOOKING ***	
+
+	/**
+	 * Purpose: addBookings queries the data base and adds a new booking.
+	 */
 	public void addBooking(int custID, String seatID, int screeningID) 	{
 		
 		// Establish database connection:
@@ -236,7 +246,6 @@ public class BookingDAOImpl implements BookingDAO {
 	     
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("New booking has been added to DB.");
 		    
 	    }
 	    catch( SQLException e )
@@ -260,50 +269,12 @@ public class BookingDAOImpl implements BookingDAO {
 	      }
 	    }
 	  }
-	  
-	// *** 4. UPDATE CUSTOMER ***
-//	public void updateCustomer(String custEmail, String custFirstName, String custLastName)	{
-//		
-//		// Establish database connection:
-//		Connection connection = SqliteConnection.Connector();
-//	    Statement st = null;
-//	    
-//	    try
-//	    {
-//		    st = connection.createStatement();
-//		    
-//			// SQL query, stored in String
-//	    	String query = "UPDATE customer SET cust_email=" + "'" + custEmail + "'," 
-//			+ "cust_firstname=" + "'" + custFirstName + "'," + "cust_lastname=" + "'" + custLastName +"';";
-//	    	
-//		    // Run query
-//		    st.executeUpdate(query);
-//		    System.out.println("Record has been updated for customer: " + custFirstName + " " + custLastName);
-//
-//	    }
-//	    catch( SQLException e )
-//	    {
-//	    	System.err.println("Exception occured while updating new customer: " + custFirstName + " " + custLastName);
-//	    	e.printStackTrace();
-//	    }
-//
-//	    finally
-//	    {
-//	      try
-//	      {
-//	        if( connection != null )
-//	        {
-//	          connection.close();
-//	        }
-//	      }
-//	      catch( Exception e )
-//	      {
-//	        e.printStackTrace();
-//	      }
-//	    }
-//	}
+
 	
-	// *** 5. DELETE BOOKING ***
+	/**
+	 * Purpose: deleteBookings queries the data base and deletes a specific booking based on a booking ID.
+	 */
+	
 	public void deleteBooking(int bookingID)	{
 		
 		// Establish database connection:
@@ -319,7 +290,6 @@ public class BookingDAOImpl implements BookingDAO {
 				    
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been deleted for Booking ID: " + bookingID);
 
 	    }
 	    catch( SQLException e )
@@ -343,6 +313,10 @@ public class BookingDAOImpl implements BookingDAO {
 	      }
 	    }
 	}
+	
+	/**
+	 * Purpose: checkSeatAvailability returns true if a seat is free and false if it is taken
+	 */
 	
 	public boolean checkSeatAvailability(String seatID, int screeningID)	{
 		
@@ -404,8 +378,6 @@ public class BookingDAOImpl implements BookingDAO {
 			        e.printStackTrace();
 			      }
 			    }
-			    	System.out.println("Seat Availability --> " + seatIsAvailable);
 				   return seatIsAvailable;
-
-	}
+		}
 }

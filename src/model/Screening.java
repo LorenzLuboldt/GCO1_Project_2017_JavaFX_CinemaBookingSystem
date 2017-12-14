@@ -34,8 +34,8 @@ public class Screening {
 	private StringProperty  film_title; // foreign key corresponds to 'Film' table
 	private IntegerProperty available_seats; // keeps count of the number of available seats for a particular screening
 	private IntegerProperty booked_seats; // keeps count of the number of booked seats for a particular screening
-	private StringProperty  available_info; 	// availableInfo: "8 of 16" --> NOT IMPLEMENTED IN METHODS
-	private StringProperty  occupancy_rate; 		// occupancy: "80%" --> --> NOT IMPLEMENTED IN METHODS
+	private StringProperty  available_info; 	// availableInfo: "8 / 16 seats available"
+	private StringProperty  occupancy_rate; 		// occupancy: "80%"
 	private StringProperty ticket_status;	// returns "Tickets available" or "Sold out"
 
 	

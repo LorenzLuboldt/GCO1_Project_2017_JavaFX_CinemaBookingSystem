@@ -22,7 +22,9 @@ import javafx.collections.ObservableList;
  */
 public class FilmDAOImpl implements FilmDAO {
 	
-	// *** 1. GET ALL FILMS ***
+	/**
+	 * Purpose: Method queries data base and retrieves an observable list of all films.
+	 */
 	public ObservableList<Film> getAllFilms()	{
 		
 		// Establish database connection:
@@ -72,13 +74,11 @@ public class FilmDAOImpl implements FilmDAO {
 	      {
 	        if( connection != null )
 	        {
-	          System.out.println("getAllFilms() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("getAllFilms() --> results are closed");
 	          results.close();
 	        }
 	      }
@@ -89,11 +89,12 @@ public class FilmDAOImpl implements FilmDAO {
 	      }
 
 	    }
-	    System.out.println("All films have been retrieved from DB and stored in filmList");
 	    return filmList;
 	  }
 	
-	// *** 2. GET SPECIFIC FILM ***
+	/**
+	 * Purpose: Method queries data base and retrieves one film as an object, identified by the film id
+	 */
 	public Film getFilm(String filmTitle)	{
 		
 		// Establish database connection:
@@ -108,7 +109,6 @@ public class FilmDAOImpl implements FilmDAO {
 	    	
 			// SQL query, stored in String
 	    	String query = "SELECT * FROM film WHERE film_title = " + "'" + filmTitle + "'";
-	    	System.out.println(query);
 				    
 		    // Run query and save results in ResultSet
 		    results = st.executeQuery(query);
@@ -134,13 +134,11 @@ public class FilmDAOImpl implements FilmDAO {
 	      {
 	        if( connection != null )
 	        {
-	        	System.out.println("getFilm() --> connection is closed");
 	          connection.close();
 	        }
 
 	        if( results != null )
 	        {
-	        	System.out.println("getFilm() --> results is closed");
 	          results.close();
 	        }
 	      }
@@ -154,7 +152,9 @@ public class FilmDAOImpl implements FilmDAO {
 	    return film;
 	  }
 	
-	// *** 3. ADD FILM ***	
+	/**
+	 * Purpose: Method adds a new film to the data base
+	 */
 	public void addFilm(String filmTitle, String filmDescription, String filmImage, String filmGenre, String filmCastMembers, String filmDirector) 	{
 		
 		// Establish database connection:
@@ -172,7 +172,6 @@ public class FilmDAOImpl implements FilmDAO {
 	     
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Film has been added to DB");
 	    }
 	    catch( SQLException e )
 	    {
@@ -196,7 +195,9 @@ public class FilmDAOImpl implements FilmDAO {
 	    }
 	  }
 	  
-	// *** 4. UPDATE FILM ***
+	/**
+	 * Purpose: Method updates customer information for one specific customer in the data base
+	 */
 	public void updateFilm(int filmID, String filmTitle, String filmDescription, String filmGenre, String filmCastMembers, String filmDirector)	{
 		
 		// Establish database connection:
@@ -211,11 +212,9 @@ public class FilmDAOImpl implements FilmDAO {
 	    	String query = "UPDATE film SET film_title='" + filmTitle + "', film_description=" + "'" + filmDescription + "', film_genre='" + filmGenre + "', film_cast_members='"
 			+ filmCastMembers + "', film_director='" + filmDirector + "' WHERE film_id=" + filmID;
 	    	
-	    	System.out.println("Record WILL be updated for film id: " + filmID);
 	    	
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been updated for film id: " + filmID);
 
 	    }
 	    catch( SQLException e )
@@ -240,18 +239,14 @@ public class FilmDAOImpl implements FilmDAO {
 	    }
 	}
 	
-	// *** 5. DELETE FILM ***
+	/**
+	 * Purpose: Method deletes a film in the database, provided a film ID
+	 */
 	public void deleteFilm(Film film)	{
 		
 		
-		System.out.println("Delete film method has been invoked.");
-		String film_title = film.getFilmTitle();
-		String film_description = film.getFilmDescription();
-		System.out.println("Film title is " + film_title);
-		System.out.println("Film description is: " + film_description);
 		
 		int film_id = film.getFilmId();
-		System.out.println("film id is:" + film_id);
 		
 		// Establish database connection:
 		Connection connection = SqliteConnection.Connector();
@@ -266,7 +261,6 @@ public class FilmDAOImpl implements FilmDAO {
 				    
 		    // Run query
 		    st.executeUpdate(query);
-		    System.out.println("Record has been deleted for film ID: " + film_id);
 
 	    }
 	    catch( SQLException e )
