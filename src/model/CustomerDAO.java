@@ -23,4 +23,5 @@ public interface CustomerDAO {
 //	public void addCustomer(String custEmail, String custFirstName, String custLastName);
 	public void updateCustomer(int custID, String custEmail, String custFirstName, String custLastName);
 	public void deleteCustomer(int custID);
+	public boolean checkPassword(String userName, String passWord);
 }

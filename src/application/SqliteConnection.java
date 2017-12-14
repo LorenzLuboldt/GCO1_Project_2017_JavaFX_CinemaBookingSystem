@@ -21,24 +21,11 @@ import java.sql.*;
 			
 			// Create an instance of a Connection and instantiate it, passing the location of the DB
 			conn = DriverManager.getConnection("jdbc:sqlite:cinemabooking.db");
-			System.out.println("Connection to SQLite has been established.");
 					return conn;
 			}
 			
 			catch (Exception e) {
-				System.out.println(e);
 				return null; // whenever an exception / error is caught
 			}
-			
-			// @Michael: added part below to close connection and prevent [SQLITE_BUSY] exception
-//			finally {
-//            try {
-//                if (conn != null) {
-//                    conn.close();
-//                }
-//            } catch (SQLException ex) {
-//            	System.out.println("An SQL Excpetion was detected: ");
-//            	System.out.println(ex.getMessage());
-//            }
-        }
 		}
+	}
