@@ -93,7 +93,7 @@
                   <Font name="Avenir Next Regular" size="24.0" />
                </font>
             </Label>
-            <Pane layoutX="489.0" layoutY="153.0" prefHeight="200.0" prefWidth="280.0">
+            <Pane layoutX="489.0" layoutY="153.0" prefHeight="70.0" prefWidth="280.0">
                <children>
                   <DatePicker fx:id="datePicker" prefHeight="55.0" prefWidth="280.0" promptText="Pick Date" styleClass="text_field_standard" />
                </children>
