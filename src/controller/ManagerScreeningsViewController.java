@@ -226,7 +226,6 @@ public class ManagerScreeningsViewController implements Initializable {
 		} else {
 			Image seatBlockedImg = new Image("/res/icons/seat-blocked.png");
 			seatFree.setImage(seatBlockedImg);
-			System.out.println("BLOCKED IMAGE");
 
 			GridPane.setRowIndex(seatFree, row);
 			GridPane.setColumnIndex(seatFree, col);
@@ -291,7 +290,6 @@ public class ManagerScreeningsViewController implements Initializable {
 	 * @param event
 	 */
 	public void downloadBookingData(ActionEvent event) {
-		System.out.println("Method started");
 
 		String fileName = "resources/allScreeningsData.csv";
 		ScreeningDAO screeningDAO = new ScreeningDAOImpl();
@@ -304,7 +302,6 @@ public class ManagerScreeningsViewController implements Initializable {
 			outputStream.println("ScreeningID" + "," + "FilmTitle" + "," + "Date" + "," + "Time" + ","
 					+ "AvailableSeats" + "," + "OccupancyRate");
 			for (int i = 0; i < output.size(); i++) {
-				System.out.println("2");
 				Screening s = output.get(i);
 				outputStream.println(s.getScreeningID() + "," + s.getFilmTitle() + "," + s.getDateID() + ","
 						+ s.getTimeString() + "," + s.getAvailableInfo() + "," + s.getOccupancyRate());

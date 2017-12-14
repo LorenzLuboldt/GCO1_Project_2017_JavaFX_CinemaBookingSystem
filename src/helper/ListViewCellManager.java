@@ -39,11 +39,9 @@ public void updateItem(Film film, boolean empty) {
 
 				controller = fxmlLoader.getController();
 				controller.setFilm(film);
-				controller.populateCells();
-
-				System.out.println("finally block is always executed");}
-		
-			
+				controller.populateCells();				
+			}
+	
 
 		if (controller != null) {
 			setGraphic(controller.getContainer());

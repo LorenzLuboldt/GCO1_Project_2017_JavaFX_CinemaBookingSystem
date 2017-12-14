@@ -102,7 +102,6 @@ public class ScreeningListViewRowController {
 		String imgPath = filmDAO.getFilmImagePath(filmID);
 		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		File file = new File(jarFile.getParentFile().getParent(), "images/" + imgPath);
-		//final Image imageFile = new Image(System.getProperty("user.dir") + "/../resources/films/" + imgPath);
 		Image img = new Image(file.toURI().toString());
 		filmPoster.setImage(img);
 		

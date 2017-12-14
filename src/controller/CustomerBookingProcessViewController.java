@@ -5,16 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Screening;
@@ -86,6 +89,12 @@ public class CustomerBookingProcessViewController implements Initializable {
 	 * @param event
 	 */
 	public void showFilmsButtonPushed(ActionEvent event) {
+		
+		LocalDate date = LocalDate.parse(datePicker.getValue().toString());
+		
+		// First, check if date is in the future, then proceed
+		if(date.isAfter(LocalDate.now()))	{
+		
 		// Set column values
 		time_id_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("timeString"));
 		film_title_column.setCellValueFactory(new PropertyValueFactory<Screening, String>("filmTitle"));
@@ -96,6 +105,16 @@ public class CustomerBookingProcessViewController implements Initializable {
 		
 		// Fill table with screenings
 		tableView.setItems(screeningList);
+		}
+		else {
+			// alert user that date is in the past
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Selected date is in the past");
+			alert.setHeaderText(null);
+			alert.setContentText("Please choose a date in the future.");
+
+			alert.showAndWait();
+		}
 	}
 
 	/**

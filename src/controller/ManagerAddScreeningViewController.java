@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Film;
@@ -13,6 +14,7 @@ import model.ScreeningDAO;
 import model.ScreeningDAOImpl;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -22,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.DatePicker;
@@ -143,15 +146,32 @@ public class ManagerAddScreeningViewController implements Initializable {
 		int day = datePicker.getValue().getDayOfMonth();
 		int month = datePicker.getValue().getMonthValue();
 		int year = datePicker.getValue().getYear();
+		LocalDate date = LocalDate.parse(datePicker.getValue().toString());
+		
+		
+		// First, check if date is in the future, then proceed
+		if(date.isAfter(LocalDate.now()))	{
 		
 		boolean checkIfDateIsFree = screeningDAO.addScreening(datePicker.getValue().toString(), year, month, day,
 				screeningTimeComboBox.getValue(), currentFilmsAvailableComboBox.getValue());
 		
-		if(checkIfDateIsFree){
-			successNotification.setText("Successfully Added Screening Slot.");
-		}
-		else	{
-			errorNotification.setText("Overlap With Other Screening");
+		// Second, check if screening slot is still free, then proceed
+			if(checkIfDateIsFree){
+				successNotification.setText("Successfully Added Screening Slot.");
+			}
+			
+		// if check fails, display error notifications
+			else	{
+				errorNotification.setText("Overlap With Other Screening");
+			}
+		} else {
+			// alert user that date is in the past
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Selected date is in the past");
+			alert.setHeaderText(null);
+			alert.setContentText("Please choose a date in the future.");
+
+			alert.showAndWait();
 		}
 	}
 }
