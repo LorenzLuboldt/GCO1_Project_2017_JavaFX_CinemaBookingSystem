@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerAddScreeningViewController">
    <top>
@@ -51,12 +52,24 @@
       <AnchorPane prefHeight="194.0" prefWidth="297.0" styleClass="root" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="14.0" prefHeight="63.0" prefWidth="740.0" styleClass="call_to_action" text="Please Add Screening Details For Any Film Here:" />
-            <DatePicker fx:id="datePicker" layoutX="557.0" layoutY="209.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Date" styleClass="text_field_standard" />
             <Button layoutX="559.0" layoutY="518.0" mnemonicParsing="false" onAction="#addScreeningButtonPushed" prefHeight="51.0" prefWidth="313.0" text="Add Screening Time" />
-            <ComboBox fx:id="screeningTimeComboBox" layoutX="557.0" layoutY="289.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Day Time" styleClass="ComboBox" visibleRowCount="5" />
-            <ComboBox fx:id="currentFilmsAvailableComboBox" layoutX="557.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Films Available" styleClass="ComboBox" />
             <Label fx:id="successNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="560.0" layoutY="465.0" prefHeight="44.0" prefWidth="309.0" styleClass="call_to_action_success" />
             <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="559.0" layoutY="421.0" prefHeight="44.0" prefWidth="309.0" styleClass="call_to_action_error" />
+            <Pane fx:id="pane" layoutX="490.0" layoutY="209.0" prefHeight="232.0" prefWidth="414.0">
+               <children>
+                  <DatePicker fx:id="datePicker" layoutX="66.0" prefHeight="51.0" prefWidth="313.0" promptText="Pick Date" styleClass="text_field_standard" />
+               </children>
+            </Pane>
+            <Pane fx:id="PaneComboBox" layoutX="555.0" layoutY="139.0" prefHeight="200.0" prefWidth="316.0">
+               <children>
+                  <ComboBox fx:id="currentFilmsAvailableComboBox" prefHeight="51.0" prefWidth="313.0" promptText="Films Available" styleClass="ComboBox" />
+               </children>
+            </Pane>
+            <Pane fx:id="PaneComboBox2" layoutX="556.0" layoutY="289.0" prefHeight="188.0" prefWidth="314.0">
+               <children>
+                  <ComboBox fx:id="screeningTimeComboBox" prefHeight="51.0" prefWidth="313.0" promptText="Pick Day Time" styleClass="ComboBox" visibleRowCount="5" />
+               </children>
+            </Pane>
          </children></AnchorPane>
    </center>
    <bottom>

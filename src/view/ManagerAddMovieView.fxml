@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerAddMovieViewController">
@@ -59,7 +60,6 @@
             <TextField fx:id="filmActorsTextField" layoutX="345.0" layoutY="428.0" prefHeight="51.0" prefWidth="313.0" promptText="Actors" styleClass="text_field_standard" />
             <TextArea fx:id="filmDescriptionTextArea" layoutX="345.0" layoutY="207.0" prefHeight="200.0" prefWidth="313.0" promptText="Film Description" styleClass="TextArea" />
             <TextField fx:id="filmDirectorTextField" layoutX="743.0" layoutY="139.0" prefHeight="51.0" prefWidth="313.0" promptText="Director" styleClass="text_field_standard" />
-            <ComboBox fx:id="filmGenreComboBox" layoutX="743.0" layoutY="207.0" prefHeight="51.0" prefWidth="313.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
             <ListView fx:id="fileList" layoutX="743.0" layoutY="325.0" prefHeight="50.0" prefWidth="313.0" styleClass="text_field_standard" />
             <Button fx:id="chooseFile" layoutX="743.0" layoutY="390.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose File" />
             <Label layoutX="743.0" layoutY="288.0" text="Add Film Poster" textFill="WHITE">
@@ -70,6 +70,11 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="14.0" prefHeight="47.0" prefWidth="713.0" styleClass="call_to_action" text="Please add film details" />
             <Label fx:id="successNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="496.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_success" textAlignment="CENTER" textFill="#ebe8e8" />
             <Label fx:id="errorNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="454.0" prefHeight="44.0" prefWidth="314.0" styleClass="call_to_action_error" textAlignment="CENTER" textFill="#ebe8e8" />
+            <Pane layoutX="710.0" layoutY="207.0" prefHeight="330.0" prefWidth="379.0">
+               <children>
+                  <ComboBox fx:id="filmGenreComboBox" layoutX="33.0" prefHeight="51.0" prefWidth="313.0" promptText="Genre" styleClass="text_field_standard" visibleRowCount="5" />
+               </children>
+            </Pane>
          </children></AnchorPane>
    </center>
    <bottom>
