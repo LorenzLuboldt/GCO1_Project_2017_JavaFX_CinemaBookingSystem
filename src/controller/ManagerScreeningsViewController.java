@@ -293,7 +293,6 @@ public class ManagerScreeningsViewController implements Initializable {
 	 */
 	public void downloadBookingData(ActionEvent event) {
 
-//		String fileName = "resources/allScreeningsData.csv";
 		
 		File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		File dest = new File(jarFile.getParentFile().getParent(), "resources/allScreeningsData.csv");
